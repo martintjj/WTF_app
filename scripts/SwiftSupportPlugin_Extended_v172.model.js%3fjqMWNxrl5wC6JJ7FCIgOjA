@@ -1,0 +1,11 @@
+﻿define("SwiftSupportPlugin_Extended_v172.model", ["exports", "OutSystems"], function (exports, OutSystems) {
+var OS = OutSystems.Internal;
+var SwiftSupportPlugin_Extended_v172Model = exports;
+Object.defineProperty(SwiftSupportPlugin_Extended_v172Model, "module", {
+get: function () {
+return OS.ApplicationInfo.getModules()["36c56580-6b91-4dc0-b438-78c28a6c2ed6"];
+}
+});
+
+SwiftSupportPlugin_Extended_v172Model.staticEntities = {};
+});

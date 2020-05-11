@@ -1,0 +1,1508 @@
+﻿define("NewFirebaseMobilePlugin_WTF.model$KeyValuePairRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var KeyValuePairRec = (function (_super) {
+__extends(KeyValuePairRec, _super);
+function KeyValuePairRec(defaults) {
+_super.apply(this, arguments);
+}
+KeyValuePairRec.attributesToDeclare = function () {
+return [
+this.attr("Key", "keyAttr", "Key", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Value", "valueAttr", "Value", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+KeyValuePairRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+KeyValuePairRec.init();
+return KeyValuePairRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.KeyValuePairRec = KeyValuePairRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$KeyValuePairList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$KeyValuePairRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var KeyValuePairList = (function (_super) {
+__extends(KeyValuePairList, _super);
+function KeyValuePairList(defaults) {
+_super.apply(this, arguments);
+}
+KeyValuePairList.RecordType = NewFirebaseMobilePlugin_WTFModel.KeyValuePairRec;
+return KeyValuePairList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.KeyValuePairList = KeyValuePairList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$NotificationDataRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$KeyValuePairList"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var NotificationDataRec = (function (_super) {
+__extends(NotificationDataRec, _super);
+function NotificationDataRec(defaults) {
+_super.apply(this, arguments);
+}
+NotificationDataRec.attributesToDeclare = function () {
+return [
+this.attr("Title", "titleAttr", "Title", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Body", "bodyAttr", "Body", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Deeplink", "deeplinkAttr", "Deeplink", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AppInBackground", "appInBackgroundAttr", "AppInBackground", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("DataKeyValues", "dataKeyValuesAttr", "DataKeyValues", false, OS.Types.RecordList, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.KeyValuePairList());
+}, NewFirebaseMobilePlugin_WTFModel.KeyValuePairList)
+].concat(_super.attributesToDeclare.call(this));
+};
+NotificationDataRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+NotificationDataRec.init();
+return NotificationDataRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.NotificationDataRec = NotificationDataRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$NavigationInfoRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var NavigationInfoRec = (function (_super) {
+__extends(NavigationInfoRec, _super);
+function NavigationInfoRec(defaults) {
+_super.apply(this, arguments);
+}
+NavigationInfoRec.attributesToDeclare = function () {
+return [
+this.attr("EnableForcedRedirect", "enableForcedRedirectAttr", "enableForcedRedirect", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+NavigationInfoRec.fromStructure = function (str) {
+return new NavigationInfoRec(new NavigationInfoRec.RecordClass({
+enableForcedRedirectAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+NavigationInfoRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+NavigationInfoRec.init();
+return NavigationInfoRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.NavigationInfoRec = NavigationInfoRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$NavigationInfoRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$NavigationInfoRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var NavigationInfoRecord = (function (_super) {
+__extends(NavigationInfoRecord, _super);
+function NavigationInfoRecord(defaults) {
+_super.apply(this, arguments);
+}
+NavigationInfoRecord.attributesToDeclare = function () {
+return [
+this.attr("NavigationInfo", "navigationInfoAttr", "NavigationInfo", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.NavigationInfoRec());
+}, NewFirebaseMobilePlugin_WTFModel.NavigationInfoRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+NavigationInfoRecord.fromStructure = function (str) {
+return new NavigationInfoRecord(new NavigationInfoRecord.RecordClass({
+navigationInfoAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+NavigationInfoRecord.IsAnonymousRecord = true;
+NavigationInfoRecord.UniqueId = "0c6d7d6d-7818-abd5-2594-23873e576362";
+NavigationInfoRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+NavigationInfoRecord.init();
+return NavigationInfoRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.NavigationInfoRecord = NavigationInfoRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$ItunesConnectAnalyticRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var ItunesConnectAnalyticRec = (function (_super) {
+__extends(ItunesConnectAnalyticRec, _super);
+function ItunesConnectAnalyticRec(defaults) {
+_super.apply(this, arguments);
+}
+ItunesConnectAnalyticRec.attributesToDeclare = function () {
+return [
+this.attr("At", "atAttr", "at", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Ct", "ctAttr", "ct", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Pt", "ptAttr", "pt", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+ItunesConnectAnalyticRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+ItunesConnectAnalyticRec.init();
+return ItunesConnectAnalyticRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.ItunesConnectAnalyticRec = ItunesConnectAnalyticRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$ItunesConnectAnalyticRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$ItunesConnectAnalyticRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var ItunesConnectAnalyticRecord = (function (_super) {
+__extends(ItunesConnectAnalyticRecord, _super);
+function ItunesConnectAnalyticRecord(defaults) {
+_super.apply(this, arguments);
+}
+ItunesConnectAnalyticRecord.attributesToDeclare = function () {
+return [
+this.attr("ItunesConnectAnalytic", "itunesConnectAnalyticAttr", "ItunesConnectAnalytic", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.ItunesConnectAnalyticRec());
+}, NewFirebaseMobilePlugin_WTFModel.ItunesConnectAnalyticRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+ItunesConnectAnalyticRecord.fromStructure = function (str) {
+return new ItunesConnectAnalyticRecord(new ItunesConnectAnalyticRecord.RecordClass({
+itunesConnectAnalyticAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+ItunesConnectAnalyticRecord.IsAnonymousRecord = true;
+ItunesConnectAnalyticRecord.UniqueId = "bf1cc5a8-ff08-a868-3131-14a822c641ad";
+ItunesConnectAnalyticRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+ItunesConnectAnalyticRecord.init();
+return ItunesConnectAnalyticRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.ItunesConnectAnalyticRecord = ItunesConnectAnalyticRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$ItunesConnectAnalyticRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$ItunesConnectAnalyticRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var ItunesConnectAnalyticRecordList = (function (_super) {
+__extends(ItunesConnectAnalyticRecordList, _super);
+function ItunesConnectAnalyticRecordList(defaults) {
+_super.apply(this, arguments);
+}
+ItunesConnectAnalyticRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.ItunesConnectAnalyticRecord;
+return ItunesConnectAnalyticRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.ItunesConnectAnalyticRecordList = ItunesConnectAnalyticRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$GooglePlayAnalyticRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var GooglePlayAnalyticRec = (function (_super) {
+__extends(GooglePlayAnalyticRec, _super);
+function GooglePlayAnalyticRec(defaults) {
+_super.apply(this, arguments);
+}
+GooglePlayAnalyticRec.attributesToDeclare = function () {
+return [
+this.attr("UtmSource", "utmSourceAttr", "utmSource", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("UtmMedium", "utmMediumAttr", "utmMedium", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("UtmCampaign", "utmCampaignAttr", "utmCampaign", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("UtmTerm", "utmTermAttr", "utmTerm", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("UtmContent", "utmContentAttr", "utmContent", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+GooglePlayAnalyticRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+GooglePlayAnalyticRec.init();
+return GooglePlayAnalyticRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.GooglePlayAnalyticRec = GooglePlayAnalyticRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$AnalyticsInfoRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$GooglePlayAnalyticRec", "NewFirebaseMobilePlugin_WTF.model$ItunesConnectAnalyticRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var AnalyticsInfoRec = (function (_super) {
+__extends(AnalyticsInfoRec, _super);
+function AnalyticsInfoRec(defaults) {
+_super.apply(this, arguments);
+}
+AnalyticsInfoRec.attributesToDeclare = function () {
+return [
+this.attr("GooglePlayAnalytics", "googlePlayAnalyticsAttr", "googlePlayAnalytics", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.GooglePlayAnalyticRec());
+}, NewFirebaseMobilePlugin_WTFModel.GooglePlayAnalyticRec), 
+this.attr("ItunesConnectAnalytics", "itunesConnectAnalyticsAttr", "itunesConnectAnalytics", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.ItunesConnectAnalyticRec());
+}, NewFirebaseMobilePlugin_WTFModel.ItunesConnectAnalyticRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+AnalyticsInfoRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+AnalyticsInfoRec.init();
+return AnalyticsInfoRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.AnalyticsInfoRec = AnalyticsInfoRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$AnalyticsInfoList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$AnalyticsInfoRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var AnalyticsInfoList = (function (_super) {
+__extends(AnalyticsInfoList, _super);
+function AnalyticsInfoList(defaults) {
+_super.apply(this, arguments);
+}
+AnalyticsInfoList.RecordType = NewFirebaseMobilePlugin_WTFModel.AnalyticsInfoRec;
+return AnalyticsInfoList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.AnalyticsInfoList = AnalyticsInfoList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$AnalyticsInfoRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$AnalyticsInfoRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var AnalyticsInfoRecord = (function (_super) {
+__extends(AnalyticsInfoRecord, _super);
+function AnalyticsInfoRecord(defaults) {
+_super.apply(this, arguments);
+}
+AnalyticsInfoRecord.attributesToDeclare = function () {
+return [
+this.attr("AnalyticsInfo", "analyticsInfoAttr", "AnalyticsInfo", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.AnalyticsInfoRec());
+}, NewFirebaseMobilePlugin_WTFModel.AnalyticsInfoRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+AnalyticsInfoRecord.fromStructure = function (str) {
+return new AnalyticsInfoRecord(new AnalyticsInfoRecord.RecordClass({
+analyticsInfoAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+AnalyticsInfoRecord.IsAnonymousRecord = true;
+AnalyticsInfoRecord.UniqueId = "1d0b9a41-5622-09da-3745-69c85fbb7b3e";
+AnalyticsInfoRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+AnalyticsInfoRecord.init();
+return AnalyticsInfoRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.AnalyticsInfoRecord = AnalyticsInfoRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$DevicePlatform2Record", ["exports", "OutSystems", "FirebaseCloudMessageMiddleware_Exte.model", "NewFirebaseMobilePlugin_WTF.model", "FirebaseCloudMessageMiddleware_Exte.model$DevicePlatformRec", "NewFirebaseMobilePlugin_WTF.referencesHealth", "NewFirebaseMobilePlugin_WTF.referencesHealth$FirebaseCloudMessageMiddleware_Exte"], function (exports, OutSystems, FirebaseCloudMessageMiddleware_ExteModel, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var DevicePlatform2Record = (function (_super) {
+__extends(DevicePlatform2Record, _super);
+function DevicePlatform2Record(defaults) {
+_super.apply(this, arguments);
+}
+DevicePlatform2Record.attributesToDeclare = function () {
+return [
+this.attr("DevicePlatform2", "devicePlatformAttr", "DevicePlatform2", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new FirebaseCloudMessageMiddleware_ExteModel.DevicePlatformRec());
+}, FirebaseCloudMessageMiddleware_ExteModel.DevicePlatformRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+DevicePlatform2Record.fromStructure = function (str) {
+return new DevicePlatform2Record(new DevicePlatform2Record.RecordClass({
+devicePlatformAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+DevicePlatform2Record.IsAnonymousRecord = true;
+DevicePlatform2Record.UniqueId = "63ee5f9a-a65e-17cf-3b36-64a040fa0403";
+DevicePlatform2Record.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+DevicePlatform2Record.init();
+return DevicePlatform2Record;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.DevicePlatform2Record = DevicePlatform2Record;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$DevicePlatform2RecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$DevicePlatform2Record"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var DevicePlatform2RecordList = (function (_super) {
+__extends(DevicePlatform2RecordList, _super);
+function DevicePlatform2RecordList(defaults) {
+_super.apply(this, arguments);
+}
+DevicePlatform2RecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.DevicePlatform2Record;
+return DevicePlatform2RecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.DevicePlatform2RecordList = DevicePlatform2RecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$DynamicLinkJSONDataRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var DynamicLinkJSONDataRec = (function (_super) {
+__extends(DynamicLinkJSONDataRec, _super);
+function DynamicLinkJSONDataRec(defaults) {
+_super.apply(this, arguments);
+}
+DynamicLinkJSONDataRec.attributesToDeclare = function () {
+return [
+this.attr("deepLink", "deepLinkAttr", "deepLink", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("clickTimestamp", "clickTimestampAttr", "clickTimestamp", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("minimumAppVersion", "minimumAppVersionAttr", "minimumAppVersion", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+DynamicLinkJSONDataRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+DynamicLinkJSONDataRec.init();
+return DynamicLinkJSONDataRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.DynamicLinkJSONDataRec = DynamicLinkJSONDataRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$DynamicLinkJSONDataList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$DynamicLinkJSONDataRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var DynamicLinkJSONDataList = (function (_super) {
+__extends(DynamicLinkJSONDataList, _super);
+function DynamicLinkJSONDataList(defaults) {
+_super.apply(this, arguments);
+}
+DynamicLinkJSONDataList.RecordType = NewFirebaseMobilePlugin_WTFModel.DynamicLinkJSONDataRec;
+return DynamicLinkJSONDataList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.DynamicLinkJSONDataList = DynamicLinkJSONDataList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$SocialMetaTagInfoRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var SocialMetaTagInfoRec = (function (_super) {
+__extends(SocialMetaTagInfoRec, _super);
+function SocialMetaTagInfoRec(defaults) {
+_super.apply(this, arguments);
+}
+SocialMetaTagInfoRec.attributesToDeclare = function () {
+return [
+this.attr("SocialTitle", "socialTitleAttr", "socialTitle", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("SocialDescription", "socialDescriptionAttr", "socialDescription", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("SocialImageLink", "socialImageLinkAttr", "socialImageLink", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+SocialMetaTagInfoRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+SocialMetaTagInfoRec.init();
+return SocialMetaTagInfoRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.SocialMetaTagInfoRec = SocialMetaTagInfoRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$AndroidInfoRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var AndroidInfoRec = (function (_super) {
+__extends(AndroidInfoRec, _super);
+function AndroidInfoRec(defaults) {
+_super.apply(this, arguments);
+}
+AndroidInfoRec.attributesToDeclare = function () {
+return [
+this.attr("AndroidPackageName", "androidPackageNameAttr", "androidPackageName", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AndroidFallbackLink", "androidFallbackLinkAttr", "androidFallbackLink", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AndroidMinPackageVersionCode", "androidMinPackageVersionCodeAttr", "androidMinPackageVersionCode", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+AndroidInfoRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+AndroidInfoRec.init();
+return AndroidInfoRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.AndroidInfoRec = AndroidInfoRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$IosInfoRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var IosInfoRec = (function (_super) {
+__extends(IosInfoRec, _super);
+function IosInfoRec(defaults) {
+_super.apply(this, arguments);
+}
+IosInfoRec.attributesToDeclare = function () {
+return [
+this.attr("IosBundleId", "iosBundleIdAttr", "iosBundleId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IosFallbackLink", "iosFallbackLinkAttr", "iosFallbackLink", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IosIpadFallbackLink", "iosIpadFallbackLinkAttr", "iosIpadFallbackLink", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IosIpadBundleId", "iosIpadBundleIdAttr", "iosIpadBundleId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IosAppStoreId", "iosAppStoreIdAttr", "iosAppStoreId", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+IosInfoRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+IosInfoRec.init();
+return IosInfoRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.IosInfoRec = IosInfoRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$SettingRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$AndroidInfoRec", "NewFirebaseMobilePlugin_WTF.model$IosInfoRec", "NewFirebaseMobilePlugin_WTF.model$NavigationInfoRec", "NewFirebaseMobilePlugin_WTF.model$AnalyticsInfoRec", "NewFirebaseMobilePlugin_WTF.model$SocialMetaTagInfoRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var SettingRec = (function (_super) {
+__extends(SettingRec, _super);
+function SettingRec(defaults) {
+_super.apply(this, arguments);
+}
+SettingRec.attributesToDeclare = function () {
+return [
+this.attr("DomainUriPrefix", "domainUriPrefixAttr", "domainUriPrefix", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Link", "linkAttr", "link", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AndroidInfo", "androidInfoAttr", "androidInfo", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.AndroidInfoRec());
+}, NewFirebaseMobilePlugin_WTFModel.AndroidInfoRec), 
+this.attr("IosInfo", "iosInfoAttr", "iosInfo", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.IosInfoRec());
+}, NewFirebaseMobilePlugin_WTFModel.IosInfoRec), 
+this.attr("NavigationInfo", "navigationInfoAttr", "navigationInfo", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.NavigationInfoRec());
+}, NewFirebaseMobilePlugin_WTFModel.NavigationInfoRec), 
+this.attr("AnalyticsInfo", "analyticsInfoAttr", "analyticsInfo", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.AnalyticsInfoRec());
+}, NewFirebaseMobilePlugin_WTFModel.AnalyticsInfoRec), 
+this.attr("SocialMetaTagInfo", "socialMetaTagInfoAttr", "socialMetaTagInfo", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.SocialMetaTagInfoRec());
+}, NewFirebaseMobilePlugin_WTFModel.SocialMetaTagInfoRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+SettingRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+SettingRec.init();
+return SettingRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.SettingRec = SettingRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$SettingList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$SettingRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var SettingList = (function (_super) {
+__extends(SettingList, _super);
+function SettingList(defaults) {
+_super.apply(this, arguments);
+}
+SettingList.RecordType = NewFirebaseMobilePlugin_WTFModel.SettingRec;
+return SettingList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.SettingList = SettingList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$DYNAMICLINK_CONTROLLERRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var DYNAMICLINK_CONTROLLERRec = (function (_super) {
+__extends(DYNAMICLINK_CONTROLLERRec, _super);
+function DYNAMICLINK_CONTROLLERRec(defaults) {
+_super.apply(this, arguments);
+}
+DYNAMICLINK_CONTROLLERRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("URL", "uRLAttr", "URL", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ClickTimestamp", "clickTimestampAttr", "ClickTimestamp", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+DYNAMICLINK_CONTROLLERRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+DYNAMICLINK_CONTROLLERRec.init();
+return DYNAMICLINK_CONTROLLERRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.DYNAMICLINK_CONTROLLERRec = DYNAMICLINK_CONTROLLERRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$IosInfoRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$IosInfoRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var IosInfoRecord = (function (_super) {
+__extends(IosInfoRecord, _super);
+function IosInfoRecord(defaults) {
+_super.apply(this, arguments);
+}
+IosInfoRecord.attributesToDeclare = function () {
+return [
+this.attr("IosInfo", "iosInfoAttr", "IosInfo", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.IosInfoRec());
+}, NewFirebaseMobilePlugin_WTFModel.IosInfoRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+IosInfoRecord.fromStructure = function (str) {
+return new IosInfoRecord(new IosInfoRecord.RecordClass({
+iosInfoAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+IosInfoRecord.IsAnonymousRecord = true;
+IosInfoRecord.UniqueId = "25d0e41e-7b21-4624-cd44-a5e5dcdf8a1c";
+IosInfoRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+IosInfoRecord.init();
+return IosInfoRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.IosInfoRecord = IosInfoRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$GeneralResponseRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var GeneralResponseRec = (function (_super) {
+__extends(GeneralResponseRec, _super);
+function GeneralResponseRec(defaults) {
+_super.apply(this, arguments);
+}
+GeneralResponseRec.attributesToDeclare = function () {
+return [
+this.attr("Success", "successAttr", "Success", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("ErrorCode", "errorCodeAttr", "ErrorCode", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ErrorMessage", "errorMessageAttr", "ErrorMessage", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+GeneralResponseRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+GeneralResponseRec.init();
+return GeneralResponseRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.GeneralResponseRec = GeneralResponseRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$InitCloudMessaging_ResponseRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$GeneralResponseRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var InitCloudMessaging_ResponseRec = (function (_super) {
+__extends(InitCloudMessaging_ResponseRec, _super);
+function InitCloudMessaging_ResponseRec(defaults) {
+_super.apply(this, arguments);
+}
+InitCloudMessaging_ResponseRec.attributesToDeclare = function () {
+return [
+this.attr("PermissionGranted", "permissionGrantedAttr", "PermissionGranted", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("HasPermission", "hasPermissionAttr", "HasPermission", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("RegistrationId", "registrationIdAttr", "RegistrationId", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DeviceHardwareId", "deviceHardwareIdAttr", "DeviceHardwareId", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ApplicationId", "applicationIdAttr", "ApplicationId", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("General_Response", "general_ResponseAttr", "General_Response", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.GeneralResponseRec());
+}, NewFirebaseMobilePlugin_WTFModel.GeneralResponseRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+InitCloudMessaging_ResponseRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+InitCloudMessaging_ResponseRec.init();
+return InitCloudMessaging_ResponseRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.InitCloudMessaging_ResponseRec = InitCloudMessaging_ResponseRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$InitCloudMessaging_ResponseRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$InitCloudMessaging_ResponseRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var InitCloudMessaging_ResponseRecord = (function (_super) {
+__extends(InitCloudMessaging_ResponseRecord, _super);
+function InitCloudMessaging_ResponseRecord(defaults) {
+_super.apply(this, arguments);
+}
+InitCloudMessaging_ResponseRecord.attributesToDeclare = function () {
+return [
+this.attr("InitCloudMessaging_Response", "initCloudMessaging_ResponseAttr", "InitCloudMessaging_Response", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.InitCloudMessaging_ResponseRec());
+}, NewFirebaseMobilePlugin_WTFModel.InitCloudMessaging_ResponseRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+InitCloudMessaging_ResponseRecord.fromStructure = function (str) {
+return new InitCloudMessaging_ResponseRecord(new InitCloudMessaging_ResponseRecord.RecordClass({
+initCloudMessaging_ResponseAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+InitCloudMessaging_ResponseRecord.IsAnonymousRecord = true;
+InitCloudMessaging_ResponseRecord.UniqueId = "2a28e46d-5c68-a4a1-01f1-cc5b0d1df049";
+InitCloudMessaging_ResponseRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+InitCloudMessaging_ResponseRecord.init();
+return InitCloudMessaging_ResponseRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.InitCloudMessaging_ResponseRecord = InitCloudMessaging_ResponseRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$NotificationDataRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$NotificationDataRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var NotificationDataRecord = (function (_super) {
+__extends(NotificationDataRecord, _super);
+function NotificationDataRecord(defaults) {
+_super.apply(this, arguments);
+}
+NotificationDataRecord.attributesToDeclare = function () {
+return [
+this.attr("NotificationData", "notificationDataAttr", "NotificationData", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.NotificationDataRec());
+}, NewFirebaseMobilePlugin_WTFModel.NotificationDataRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+NotificationDataRecord.fromStructure = function (str) {
+return new NotificationDataRecord(new NotificationDataRecord.RecordClass({
+notificationDataAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+NotificationDataRecord.IsAnonymousRecord = true;
+NotificationDataRecord.UniqueId = "f711a8f4-3508-7d99-bdca-3d1933f4727f";
+NotificationDataRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+NotificationDataRecord.init();
+return NotificationDataRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.NotificationDataRecord = NotificationDataRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$NotificationDataRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$NotificationDataRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var NotificationDataRecordList = (function (_super) {
+__extends(NotificationDataRecordList, _super);
+function NotificationDataRecordList(defaults) {
+_super.apply(this, arguments);
+}
+NotificationDataRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.NotificationDataRecord;
+return NotificationDataRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.NotificationDataRecordList = NotificationDataRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$DYNAMICLINK_CONTROLLERRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$DYNAMICLINK_CONTROLLERRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var DYNAMICLINK_CONTROLLERRecord = (function (_super) {
+__extends(DYNAMICLINK_CONTROLLERRecord, _super);
+function DYNAMICLINK_CONTROLLERRecord(defaults) {
+_super.apply(this, arguments);
+}
+DYNAMICLINK_CONTROLLERRecord.attributesToDeclare = function () {
+return [
+this.attr("DYNAMICLINK_CONTROLLER", "dYNAMICLINK_CONTROLLERAttr", "DYNAMICLINK_CONTROLLER", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.DYNAMICLINK_CONTROLLERRec());
+}, NewFirebaseMobilePlugin_WTFModel.DYNAMICLINK_CONTROLLERRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+DYNAMICLINK_CONTROLLERRecord.fromStructure = function (str) {
+return new DYNAMICLINK_CONTROLLERRecord(new DYNAMICLINK_CONTROLLERRecord.RecordClass({
+dYNAMICLINK_CONTROLLERAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+DYNAMICLINK_CONTROLLERRecord.IsAnonymousRecord = true;
+DYNAMICLINK_CONTROLLERRecord.UniqueId = "332df343-3386-1685-514d-92653a3719bd";
+DYNAMICLINK_CONTROLLERRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+DYNAMICLINK_CONTROLLERRecord.init();
+return DYNAMICLINK_CONTROLLERRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.DYNAMICLINK_CONTROLLERRecord = DYNAMICLINK_CONTROLLERRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$ErrorList", ["exports", "OutSystems", "CommonPlugin.model", "NewFirebaseMobilePlugin_WTF.model", "CommonPlugin.model$ErrorRec", "NewFirebaseMobilePlugin_WTF.referencesHealth", "NewFirebaseMobilePlugin_WTF.referencesHealth$CommonPlugin"], function (exports, OutSystems, CommonPluginModel, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var ErrorList = (function (_super) {
+__extends(ErrorList, _super);
+function ErrorList(defaults) {
+_super.apply(this, arguments);
+}
+ErrorList.RecordType = CommonPluginModel.ErrorRec;
+return ErrorList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.ErrorList = ErrorList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$InitCloudMessaging_ResponseList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$InitCloudMessaging_ResponseRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var InitCloudMessaging_ResponseList = (function (_super) {
+__extends(InitCloudMessaging_ResponseList, _super);
+function InitCloudMessaging_ResponseList(defaults) {
+_super.apply(this, arguments);
+}
+InitCloudMessaging_ResponseList.RecordType = NewFirebaseMobilePlugin_WTFModel.InitCloudMessaging_ResponseRec;
+return InitCloudMessaging_ResponseList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.InitCloudMessaging_ResponseList = InitCloudMessaging_ResponseList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$DevicePlatform2List", ["exports", "OutSystems", "FirebaseCloudMessageMiddleware_Exte.model", "NewFirebaseMobilePlugin_WTF.model", "FirebaseCloudMessageMiddleware_Exte.model$DevicePlatformRec", "NewFirebaseMobilePlugin_WTF.referencesHealth", "NewFirebaseMobilePlugin_WTF.referencesHealth$FirebaseCloudMessageMiddleware_Exte"], function (exports, OutSystems, FirebaseCloudMessageMiddleware_ExteModel, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var DevicePlatform2List = (function (_super) {
+__extends(DevicePlatform2List, _super);
+function DevicePlatform2List(defaults) {
+_super.apply(this, arguments);
+}
+DevicePlatform2List.RecordType = FirebaseCloudMessageMiddleware_ExteModel.DevicePlatformRec;
+return DevicePlatform2List;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.DevicePlatform2List = DevicePlatform2List;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$KeyValuePairRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$KeyValuePairRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var KeyValuePairRecord = (function (_super) {
+__extends(KeyValuePairRecord, _super);
+function KeyValuePairRecord(defaults) {
+_super.apply(this, arguments);
+}
+KeyValuePairRecord.attributesToDeclare = function () {
+return [
+this.attr("KeyValuePair", "keyValuePairAttr", "KeyValuePair", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.KeyValuePairRec());
+}, NewFirebaseMobilePlugin_WTFModel.KeyValuePairRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+KeyValuePairRecord.fromStructure = function (str) {
+return new KeyValuePairRecord(new KeyValuePairRecord.RecordClass({
+keyValuePairAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+KeyValuePairRecord.IsAnonymousRecord = true;
+KeyValuePairRecord.UniqueId = "e3966828-771a-8d84-9fea-630a22c60250";
+KeyValuePairRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+KeyValuePairRecord.init();
+return KeyValuePairRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.KeyValuePairRecord = KeyValuePairRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$KeyValuePairRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$KeyValuePairRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var KeyValuePairRecordList = (function (_super) {
+__extends(KeyValuePairRecordList, _super);
+function KeyValuePairRecordList(defaults) {
+_super.apply(this, arguments);
+}
+KeyValuePairRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.KeyValuePairRecord;
+return KeyValuePairRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.KeyValuePairRecordList = KeyValuePairRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$GooglePlayAnalyticList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$GooglePlayAnalyticRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var GooglePlayAnalyticList = (function (_super) {
+__extends(GooglePlayAnalyticList, _super);
+function GooglePlayAnalyticList(defaults) {
+_super.apply(this, arguments);
+}
+GooglePlayAnalyticList.RecordType = NewFirebaseMobilePlugin_WTFModel.GooglePlayAnalyticRec;
+return GooglePlayAnalyticList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.GooglePlayAnalyticList = GooglePlayAnalyticList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$AnalyticsInfoRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$AnalyticsInfoRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var AnalyticsInfoRecordList = (function (_super) {
+__extends(AnalyticsInfoRecordList, _super);
+function AnalyticsInfoRecordList(defaults) {
+_super.apply(this, arguments);
+}
+AnalyticsInfoRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.AnalyticsInfoRecord;
+return AnalyticsInfoRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.AnalyticsInfoRecordList = AnalyticsInfoRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$AndroidInfoRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$AndroidInfoRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var AndroidInfoRecord = (function (_super) {
+__extends(AndroidInfoRecord, _super);
+function AndroidInfoRecord(defaults) {
+_super.apply(this, arguments);
+}
+AndroidInfoRecord.attributesToDeclare = function () {
+return [
+this.attr("AndroidInfo", "androidInfoAttr", "AndroidInfo", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.AndroidInfoRec());
+}, NewFirebaseMobilePlugin_WTFModel.AndroidInfoRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+AndroidInfoRecord.fromStructure = function (str) {
+return new AndroidInfoRecord(new AndroidInfoRecord.RecordClass({
+androidInfoAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+AndroidInfoRecord.IsAnonymousRecord = true;
+AndroidInfoRecord.UniqueId = "a78de83f-b7b1-18bb-dea3-16c7563829bc";
+AndroidInfoRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+AndroidInfoRecord.init();
+return AndroidInfoRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.AndroidInfoRecord = AndroidInfoRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$AndroidInfoRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$AndroidInfoRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var AndroidInfoRecordList = (function (_super) {
+__extends(AndroidInfoRecordList, _super);
+function AndroidInfoRecordList(defaults) {
+_super.apply(this, arguments);
+}
+AndroidInfoRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.AndroidInfoRecord;
+return AndroidInfoRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.AndroidInfoRecordList = AndroidInfoRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$NotificationDataList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$NotificationDataRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var NotificationDataList = (function (_super) {
+__extends(NotificationDataList, _super);
+function NotificationDataList(defaults) {
+_super.apply(this, arguments);
+}
+NotificationDataList.RecordType = NewFirebaseMobilePlugin_WTFModel.NotificationDataRec;
+return NotificationDataList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.NotificationDataList = NotificationDataList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$DeviceRecord", ["exports", "OutSystems", "FirebaseCloudMessageMiddleware_Exte.model", "NewFirebaseMobilePlugin_WTF.model", "FirebaseCloudMessageMiddleware_Exte.model$DeviceRec", "NewFirebaseMobilePlugin_WTF.referencesHealth", "NewFirebaseMobilePlugin_WTF.referencesHealth$FirebaseCloudMessageMiddleware_Exte"], function (exports, OutSystems, FirebaseCloudMessageMiddleware_ExteModel, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var DeviceRecord = (function (_super) {
+__extends(DeviceRecord, _super);
+function DeviceRecord(defaults) {
+_super.apply(this, arguments);
+}
+DeviceRecord.attributesToDeclare = function () {
+return [
+this.attr("Device", "deviceAttr", "Device", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new FirebaseCloudMessageMiddleware_ExteModel.DeviceRec());
+}, FirebaseCloudMessageMiddleware_ExteModel.DeviceRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+DeviceRecord.fromStructure = function (str) {
+return new DeviceRecord(new DeviceRecord.RecordClass({
+deviceAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+DeviceRecord.IsAnonymousRecord = true;
+DeviceRecord.UniqueId = "8b76849f-7f49-9840-72ca-5f0fe36b2474";
+DeviceRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+DeviceRecord.init();
+return DeviceRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.DeviceRecord = DeviceRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$DeviceRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$DeviceRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var DeviceRecordList = (function (_super) {
+__extends(DeviceRecordList, _super);
+function DeviceRecordList(defaults) {
+_super.apply(this, arguments);
+}
+DeviceRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.DeviceRecord;
+return DeviceRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.DeviceRecordList = DeviceRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$SocialMetaTagInfoRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$SocialMetaTagInfoRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var SocialMetaTagInfoRecord = (function (_super) {
+__extends(SocialMetaTagInfoRecord, _super);
+function SocialMetaTagInfoRecord(defaults) {
+_super.apply(this, arguments);
+}
+SocialMetaTagInfoRecord.attributesToDeclare = function () {
+return [
+this.attr("SocialMetaTagInfo", "socialMetaTagInfoAttr", "SocialMetaTagInfo", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.SocialMetaTagInfoRec());
+}, NewFirebaseMobilePlugin_WTFModel.SocialMetaTagInfoRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+SocialMetaTagInfoRecord.fromStructure = function (str) {
+return new SocialMetaTagInfoRecord(new SocialMetaTagInfoRecord.RecordClass({
+socialMetaTagInfoAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+SocialMetaTagInfoRecord.IsAnonymousRecord = true;
+SocialMetaTagInfoRecord.UniqueId = "9ed78b65-9753-ab14-1bf1-03807475ded5";
+SocialMetaTagInfoRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+SocialMetaTagInfoRecord.init();
+return SocialMetaTagInfoRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.SocialMetaTagInfoRecord = SocialMetaTagInfoRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$SocialMetaTagInfoRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$SocialMetaTagInfoRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var SocialMetaTagInfoRecordList = (function (_super) {
+__extends(SocialMetaTagInfoRecordList, _super);
+function SocialMetaTagInfoRecordList(defaults) {
+_super.apply(this, arguments);
+}
+SocialMetaTagInfoRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.SocialMetaTagInfoRecord;
+return SocialMetaTagInfoRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.SocialMetaTagInfoRecordList = SocialMetaTagInfoRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$GooglePlayAnalyticRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$GooglePlayAnalyticRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var GooglePlayAnalyticRecord = (function (_super) {
+__extends(GooglePlayAnalyticRecord, _super);
+function GooglePlayAnalyticRecord(defaults) {
+_super.apply(this, arguments);
+}
+GooglePlayAnalyticRecord.attributesToDeclare = function () {
+return [
+this.attr("GooglePlayAnalytic", "googlePlayAnalyticAttr", "GooglePlayAnalytic", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.GooglePlayAnalyticRec());
+}, NewFirebaseMobilePlugin_WTFModel.GooglePlayAnalyticRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+GooglePlayAnalyticRecord.fromStructure = function (str) {
+return new GooglePlayAnalyticRecord(new GooglePlayAnalyticRecord.RecordClass({
+googlePlayAnalyticAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+GooglePlayAnalyticRecord.IsAnonymousRecord = true;
+GooglePlayAnalyticRecord.UniqueId = "65009db1-d502-00a0-75eb-d8892c0767d6";
+GooglePlayAnalyticRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+GooglePlayAnalyticRecord.init();
+return GooglePlayAnalyticRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.GooglePlayAnalyticRecord = GooglePlayAnalyticRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$ItunesConnectAnalyticList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$ItunesConnectAnalyticRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var ItunesConnectAnalyticList = (function (_super) {
+__extends(ItunesConnectAnalyticList, _super);
+function ItunesConnectAnalyticList(defaults) {
+_super.apply(this, arguments);
+}
+ItunesConnectAnalyticList.RecordType = NewFirebaseMobilePlugin_WTFModel.ItunesConnectAnalyticRec;
+return ItunesConnectAnalyticList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.ItunesConnectAnalyticList = ItunesConnectAnalyticList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$ErrorRecord", ["exports", "OutSystems", "CommonPlugin.model", "NewFirebaseMobilePlugin_WTF.model", "CommonPlugin.model$ErrorRec", "NewFirebaseMobilePlugin_WTF.referencesHealth", "NewFirebaseMobilePlugin_WTF.referencesHealth$CommonPlugin"], function (exports, OutSystems, CommonPluginModel, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var ErrorRecord = (function (_super) {
+__extends(ErrorRecord, _super);
+function ErrorRecord(defaults) {
+_super.apply(this, arguments);
+}
+ErrorRecord.attributesToDeclare = function () {
+return [
+this.attr("Error", "errorAttr", "Error", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new CommonPluginModel.ErrorRec());
+}, CommonPluginModel.ErrorRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+ErrorRecord.fromStructure = function (str) {
+return new ErrorRecord(new ErrorRecord.RecordClass({
+errorAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+ErrorRecord.IsAnonymousRecord = true;
+ErrorRecord.UniqueId = "cbbd7d57-66e1-86ff-28ab-3b75adf75b93";
+ErrorRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+ErrorRecord.init();
+return ErrorRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.ErrorRecord = ErrorRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$ErrorRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$ErrorRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var ErrorRecordList = (function (_super) {
+__extends(ErrorRecordList, _super);
+function ErrorRecordList(defaults) {
+_super.apply(this, arguments);
+}
+ErrorRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.ErrorRecord;
+return ErrorRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.ErrorRecordList = ErrorRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$RegisterDevice_ResponseRec", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$GeneralResponseRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var RegisterDevice_ResponseRec = (function (_super) {
+__extends(RegisterDevice_ResponseRec, _super);
+function RegisterDevice_ResponseRec(defaults) {
+_super.apply(this, arguments);
+}
+RegisterDevice_ResponseRec.attributesToDeclare = function () {
+return [
+this.attr("General_Response", "general_ResponseAttr", "General_Response", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.GeneralResponseRec());
+}, NewFirebaseMobilePlugin_WTFModel.GeneralResponseRec), 
+this.attr("HasPermission", "hasPermissionAttr", "HasPermission", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("RegistrationId", "registrationIdAttr", "RegistrationId", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DeviceHardwareId", "deviceHardwareIdAttr", "DeviceHardwareId", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ApplicationId", "applicationIdAttr", "ApplicationId", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+RegisterDevice_ResponseRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+RegisterDevice_ResponseRec.init();
+return RegisterDevice_ResponseRec;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.RegisterDevice_ResponseRec = RegisterDevice_ResponseRec;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$GooglePlayAnalyticRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$GooglePlayAnalyticRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var GooglePlayAnalyticRecordList = (function (_super) {
+__extends(GooglePlayAnalyticRecordList, _super);
+function GooglePlayAnalyticRecordList(defaults) {
+_super.apply(this, arguments);
+}
+GooglePlayAnalyticRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.GooglePlayAnalyticRecord;
+return GooglePlayAnalyticRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.GooglePlayAnalyticRecordList = GooglePlayAnalyticRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$GeneralResponseRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$GeneralResponseRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var GeneralResponseRecord = (function (_super) {
+__extends(GeneralResponseRecord, _super);
+function GeneralResponseRecord(defaults) {
+_super.apply(this, arguments);
+}
+GeneralResponseRecord.attributesToDeclare = function () {
+return [
+this.attr("GeneralResponse", "generalResponseAttr", "GeneralResponse", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.GeneralResponseRec());
+}, NewFirebaseMobilePlugin_WTFModel.GeneralResponseRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+GeneralResponseRecord.fromStructure = function (str) {
+return new GeneralResponseRecord(new GeneralResponseRecord.RecordClass({
+generalResponseAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+GeneralResponseRecord.IsAnonymousRecord = true;
+GeneralResponseRecord.UniqueId = "c9b6b853-b48c-5a95-e8bf-c255a7fa9375";
+GeneralResponseRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+GeneralResponseRecord.init();
+return GeneralResponseRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.GeneralResponseRecord = GeneralResponseRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$GeneralResponseRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$GeneralResponseRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var GeneralResponseRecordList = (function (_super) {
+__extends(GeneralResponseRecordList, _super);
+function GeneralResponseRecordList(defaults) {
+_super.apply(this, arguments);
+}
+GeneralResponseRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.GeneralResponseRecord;
+return GeneralResponseRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.GeneralResponseRecordList = GeneralResponseRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$SettingRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$SettingRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var SettingRecord = (function (_super) {
+__extends(SettingRecord, _super);
+function SettingRecord(defaults) {
+_super.apply(this, arguments);
+}
+SettingRecord.attributesToDeclare = function () {
+return [
+this.attr("Setting", "settingAttr", "Setting", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.SettingRec());
+}, NewFirebaseMobilePlugin_WTFModel.SettingRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+SettingRecord.fromStructure = function (str) {
+return new SettingRecord(new SettingRecord.RecordClass({
+settingAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+SettingRecord.IsAnonymousRecord = true;
+SettingRecord.UniqueId = "7b8820ec-9858-6de2-91d7-b69221906f33";
+SettingRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+SettingRecord.init();
+return SettingRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.SettingRecord = SettingRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$RegisterDevice_ResponseRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$RegisterDevice_ResponseRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var RegisterDevice_ResponseRecord = (function (_super) {
+__extends(RegisterDevice_ResponseRecord, _super);
+function RegisterDevice_ResponseRecord(defaults) {
+_super.apply(this, arguments);
+}
+RegisterDevice_ResponseRecord.attributesToDeclare = function () {
+return [
+this.attr("RegisterDevice_Response", "registerDevice_ResponseAttr", "RegisterDevice_Response", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.RegisterDevice_ResponseRec());
+}, NewFirebaseMobilePlugin_WTFModel.RegisterDevice_ResponseRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+RegisterDevice_ResponseRecord.fromStructure = function (str) {
+return new RegisterDevice_ResponseRecord(new RegisterDevice_ResponseRecord.RecordClass({
+registerDevice_ResponseAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+RegisterDevice_ResponseRecord.IsAnonymousRecord = true;
+RegisterDevice_ResponseRecord.UniqueId = "f46a3c34-053a-548a-1265-1f36f7cfaedc";
+RegisterDevice_ResponseRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+RegisterDevice_ResponseRecord.init();
+return RegisterDevice_ResponseRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.RegisterDevice_ResponseRecord = RegisterDevice_ResponseRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$RegisterDevice_ResponseRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$RegisterDevice_ResponseRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var RegisterDevice_ResponseRecordList = (function (_super) {
+__extends(RegisterDevice_ResponseRecordList, _super);
+function RegisterDevice_ResponseRecordList(defaults) {
+_super.apply(this, arguments);
+}
+RegisterDevice_ResponseRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.RegisterDevice_ResponseRecord;
+return RegisterDevice_ResponseRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.RegisterDevice_ResponseRecordList = RegisterDevice_ResponseRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$AndroidInfoList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$AndroidInfoRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var AndroidInfoList = (function (_super) {
+__extends(AndroidInfoList, _super);
+function AndroidInfoList(defaults) {
+_super.apply(this, arguments);
+}
+AndroidInfoList.RecordType = NewFirebaseMobilePlugin_WTFModel.AndroidInfoRec;
+return AndroidInfoList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.AndroidInfoList = AndroidInfoList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$NavigationInfoList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$NavigationInfoRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var NavigationInfoList = (function (_super) {
+__extends(NavigationInfoList, _super);
+function NavigationInfoList(defaults) {
+_super.apply(this, arguments);
+}
+NavigationInfoList.RecordType = NewFirebaseMobilePlugin_WTFModel.NavigationInfoRec;
+return NavigationInfoList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.NavigationInfoList = NavigationInfoList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$SocialMetaTagInfoList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$SocialMetaTagInfoRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var SocialMetaTagInfoList = (function (_super) {
+__extends(SocialMetaTagInfoList, _super);
+function SocialMetaTagInfoList(defaults) {
+_super.apply(this, arguments);
+}
+SocialMetaTagInfoList.RecordType = NewFirebaseMobilePlugin_WTFModel.SocialMetaTagInfoRec;
+return SocialMetaTagInfoList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.SocialMetaTagInfoList = SocialMetaTagInfoList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$InitCloudMessaging_ResponseRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$InitCloudMessaging_ResponseRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var InitCloudMessaging_ResponseRecordList = (function (_super) {
+__extends(InitCloudMessaging_ResponseRecordList, _super);
+function InitCloudMessaging_ResponseRecordList(defaults) {
+_super.apply(this, arguments);
+}
+InitCloudMessaging_ResponseRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.InitCloudMessaging_ResponseRecord;
+return InitCloudMessaging_ResponseRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.InitCloudMessaging_ResponseRecordList = InitCloudMessaging_ResponseRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$DYNAMICLINK_CONTROLLERRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$DYNAMICLINK_CONTROLLERRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var DYNAMICLINK_CONTROLLERRecordList = (function (_super) {
+__extends(DYNAMICLINK_CONTROLLERRecordList, _super);
+function DYNAMICLINK_CONTROLLERRecordList(defaults) {
+_super.apply(this, arguments);
+}
+DYNAMICLINK_CONTROLLERRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.DYNAMICLINK_CONTROLLERRecord;
+return DYNAMICLINK_CONTROLLERRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.DYNAMICLINK_CONTROLLERRecordList = DYNAMICLINK_CONTROLLERRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$NavigationInfoRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$NavigationInfoRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var NavigationInfoRecordList = (function (_super) {
+__extends(NavigationInfoRecordList, _super);
+function NavigationInfoRecordList(defaults) {
+_super.apply(this, arguments);
+}
+NavigationInfoRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.NavigationInfoRecord;
+return NavigationInfoRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.NavigationInfoRecordList = NavigationInfoRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$DYNAMICLINK_CONTROLLERList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$DYNAMICLINK_CONTROLLERRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var DYNAMICLINK_CONTROLLERList = (function (_super) {
+__extends(DYNAMICLINK_CONTROLLERList, _super);
+function DYNAMICLINK_CONTROLLERList(defaults) {
+_super.apply(this, arguments);
+}
+DYNAMICLINK_CONTROLLERList.RecordType = NewFirebaseMobilePlugin_WTFModel.DYNAMICLINK_CONTROLLERRec;
+return DYNAMICLINK_CONTROLLERList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.DYNAMICLINK_CONTROLLERList = DYNAMICLINK_CONTROLLERList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$RegisterDevice_ResponseList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$RegisterDevice_ResponseRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var RegisterDevice_ResponseList = (function (_super) {
+__extends(RegisterDevice_ResponseList, _super);
+function RegisterDevice_ResponseList(defaults) {
+_super.apply(this, arguments);
+}
+RegisterDevice_ResponseList.RecordType = NewFirebaseMobilePlugin_WTFModel.RegisterDevice_ResponseRec;
+return RegisterDevice_ResponseList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.RegisterDevice_ResponseList = RegisterDevice_ResponseList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$DynamicLinkJSONDataRecord", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$DynamicLinkJSONDataRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var DynamicLinkJSONDataRecord = (function (_super) {
+__extends(DynamicLinkJSONDataRecord, _super);
+function DynamicLinkJSONDataRecord(defaults) {
+_super.apply(this, arguments);
+}
+DynamicLinkJSONDataRecord.attributesToDeclare = function () {
+return [
+this.attr("DynamicLinkJSONData", "dynamicLinkJSONDataAttr", "DynamicLinkJSONData", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new NewFirebaseMobilePlugin_WTFModel.DynamicLinkJSONDataRec());
+}, NewFirebaseMobilePlugin_WTFModel.DynamicLinkJSONDataRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+DynamicLinkJSONDataRecord.fromStructure = function (str) {
+return new DynamicLinkJSONDataRecord(new DynamicLinkJSONDataRecord.RecordClass({
+dynamicLinkJSONDataAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+DynamicLinkJSONDataRecord.IsAnonymousRecord = true;
+DynamicLinkJSONDataRecord.UniqueId = "d71813b6-9911-785d-7fa0-d7c81f9f3f3b";
+DynamicLinkJSONDataRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+DynamicLinkJSONDataRecord.init();
+return DynamicLinkJSONDataRecord;
+})(OS.DataTypes.GenericRecord);
+NewFirebaseMobilePlugin_WTFModel.DynamicLinkJSONDataRecord = DynamicLinkJSONDataRecord;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$DynamicLinkJSONDataRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$DynamicLinkJSONDataRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var DynamicLinkJSONDataRecordList = (function (_super) {
+__extends(DynamicLinkJSONDataRecordList, _super);
+function DynamicLinkJSONDataRecordList(defaults) {
+_super.apply(this, arguments);
+}
+DynamicLinkJSONDataRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.DynamicLinkJSONDataRecord;
+return DynamicLinkJSONDataRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.DynamicLinkJSONDataRecordList = DynamicLinkJSONDataRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$IosInfoList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$IosInfoRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var IosInfoList = (function (_super) {
+__extends(IosInfoList, _super);
+function IosInfoList(defaults) {
+_super.apply(this, arguments);
+}
+IosInfoList.RecordType = NewFirebaseMobilePlugin_WTFModel.IosInfoRec;
+return IosInfoList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.IosInfoList = IosInfoList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$SettingRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$SettingRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var SettingRecordList = (function (_super) {
+__extends(SettingRecordList, _super);
+function SettingRecordList(defaults) {
+_super.apply(this, arguments);
+}
+SettingRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.SettingRecord;
+return SettingRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.SettingRecordList = SettingRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$GeneralResponseList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$GeneralResponseRec"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var GeneralResponseList = (function (_super) {
+__extends(GeneralResponseList, _super);
+function GeneralResponseList(defaults) {
+_super.apply(this, arguments);
+}
+GeneralResponseList.RecordType = NewFirebaseMobilePlugin_WTFModel.GeneralResponseRec;
+return GeneralResponseList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.GeneralResponseList = GeneralResponseList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$IosInfoRecordList", ["exports", "OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$IosInfoRecord"], function (exports, OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var IosInfoRecordList = (function (_super) {
+__extends(IosInfoRecordList, _super);
+function IosInfoRecordList(defaults) {
+_super.apply(this, arguments);
+}
+IosInfoRecordList.RecordType = NewFirebaseMobilePlugin_WTFModel.IosInfoRecord;
+return IosInfoRecordList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.IosInfoRecordList = IosInfoRecordList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model$DeviceList", ["exports", "OutSystems", "FirebaseCloudMessageMiddleware_Exte.model", "NewFirebaseMobilePlugin_WTF.model", "FirebaseCloudMessageMiddleware_Exte.model$DeviceRec", "NewFirebaseMobilePlugin_WTF.referencesHealth", "NewFirebaseMobilePlugin_WTF.referencesHealth$FirebaseCloudMessageMiddleware_Exte"], function (exports, OutSystems, FirebaseCloudMessageMiddleware_ExteModel, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var DeviceList = (function (_super) {
+__extends(DeviceList, _super);
+function DeviceList(defaults) {
+_super.apply(this, arguments);
+}
+DeviceList.RecordType = FirebaseCloudMessageMiddleware_ExteModel.DeviceRec;
+return DeviceList;
+})(OS.DataTypes.GenericRecordList);
+NewFirebaseMobilePlugin_WTFModel.DeviceList = DeviceList;
+
+});
+define("NewFirebaseMobilePlugin_WTF.model", ["exports", "OutSystems"], function (exports, OutSystems) {
+var OS = OutSystems.Internal;
+var NewFirebaseMobilePlugin_WTFModel = exports;
+Object.defineProperty(NewFirebaseMobilePlugin_WTFModel, "module", {
+get: function () {
+return OS.ApplicationInfo.getModules()["ec35c841-fb40-4e68-89ec-ab63f491c0d8"];
+}
+});
+
+NewFirebaseMobilePlugin_WTFModel.staticEntities = {};
+NewFirebaseMobilePlugin_WTFModel.staticEntities.devicePlatform2 = {};
+var getDevicePlatform2Record = function (record) {
+return OS.ApplicationInfo.getModules()["56533057-673b-435b-9e3c-a31f9a419f1e"].staticEntities["a0c74588-713d-4122-bf82-20170816d9f6"][record];
+};
+Object.defineProperty(NewFirebaseMobilePlugin_WTFModel.staticEntities.devicePlatform2, "android", {
+get: function () {
+return OS.BuiltinFunctions.textToInteger(getDevicePlatform2Record("04b25c73-3999-4265-ae21-1ebefacb28bd"));
+}
+});
+
+Object.defineProperty(NewFirebaseMobilePlugin_WTFModel.staticEntities.devicePlatform2, "iOS", {
+get: function () {
+return OS.BuiltinFunctions.textToInteger(getDevicePlatform2Record("05a0e192-38db-4ac4-98e4-7d8796d55e26"));
+}
+});
+
+});

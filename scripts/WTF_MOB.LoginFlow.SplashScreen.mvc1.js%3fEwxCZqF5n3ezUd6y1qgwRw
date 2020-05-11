@@ -1,0 +1,605 @@
+﻿define("WTF_MOB.LoginFlow.SplashScreen.mvc$model", ["OutSystems", "WTF_MOB.model", "WTF_MBP.controller", "Essentials_MOB.controller", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "WTF_MOB.controller", "CommonPlugin.model", "BuildInfoPlugin.controller", "WTF_MBP.model", "WTF_MOB.Common.Layout_Lvl1.mvc$model", "WTF_MBP.controller$setActivityLog_Visit", "WTF_MOB.referencesHealth", "WTF_MOB.referencesHealth$WTF_MBP", "Essentials_MOB.controller$CheckNetworkStatus", "WTF_MOB.referencesHealth$Essentials_MOB", "WTF_MBP.controller$GetApplicationName_MBP", "CustomerNotifications_MBP.model$RegisterDevice_ResponseRec", "WTF_MOB.referencesHealth$CustomerNotifications_MBP", "CustomerNotifications_MBP.controller$RegisterDeviceInfo_v3", "WTF_MOB.controller$VerifyNetworkStatus", "WTF_MOB.controller$Analytics_TrackException", "CommonPlugin.model$ErrorRec", "WTF_MOB.referencesHealth$CommonPlugin", "BuildInfoPlugin.controller$GetBuildInfo", "WTF_MOB.referencesHealth$BuildInfoPlugin", "WTF_MOB.controller$CheckIfUserHasEverLoggedIn", "WTF_MBP.controller$GetConfigValueAsText_MBP", "WTF_MBP.entities", "WTF_MOB.model$Local_USER_NOS_INFORecordList", "WTF_MBP.model$Local_USER_NOS_INFORec"], function (OutSystems, WTF_MOBModel, WTF_MBPController, Essentials_MOBController, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, WTF_MOBController, CommonPluginModel, BuildInfoPluginController, WTF_MBPModel, WTF_MOB_Common_Layout_Lvl1_mvcModel) {
+var OS = OutSystems.Internal;
+var GetUserInfoAggrRec = (function (_super) {
+__extends(GetUserInfoAggrRec, _super);
+function GetUserInfoAggrRec(defaults) {
+_super.apply(this, arguments);
+}
+GetUserInfoAggrRec.RecordListType = WTF_MOBModel.Local_USER_NOS_INFORecordList;
+GetUserInfoAggrRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+GetUserInfoAggrRec.init();
+return GetUserInfoAggrRec;
+})(OS.Model.AggregateRecord);
+
+
+var VariablesRecord = (function (_super) {
+__extends(VariablesRecord, _super);
+function VariablesRecord(defaults) {
+_super.apply(this, arguments);
+}
+VariablesRecord.attributesToDeclare = function () {
+return [
+this.attr("BuildInfo", "buildInfoVar", "BuildInfo", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("LoaderFicaEmCasaDisabled", "loaderFicaEmCasaDisabledVar", "LoaderFicaEmCasaDisabled", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("GetUserInfo", "getUserInfoAggr", "getUserInfoAggr", true, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new GetUserInfoAggrRec());
+}, GetUserInfoAggrRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+VariablesRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+VariablesRecord.init();
+return VariablesRecord;
+})(OS.DataTypes.GenericRecord);
+var WidgetsRecord = (function (_super) {
+__extends(WidgetsRecord, _super);
+function WidgetsRecord() {
+_super.apply(this, arguments);
+}
+WidgetsRecord.getWidgetsType = function () {
+return {};
+};
+
+return WidgetsRecord;
+})(OS.Model.BaseWidgetRecordMap);
+var Model = (function (_super) {
+__extends(Model, _super);
+function Model() {
+_super.apply(this, arguments);
+}
+Model.getVariablesRecordConstructor = function () {
+return VariablesRecord;
+};
+Model.getWidgetsRecordConstructor = function () {
+return WidgetsRecord;
+};
+Model._hasValidationWidgetsValue = undefined;
+Object.defineProperty(Model, "hasValidationWidgets", {
+enumerable: true,
+configurable: true,
+get: function () {
+if((Model._hasValidationWidgetsValue === undefined)) {
+Model._hasValidationWidgetsValue = WTF_MOB_Common_Layout_Lvl1_mvcModel.hasValidationWidgets;
+}
+
+return Model._hasValidationWidgetsValue;
+}
+});
+
+Model.prototype.setInputs = function (inputs) {
+};
+return Model;
+})(OS.Model.BaseViewModel);
+return new OS.Model.ModelFactory(Model);
+});
+define("WTF_MOB.LoginFlow.SplashScreen.mvc$view", ["OutSystems", "WTF_MOB.model", "WTF_MOB.controller", "WTF_MBP.controller", "Essentials_MOB.controller", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CommonPlugin.model", "BuildInfoPlugin.controller", "WTF_MBP.model", "react", "OutSystemsReactView", "WTF_MOB.LoginFlow.SplashScreen.mvc$model", "WTF_MOB.LoginFlow.SplashScreen.mvc$controller", "WTF_MOB.Common.Layout_Lvl1.mvc$view", "OutSystemsReactWidgets", "WTF_MBP.controller$setActivityLog_Visit", "WTF_MOB.referencesHealth", "WTF_MOB.referencesHealth$WTF_MBP", "Essentials_MOB.controller$CheckNetworkStatus", "WTF_MOB.referencesHealth$Essentials_MOB", "WTF_MBP.controller$GetApplicationName_MBP", "CustomerNotifications_MBP.model$RegisterDevice_ResponseRec", "WTF_MOB.referencesHealth$CustomerNotifications_MBP", "CustomerNotifications_MBP.controller$RegisterDeviceInfo_v3", "WTF_MOB.controller$VerifyNetworkStatus", "WTF_MOB.controller$Analytics_TrackException", "CommonPlugin.model$ErrorRec", "WTF_MOB.referencesHealth$CommonPlugin", "BuildInfoPlugin.controller$GetBuildInfo", "WTF_MOB.referencesHealth$BuildInfoPlugin", "WTF_MOB.controller$CheckIfUserHasEverLoggedIn", "WTF_MBP.controller$GetConfigValueAsText_MBP", "WTF_MBP.entities", "WTF_MOB.model$Local_USER_NOS_INFORecordList", "WTF_MBP.model$Local_USER_NOS_INFORec"], function (OutSystems, WTF_MOBModel, WTF_MOBController, WTF_MBPController, Essentials_MOBController, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CommonPluginModel, BuildInfoPluginController, WTF_MBPModel, React, OSView, WTF_MOB_LoginFlow_SplashScreen_mvc_model, WTF_MOB_LoginFlow_SplashScreen_mvc_controller, WTF_MOB_Common_Layout_Lvl1_mvc_view, OSWidgets) {
+    var OS = OutSystems.Internal;
+var PlaceholderContent = OSView.Widget.PlaceholderContent;
+var IteratorPlaceholderContent = OSView.Widget.IteratorPlaceholderContent;
+
+
+    var View = (function (_super) {
+        __extends(View,_super);
+        function View() {
+            try {
+                this.initialize.apply(this, arguments);
+            } catch (error) {
+                View.handleError(error);
+                throw error;
+            }
+        }
+        View.prototype.initialize = function() {
+            _super.apply(this, arguments);
+        };
+        View.displayName = "LoginFlow.SplashScreen";
+        View.getCssDependencies = function() {
+            return ["css/OutSystemsReactWidgets.css", "css/MobilePatterns.BaseTheme.css", "css/MobileThemes_WTF.WTF_BaseTheme.css", "css/WTF_MOB.WTF_MOB.css", "css/WTF_MOB.LoginFlow.SplashScreen.css", "css/MobilePatterns.BaseTheme.extra.css"];
+        };
+        View.getJsDependencies = function() {
+            return ["scripts/WTF_MOB.SplashScreenNEW.js"];
+        };
+        View.getBlocks = function() {
+            return [WTF_MOB_Common_Layout_Lvl1_mvc_view];
+        };
+        Object.defineProperty(View.prototype, "modelFactory", {
+            get: function () {
+                return WTF_MOB_LoginFlow_SplashScreen_mvc_model;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(View.prototype, "controllerFactory", {
+            get: function () {
+                return WTF_MOB_LoginFlow_SplashScreen_mvc_controller;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(View.prototype, "title", {
+            get: function () {
+                return "";
+            },
+            enumerable: true,
+            configurable: true
+        });
+        View.prototype.internalRender = function() {
+            var model = this.model;
+            var controller = this.controller;
+            var idService = this.idService;
+            var validationService = controller.validationService;
+            var widgetsRecordProvider = this.widgetsRecordProvider;
+            var callContext = controller.callContext();
+            var $if = View.ifWidget;
+            var asPrimitiveValue = View.asPrimitiveValue;
+            var _this = this;
+
+            return React.DOM.div(this.getRootNodeProperties(), $if(model.variables.loaderFicaEmCasaDisabledVar, false, this, function () {
+return [React.createElement(WTF_MOB_Common_Layout_Lvl1_mvc_view, {
+inputs: {
+ContentClass: "a-preLogin pv-16  -mainGradient hasoverflowhidden",
+PageType: "Consulta",
+IsPreLogin: true,
+IsOfflineMode: false,
+ScreenName: "SplashScreen",
+PageSection: "SplashScreen",
+PageTitle: "SplashScreen",
+WithoutLogin: false
+},
+events: {
+_handleError: function (ex) {
+controller.handleError(ex);
+}
+},
+_validationProps: {
+validationService: validationService
+},
+_idProps: {
+service: idService,
+uuid: "0",
+alias: "1"
+},
+_widgetRecordProvider: widgetsRecordProvider,
+placeholders: {
+header: PlaceholderContent.Empty,
+content: new PlaceholderContent(function () {
+return [React.createElement(OSWidgets.Image, {
+image: OS.Navigation.VersionedURL.getVersionedUrl("img/WTF_MOB.paralax_cube.png"),
+type: /*Static*/ 0,
+_idProps: {
+service: idService,
+name: "cube"
+},
+_widgetRecordProvider: widgetsRecordProvider
+}), React.createElement(OSWidgets.Container, {
+align: /*Default*/ 0,
+animate: false,
+style: "a-preLogin",
+visible: true,
+_idProps: {
+service: idService,
+uuid: "2"
+},
+_widgetRecordProvider: widgetsRecordProvider
+}, React.createElement(OSWidgets.Container, {
+align: /*Default*/ 0,
+animate: false,
+extendedProperties: {
+"data-style-key": "SzSdNNM+kUaH86aq3iJ3wg"
+},
+style: "a-preLoginLogo",
+visible: true,
+_idProps: {
+service: idService,
+uuid: "3"
+},
+_widgetRecordProvider: widgetsRecordProvider
+}, React.createElement(OSWidgets.Image, {
+image: OS.Navigation.VersionedURL.getVersionedUrl("img/WTF_MOB.logo.svg"),
+style: "a-preLoginLogoImg",
+type: /*Static*/ 0,
+_idProps: {
+service: idService,
+uuid: "4"
+},
+_widgetRecordProvider: widgetsRecordProvider
+})), React.createElement(OSWidgets.Container, {
+align: /*Default*/ 0,
+animate: false,
+style: "a-preLoginFooter pv-24",
+visible: true,
+_idProps: {
+service: idService,
+uuid: "5"
+},
+_widgetRecordProvider: widgetsRecordProvider
+}, React.createElement(OSWidgets.Container, {
+align: /*Center*/ 2,
+animate: false,
+extendedProperties: {
+"data-style-key": "aTXN8eivM0mGjZVZLKSeog"
+},
+gridProperties: {
+marginTop: "40px"
+},
+style: "bottom c-warmPurple",
+visible: true,
+_idProps: {
+service: idService,
+uuid: "6"
+},
+_widgetRecordProvider: widgetsRecordProvider
+}, React.createElement(OSWidgets.Expression, {
+gridProperties: {
+classes: "OSFillParent"
+},
+style: "a-preLoginFooterText",
+value: "NOS©2019",
+_idProps: {
+service: idService,
+uuid: "7"
+},
+_widgetRecordProvider: widgetsRecordProvider
+}), React.createElement(OSWidgets.Expression, {
+gridProperties: {
+classes: "OSFillParent"
+},
+style: "a-preLoginFooterText",
+value: "Todos os direitos reservados",
+_idProps: {
+service: idService,
+uuid: "8"
+},
+_widgetRecordProvider: widgetsRecordProvider
+}))))];
+}),
+bottom: PlaceholderContent.Empty
+},
+_dependencies: []
+})];
+}, function () {
+return [React.createElement(OSWidgets.Container, {
+align: /*Default*/ 0,
+animate: false,
+gridProperties: {
+classes: "OSInline"
+},
+visible: true,
+_idProps: {
+service: idService,
+name: "anim_container"
+},
+_widgetRecordProvider: widgetsRecordProvider
+})];
+}));
+        };
+        return View;
+    })(OSView.BaseView.BaseWebScreen);
+	
+    return View;
+});
+define("WTF_MOB.LoginFlow.SplashScreen.mvc$controller", ["OutSystems", "WTF_MOB.model", "WTF_MOB.controller", "WTF_MBP.controller", "Essentials_MOB.controller", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CommonPlugin.model", "BuildInfoPlugin.controller", "WTF_MBP.model", "WTF_MOB.languageResources", "WTF_MOB.LoginFlow.controller", "WTF_MOB.LoginFlow.SplashScreen.mvc$controller.OnReady.JavaScript1JS", "WTF_MBP.controller$setActivityLog_Visit", "WTF_MOB.referencesHealth", "WTF_MOB.referencesHealth$WTF_MBP", "Essentials_MOB.controller$CheckNetworkStatus", "WTF_MOB.referencesHealth$Essentials_MOB", "WTF_MBP.controller$GetApplicationName_MBP", "CustomerNotifications_MBP.model$RegisterDevice_ResponseRec", "WTF_MOB.referencesHealth$CustomerNotifications_MBP", "CustomerNotifications_MBP.controller$RegisterDeviceInfo_v3", "WTF_MOB.controller$VerifyNetworkStatus", "WTF_MOB.controller$Analytics_TrackException", "CommonPlugin.model$ErrorRec", "WTF_MOB.referencesHealth$CommonPlugin", "BuildInfoPlugin.controller$GetBuildInfo", "WTF_MOB.referencesHealth$BuildInfoPlugin", "WTF_MOB.controller$CheckIfUserHasEverLoggedIn", "WTF_MBP.controller$GetConfigValueAsText_MBP", "WTF_MBP.entities", "WTF_MOB.model$Local_USER_NOS_INFORecordList", "WTF_MBP.model$Local_USER_NOS_INFORec"], function (OutSystems, WTF_MOBModel, WTF_MOBController, WTF_MBPController, Essentials_MOBController, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CommonPluginModel, BuildInfoPluginController, WTF_MBPModel, WTF_MOBLanguageResources, WTF_MOB_LoginFlowController, WTF_MOB_LoginFlow_SplashScreen_mvc_controller_OnReady_JavaScript1JS) {
+var OS = OutSystems.Internal;
+var Controller = (function (_super) {
+__extends(Controller, _super);
+function Controller() {
+_super.apply(this, arguments);
+var controller = this.controller;
+this.clientActionProxies = {
+afterFetchAction$Action: function () {
+return controller.executeActionInsideJSNode(controller._afterFetchAction$Action.bind(controller), controller.callContext(), function (actionResults) {
+return {};
+});
+}
+};
+}
+// Server Actions
+
+// Aggregates and Data Actions
+Controller.prototype.getUserInfo$AggrRefresh = function (maxRecords) {
+var model = this.model;
+var controller = this.controller;
+var callContext = controller.callContext();
+
+var executeQuery = function () {
+var targetListType = WTF_MOBModel.Local_USER_NOS_INFORecordList;
+var result = {
+list: null,
+count: OS.DataTypes.LongInteger.defaultValue
+};
+var countArgsList = new OS.Entities.QueryArgumentsList();
+if(!(maxRecords)) {
+maxRecords = 1;
+}
+
+
+var optimizeSelect = false;
+var selectSql = "";
+var fromAndWhereSql = "";
+var groupByAndHavingSql = "";
+var orderBySql = "";
+var argsList = new OS.Entities.QueryArgumentsList();
+
+selectSql += "SELECT ";
+if (optimizeSelect) {
+selectSql += "\"ENLocal_USER_NOS_INFO\".\"Uid\" o0, \"ENLocal_USER_NOS_INFO\".\"Name\" o1, \"ENLocal_USER_NOS_INFO\".\"Birth_date\" o2, \"ENLocal_USER_NOS_INFO\".\"Gender\" o3, \"ENLocal_USER_NOS_INFO\".\"Username\" o4, \"ENLocal_USER_NOS_INFO\".\"Picture\" o5, \"ENLocal_USER_NOS_INFO\".\"CreatedAt\" o6";
+} else {
+selectSql += "\"ENLocal_USER_NOS_INFO\".\"Uid\" o0, \"ENLocal_USER_NOS_INFO\".\"Name\" o1, \"ENLocal_USER_NOS_INFO\".\"Birth_date\" o2, \"ENLocal_USER_NOS_INFO\".\"Gender\" o3, \"ENLocal_USER_NOS_INFO\".\"Username\" o4, \"ENLocal_USER_NOS_INFO\".\"Picture\" o5, \"ENLocal_USER_NOS_INFO\".\"CreatedAt\" o6";
+}
+fromAndWhereSql += " FROM \"MAIN\".\"OSUSR_p9g_Local_USER_NOS_INFO\" \"ENLocal_USER_NOS_INFO\"";
+if (maxRecords > 0) {
+orderBySql += " LIMIT ";
+orderBySql += maxRecords;
+}
+var sql = selectSql + fromAndWhereSql + groupByAndHavingSql + orderBySql;
+
+return OS.Entities.webSQLStorageInstance.executeQuery(sql, WTF_MOBModel.Local_USER_NOS_INFORecordList, function (rec, r) {
+var indexRef = {
+value: 0
+};
+var attrOrder = [
+"local_USER_NOS_INFOAttr",
+];
+return targetListType.RecordType.fromLocalStorage(r, indexRef, attrOrder);
+
+}, argsList).then(function (resultList) {
+result.list = resultList;
+}).then(function () {
+}).then(function () {
+return result;
+});
+};
+return controller.executeScreenClientAggregate(executeQuery, function () {
+return model.variables.getUserInfoAggr;
+}, function () {
+return controller._afterFetch$Action(controller.callContext(callContext));
+});
+};
+
+Controller.prototype.dataFetchActionNames = ["getUserInfo$AggrRefresh"];
+// Client Actions
+Controller.prototype._afterFetchAction$Action = function (callContext) {
+var model = this.model;
+var controller = this.controller;
+var idService = this.idService;
+controller.ensureControllerAlive("AfterFetchAction");
+callContext = controller.callContext(callContext);
+var communicationExceptionVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var allExceptionsVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var checkNetworkStatusVar = new OS.DataTypes.VariableHolder();
+var getApplicationNameVar = new OS.DataTypes.VariableHolder();
+var registerDeviceInfoVar = new OS.DataTypes.VariableHolder();
+var verifyNetworkStatusVar = new OS.DataTypes.VariableHolder();
+var getBuildInfoVar = new OS.DataTypes.VariableHolder();
+var checkIfUserHasEverLoggedInVar = new OS.DataTypes.VariableHolder();
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: CheckNetworkStatus
+model.flush();
+return Essentials_MOBController.default.checkNetworkStatus$Action(callContext).then(function (value) {
+checkNetworkStatusVar.value = value;
+}).then(function () {
+return OS.Flow.executeSequence(function () {
+if((checkNetworkStatusVar.value.isOnlineOut)) {
+// Execute Action: GetBuildInfo
+getBuildInfoVar.value = BuildInfoPluginController.default.getBuildInfo$Action(callContext);
+
+if((getBuildInfoVar.value.successOut)) {
+// BuildInfo
+// BuildInfo = "v" + GetBuildInfo.Version
+model.variables.buildInfoVar = ("v" + getBuildInfoVar.value.versionOut);
+}
+
+return OS.Flow.executeSequence(function () {
+if((model.variables.getUserInfoAggr.listOut.isEmpty)) {
+// Execute Action: setActivityLog_VisitWithoutLogin
+model.flush();
+return WTF_MBPController.default.setActivityLog_Visit$Action(true, false, false, false, false, callContext).then(function () {
+// Destination: /WTF_MOB/PreLogin
+return OS.Flow.returnAsync(OS.Navigation.navigateTo(OS.Navigation.generateScreenURL("/WTF_MOB/PreLogin", {}), OS.Transitions.createTransition(OS.Transitions.TransitionAnimation.Fade), callContext, true));
+});
+} else {
+// Execute Action: GetApplicationName
+model.flush();
+return WTF_MBPController.default.getApplicationName_MBP$Action(callContext).then(function (value) {
+getApplicationNameVar.value = value;
+}).then(function () {
+// Execute Action: RegisterDeviceInfo
+model.flush();
+return CustomerNotifications_MBPController.default.registerDeviceInfo_v3$Action(model.variables.getUserInfoAggr.listOut.getCurrent(callContext.iterationContext).local_USER_NOS_INFOAttr.uidAttr, getApplicationNameVar.value.valueOut, callContext).then(function (value) {
+registerDeviceInfoVar.value = value;
+});
+}).then(function () {
+// Execute Action: CheckIfUserHasEverLoggedIn
+model.flush();
+return WTF_MOBController.default.checkIfUserHasEverLoggedIn$Action(false, callContext).then(function (value) {
+checkIfUserHasEverLoggedInVar.value = value;
+});
+}).then(function () {
+// HasLoggedIn?
+if((checkIfUserHasEverLoggedInVar.value.hasLoggedInOut)) {
+// Destination: /WTF_MOB/LoadingSplash
+return OS.Flow.returnAsync(OS.Navigation.navigateTo(OS.Navigation.generateScreenURL("/WTF_MOB/LoadingSplash", {
+FromRegister: false
+}), OS.Transitions.createTransition(OS.Transitions.TransitionAnimation.Fade), callContext, true));
+} else {
+// Destination: /WTF_MOB/OnBoarding
+return OS.Flow.returnAsync(OS.Navigation.navigateTo(OS.Navigation.generateScreenURL("/WTF_MOB/OnBoarding", {
+FromRegister: false,
+DemoAppWithoutLogin: false
+}), OS.Transitions.createTransition(OS.Transitions.TransitionAnimation.Fade), callContext, true));
+}
+
+});
+}
+
+});
+} else {
+// Destination: /WTF_MOB/NoConnection
+return OS.Flow.returnAsync(OS.Navigation.navigateTo(OS.Navigation.generateScreenURL("/WTF_MOB/NoConnection", {}), OS.Transitions.createTransition(OS.Transitions.TransitionAnimation.Default), callContext, true));
+}
+
+});
+});
+}).catch(function (ex) {
+OS.Logger.trace("SplashScreen.AfterFetchAction", OS.Exceptions.getMessage(ex), ex.name);
+// Handle Error: CommunicationException
+if(OS.Exceptions.isInstanceOf(ex, OS.Exceptions.Exceptions.CommunicationException)) {
+OS.Logger.error(null, ex);
+communicationExceptionVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: Analytics_TrackException3
+model.flush();
+return WTF_MOBController.default.analytics_TrackException$Action(communicationExceptionVar.value.exceptionMessageAttr, true, callContext).then(function () {
+// Execute Action: VerifyNetworkStatus
+model.flush();
+return WTF_MOBController.default.verifyNetworkStatus$Action(callContext).then(function (value) {
+verifyNetworkStatusVar.value = value;
+});
+}).then(function () {
+if((verifyNetworkStatusVar.value.isOnlineOut)) {
+return OS.Flow.returnAsync();
+
+} else {
+// Destination: /WTF_MOB/NoConnection
+return OS.Flow.returnAsync(OS.Navigation.navigateTo(OS.Navigation.generateScreenURL("/WTF_MOB/NoConnection", {}), OS.Transitions.createTransition(OS.Transitions.TransitionAnimation.Default), callContext, true));
+}
+
+});
+});
+}
+
+// Handle Error: AllExceptions
+if(!(OS.Exceptions.isSystem(ex))) {
+OS.Logger.error(null, ex);
+allExceptionsVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: Analytics_TrackException2
+model.flush();
+return WTF_MOBController.default.analytics_TrackException$Action(allExceptionsVar.value.exceptionMessageAttr, true, callContext).then(function () {
+// Destination: /WTF_MOB/PageUnavailable
+return OS.Flow.returnAsync(OS.Navigation.navigateTo(OS.Navigation.generateScreenURL("/WTF_MOB/PageUnavailable", {}), OS.Transitions.createTransition(OS.Transitions.TransitionAnimation.Default), callContext, true));
+});
+});
+}
+
+throw ex;
+});
+};
+Controller.prototype._afterFetch$Action = function (callContext) {
+var model = this.model;
+var controller = this.controller;
+var idService = this.idService;
+controller.ensureControllerAlive("AfterFetch");
+callContext = controller.callContext(callContext);
+return OS.Flow.executeAsyncFlow(function () {
+return OS.Flow.executeSequence(function () {
+if((model.variables.loaderFicaEmCasaDisabledVar)) {
+// Execute Action: AfterFetchAction
+return controller._afterFetchAction$Action(callContext);
+}
+
+});
+});
+};
+Controller.prototype._onInitialize$Action = function (callContext) {
+var model = this.model;
+var controller = this.controller;
+var idService = this.idService;
+controller.ensureControllerAlive("OnInitialize");
+callContext = controller.callContext(callContext);
+var wTF_LoaderCoronaDisabledVar = new OS.DataTypes.VariableHolder();
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: WTF_LoaderCoronaDisabled
+model.flush();
+return WTF_MBPController.default.getConfigValueAsText_MBP$Action("WTF_LoaderCoronaDisabled", callContext).then(function (value) {
+wTF_LoaderCoronaDisabledVar.value = value;
+}).then(function () {
+// LoaderFicaEmCasaDisabled = ToLower = "true"
+model.variables.loaderFicaEmCasaDisabledVar = (OS.BuiltinFunctions.toLower(wTF_LoaderCoronaDisabledVar.value.valueOut) === "true");
+});
+});
+};
+Controller.prototype._onReady$Action = function (callContext) {
+var model = this.model;
+var controller = this.controller;
+var idService = this.idService;
+controller.ensureControllerAlive("OnReady");
+callContext = controller.callContext(callContext);
+if((!(model.variables.loaderFicaEmCasaDisabledVar))) {
+controller.safeExecuteJSNode(WTF_MOB_LoginFlow_SplashScreen_mvc_controller_OnReady_JavaScript1JS, "JavaScript1", "OnReady", null, function ($parameters) {
+}, {
+AfterFetchAction: controller.clientActionProxies.afterFetchAction$Action
+}, {});
+}
+
+};
+
+Controller.prototype.afterFetchAction$Action = function (callContext) {
+var controller = this.controller;
+return controller.safeExecuteClientAction(controller._afterFetchAction$Action, callContext);
+
+};
+Controller.prototype.afterFetch$Action = function (callContext) {
+var controller = this.controller;
+return controller.safeExecuteClientAction(controller._afterFetch$Action, callContext);
+
+};
+Controller.prototype.onInitialize$Action = function (callContext) {
+var controller = this.controller;
+return controller.safeExecuteClientAction(controller._onInitialize$Action, callContext);
+
+};
+Controller.prototype.onReady$Action = function (callContext) {
+var controller = this.controller;
+return controller.safeExecuteClientAction(controller._onReady$Action, callContext);
+
+};
+
+// Event Handler Actions
+Controller.prototype.onInitializeEventHandler = function (callContext) {
+var controller = this.controller;
+var model = this.model;
+var idService = this.idService;
+
+return controller.onInitialize$Action(callContext);
+
+};
+Controller.prototype.onReadyEventHandler = function (callContext) {
+var controller = this.controller;
+var model = this.model;
+var idService = this.idService;
+
+return controller.onReady$Action(callContext);
+
+};
+Controller.prototype.onRenderEventHandler = null;
+Controller.prototype.onDestroyEventHandler = null;
+Controller.prototype.onParametersChangedEventHandler = null;
+Controller.prototype.handleError = function (ex) {
+return WTF_MOB_LoginFlowController.default.handleError(ex, this.callContext());
+};
+Controller.checkPermissions = function () {
+};
+Controller.prototype.getDefaultTimeout = function () {
+return WTF_MOBController.default.defaultTimeout;
+};
+return Controller;
+})(OS.Controller.BaseViewController);
+return new OS.Controller.ControllerFactory(Controller, WTF_MOBLanguageResources);
+});
+define("WTF_MOB.LoginFlow.SplashScreen.mvc$controller.OnReady.JavaScript1JS", [], function () {
+return function ($actions, $roles, $public) {
+runSplashscreen();
+
+setTimeout(function() {
+   $actions.AfterFetchAction();
+}, 4500);
+};
+});
+

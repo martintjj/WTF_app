@@ -1,0 +1,32 @@
+﻿define("SwiftSupportPlugin_Extended_v172.controller$ReferenceAction", ["exports", "OutSystems", "SwiftSupportPlugin_Extended_v172.model", "SwiftSupportPlugin_Extended_v172.controller"], function (exports, OutSystems, SwiftSupportPlugin_Extended_v172Model, SwiftSupportPlugin_Extended_v172Controller) {
+var OS = OutSystems.Internal;
+SwiftSupportPlugin_Extended_v172Controller.default.referenceAction$Action = function (callContext) {
+callContext = controller.callContext(callContext);
+return ;
+};
+var controller = SwiftSupportPlugin_Extended_v172Controller.default;
+SwiftSupportPlugin_Extended_v172Controller.default.clientActionProxies.referenceAction$Action = function () {
+return controller.executeActionInsideJSNode(SwiftSupportPlugin_Extended_v172Controller.default.referenceAction$Action.bind(controller), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {};
+});
+};
+});
+
+define("SwiftSupportPlugin_Extended_v172.controller", ["exports", "OutSystems", "SwiftSupportPlugin_Extended_v172.model"], function (exports, OutSystems, SwiftSupportPlugin_Extended_v172Model) {
+var OS = OutSystems.Internal;
+var SwiftSupportPlugin_Extended_v172Controller = exports;
+var Controller = (function (_super) {
+__extends(Controller, _super);
+function Controller() {
+_super.apply(this, arguments);
+}
+Controller.prototype.clientActionProxies = {};
+Controller.prototype.roles = {};
+Controller.prototype.defaultTimeout = 10;
+Controller.prototype.getDefaultTimeout = function () {
+return SwiftSupportPlugin_Extended_v172Controller.default.defaultTimeout;
+};
+return Controller;
+})(OS.Controller.BaseModuleController);
+SwiftSupportPlugin_Extended_v172Controller.default = new Controller();
+});

@@ -1,0 +1,128 @@
+﻿define("WTF_MOB.referencesHealth$ACCOUNTINFO_MBLOCKS", [], function () {
+// Reference to producer 'ACCOUNTINFO_MBLOCKS' is OK.
+});
+define("WTF_MOB.referencesHealth$ACCOUNTINFO_MBP", [], function () {
+// Reference to producer 'ACCOUNTINFO_MBP' is OK.
+});
+define("WTF_MOB.referencesHealth$ADDONS_BP", [], function () {
+// Reference to producer 'ADDONS_BP' is OK.
+});
+define("WTF_MOB.referencesHealth$AppMinimizePlugin", [], function () {
+// Reference to producer 'AppMinimizePlugin' is OK.
+});
+define("WTF_MOB.referencesHealth$AppStoreLauncherPlugin", [], function () {
+// Reference to producer 'AppStoreLauncherPlugin' is OK.
+});
+define("WTF_MOB.referencesHealth$BALANCE_BP", [], function () {
+// Reference to producer 'BALANCE_BP' is OK.
+});
+define("WTF_MOB.referencesHealth$BALANCE_MBLOCKS", [], function () {
+// Reference to producer 'BALANCE_MBLOCKS' is OK.
+});
+define("WTF_MOB.referencesHealth$BALANCE_MBP", [], function () {
+// Reference to producer 'BALANCE_MBP' is OK.
+});
+define("WTF_MOB.referencesHealth$BuildInfoPlugin", [], function () {
+// Reference to producer 'BuildInfoPlugin' is OK.
+});
+define("WTF_MOB.referencesHealth$CE_LOGGING", [], function () {
+// Reference to producer 'CE_LOGGING' is OK.
+});
+define("WTF_MOB.referencesHealth$ChartsMobile", [], function () {
+// Reference to producer 'ChartsMobile' is OK.
+});
+define("WTF_MOB.referencesHealth$CommonPlugin", [], function () {
+// Reference to producer 'CommonPlugin' is OK.
+});
+define("WTF_MOB.referencesHealth$CON_GDR", [], function () {
+// Reference to producer 'CON_GDR' is OK.
+});
+define("WTF_MOB.referencesHealth$ContactsPlugin", [], function () {
+// Reference to producer 'ContactsPlugin' is OK.
+});
+define("WTF_MOB.referencesHealth$CopyToClipboard_Plugin", [], function () {
+// Reference to producer 'CopyToClipboard_Plugin' is OK.
+});
+define("WTF_MOB.referencesHealth$CountdownMobile", [], function () {
+// Reference to producer 'CountdownMobile' is OK.
+});
+define("WTF_MOB.referencesHealth$CustomerNotifications_BP", [], function () {
+// Reference to producer 'CustomerNotifications_BP' is OK.
+});
+define("WTF_MOB.referencesHealth$CustomerNotifications_MBLOCKS", [], function () {
+// Reference to producer 'CustomerNotifications_MBLOCKS' is OK.
+});
+define("WTF_MOB.referencesHealth$CustomerNotifications_MBP", [], function () {
+// Reference to producer 'CustomerNotifications_MBP' is OK.
+});
+define("WTF_MOB.referencesHealth$CustomTouchEvents", [], function () {
+// Reference to producer 'CustomTouchEvents' is OK.
+});
+define("WTF_MOB.referencesHealth$Essentials_MOB", [], function () {
+// Reference to producer 'Essentials_MOB' is OK.
+});
+define("WTF_MOB.referencesHealth$FacebookSDKWTF", [], function () {
+// Reference to producer 'FacebookSDKWTF' is OK.
+});
+define("WTF_MOB.referencesHealth$FilePlugin", [], function () {
+// Reference to producer 'FilePlugin' is OK.
+});
+define("WTF_MOB.referencesHealth$InputMasksMobile", [], function () {
+// Reference to producer 'InputMasksMobile' is OK.
+});
+define("WTF_MOB.referencesHealth$MemberGM_MBLOCKS", [], function () {
+// Reference to producer 'MemberGM_MBLOCKS' is OK.
+});
+define("WTF_MOB.referencesHealth$Mobile_LoginNOS", [], function () {
+// Reference to producer 'Mobile_LoginNOS' is OK.
+});
+define("WTF_MOB.referencesHealth$MobilePatterns", [], function () {
+// Reference to producer 'MobilePatterns' is OK.
+});
+define("WTF_MOB.referencesHealth$MobileThemes_WTF", [], function () {
+// Reference to producer 'MobileThemes_WTF' is OK.
+});
+define("WTF_MOB.referencesHealth$MobileUIWidgets", [], function () {
+// Reference to producer 'MobileUIWidgets' is OK.
+});
+define("WTF_MOB.referencesHealth$NewFirebaseMobilePlugin_WTF", [], function () {
+// Reference to producer 'NewFirebaseMobilePlugin_WTF' is OK.
+});
+define("WTF_MOB.referencesHealth$NOSCordovaPlugin", [], function () {
+// Reference to producer 'NOSCordovaPlugin' is OK.
+});
+define("WTF_MOB.referencesHealth$ScreenOrientationPlugin", [], function () {
+// Reference to producer 'ScreenOrientationPlugin' is OK.
+});
+define("WTF_MOB.referencesHealth$ServiceCenter", [], function () {
+// Reference to producer 'ServiceCenter' is OK.
+});
+define("WTF_MOB.referencesHealth$SFAuthenticationPlugin", [], function () {
+// Reference to producer 'SFAuthenticationPlugin' is OK.
+});
+define("WTF_MOB.referencesHealth$SocialSharingPlugin", [], function () {
+// Reference to producer 'SocialSharingPlugin' is OK.
+});
+define("WTF_MOB.referencesHealth$SwiftSupportPlugin_Extended_v172", [], function () {
+// Reference to producer 'SwiftSupportPlugin_Extended_v172' is OK.
+});
+define("WTF_MOB.referencesHealth$Users", [], function () {
+// Reference to producer 'Users' is OK.
+});
+define("WTF_MOB.referencesHealth$ViewControllerPlugin", [], function () {
+// Reference to producer 'ViewControllerPlugin' is OK.
+});
+define("WTF_MOB.referencesHealth$WhatsNew", [], function () {
+// Reference to producer 'WhatsNew' is OK.
+});
+define("WTF_MOB.referencesHealth$WhatsNewMobile", [], function () {
+// Reference to producer 'WhatsNewMobile' is OK.
+});
+define("WTF_MOB.referencesHealth$WTF_BP", [], function () {
+// Reference to producer 'WTF_BP' is OK.
+});
+define("WTF_MOB.referencesHealth$WTF_MBP", [], function () {
+// Reference to producer 'WTF_MBP' is OK.
+});
+define("WTF_MOB.referencesHealth", [], function () {
+});

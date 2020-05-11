@@ -1,0 +1,4229 @@
+﻿define("WTF_MBP.entities", ["OutSystems", "WTF_MBP.model", "WTF_MBP.model$Local_WHATSNEW_USER_CONTROLRecord", "WTF_MBP.model$Local_USER_WTFRecord", "WTF_MBP.model$Local_WALLET_ITEMRecord", "WTF_MBP.model$Local_LAST_PAGERecord", "WTF_MBP.model$Local_SERVICERecord", "WTF_MBP.model$Local_TEMPDYNAMICLINKRecord", "WTF_MBP.model$Local_SESSION_TEMP_TABLERecord", "WTF_MBP.model$Local_ADDONS_REFILLSRecord", "WTF_MBP.model$Local_ACCESS_TOKEN_INFORecord", "WTF_MBP.model$Local_HOT_DEAL_PURCHASERecord", "WTF_MBP.model$Local_SCRATCH_REGULATION_ACCEPTRecord", "WTF_MBP.model$Local_CACHE_CONTROL_SERVICESRecord", "WTF_MBP.model$Local_USER_NOS_INFORecord", "WTF_MBP.model$Local_APP_FAQSRecord", "WTF_MBP.model$Local_INFOCARDSRecord", "WTF_MBP.model$Local_ASSOCIATIONRecord", "WTF_MBP.model$Local_TEMPDEEPLINKRecord", "WTF_MBP.model$Local_TMCODE_TO_CHANGERecord", "WTF_MBP.model$Local_PRIZERecord", "WTF_MBP.model$Local_DIARY_DIAMOND_PARTSRecord", "WTF_MBP.model$Local_APP_ACCESS_CONTROLRecord", "WTF_MBP.model$Local_DIARY_DIAMOND_MOVEMENTRecord", "WTF_MBP.model$Local_SCRATCH_REGULATIONRecord", "WTF_MBP.model$Local_PICTURERecord", "WTF_MBP.model$Local_DIAMONDRecord", "WTF_MBP.model$Local_APP_CONFIGRecord", "WTF_MBP.model$Local_LAYOUT_LEVELSRecord", "WTF_MBP.model$Local_VOUCHERSRecord"], function (OutSystems, WTF_MBPModel) {
+var OS = OutSystems.Internal;
+var infoLocal_WHATSNEW_USER_CONTROL = {
+key: "0040ebf2-e99a-4724-b087-179aba329923",
+name: "Local_WHATSNEW_USER_CONTROL",
+tableName: "OSUSR_P9G_LOCAL_WHATSNEW_USER_CONTROL",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "User_NOS_Id",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WHATSNEW_USER_CONTROL\" ADD \"User_NOS_Id\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "LatestWhatsNewVisitId",
+type: /*LONGINTEGER*/ 4,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WHATSNEW_USER_CONTROL\" ADD \"LatestWhatsNewVisitId\" BIGINT DEFAULT 0"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "669fab1e-7e17-f419-1c17-1c1f64cf17d3",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_WHATSNEW_USER_CONTROLRecord(WTF_MBPModel.Local_WHATSNEW_USER_CONTROLRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WHATSNEW_USER_CONTROL\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"User_NOS_Id\" TEXT(50) DEFAULT \'\', \"LatestWhatsNewVisitId\" BIGINT DEFAULT 0)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"User_NOS_Id\" o1, \"LatestWhatsNewVisitId\" o2 FROM \"OSUSR_P9G_LOCAL_WHATSNEW_USER_CONTROL\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_WHATSNEW_USER_CONTROL\" (\"Id\", \"User_NOS_Id\", \"LatestWhatsNewVisitId\") VALUES (?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_WHATSNEW_USER_CONTROLAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("User_NOS_Id", /*TEXT*/ 0, obj.user_NOS_IdAttr);
+argsList.add("LatestWhatsNewVisitId", /*LONGINTEGER*/ 4, obj.latestWhatsNewVisitIdAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_WHATSNEW_USER_CONTROL\" (\"Id\", \"User_NOS_Id\", \"LatestWhatsNewVisitId\") VALUES (?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_WHATSNEW_USER_CONTROLAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("User_NOS_Id", /*TEXT*/ 0, obj.user_NOS_IdAttr);
+argsList.add("LatestWhatsNewVisitId", /*LONGINTEGER*/ 4, obj.latestWhatsNewVisitIdAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_WHATSNEW_USER_CONTROL\" SET \"User_NOS_Id\" = ?, \"LatestWhatsNewVisitId\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_WHATSNEW_USER_CONTROLAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("User_NOS_Id", /*TEXT*/ 0, obj.user_NOS_IdAttr);
+argsList.add("LatestWhatsNewVisitId", /*LONGINTEGER*/ 4, obj.latestWhatsNewVisitIdAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_WHATSNEW_USER_CONTROL\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_WHATSNEW_USER_CONTROL\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_WHATSNEW_USER_CONTROLAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("User_NOS_Id", /*TEXT*/ 0, obj.user_NOS_IdAttr);
+argsList.add("LatestWhatsNewVisitId", /*LONGINTEGER*/ 4, obj.latestWhatsNewVisitIdAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_WHATSNEW_USER_CONTROLAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_WHATSNEW_USER_CONTROLAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_USER_WTF = {
+key: "038c2881-1a30-42b3-9b83-a4db3a6cf324",
+name: "Local_USER_WTF",
+tableName: "OSUSR_P9G_LOCAL_USER_WTF",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Msisdn",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_USER_WTF\" ADD \"Msisdn\" INTEGER DEFAULT 0"
+}
+}, {
+name: "CodeMember",
+type: /*TEXT*/ 0,
+length: 10,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_USER_WTF\" ADD \"CodeMember\" TEXT(10) DEFAULT \'\'"
+}
+}, {
+name: "Tmcode_label",
+type: /*TEXT*/ 0,
+length: 100,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_USER_WTF\" ADD \"Tmcode_label\" TEXT(100) DEFAULT \'\'"
+}
+}, {
+name: "Is_MonthlyRenewal",
+type: /*BOOLEAN*/ 2,
+default: false,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_USER_WTF\" ADD \"Is_MonthlyRenewal\" BOOLEAN DEFAULT 0"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "6e27ffd3-1dc9-de9c-9bf1-5d1ec821de79",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_USER_WTFRecord(WTF_MBPModel.Local_USER_WTFRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_USER_WTF\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Msisdn\" INTEGER DEFAULT 0, \"CodeMember\" TEXT(10) DEFAULT \'\', \"Tmcode_label\" TEXT(100) DEFAULT \'\', \"Is_MonthlyRenewal\" BOOLEAN DEFAULT 0)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Msisdn\" o1, \"CodeMember\" o2, \"Tmcode_label\" o3, \"Is_MonthlyRenewal\" o4 FROM \"OSUSR_P9G_LOCAL_USER_WTF\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_USER_WTF\" (\"Id\", \"Msisdn\", \"CodeMember\", \"Tmcode_label\", \"Is_MonthlyRenewal\") VALUES (?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_USER_WTFAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Msisdn", /*INTEGER*/ 3, obj.msisdnAttr);
+argsList.add("CodeMember", /*TEXT*/ 0, obj.codeMemberAttr);
+argsList.add("Tmcode_label", /*TEXT*/ 0, obj.tmcode_labelAttr);
+argsList.add("Is_MonthlyRenewal", /*BOOLEAN*/ 2, obj.is_MonthlyRenewalAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_USER_WTF\" (\"Id\", \"Msisdn\", \"CodeMember\", \"Tmcode_label\", \"Is_MonthlyRenewal\") VALUES (?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_USER_WTFAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Msisdn", /*INTEGER*/ 3, obj.msisdnAttr);
+argsList.add("CodeMember", /*TEXT*/ 0, obj.codeMemberAttr);
+argsList.add("Tmcode_label", /*TEXT*/ 0, obj.tmcode_labelAttr);
+argsList.add("Is_MonthlyRenewal", /*BOOLEAN*/ 2, obj.is_MonthlyRenewalAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_USER_WTF\" SET \"Msisdn\" = ?, \"CodeMember\" = ?, \"Tmcode_label\" = ?, \"Is_MonthlyRenewal\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_USER_WTFAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Msisdn", /*INTEGER*/ 3, obj.msisdnAttr);
+argsList.add("CodeMember", /*TEXT*/ 0, obj.codeMemberAttr);
+argsList.add("Tmcode_label", /*TEXT*/ 0, obj.tmcode_labelAttr);
+argsList.add("Is_MonthlyRenewal", /*BOOLEAN*/ 2, obj.is_MonthlyRenewalAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_USER_WTF\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_USER_WTF\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_USER_WTFAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Msisdn", /*INTEGER*/ 3, obj.msisdnAttr);
+argsList.add("CodeMember", /*TEXT*/ 0, obj.codeMemberAttr);
+argsList.add("Tmcode_label", /*TEXT*/ 0, obj.tmcode_labelAttr);
+argsList.add("Is_MonthlyRenewal", /*BOOLEAN*/ 2, obj.is_MonthlyRenewalAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_USER_WTFAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_USER_WTFAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_WALLET_ITEM = {
+key: "06583b4b-e622-466c-8644-f23123c1c594",
+name: "Local_WALLET_ITEM",
+tableName: "OSUSR_P9G_LOCAL_WALLET_ITEM",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "CategoryLabel",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"CategoryLabel\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "Title",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"Title\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "Description",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"Description\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "OriginLabel",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"OriginLabel\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "VoucherCode",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"VoucherCode\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "VoucherTypeId",
+type: /*INTEGER*/ 3,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"VoucherTypeId\" INTEGER DEFAULT NULL"
+}
+}, {
+name: "VoucherTypeLabel",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"VoucherTypeLabel\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "VoucherExpirationDate",
+type: /*DATE*/ 7,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"VoucherExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "PrizeAddressName",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"PrizeAddressName\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "PrizeAddressStreet",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"PrizeAddressStreet\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "PrizeAddressPostalCity",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"PrizeAddressPostalCity\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "PrizeAddressPostalCode",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"PrizeAddressPostalCode\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "PrizeAddressMSISDN",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"PrizeAddressMSISDN\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "PrizeAddressAuthorize",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"PrizeAddressAuthorize\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "PrizeRequiredAddress",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"PrizeRequiredAddress\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "CreatedAt",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"CreatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "UserWTFID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"UserWTFID\" BIGINT DEFAULT NULL"
+}
+}, {
+name: "LocalPictureID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"LocalPictureID\" BIGINT DEFAULT NULL"
+}
+}, {
+name: "WalletItemOriginId",
+type: /*INTEGER*/ 3,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"WalletItemOriginId\" INTEGER DEFAULT NULL"
+}
+}, {
+name: "WalletItemStatusId",
+type: /*INTEGER*/ 3,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"WalletItemStatusId\" INTEGER DEFAULT NULL"
+}
+}, {
+name: "AssetId",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"AssetId\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "StatusLabel",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"StatusLabel\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "ActionDateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"ActionDateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "ExpireDateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"ExpireDateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "ItemTypeId",
+type: /*INTEGER*/ 3,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" ADD \"ItemTypeId\" INTEGER DEFAULT NULL"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "962363f2-4ca9-b79f-79b5-4add1c62bf8d",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_WALLET_ITEMRecord(WTF_MBPModel.Local_WALLET_ITEMRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_WALLET_ITEM\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"CategoryLabel\" TEXT(1000) DEFAULT \'\', \"Title\" TEXT(1000) DEFAULT \'\', \"Description\" TEXT(1000) DEFAULT \'\', \"OriginLabel\" TEXT(1000) DEFAULT \'\', \"VoucherCode\" TEXT(1000) DEFAULT \'\', \"VoucherTypeId\" INTEGER DEFAULT NULL, \"VoucherTypeLabel\" TEXT(1000) DEFAULT \'\', \"VoucherExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"PrizeAddressName\" TEXT(1000) DEFAULT \'\', \"PrizeAddressStreet\" TEXT(1000) DEFAULT \'\', \"PrizeAddressPostalCity\" TEXT(1000) DEFAULT \'\', \"PrizeAddressPostalCode\" TEXT(50) DEFAULT \'\', \"PrizeAddressMSISDN\" TEXT(50) DEFAULT \'\', \"PrizeAddressAuthorize\" BOOLEAN DEFAULT 0, \"PrizeRequiredAddress\" BOOLEAN DEFAULT 0, \"CreatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"UserWTFID\" BIGINT DEFAULT NULL, \"LocalPictureID\" BIGINT DEFAULT NULL, \"WalletItemOriginId\" INTEGER DEFAULT NULL, \"WalletItemStatusId\" INTEGER DEFAULT NULL, \"AssetId\" TEXT(1000) DEFAULT \'\', \"StatusLabel\" TEXT(1000) DEFAULT \'\', \"ActionDateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"ExpireDateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"ItemTypeId\" INTEGER DEFAULT NULL)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"CategoryLabel\" o1, \"Title\" o2, \"Description\" o3, \"OriginLabel\" o4, \"VoucherCode\" o5, \"VoucherTypeId\" o6, \"VoucherTypeLabel\" o7, \"VoucherExpirationDate\" o8, \"PrizeAddressName\" o9, \"PrizeAddressStreet\" o10, \"PrizeAddressPostalCity\" o11, \"PrizeAddressPostalCode\" o12, \"PrizeAddressMSISDN\" o13, \"PrizeAddressAuthorize\" o14, \"PrizeRequiredAddress\" o15, \"CreatedAt\" o16, \"UserWTFID\" o17, \"LocalPictureID\" o18, \"WalletItemOriginId\" o19, \"WalletItemStatusId\" o20, \"AssetId\" o21, \"StatusLabel\" o22, \"ActionDateTime\" o23, \"ExpireDateTime\" o24, \"ItemTypeId\" o25 FROM \"OSUSR_P9G_LOCAL_WALLET_ITEM\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_WALLET_ITEM\" (\"Id\", \"CategoryLabel\", \"Title\", \"Description\", \"OriginLabel\", \"VoucherCode\", \"VoucherTypeId\", \"VoucherTypeLabel\", \"VoucherExpirationDate\", \"PrizeAddressName\", \"PrizeAddressStreet\", \"PrizeAddressPostalCity\", \"PrizeAddressPostalCode\", \"PrizeAddressMSISDN\", \"PrizeAddressAuthorize\", \"PrizeRequiredAddress\", \"CreatedAt\", \"UserWTFID\", \"LocalPictureID\", \"WalletItemOriginId\", \"WalletItemStatusId\", \"AssetId\", \"StatusLabel\", \"ActionDateTime\", \"ExpireDateTime\", \"ItemTypeId\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_WALLET_ITEMAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("CategoryLabel", /*TEXT*/ 0, obj.categoryLabelAttr);
+argsList.add("Title", /*TEXT*/ 0, obj.titleAttr);
+argsList.add("Description", /*TEXT*/ 0, obj.descriptionAttr);
+argsList.add("OriginLabel", /*TEXT*/ 0, obj.originLabelAttr);
+argsList.add("VoucherCode", /*TEXT*/ 0, obj.voucherCodeAttr);
+argsList.add("VoucherTypeId", /*INTEGER*/ 3, obj.voucherTypeIdAttr, null, null, true);
+argsList.add("VoucherTypeLabel", /*TEXT*/ 0, obj.voucherTypeLabelAttr);
+argsList.add("VoucherExpirationDate", /*DATE*/ 7, obj.voucherExpirationDateAttr);
+argsList.add("PrizeAddressName", /*TEXT*/ 0, obj.prizeAddressNameAttr);
+argsList.add("PrizeAddressStreet", /*TEXT*/ 0, obj.prizeAddressStreetAttr);
+argsList.add("PrizeAddressPostalCity", /*TEXT*/ 0, obj.prizeAddressPostalCityAttr);
+argsList.add("PrizeAddressPostalCode", /*TEXT*/ 0, obj.prizeAddressPostalCodeAttr);
+argsList.add("PrizeAddressMSISDN", /*TEXT*/ 0, obj.prizeAddressMSISDNAttr);
+argsList.add("PrizeAddressAuthorize", /*BOOLEAN*/ 2, obj.prizeAddressAuthorizeAttr);
+argsList.add("PrizeRequiredAddress", /*BOOLEAN*/ 2, obj.prizeRequiredAddressAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+argsList.add("LocalPictureID", /*LONGINTEGER*/ 4, obj.localPictureIDAttr, null, null, true);
+argsList.add("WalletItemOriginId", /*INTEGER*/ 3, obj.walletItemOriginIdAttr, null, null, true);
+argsList.add("WalletItemStatusId", /*INTEGER*/ 3, obj.walletItemStatusIdAttr, null, null, true);
+argsList.add("AssetId", /*TEXT*/ 0, obj.assetIdAttr);
+argsList.add("StatusLabel", /*TEXT*/ 0, obj.statusLabelAttr);
+argsList.add("ActionDateTime", /*DATE_TIME*/ 6, obj.actionDateTimeAttr);
+argsList.add("ExpireDateTime", /*DATE_TIME*/ 6, obj.expireDateTimeAttr);
+argsList.add("ItemTypeId", /*INTEGER*/ 3, obj.itemTypeIdAttr, null, null, true);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_WALLET_ITEM\" (\"Id\", \"CategoryLabel\", \"Title\", \"Description\", \"OriginLabel\", \"VoucherCode\", \"VoucherTypeId\", \"VoucherTypeLabel\", \"VoucherExpirationDate\", \"PrizeAddressName\", \"PrizeAddressStreet\", \"PrizeAddressPostalCity\", \"PrizeAddressPostalCode\", \"PrizeAddressMSISDN\", \"PrizeAddressAuthorize\", \"PrizeRequiredAddress\", \"CreatedAt\", \"UserWTFID\", \"LocalPictureID\", \"WalletItemOriginId\", \"WalletItemStatusId\", \"AssetId\", \"StatusLabel\", \"ActionDateTime\", \"ExpireDateTime\", \"ItemTypeId\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_WALLET_ITEMAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("CategoryLabel", /*TEXT*/ 0, obj.categoryLabelAttr);
+argsList.add("Title", /*TEXT*/ 0, obj.titleAttr);
+argsList.add("Description", /*TEXT*/ 0, obj.descriptionAttr);
+argsList.add("OriginLabel", /*TEXT*/ 0, obj.originLabelAttr);
+argsList.add("VoucherCode", /*TEXT*/ 0, obj.voucherCodeAttr);
+argsList.add("VoucherTypeId", /*INTEGER*/ 3, obj.voucherTypeIdAttr, null, null, true);
+argsList.add("VoucherTypeLabel", /*TEXT*/ 0, obj.voucherTypeLabelAttr);
+argsList.add("VoucherExpirationDate", /*DATE*/ 7, obj.voucherExpirationDateAttr);
+argsList.add("PrizeAddressName", /*TEXT*/ 0, obj.prizeAddressNameAttr);
+argsList.add("PrizeAddressStreet", /*TEXT*/ 0, obj.prizeAddressStreetAttr);
+argsList.add("PrizeAddressPostalCity", /*TEXT*/ 0, obj.prizeAddressPostalCityAttr);
+argsList.add("PrizeAddressPostalCode", /*TEXT*/ 0, obj.prizeAddressPostalCodeAttr);
+argsList.add("PrizeAddressMSISDN", /*TEXT*/ 0, obj.prizeAddressMSISDNAttr);
+argsList.add("PrizeAddressAuthorize", /*BOOLEAN*/ 2, obj.prizeAddressAuthorizeAttr);
+argsList.add("PrizeRequiredAddress", /*BOOLEAN*/ 2, obj.prizeRequiredAddressAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+argsList.add("LocalPictureID", /*LONGINTEGER*/ 4, obj.localPictureIDAttr, null, null, true);
+argsList.add("WalletItemOriginId", /*INTEGER*/ 3, obj.walletItemOriginIdAttr, null, null, true);
+argsList.add("WalletItemStatusId", /*INTEGER*/ 3, obj.walletItemStatusIdAttr, null, null, true);
+argsList.add("AssetId", /*TEXT*/ 0, obj.assetIdAttr);
+argsList.add("StatusLabel", /*TEXT*/ 0, obj.statusLabelAttr);
+argsList.add("ActionDateTime", /*DATE_TIME*/ 6, obj.actionDateTimeAttr);
+argsList.add("ExpireDateTime", /*DATE_TIME*/ 6, obj.expireDateTimeAttr);
+argsList.add("ItemTypeId", /*INTEGER*/ 3, obj.itemTypeIdAttr, null, null, true);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_WALLET_ITEM\" SET \"CategoryLabel\" = ?, \"Title\" = ?, \"Description\" = ?, \"OriginLabel\" = ?, \"VoucherCode\" = ?, \"VoucherTypeId\" = ?, \"VoucherTypeLabel\" = ?, \"VoucherExpirationDate\" = ?, \"PrizeAddressName\" = ?, \"PrizeAddressStreet\" = ?, \"PrizeAddressPostalCity\" = ?, \"PrizeAddressPostalCode\" = ?, \"PrizeAddressMSISDN\" = ?, \"PrizeAddressAuthorize\" = ?, \"PrizeRequiredAddress\" = ?, \"CreatedAt\" = ?, \"UserWTFID\" = ?, \"LocalPictureID\" = ?, \"WalletItemOriginId\" = ?, \"WalletItemStatusId\" = ?, \"AssetId\" = ?, \"StatusLabel\" = ?, \"ActionDateTime\" = ?, \"ExpireDateTime\" = ?, \"ItemTypeId\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_WALLET_ITEMAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("CategoryLabel", /*TEXT*/ 0, obj.categoryLabelAttr);
+argsList.add("Title", /*TEXT*/ 0, obj.titleAttr);
+argsList.add("Description", /*TEXT*/ 0, obj.descriptionAttr);
+argsList.add("OriginLabel", /*TEXT*/ 0, obj.originLabelAttr);
+argsList.add("VoucherCode", /*TEXT*/ 0, obj.voucherCodeAttr);
+argsList.add("VoucherTypeId", /*INTEGER*/ 3, obj.voucherTypeIdAttr, null, null, true);
+argsList.add("VoucherTypeLabel", /*TEXT*/ 0, obj.voucherTypeLabelAttr);
+argsList.add("VoucherExpirationDate", /*DATE*/ 7, obj.voucherExpirationDateAttr);
+argsList.add("PrizeAddressName", /*TEXT*/ 0, obj.prizeAddressNameAttr);
+argsList.add("PrizeAddressStreet", /*TEXT*/ 0, obj.prizeAddressStreetAttr);
+argsList.add("PrizeAddressPostalCity", /*TEXT*/ 0, obj.prizeAddressPostalCityAttr);
+argsList.add("PrizeAddressPostalCode", /*TEXT*/ 0, obj.prizeAddressPostalCodeAttr);
+argsList.add("PrizeAddressMSISDN", /*TEXT*/ 0, obj.prizeAddressMSISDNAttr);
+argsList.add("PrizeAddressAuthorize", /*BOOLEAN*/ 2, obj.prizeAddressAuthorizeAttr);
+argsList.add("PrizeRequiredAddress", /*BOOLEAN*/ 2, obj.prizeRequiredAddressAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+argsList.add("LocalPictureID", /*LONGINTEGER*/ 4, obj.localPictureIDAttr, null, null, true);
+argsList.add("WalletItemOriginId", /*INTEGER*/ 3, obj.walletItemOriginIdAttr, null, null, true);
+argsList.add("WalletItemStatusId", /*INTEGER*/ 3, obj.walletItemStatusIdAttr, null, null, true);
+argsList.add("AssetId", /*TEXT*/ 0, obj.assetIdAttr);
+argsList.add("StatusLabel", /*TEXT*/ 0, obj.statusLabelAttr);
+argsList.add("ActionDateTime", /*DATE_TIME*/ 6, obj.actionDateTimeAttr);
+argsList.add("ExpireDateTime", /*DATE_TIME*/ 6, obj.expireDateTimeAttr);
+argsList.add("ItemTypeId", /*INTEGER*/ 3, obj.itemTypeIdAttr, null, null, true);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_WALLET_ITEM\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_WALLET_ITEM\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_WALLET_ITEMAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("CategoryLabel", /*TEXT*/ 0, obj.categoryLabelAttr);
+argsList.add("Title", /*TEXT*/ 0, obj.titleAttr);
+argsList.add("Description", /*TEXT*/ 0, obj.descriptionAttr);
+argsList.add("OriginLabel", /*TEXT*/ 0, obj.originLabelAttr);
+argsList.add("VoucherCode", /*TEXT*/ 0, obj.voucherCodeAttr);
+argsList.add("VoucherTypeId", /*INTEGER*/ 3, obj.voucherTypeIdAttr, null, null, true);
+argsList.add("VoucherTypeLabel", /*TEXT*/ 0, obj.voucherTypeLabelAttr);
+argsList.add("VoucherExpirationDate", /*DATE*/ 7, obj.voucherExpirationDateAttr);
+argsList.add("PrizeAddressName", /*TEXT*/ 0, obj.prizeAddressNameAttr);
+argsList.add("PrizeAddressStreet", /*TEXT*/ 0, obj.prizeAddressStreetAttr);
+argsList.add("PrizeAddressPostalCity", /*TEXT*/ 0, obj.prizeAddressPostalCityAttr);
+argsList.add("PrizeAddressPostalCode", /*TEXT*/ 0, obj.prizeAddressPostalCodeAttr);
+argsList.add("PrizeAddressMSISDN", /*TEXT*/ 0, obj.prizeAddressMSISDNAttr);
+argsList.add("PrizeAddressAuthorize", /*BOOLEAN*/ 2, obj.prizeAddressAuthorizeAttr);
+argsList.add("PrizeRequiredAddress", /*BOOLEAN*/ 2, obj.prizeRequiredAddressAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+argsList.add("LocalPictureID", /*LONGINTEGER*/ 4, obj.localPictureIDAttr, null, null, true);
+argsList.add("WalletItemOriginId", /*INTEGER*/ 3, obj.walletItemOriginIdAttr, null, null, true);
+argsList.add("WalletItemStatusId", /*INTEGER*/ 3, obj.walletItemStatusIdAttr, null, null, true);
+argsList.add("AssetId", /*TEXT*/ 0, obj.assetIdAttr);
+argsList.add("StatusLabel", /*TEXT*/ 0, obj.statusLabelAttr);
+argsList.add("ActionDateTime", /*DATE_TIME*/ 6, obj.actionDateTimeAttr);
+argsList.add("ExpireDateTime", /*DATE_TIME*/ 6, obj.expireDateTimeAttr);
+argsList.add("ItemTypeId", /*INTEGER*/ 3, obj.itemTypeIdAttr, null, null, true);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_WALLET_ITEMAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_WALLET_ITEMAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_LAST_PAGE = {
+key: "06b2433b-7cd0-44a3-bd0a-95a971e12828",
+name: "Local_LAST_PAGE",
+tableName: "OSUSR_P9G_LOCAL_LAST_PAGE",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "URL",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_LAST_PAGE\" ADD \"URL\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "LayoutLevelID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_LAST_PAGE\" ADD \"LayoutLevelID\" BIGINT DEFAULT NULL"
+}
+}, {
+name: "Step",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_LAST_PAGE\" ADD \"Step\" INTEGER DEFAULT 0"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "1419c9cd-cb16-00ff-6d9b-ceaa87360bcd",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_LAST_PAGERecord(WTF_MBPModel.Local_LAST_PAGERecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_LAST_PAGE\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"URL\" TEXT(1000) DEFAULT \'\', \"LayoutLevelID\" BIGINT DEFAULT NULL, \"Step\" INTEGER DEFAULT 0)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"URL\" o1, \"LayoutLevelID\" o2, \"Step\" o3 FROM \"OSUSR_P9G_LOCAL_LAST_PAGE\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_LAST_PAGE\" (\"Id\", \"URL\", \"LayoutLevelID\", \"Step\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_LAST_PAGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+argsList.add("LayoutLevelID", /*LONGINTEGER*/ 4, obj.layoutLevelIDAttr, null, null, true);
+argsList.add("Step", /*INTEGER*/ 3, obj.stepAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_LAST_PAGE\" (\"Id\", \"URL\", \"LayoutLevelID\", \"Step\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_LAST_PAGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+argsList.add("LayoutLevelID", /*LONGINTEGER*/ 4, obj.layoutLevelIDAttr, null, null, true);
+argsList.add("Step", /*INTEGER*/ 3, obj.stepAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_LAST_PAGE\" SET \"URL\" = ?, \"LayoutLevelID\" = ?, \"Step\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_LAST_PAGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+argsList.add("LayoutLevelID", /*LONGINTEGER*/ 4, obj.layoutLevelIDAttr, null, null, true);
+argsList.add("Step", /*INTEGER*/ 3, obj.stepAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_LAST_PAGE\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_LAST_PAGE\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_LAST_PAGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+argsList.add("LayoutLevelID", /*LONGINTEGER*/ 4, obj.layoutLevelIDAttr, null, null, true);
+argsList.add("Step", /*INTEGER*/ 3, obj.stepAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_LAST_PAGEAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_LAST_PAGEAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_SERVICE = {
+key: "075b8112-e978-4924-a65b-90765e282c94",
+name: "Local_SERVICE",
+tableName: "OSUSR_P9G_LOCAL_SERVICE",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "ServiceId",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SERVICE\" ADD \"ServiceId\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "AssociationID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SERVICE\" ADD \"AssociationID\" BIGINT DEFAULT NULL"
+}
+}, {
+name: "Name",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SERVICE\" ADD \"Name\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "ServiceAccount",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SERVICE\" ADD \"ServiceAccount\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "UiLabel",
+type: /*TEXT*/ 0,
+length: 100,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SERVICE\" ADD \"UiLabel\" TEXT(100) DEFAULT \'\'"
+}
+}, {
+name: "Plan",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SERVICE\" ADD \"Plan\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "TMCodeID",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SERVICE\" ADD \"TMCodeID\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "TMCodeDesc",
+type: /*TEXT*/ 0,
+length: 250,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SERVICE\" ADD \"TMCodeDesc\" TEXT(250) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "4849b29f-c3f2-b3f1-d0cd-6a1aed8091a0",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_SERVICERecord(WTF_MBPModel.Local_SERVICERecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SERVICE\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"ServiceId\" TEXT(50) DEFAULT \'\', \"AssociationID\" BIGINT DEFAULT NULL, \"Name\" TEXT(50) DEFAULT \'\', \"ServiceAccount\" TEXT(50) DEFAULT \'\', \"UiLabel\" TEXT(100) DEFAULT \'\', \"Plan\" TEXT(50) DEFAULT \'\', \"TMCodeID\" TEXT(50) DEFAULT \'\', \"TMCodeDesc\" TEXT(250) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"ServiceId\" o1, \"AssociationID\" o2, \"Name\" o3, \"ServiceAccount\" o4, \"UiLabel\" o5, \"Plan\" o6, \"TMCodeID\" o7, \"TMCodeDesc\" o8 FROM \"OSUSR_P9G_LOCAL_SERVICE\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_SERVICE\" (\"Id\", \"ServiceId\", \"AssociationID\", \"Name\", \"ServiceAccount\", \"UiLabel\", \"Plan\", \"TMCodeID\", \"TMCodeDesc\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_SERVICEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("ServiceId", /*TEXT*/ 0, obj.serviceIdAttr);
+argsList.add("AssociationID", /*LONGINTEGER*/ 4, obj.associationIDAttr, null, null, true);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("ServiceAccount", /*TEXT*/ 0, obj.serviceAccountAttr);
+argsList.add("UiLabel", /*TEXT*/ 0, obj.uiLabelAttr);
+argsList.add("Plan", /*TEXT*/ 0, obj.planAttr);
+argsList.add("TMCodeID", /*TEXT*/ 0, obj.tMCodeIDAttr);
+argsList.add("TMCodeDesc", /*TEXT*/ 0, obj.tMCodeDescAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_SERVICE\" (\"Id\", \"ServiceId\", \"AssociationID\", \"Name\", \"ServiceAccount\", \"UiLabel\", \"Plan\", \"TMCodeID\", \"TMCodeDesc\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_SERVICEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("ServiceId", /*TEXT*/ 0, obj.serviceIdAttr);
+argsList.add("AssociationID", /*LONGINTEGER*/ 4, obj.associationIDAttr, null, null, true);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("ServiceAccount", /*TEXT*/ 0, obj.serviceAccountAttr);
+argsList.add("UiLabel", /*TEXT*/ 0, obj.uiLabelAttr);
+argsList.add("Plan", /*TEXT*/ 0, obj.planAttr);
+argsList.add("TMCodeID", /*TEXT*/ 0, obj.tMCodeIDAttr);
+argsList.add("TMCodeDesc", /*TEXT*/ 0, obj.tMCodeDescAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_SERVICE\" SET \"ServiceId\" = ?, \"AssociationID\" = ?, \"Name\" = ?, \"ServiceAccount\" = ?, \"UiLabel\" = ?, \"Plan\" = ?, \"TMCodeID\" = ?, \"TMCodeDesc\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_SERVICEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("ServiceId", /*TEXT*/ 0, obj.serviceIdAttr);
+argsList.add("AssociationID", /*LONGINTEGER*/ 4, obj.associationIDAttr, null, null, true);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("ServiceAccount", /*TEXT*/ 0, obj.serviceAccountAttr);
+argsList.add("UiLabel", /*TEXT*/ 0, obj.uiLabelAttr);
+argsList.add("Plan", /*TEXT*/ 0, obj.planAttr);
+argsList.add("TMCodeID", /*TEXT*/ 0, obj.tMCodeIDAttr);
+argsList.add("TMCodeDesc", /*TEXT*/ 0, obj.tMCodeDescAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_SERVICE\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_SERVICE\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_SERVICEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("ServiceId", /*TEXT*/ 0, obj.serviceIdAttr);
+argsList.add("AssociationID", /*LONGINTEGER*/ 4, obj.associationIDAttr, null, null, true);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("ServiceAccount", /*TEXT*/ 0, obj.serviceAccountAttr);
+argsList.add("UiLabel", /*TEXT*/ 0, obj.uiLabelAttr);
+argsList.add("Plan", /*TEXT*/ 0, obj.planAttr);
+argsList.add("TMCodeID", /*TEXT*/ 0, obj.tMCodeIDAttr);
+argsList.add("TMCodeDesc", /*TEXT*/ 0, obj.tMCodeDescAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_SERVICEAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_SERVICEAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_TEMPDYNAMICLINK = {
+key: "15e6dfe3-8465-4c82-9ff7-3b5eb486e558",
+name: "Local_TEMPDYNAMICLINK",
+tableName: "OSUSR_P9G_LOCAL_TEMPDYNAMICLINK",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "URL",
+type: /*TEXT*/ 0,
+length: 250,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TEMPDYNAMICLINK\" ADD \"URL\" TEXT(250) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "e8768181-7338-1e99-b98b-6f6ddf709ffc",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_TEMPDYNAMICLINKRecord(WTF_MBPModel.Local_TEMPDYNAMICLINKRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TEMPDYNAMICLINK\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"URL\" TEXT(250) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"URL\" o1 FROM \"OSUSR_P9G_LOCAL_TEMPDYNAMICLINK\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_TEMPDYNAMICLINK\" (\"Id\", \"URL\") VALUES (?, ?)",
+getArguments: function (record) {
+var obj = record.local_TEMPDYNAMICLINKAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_TEMPDYNAMICLINK\" (\"Id\", \"URL\") VALUES (?, ?)",
+getArguments: function (record) {
+var obj = record.local_TEMPDYNAMICLINKAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_TEMPDYNAMICLINK\" SET \"URL\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_TEMPDYNAMICLINKAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_TEMPDYNAMICLINK\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_TEMPDYNAMICLINK\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_TEMPDYNAMICLINKAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_TEMPDYNAMICLINKAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_TEMPDYNAMICLINKAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_SESSION_TEMP_TABLE = {
+key: "2d0c1aff-fb91-40cc-a7c3-b094e1a68bdd",
+name: "Local_SESSION_TEMP_TABLE",
+tableName: "OSUSR_P9G_LOCAL_SESSION_TEMP_TABLE",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "CodeVerifier",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SESSION_TEMP_TABLE\" ADD \"CodeVerifier\" TEXT(50) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "cdc00708-b0bf-fd56-bd8f-17ee4e7bca07",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_SESSION_TEMP_TABLERecord(WTF_MBPModel.Local_SESSION_TEMP_TABLERecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SESSION_TEMP_TABLE\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"CodeVerifier\" TEXT(50) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"CodeVerifier\" o1 FROM \"OSUSR_P9G_LOCAL_SESSION_TEMP_TABLE\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_SESSION_TEMP_TABLE\" (\"Id\", \"CodeVerifier\") VALUES (?, ?)",
+getArguments: function (record) {
+var obj = record.local_SESSION_TEMP_TABLEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("CodeVerifier", /*TEXT*/ 0, obj.codeVerifierAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_SESSION_TEMP_TABLE\" (\"Id\", \"CodeVerifier\") VALUES (?, ?)",
+getArguments: function (record) {
+var obj = record.local_SESSION_TEMP_TABLEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("CodeVerifier", /*TEXT*/ 0, obj.codeVerifierAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_SESSION_TEMP_TABLE\" SET \"CodeVerifier\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_SESSION_TEMP_TABLEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("CodeVerifier", /*TEXT*/ 0, obj.codeVerifierAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_SESSION_TEMP_TABLE\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_SESSION_TEMP_TABLE\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_SESSION_TEMP_TABLEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("CodeVerifier", /*TEXT*/ 0, obj.codeVerifierAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_SESSION_TEMP_TABLEAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_SESSION_TEMP_TABLEAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_ADDONS_REFILLS = {
+key: "388eb277-36aa-4d4d-aeb5-f849b8e7b8e9",
+name: "Local_ADDONS_REFILLS",
+tableName: "OSUSR_P9G_LOCAL_ADDONS_REFILLS",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Id_Addons_Refills",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"Id_Addons_Refills\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Icon",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"Icon\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Cost",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"Cost\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "IsSubscribed",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"IsSubscribed\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "StatusLabel",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"StatusLabel\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "CanSubscribe",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"CanSubscribe\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "IsPending",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"IsPending\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "CanUnsubscribe",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"CanUnsubscribe\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "ExpiryDate",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"ExpiryDate\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Description",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"Description\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "IsAvailable",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"IsAvailable\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "Msisdn",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"Msisdn\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "CommercialDescription",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"CommercialDescription\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "PackageGroup",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"PackageGroup\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Type",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"Type\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Category",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"Category\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "CategoryLabel",
+type: /*TEXT*/ 0,
+length: 150,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"CategoryLabel\" TEXT(150) DEFAULT \'\'"
+}
+}, {
+name: "CategoryDescription",
+type: /*TEXT*/ 0,
+length: 350,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"CategoryDescription\" TEXT(350) DEFAULT \'\'"
+}
+}, {
+name: "IsAddOn",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"IsAddOn\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "IsRefill",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"IsRefill\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "SubscriptionStart",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"SubscriptionStart\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Icons",
+type: /*TEXT*/ 0,
+length: 256,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"Icons\" TEXT(256) DEFAULT \'\'"
+}
+}, {
+name: "CacheExpirationDate",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" ADD \"CacheExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "99ed46f7-09cf-68bc-c5e5-cba8c0125e00",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_ADDONS_REFILLSRecord(WTF_MBPModel.Local_ADDONS_REFILLSRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Id_Addons_Refills\" TEXT(50) DEFAULT \'\', \"Icon\" TEXT(50) DEFAULT \'\', \"Cost\" TEXT(50) DEFAULT \'\', \"IsSubscribed\" BOOLEAN DEFAULT 0, \"StatusLabel\" TEXT(50) DEFAULT \'\', \"CanSubscribe\" BOOLEAN DEFAULT 0, \"IsPending\" BOOLEAN DEFAULT 0, \"CanUnsubscribe\" BOOLEAN DEFAULT 0, \"ExpiryDate\" TEXT(50) DEFAULT \'\', \"Description\" TEXT(50) DEFAULT \'\', \"IsAvailable\" BOOLEAN DEFAULT 0, \"Msisdn\" TEXT(50) DEFAULT \'\', \"CommercialDescription\" TEXT(50) DEFAULT \'\', \"PackageGroup\" TEXT(50) DEFAULT \'\', \"Type\" TEXT(50) DEFAULT \'\', \"Category\" TEXT(50) DEFAULT \'\', \"CategoryLabel\" TEXT(150) DEFAULT \'\', \"CategoryDescription\" TEXT(350) DEFAULT \'\', \"IsAddOn\" BOOLEAN DEFAULT 0, \"IsRefill\" BOOLEAN DEFAULT 0, \"SubscriptionStart\" TEXT(50) DEFAULT \'\', \"Icons\" TEXT(256) DEFAULT \'\', \"CacheExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Id_Addons_Refills\" o1, \"Icon\" o2, \"Cost\" o3, \"IsSubscribed\" o4, \"StatusLabel\" o5, \"CanSubscribe\" o6, \"IsPending\" o7, \"CanUnsubscribe\" o8, \"ExpiryDate\" o9, \"Description\" o10, \"IsAvailable\" o11, \"Msisdn\" o12, \"CommercialDescription\" o13, \"PackageGroup\" o14, \"Type\" o15, \"Category\" o16, \"CategoryLabel\" o17, \"CategoryDescription\" o18, \"IsAddOn\" o19, \"IsRefill\" o20, \"SubscriptionStart\" o21, \"Icons\" o22, \"CacheExpirationDate\" o23 FROM \"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" (\"Id\", \"Id_Addons_Refills\", \"Icon\", \"Cost\", \"IsSubscribed\", \"StatusLabel\", \"CanSubscribe\", \"IsPending\", \"CanUnsubscribe\", \"ExpiryDate\", \"Description\", \"IsAvailable\", \"Msisdn\", \"CommercialDescription\", \"PackageGroup\", \"Type\", \"Category\", \"CategoryLabel\", \"CategoryDescription\", \"IsAddOn\", \"IsRefill\", \"SubscriptionStart\", \"Icons\", \"CacheExpirationDate\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_ADDONS_REFILLSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Id_Addons_Refills", /*TEXT*/ 0, obj.id_Addons_RefillsAttr);
+argsList.add("Icon", /*TEXT*/ 0, obj.iconAttr);
+argsList.add("Cost", /*TEXT*/ 0, obj.costAttr);
+argsList.add("IsSubscribed", /*BOOLEAN*/ 2, obj.isSubscribedAttr);
+argsList.add("StatusLabel", /*TEXT*/ 0, obj.statusLabelAttr);
+argsList.add("CanSubscribe", /*BOOLEAN*/ 2, obj.canSubscribeAttr);
+argsList.add("IsPending", /*BOOLEAN*/ 2, obj.isPendingAttr);
+argsList.add("CanUnsubscribe", /*BOOLEAN*/ 2, obj.canUnsubscribeAttr);
+argsList.add("ExpiryDate", /*TEXT*/ 0, obj.expiryDateAttr);
+argsList.add("Description", /*TEXT*/ 0, obj.descriptionAttr);
+argsList.add("IsAvailable", /*BOOLEAN*/ 2, obj.isAvailableAttr);
+argsList.add("Msisdn", /*TEXT*/ 0, obj.msisdnAttr);
+argsList.add("CommercialDescription", /*TEXT*/ 0, obj.commercialDescriptionAttr);
+argsList.add("PackageGroup", /*TEXT*/ 0, obj.packageGroupAttr);
+argsList.add("Type", /*TEXT*/ 0, obj.typeAttr);
+argsList.add("Category", /*TEXT*/ 0, obj.categoryAttr);
+argsList.add("CategoryLabel", /*TEXT*/ 0, obj.categoryLabelAttr);
+argsList.add("CategoryDescription", /*TEXT*/ 0, obj.categoryDescriptionAttr);
+argsList.add("IsAddOn", /*BOOLEAN*/ 2, obj.isAddOnAttr);
+argsList.add("IsRefill", /*BOOLEAN*/ 2, obj.isRefillAttr);
+argsList.add("SubscriptionStart", /*TEXT*/ 0, obj.subscriptionStartAttr);
+argsList.add("Icons", /*TEXT*/ 0, obj.iconsAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" (\"Id\", \"Id_Addons_Refills\", \"Icon\", \"Cost\", \"IsSubscribed\", \"StatusLabel\", \"CanSubscribe\", \"IsPending\", \"CanUnsubscribe\", \"ExpiryDate\", \"Description\", \"IsAvailable\", \"Msisdn\", \"CommercialDescription\", \"PackageGroup\", \"Type\", \"Category\", \"CategoryLabel\", \"CategoryDescription\", \"IsAddOn\", \"IsRefill\", \"SubscriptionStart\", \"Icons\", \"CacheExpirationDate\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_ADDONS_REFILLSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Id_Addons_Refills", /*TEXT*/ 0, obj.id_Addons_RefillsAttr);
+argsList.add("Icon", /*TEXT*/ 0, obj.iconAttr);
+argsList.add("Cost", /*TEXT*/ 0, obj.costAttr);
+argsList.add("IsSubscribed", /*BOOLEAN*/ 2, obj.isSubscribedAttr);
+argsList.add("StatusLabel", /*TEXT*/ 0, obj.statusLabelAttr);
+argsList.add("CanSubscribe", /*BOOLEAN*/ 2, obj.canSubscribeAttr);
+argsList.add("IsPending", /*BOOLEAN*/ 2, obj.isPendingAttr);
+argsList.add("CanUnsubscribe", /*BOOLEAN*/ 2, obj.canUnsubscribeAttr);
+argsList.add("ExpiryDate", /*TEXT*/ 0, obj.expiryDateAttr);
+argsList.add("Description", /*TEXT*/ 0, obj.descriptionAttr);
+argsList.add("IsAvailable", /*BOOLEAN*/ 2, obj.isAvailableAttr);
+argsList.add("Msisdn", /*TEXT*/ 0, obj.msisdnAttr);
+argsList.add("CommercialDescription", /*TEXT*/ 0, obj.commercialDescriptionAttr);
+argsList.add("PackageGroup", /*TEXT*/ 0, obj.packageGroupAttr);
+argsList.add("Type", /*TEXT*/ 0, obj.typeAttr);
+argsList.add("Category", /*TEXT*/ 0, obj.categoryAttr);
+argsList.add("CategoryLabel", /*TEXT*/ 0, obj.categoryLabelAttr);
+argsList.add("CategoryDescription", /*TEXT*/ 0, obj.categoryDescriptionAttr);
+argsList.add("IsAddOn", /*BOOLEAN*/ 2, obj.isAddOnAttr);
+argsList.add("IsRefill", /*BOOLEAN*/ 2, obj.isRefillAttr);
+argsList.add("SubscriptionStart", /*TEXT*/ 0, obj.subscriptionStartAttr);
+argsList.add("Icons", /*TEXT*/ 0, obj.iconsAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" SET \"Id_Addons_Refills\" = ?, \"Icon\" = ?, \"Cost\" = ?, \"IsSubscribed\" = ?, \"StatusLabel\" = ?, \"CanSubscribe\" = ?, \"IsPending\" = ?, \"CanUnsubscribe\" = ?, \"ExpiryDate\" = ?, \"Description\" = ?, \"IsAvailable\" = ?, \"Msisdn\" = ?, \"CommercialDescription\" = ?, \"PackageGroup\" = ?, \"Type\" = ?, \"Category\" = ?, \"CategoryLabel\" = ?, \"CategoryDescription\" = ?, \"IsAddOn\" = ?, \"IsRefill\" = ?, \"SubscriptionStart\" = ?, \"Icons\" = ?, \"CacheExpirationDate\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_ADDONS_REFILLSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id_Addons_Refills", /*TEXT*/ 0, obj.id_Addons_RefillsAttr);
+argsList.add("Icon", /*TEXT*/ 0, obj.iconAttr);
+argsList.add("Cost", /*TEXT*/ 0, obj.costAttr);
+argsList.add("IsSubscribed", /*BOOLEAN*/ 2, obj.isSubscribedAttr);
+argsList.add("StatusLabel", /*TEXT*/ 0, obj.statusLabelAttr);
+argsList.add("CanSubscribe", /*BOOLEAN*/ 2, obj.canSubscribeAttr);
+argsList.add("IsPending", /*BOOLEAN*/ 2, obj.isPendingAttr);
+argsList.add("CanUnsubscribe", /*BOOLEAN*/ 2, obj.canUnsubscribeAttr);
+argsList.add("ExpiryDate", /*TEXT*/ 0, obj.expiryDateAttr);
+argsList.add("Description", /*TEXT*/ 0, obj.descriptionAttr);
+argsList.add("IsAvailable", /*BOOLEAN*/ 2, obj.isAvailableAttr);
+argsList.add("Msisdn", /*TEXT*/ 0, obj.msisdnAttr);
+argsList.add("CommercialDescription", /*TEXT*/ 0, obj.commercialDescriptionAttr);
+argsList.add("PackageGroup", /*TEXT*/ 0, obj.packageGroupAttr);
+argsList.add("Type", /*TEXT*/ 0, obj.typeAttr);
+argsList.add("Category", /*TEXT*/ 0, obj.categoryAttr);
+argsList.add("CategoryLabel", /*TEXT*/ 0, obj.categoryLabelAttr);
+argsList.add("CategoryDescription", /*TEXT*/ 0, obj.categoryDescriptionAttr);
+argsList.add("IsAddOn", /*BOOLEAN*/ 2, obj.isAddOnAttr);
+argsList.add("IsRefill", /*BOOLEAN*/ 2, obj.isRefillAttr);
+argsList.add("SubscriptionStart", /*TEXT*/ 0, obj.subscriptionStartAttr);
+argsList.add("Icons", /*TEXT*/ 0, obj.iconsAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_ADDONS_REFILLS\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_ADDONS_REFILLS\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_ADDONS_REFILLSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Id_Addons_Refills", /*TEXT*/ 0, obj.id_Addons_RefillsAttr);
+argsList.add("Icon", /*TEXT*/ 0, obj.iconAttr);
+argsList.add("Cost", /*TEXT*/ 0, obj.costAttr);
+argsList.add("IsSubscribed", /*BOOLEAN*/ 2, obj.isSubscribedAttr);
+argsList.add("StatusLabel", /*TEXT*/ 0, obj.statusLabelAttr);
+argsList.add("CanSubscribe", /*BOOLEAN*/ 2, obj.canSubscribeAttr);
+argsList.add("IsPending", /*BOOLEAN*/ 2, obj.isPendingAttr);
+argsList.add("CanUnsubscribe", /*BOOLEAN*/ 2, obj.canUnsubscribeAttr);
+argsList.add("ExpiryDate", /*TEXT*/ 0, obj.expiryDateAttr);
+argsList.add("Description", /*TEXT*/ 0, obj.descriptionAttr);
+argsList.add("IsAvailable", /*BOOLEAN*/ 2, obj.isAvailableAttr);
+argsList.add("Msisdn", /*TEXT*/ 0, obj.msisdnAttr);
+argsList.add("CommercialDescription", /*TEXT*/ 0, obj.commercialDescriptionAttr);
+argsList.add("PackageGroup", /*TEXT*/ 0, obj.packageGroupAttr);
+argsList.add("Type", /*TEXT*/ 0, obj.typeAttr);
+argsList.add("Category", /*TEXT*/ 0, obj.categoryAttr);
+argsList.add("CategoryLabel", /*TEXT*/ 0, obj.categoryLabelAttr);
+argsList.add("CategoryDescription", /*TEXT*/ 0, obj.categoryDescriptionAttr);
+argsList.add("IsAddOn", /*BOOLEAN*/ 2, obj.isAddOnAttr);
+argsList.add("IsRefill", /*BOOLEAN*/ 2, obj.isRefillAttr);
+argsList.add("SubscriptionStart", /*TEXT*/ 0, obj.subscriptionStartAttr);
+argsList.add("Icons", /*TEXT*/ 0, obj.iconsAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_ADDONS_REFILLSAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_ADDONS_REFILLSAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_ACCESS_TOKEN_INFO = {
+key: "39688a46-cd9d-4902-bc03-02cc27b70035",
+name: "Local_ACCESS_TOKEN_INFO",
+tableName: "OSUSR_P9G_LOCAL_ACCESS_TOKEN_INFO",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Refresh_token",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ACCESS_TOKEN_INFO\" ADD \"Refresh_token\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Access_token",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ACCESS_TOKEN_INFO\" ADD \"Access_token\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "IsUserRegistered",
+type: /*BOOLEAN*/ 2,
+default: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ACCESS_TOKEN_INFO\" ADD \"IsUserRegistered\" BOOLEAN DEFAULT 0"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "2a71acff-fefe-6f79-04ec-f5f36712f867",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_ACCESS_TOKEN_INFORecord(WTF_MBPModel.Local_ACCESS_TOKEN_INFORecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ACCESS_TOKEN_INFO\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Refresh_token\" TEXT(50) DEFAULT \'\', \"Access_token\" TEXT(50) DEFAULT \'\', \"IsUserRegistered\" BOOLEAN DEFAULT 0)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Refresh_token\" o1, \"Access_token\" o2, \"IsUserRegistered\" o3 FROM \"OSUSR_P9G_LOCAL_ACCESS_TOKEN_INFO\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_ACCESS_TOKEN_INFO\" (\"Id\", \"Refresh_token\", \"Access_token\", \"IsUserRegistered\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_ACCESS_TOKEN_INFOAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Refresh_token", /*TEXT*/ 0, obj.refresh_tokenAttr);
+argsList.add("Access_token", /*TEXT*/ 0, obj.access_tokenAttr);
+argsList.add("IsUserRegistered", /*BOOLEAN*/ 2, obj.isUserRegisteredAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_ACCESS_TOKEN_INFO\" (\"Id\", \"Refresh_token\", \"Access_token\", \"IsUserRegistered\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_ACCESS_TOKEN_INFOAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Refresh_token", /*TEXT*/ 0, obj.refresh_tokenAttr);
+argsList.add("Access_token", /*TEXT*/ 0, obj.access_tokenAttr);
+argsList.add("IsUserRegistered", /*BOOLEAN*/ 2, obj.isUserRegisteredAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_ACCESS_TOKEN_INFO\" SET \"Refresh_token\" = ?, \"Access_token\" = ?, \"IsUserRegistered\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_ACCESS_TOKEN_INFOAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Refresh_token", /*TEXT*/ 0, obj.refresh_tokenAttr);
+argsList.add("Access_token", /*TEXT*/ 0, obj.access_tokenAttr);
+argsList.add("IsUserRegistered", /*BOOLEAN*/ 2, obj.isUserRegisteredAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_ACCESS_TOKEN_INFO\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_ACCESS_TOKEN_INFO\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_ACCESS_TOKEN_INFOAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Refresh_token", /*TEXT*/ 0, obj.refresh_tokenAttr);
+argsList.add("Access_token", /*TEXT*/ 0, obj.access_tokenAttr);
+argsList.add("IsUserRegistered", /*BOOLEAN*/ 2, obj.isUserRegisteredAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_ACCESS_TOKEN_INFOAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_ACCESS_TOKEN_INFOAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_HOT_DEAL_PURCHASE = {
+key: "4213d32b-f249-411a-8b75-57e09f66d383",
+name: "Local_HOT_DEAL_PURCHASE",
+tableName: "OSUSR_P9G_LOCAL_HOT_DEAL_PURCHASE",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Amount",
+type: /*DECIMAL*/ 5,
+length: 15,
+decimals: 5,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_HOT_DEAL_PURCHASE\" ADD \"Amount\" REAL(15,5) DEFAULT 0"
+}
+}, {
+name: "DateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_HOT_DEAL_PURCHASE\" ADD \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "5259c817-f0d2-cd77-afa0-ff7ec435b372",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_HOT_DEAL_PURCHASERecord(WTF_MBPModel.Local_HOT_DEAL_PURCHASERecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_HOT_DEAL_PURCHASE\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Amount\" REAL(15,5) DEFAULT 0, \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Amount\" o1, \"DateTime\" o2 FROM \"OSUSR_P9G_LOCAL_HOT_DEAL_PURCHASE\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_HOT_DEAL_PURCHASE\" (\"Id\", \"Amount\", \"DateTime\") VALUES (?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_HOT_DEAL_PURCHASEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_HOT_DEAL_PURCHASE\" (\"Id\", \"Amount\", \"DateTime\") VALUES (?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_HOT_DEAL_PURCHASEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_HOT_DEAL_PURCHASE\" SET \"Amount\" = ?, \"DateTime\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_HOT_DEAL_PURCHASEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_HOT_DEAL_PURCHASE\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_HOT_DEAL_PURCHASE\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_HOT_DEAL_PURCHASEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_HOT_DEAL_PURCHASEAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_HOT_DEAL_PURCHASEAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_SCRATCH_REGULATION_ACCEPT = {
+key: "46dbd5cf-5d8e-4c86-803b-cc7e86cf5da6",
+name: "Local_SCRATCH_REGULATION_ACCEPT",
+tableName: "OSUSR_P9G_LOCAL_SCRATCH_REGULATION_ACCEPT",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "AcceptedAt",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SCRATCH_REGULATION_ACCEPT\" ADD \"AcceptedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "UserWTFID",
+type: /*TEXT*/ 0,
+length: 250,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SCRATCH_REGULATION_ACCEPT\" ADD \"UserWTFID\" TEXT(250) DEFAULT \'\'"
+}
+}, {
+name: "RegulationVersionId",
+type: /*LONGINTEGER*/ 4,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SCRATCH_REGULATION_ACCEPT\" ADD \"RegulationVersionId\" BIGINT DEFAULT 0"
+}
+}, {
+name: "DateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SCRATCH_REGULATION_ACCEPT\" ADD \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "1f75fe99-c654-9dfa-c9b8-864dd25d74ed",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_SCRATCH_REGULATION_ACCEPTRecord(WTF_MBPModel.Local_SCRATCH_REGULATION_ACCEPTRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SCRATCH_REGULATION_ACCEPT\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"AcceptedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"UserWTFID\" TEXT(250) DEFAULT \'\', \"RegulationVersionId\" BIGINT DEFAULT 0, \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"AcceptedAt\" o1, \"UserWTFID\" o2, \"RegulationVersionId\" o3, \"DateTime\" o4 FROM \"OSUSR_P9G_LOCAL_SCRATCH_REGULATION_ACCEPT\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_SCRATCH_REGULATION_ACCEPT\" (\"Id\", \"AcceptedAt\", \"UserWTFID\", \"RegulationVersionId\", \"DateTime\") VALUES (?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_SCRATCH_REGULATION_ACCEPTAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("AcceptedAt", /*DATE_TIME*/ 6, obj.acceptedAtAttr);
+argsList.add("UserWTFID", /*TEXT*/ 0, obj.userWTFIDAttr);
+argsList.add("RegulationVersionId", /*LONGINTEGER*/ 4, obj.regulationVersionIdAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_SCRATCH_REGULATION_ACCEPT\" (\"Id\", \"AcceptedAt\", \"UserWTFID\", \"RegulationVersionId\", \"DateTime\") VALUES (?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_SCRATCH_REGULATION_ACCEPTAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("AcceptedAt", /*DATE_TIME*/ 6, obj.acceptedAtAttr);
+argsList.add("UserWTFID", /*TEXT*/ 0, obj.userWTFIDAttr);
+argsList.add("RegulationVersionId", /*LONGINTEGER*/ 4, obj.regulationVersionIdAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_SCRATCH_REGULATION_ACCEPT\" SET \"AcceptedAt\" = ?, \"UserWTFID\" = ?, \"RegulationVersionId\" = ?, \"DateTime\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_SCRATCH_REGULATION_ACCEPTAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("AcceptedAt", /*DATE_TIME*/ 6, obj.acceptedAtAttr);
+argsList.add("UserWTFID", /*TEXT*/ 0, obj.userWTFIDAttr);
+argsList.add("RegulationVersionId", /*LONGINTEGER*/ 4, obj.regulationVersionIdAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_SCRATCH_REGULATION_ACCEPT\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_SCRATCH_REGULATION_ACCEPT\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_SCRATCH_REGULATION_ACCEPTAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("AcceptedAt", /*DATE_TIME*/ 6, obj.acceptedAtAttr);
+argsList.add("UserWTFID", /*TEXT*/ 0, obj.userWTFIDAttr);
+argsList.add("RegulationVersionId", /*LONGINTEGER*/ 4, obj.regulationVersionIdAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_SCRATCH_REGULATION_ACCEPTAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_SCRATCH_REGULATION_ACCEPTAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_CACHE_CONTROL_SERVICES = {
+key: "47e3ec91-5be9-4eb1-8e45-def1dc6aa168",
+name: "Local_CACHE_CONTROL_SERVICES",
+tableName: "OSUSR_P9G_LOCAL_CACHE_CONTROL_SERVICES",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "CacheServiceId",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_CACHE_CONTROL_SERVICES\" ADD \"CacheServiceId\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "CacheControlId",
+type: /*LONGINTEGER*/ 4,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_CACHE_CONTROL_SERVICES\" ADD \"CacheControlId\" BIGINT DEFAULT 0"
+}
+}, {
+name: "LastUpdateAt",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_CACHE_CONTROL_SERVICES\" ADD \"LastUpdateAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "ExpirationDate",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_CACHE_CONTROL_SERVICES\" ADD \"ExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "LastCacheCheck",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_CACHE_CONTROL_SERVICES\" ADD \"LastCacheCheck\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "f97fef63-7f30-769d-0423-d4e7ed1d25b5",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_CACHE_CONTROL_SERVICESRecord(WTF_MBPModel.Local_CACHE_CONTROL_SERVICESRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_CACHE_CONTROL_SERVICES\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"CacheServiceId\" TEXT(50) DEFAULT \'\', \"CacheControlId\" BIGINT DEFAULT 0, \"LastUpdateAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"ExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"LastCacheCheck\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"CacheServiceId\" o1, \"CacheControlId\" o2, \"LastUpdateAt\" o3, \"ExpirationDate\" o4, \"LastCacheCheck\" o5 FROM \"OSUSR_P9G_LOCAL_CACHE_CONTROL_SERVICES\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_CACHE_CONTROL_SERVICES\" (\"Id\", \"CacheServiceId\", \"CacheControlId\", \"LastUpdateAt\", \"ExpirationDate\", \"LastCacheCheck\") VALUES (?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_CACHE_CONTROL_SERVICESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("CacheServiceId", /*TEXT*/ 0, obj.cacheServiceIdAttr);
+argsList.add("CacheControlId", /*LONGINTEGER*/ 4, obj.cacheControlIdAttr);
+argsList.add("LastUpdateAt", /*DATE_TIME*/ 6, obj.lastUpdateAtAttr);
+argsList.add("ExpirationDate", /*DATE_TIME*/ 6, obj.expirationDateAttr);
+argsList.add("LastCacheCheck", /*DATE_TIME*/ 6, obj.lastCacheCheckAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_CACHE_CONTROL_SERVICES\" (\"Id\", \"CacheServiceId\", \"CacheControlId\", \"LastUpdateAt\", \"ExpirationDate\", \"LastCacheCheck\") VALUES (?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_CACHE_CONTROL_SERVICESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("CacheServiceId", /*TEXT*/ 0, obj.cacheServiceIdAttr);
+argsList.add("CacheControlId", /*LONGINTEGER*/ 4, obj.cacheControlIdAttr);
+argsList.add("LastUpdateAt", /*DATE_TIME*/ 6, obj.lastUpdateAtAttr);
+argsList.add("ExpirationDate", /*DATE_TIME*/ 6, obj.expirationDateAttr);
+argsList.add("LastCacheCheck", /*DATE_TIME*/ 6, obj.lastCacheCheckAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_CACHE_CONTROL_SERVICES\" SET \"CacheServiceId\" = ?, \"CacheControlId\" = ?, \"LastUpdateAt\" = ?, \"ExpirationDate\" = ?, \"LastCacheCheck\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_CACHE_CONTROL_SERVICESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("CacheServiceId", /*TEXT*/ 0, obj.cacheServiceIdAttr);
+argsList.add("CacheControlId", /*LONGINTEGER*/ 4, obj.cacheControlIdAttr);
+argsList.add("LastUpdateAt", /*DATE_TIME*/ 6, obj.lastUpdateAtAttr);
+argsList.add("ExpirationDate", /*DATE_TIME*/ 6, obj.expirationDateAttr);
+argsList.add("LastCacheCheck", /*DATE_TIME*/ 6, obj.lastCacheCheckAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_CACHE_CONTROL_SERVICES\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_CACHE_CONTROL_SERVICES\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_CACHE_CONTROL_SERVICESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("CacheServiceId", /*TEXT*/ 0, obj.cacheServiceIdAttr);
+argsList.add("CacheControlId", /*LONGINTEGER*/ 4, obj.cacheControlIdAttr);
+argsList.add("LastUpdateAt", /*DATE_TIME*/ 6, obj.lastUpdateAtAttr);
+argsList.add("ExpirationDate", /*DATE_TIME*/ 6, obj.expirationDateAttr);
+argsList.add("LastCacheCheck", /*DATE_TIME*/ 6, obj.lastCacheCheckAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_CACHE_CONTROL_SERVICESAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_CACHE_CONTROL_SERVICESAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_USER_NOS_INFO = {
+key: "4f5580b2-96c8-4a8f-aa9b-2aa463b9060c",
+name: "Local_USER_NOS_INFO",
+tableName: "OSUSR_P9G_LOCAL_USER_NOS_INFO",
+attributes: [{
+name: "Uid",
+type: /*TEXT*/ 0,
+length: 50,
+isPrimaryKey: true
+}, {
+name: "Name",
+type: /*TEXT*/ 0,
+length: 150,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_USER_NOS_INFO\" ADD \"Name\" TEXT(150) DEFAULT \'\'"
+}
+}, {
+name: "Birth_date",
+type: /*DATE*/ 7,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_USER_NOS_INFO\" ADD \"Birth_date\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "Gender",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_USER_NOS_INFO\" ADD \"Gender\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Username",
+type: /*TEXT*/ 0,
+length: 100,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_USER_NOS_INFO\" ADD \"Username\" TEXT(100) DEFAULT \'\'"
+}
+}, {
+name: "Picture",
+type: /*TEXT*/ 0,
+length: 2000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_USER_NOS_INFO\" ADD \"Picture\" TEXT(2000) DEFAULT \'\'"
+}
+}, {
+name: "CreatedAt",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_USER_NOS_INFO\" ADD \"CreatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*No*/ 0,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "2074cd7e-a8c6-9d15-9de4-e6b31e5a7fd3",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_USER_NOS_INFORecord(WTF_MBPModel.Local_USER_NOS_INFORecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_USER_NOS_INFO\" (\"Uid\" TEXT(50) PRIMARY KEY NOT NULL, \"Name\" TEXT(150) DEFAULT \'\', \"Birth_date\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"Gender\" TEXT(50) DEFAULT \'\', \"Username\" TEXT(100) DEFAULT \'\', \"Picture\" TEXT(2000) DEFAULT \'\', \"CreatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Uid\" o0, \"Name\" o1, \"Birth_date\" o2, \"Gender\" o3, \"Username\" o4, \"Picture\" o5, \"CreatedAt\" o6 FROM \"OSUSR_P9G_LOCAL_USER_NOS_INFO\" WHERE \"Uid\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_USER_NOS_INFO\" (\"Uid\", \"Name\", \"Birth_date\", \"Gender\", \"Username\", \"Picture\", \"CreatedAt\") VALUES (?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_USER_NOS_INFOAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Uid", /*TEXT*/ 0, obj.uidAttr);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("Birth_date", /*DATE*/ 7, obj.birth_dateAttr);
+argsList.add("Gender", /*TEXT*/ 0, obj.genderAttr);
+argsList.add("Username", /*TEXT*/ 0, obj.usernameAttr);
+argsList.add("Picture", /*TEXT*/ 0, obj.pictureAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_USER_NOS_INFO\" (\"Uid\", \"Name\", \"Birth_date\", \"Gender\", \"Username\", \"Picture\", \"CreatedAt\") VALUES (?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_USER_NOS_INFOAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Uid", /*TEXT*/ 0, obj.uidAttr);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("Birth_date", /*DATE*/ 7, obj.birth_dateAttr);
+argsList.add("Gender", /*TEXT*/ 0, obj.genderAttr);
+argsList.add("Username", /*TEXT*/ 0, obj.usernameAttr);
+argsList.add("Picture", /*TEXT*/ 0, obj.pictureAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_USER_NOS_INFO\" SET \"Name\" = ?, \"Birth_date\" = ?, \"Gender\" = ?, \"Username\" = ?, \"Picture\" = ?, \"CreatedAt\" = ? WHERE \"Uid\" = ?",
+getArguments: function (record) {
+var obj = record.local_USER_NOS_INFOAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("Birth_date", /*DATE*/ 7, obj.birth_dateAttr);
+argsList.add("Gender", /*TEXT*/ 0, obj.genderAttr);
+argsList.add("Username", /*TEXT*/ 0, obj.usernameAttr);
+argsList.add("Picture", /*TEXT*/ 0, obj.pictureAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("Uid", /*TEXT*/ 0, obj.uidAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_USER_NOS_INFO\" WHERE \"Uid\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_USER_NOS_INFO\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_USER_NOS_INFOAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Uid", /*TEXT*/ 0, obj.uidAttr);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("Birth_date", /*DATE*/ 7, obj.birth_dateAttr);
+argsList.add("Gender", /*TEXT*/ 0, obj.genderAttr);
+argsList.add("Username", /*TEXT*/ 0, obj.usernameAttr);
+argsList.add("Picture", /*TEXT*/ 0, obj.pictureAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_USER_NOS_INFOAttr;
+return false;
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_USER_NOS_INFOAttr;
+return obj.uidAttr;
+
+}
+};
+var infoLocal_APP_FAQS = {
+key: "50a205b6-313a-452d-9b2a-9758991193c3",
+name: "Local_APP_FAQS",
+tableName: "OSUSR_P9G_LOCAL_APP_FAQS",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Question",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_APP_FAQS\" ADD \"Question\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "Answer",
+type: /*TEXT*/ 0,
+length: 2000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_APP_FAQS\" ADD \"Answer\" TEXT(2000) DEFAULT \'\'"
+}
+}, {
+name: "Order",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_APP_FAQS\" ADD \"Order\" INTEGER DEFAULT 0"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "4758cdef-dfbd-2469-7a80-5368a213e980",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_APP_FAQSRecord(WTF_MBPModel.Local_APP_FAQSRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_APP_FAQS\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Question\" TEXT(1000) DEFAULT \'\', \"Answer\" TEXT(2000) DEFAULT \'\', \"Order\" INTEGER DEFAULT 0)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Question\" o1, \"Answer\" o2, \"Order\" o3 FROM \"OSUSR_P9G_LOCAL_APP_FAQS\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_APP_FAQS\" (\"Id\", \"Question\", \"Answer\", \"Order\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_APP_FAQSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Question", /*TEXT*/ 0, obj.questionAttr);
+argsList.add("Answer", /*TEXT*/ 0, obj.answerAttr);
+argsList.add("Order", /*INTEGER*/ 3, obj.orderAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_APP_FAQS\" (\"Id\", \"Question\", \"Answer\", \"Order\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_APP_FAQSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Question", /*TEXT*/ 0, obj.questionAttr);
+argsList.add("Answer", /*TEXT*/ 0, obj.answerAttr);
+argsList.add("Order", /*INTEGER*/ 3, obj.orderAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_APP_FAQS\" SET \"Question\" = ?, \"Answer\" = ?, \"Order\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_APP_FAQSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Question", /*TEXT*/ 0, obj.questionAttr);
+argsList.add("Answer", /*TEXT*/ 0, obj.answerAttr);
+argsList.add("Order", /*INTEGER*/ 3, obj.orderAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_APP_FAQS\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_APP_FAQS\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_APP_FAQSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Question", /*TEXT*/ 0, obj.questionAttr);
+argsList.add("Answer", /*TEXT*/ 0, obj.answerAttr);
+argsList.add("Order", /*INTEGER*/ 3, obj.orderAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_APP_FAQSAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_APP_FAQSAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_INFOCARDS = {
+key: "5afd1fbb-10e2-45c2-a0a7-cb1788266887",
+name: "Local_INFOCARDS",
+tableName: "OSUSR_P9G_LOCAL_INFOCARDS",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Identifier",
+type: /*LONGINTEGER*/ 4,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"Identifier\" BIGINT DEFAULT 0"
+}
+}, {
+name: "HasRead",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"HasRead\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "TitleCard",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"TitleCard\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "DescCard",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"DescCard\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "TitleHeaderPage",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"TitleHeaderPage\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Content_Type",
+type: /*TEXT*/ 0,
+length: 200,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"Content_Type\" TEXT(200) DEFAULT \'\'"
+}
+}, {
+name: "Content_Binary",
+type: /*BINARY_DATA*/ 1,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"Content_Binary\" BLOB DEFAULT NULL"
+}
+}, {
+name: "HasDetail",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"HasDetail\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "TitleDetail",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"TitleDetail\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "SubtitleDetail",
+type: /*TEXT*/ 0,
+length: 200,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"SubtitleDetail\" TEXT(200) DEFAULT \'\'"
+}
+}, {
+name: "BodyDetail",
+type: /*TEXT*/ 0,
+length: 1500,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"BodyDetail\" TEXT(1500) DEFAULT \'\'"
+}
+}, {
+name: "HasAction",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"HasAction\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "BtnActionExternalLink",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"BtnActionExternalLink\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "BtnActionLabel",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"BtnActionLabel\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "BtnActionInApp",
+type: /*BOOLEAN*/ 2,
+default: false,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"BtnActionInApp\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "BtnActionUrl",
+type: /*TEXT*/ 0,
+length: 500,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"BtnActionUrl\" TEXT(500) DEFAULT \'\'"
+}
+}, {
+name: "HasDeleteAction",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"HasDeleteAction\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "HasDeleteActionAfterRead",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" ADD \"HasDeleteActionAfterRead\" BOOLEAN DEFAULT 0"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "05be0c5b-c684-a402-811c-08b0b88d276f",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_INFOCARDSRecord(WTF_MBPModel.Local_INFOCARDSRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_INFOCARDS\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Identifier\" BIGINT DEFAULT 0, \"HasRead\" BOOLEAN DEFAULT 0, \"TitleCard\" TEXT(50) DEFAULT \'\', \"DescCard\" TEXT(50) DEFAULT \'\', \"TitleHeaderPage\" TEXT(50) DEFAULT \'\', \"Content_Type\" TEXT(200) DEFAULT \'\', \"Content_Binary\" BLOB DEFAULT NULL, \"HasDetail\" BOOLEAN DEFAULT 0, \"TitleDetail\" TEXT(50) DEFAULT \'\', \"SubtitleDetail\" TEXT(200) DEFAULT \'\', \"BodyDetail\" TEXT(1500) DEFAULT \'\', \"HasAction\" BOOLEAN DEFAULT 0, \"BtnActionExternalLink\" BOOLEAN DEFAULT 0, \"BtnActionLabel\" TEXT(50) DEFAULT \'\', \"BtnActionInApp\" BOOLEAN DEFAULT 0, \"BtnActionUrl\" TEXT(500) DEFAULT \'\', \"HasDeleteAction\" BOOLEAN DEFAULT 0, \"HasDeleteActionAfterRead\" BOOLEAN DEFAULT 0)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Identifier\" o1, \"HasRead\" o2, \"TitleCard\" o3, \"DescCard\" o4, \"TitleHeaderPage\" o5, \"Content_Type\" o6, \"Content_Binary\" o7, \"HasDetail\" o8, \"TitleDetail\" o9, \"SubtitleDetail\" o10, \"BodyDetail\" o11, \"HasAction\" o12, \"BtnActionExternalLink\" o13, \"BtnActionLabel\" o14, \"BtnActionInApp\" o15, \"BtnActionUrl\" o16, \"HasDeleteAction\" o17, \"HasDeleteActionAfterRead\" o18 FROM \"OSUSR_P9G_LOCAL_INFOCARDS\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_INFOCARDS\" (\"Id\", \"Identifier\", \"HasRead\", \"TitleCard\", \"DescCard\", \"TitleHeaderPage\", \"Content_Type\", \"Content_Binary\", \"HasDetail\", \"TitleDetail\", \"SubtitleDetail\", \"BodyDetail\", \"HasAction\", \"BtnActionExternalLink\", \"BtnActionLabel\", \"BtnActionInApp\", \"BtnActionUrl\", \"HasDeleteAction\", \"HasDeleteActionAfterRead\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_INFOCARDSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Identifier", /*LONGINTEGER*/ 4, obj.identifierAttr);
+argsList.add("HasRead", /*BOOLEAN*/ 2, obj.hasReadAttr);
+argsList.add("TitleCard", /*TEXT*/ 0, obj.titleCardAttr);
+argsList.add("DescCard", /*TEXT*/ 0, obj.descCardAttr);
+argsList.add("TitleHeaderPage", /*TEXT*/ 0, obj.titleHeaderPageAttr);
+argsList.add("Content_Type", /*TEXT*/ 0, obj.content_TypeAttr);
+argsList.add("Content_Binary", /*BINARY_DATA*/ 1, obj.content_BinaryAttr);
+argsList.add("HasDetail", /*BOOLEAN*/ 2, obj.hasDetailAttr);
+argsList.add("TitleDetail", /*TEXT*/ 0, obj.titleDetailAttr);
+argsList.add("SubtitleDetail", /*TEXT*/ 0, obj.subtitleDetailAttr);
+argsList.add("BodyDetail", /*TEXT*/ 0, obj.bodyDetailAttr);
+argsList.add("HasAction", /*BOOLEAN*/ 2, obj.hasActionAttr);
+argsList.add("BtnActionExternalLink", /*BOOLEAN*/ 2, obj.btnActionExternalLinkAttr);
+argsList.add("BtnActionLabel", /*TEXT*/ 0, obj.btnActionLabelAttr);
+argsList.add("BtnActionInApp", /*BOOLEAN*/ 2, obj.btnActionInAppAttr);
+argsList.add("BtnActionUrl", /*TEXT*/ 0, obj.btnActionUrlAttr);
+argsList.add("HasDeleteAction", /*BOOLEAN*/ 2, obj.hasDeleteActionAttr);
+argsList.add("HasDeleteActionAfterRead", /*BOOLEAN*/ 2, obj.hasDeleteActionAfterReadAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_INFOCARDS\" (\"Id\", \"Identifier\", \"HasRead\", \"TitleCard\", \"DescCard\", \"TitleHeaderPage\", \"Content_Type\", \"Content_Binary\", \"HasDetail\", \"TitleDetail\", \"SubtitleDetail\", \"BodyDetail\", \"HasAction\", \"BtnActionExternalLink\", \"BtnActionLabel\", \"BtnActionInApp\", \"BtnActionUrl\", \"HasDeleteAction\", \"HasDeleteActionAfterRead\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_INFOCARDSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Identifier", /*LONGINTEGER*/ 4, obj.identifierAttr);
+argsList.add("HasRead", /*BOOLEAN*/ 2, obj.hasReadAttr);
+argsList.add("TitleCard", /*TEXT*/ 0, obj.titleCardAttr);
+argsList.add("DescCard", /*TEXT*/ 0, obj.descCardAttr);
+argsList.add("TitleHeaderPage", /*TEXT*/ 0, obj.titleHeaderPageAttr);
+argsList.add("Content_Type", /*TEXT*/ 0, obj.content_TypeAttr);
+argsList.add("Content_Binary", /*BINARY_DATA*/ 1, obj.content_BinaryAttr);
+argsList.add("HasDetail", /*BOOLEAN*/ 2, obj.hasDetailAttr);
+argsList.add("TitleDetail", /*TEXT*/ 0, obj.titleDetailAttr);
+argsList.add("SubtitleDetail", /*TEXT*/ 0, obj.subtitleDetailAttr);
+argsList.add("BodyDetail", /*TEXT*/ 0, obj.bodyDetailAttr);
+argsList.add("HasAction", /*BOOLEAN*/ 2, obj.hasActionAttr);
+argsList.add("BtnActionExternalLink", /*BOOLEAN*/ 2, obj.btnActionExternalLinkAttr);
+argsList.add("BtnActionLabel", /*TEXT*/ 0, obj.btnActionLabelAttr);
+argsList.add("BtnActionInApp", /*BOOLEAN*/ 2, obj.btnActionInAppAttr);
+argsList.add("BtnActionUrl", /*TEXT*/ 0, obj.btnActionUrlAttr);
+argsList.add("HasDeleteAction", /*BOOLEAN*/ 2, obj.hasDeleteActionAttr);
+argsList.add("HasDeleteActionAfterRead", /*BOOLEAN*/ 2, obj.hasDeleteActionAfterReadAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_INFOCARDS\" SET \"Identifier\" = ?, \"HasRead\" = ?, \"TitleCard\" = ?, \"DescCard\" = ?, \"TitleHeaderPage\" = ?, \"Content_Type\" = ?, \"Content_Binary\" = ?, \"HasDetail\" = ?, \"TitleDetail\" = ?, \"SubtitleDetail\" = ?, \"BodyDetail\" = ?, \"HasAction\" = ?, \"BtnActionExternalLink\" = ?, \"BtnActionLabel\" = ?, \"BtnActionInApp\" = ?, \"BtnActionUrl\" = ?, \"HasDeleteAction\" = ?, \"HasDeleteActionAfterRead\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_INFOCARDSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Identifier", /*LONGINTEGER*/ 4, obj.identifierAttr);
+argsList.add("HasRead", /*BOOLEAN*/ 2, obj.hasReadAttr);
+argsList.add("TitleCard", /*TEXT*/ 0, obj.titleCardAttr);
+argsList.add("DescCard", /*TEXT*/ 0, obj.descCardAttr);
+argsList.add("TitleHeaderPage", /*TEXT*/ 0, obj.titleHeaderPageAttr);
+argsList.add("Content_Type", /*TEXT*/ 0, obj.content_TypeAttr);
+argsList.add("Content_Binary", /*BINARY_DATA*/ 1, obj.content_BinaryAttr);
+argsList.add("HasDetail", /*BOOLEAN*/ 2, obj.hasDetailAttr);
+argsList.add("TitleDetail", /*TEXT*/ 0, obj.titleDetailAttr);
+argsList.add("SubtitleDetail", /*TEXT*/ 0, obj.subtitleDetailAttr);
+argsList.add("BodyDetail", /*TEXT*/ 0, obj.bodyDetailAttr);
+argsList.add("HasAction", /*BOOLEAN*/ 2, obj.hasActionAttr);
+argsList.add("BtnActionExternalLink", /*BOOLEAN*/ 2, obj.btnActionExternalLinkAttr);
+argsList.add("BtnActionLabel", /*TEXT*/ 0, obj.btnActionLabelAttr);
+argsList.add("BtnActionInApp", /*BOOLEAN*/ 2, obj.btnActionInAppAttr);
+argsList.add("BtnActionUrl", /*TEXT*/ 0, obj.btnActionUrlAttr);
+argsList.add("HasDeleteAction", /*BOOLEAN*/ 2, obj.hasDeleteActionAttr);
+argsList.add("HasDeleteActionAfterRead", /*BOOLEAN*/ 2, obj.hasDeleteActionAfterReadAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_INFOCARDS\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_INFOCARDS\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_INFOCARDSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Identifier", /*LONGINTEGER*/ 4, obj.identifierAttr);
+argsList.add("HasRead", /*BOOLEAN*/ 2, obj.hasReadAttr);
+argsList.add("TitleCard", /*TEXT*/ 0, obj.titleCardAttr);
+argsList.add("DescCard", /*TEXT*/ 0, obj.descCardAttr);
+argsList.add("TitleHeaderPage", /*TEXT*/ 0, obj.titleHeaderPageAttr);
+argsList.add("Content_Type", /*TEXT*/ 0, obj.content_TypeAttr);
+argsList.add("Content_Binary", /*BINARY_DATA*/ 1, obj.content_BinaryAttr);
+argsList.add("HasDetail", /*BOOLEAN*/ 2, obj.hasDetailAttr);
+argsList.add("TitleDetail", /*TEXT*/ 0, obj.titleDetailAttr);
+argsList.add("SubtitleDetail", /*TEXT*/ 0, obj.subtitleDetailAttr);
+argsList.add("BodyDetail", /*TEXT*/ 0, obj.bodyDetailAttr);
+argsList.add("HasAction", /*BOOLEAN*/ 2, obj.hasActionAttr);
+argsList.add("BtnActionExternalLink", /*BOOLEAN*/ 2, obj.btnActionExternalLinkAttr);
+argsList.add("BtnActionLabel", /*TEXT*/ 0, obj.btnActionLabelAttr);
+argsList.add("BtnActionInApp", /*BOOLEAN*/ 2, obj.btnActionInAppAttr);
+argsList.add("BtnActionUrl", /*TEXT*/ 0, obj.btnActionUrlAttr);
+argsList.add("HasDeleteAction", /*BOOLEAN*/ 2, obj.hasDeleteActionAttr);
+argsList.add("HasDeleteActionAfterRead", /*BOOLEAN*/ 2, obj.hasDeleteActionAfterReadAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_INFOCARDSAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_INFOCARDSAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_ASSOCIATION = {
+key: "64b15017-a7ba-4029-a8b6-15bdb732cfc4",
+name: "Local_ASSOCIATION",
+tableName: "OSUSR_P9G_LOCAL_ASSOCIATION",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "DisplayValue",
+type: /*TEXT*/ 0,
+length: 100,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"DisplayValue\" TEXT(100) DEFAULT \'\'"
+}
+}, {
+name: "FriendlyName",
+type: /*TEXT*/ 0,
+length: 100,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"FriendlyName\" TEXT(100) DEFAULT \'\'"
+}
+}, {
+name: "RoleName",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"RoleName\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Key",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"Key\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Value",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"Value\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Master",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"Master\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "ContractDN",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"ContractDN\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "AccountOwner",
+type: /*TEXT*/ 0,
+length: 500,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"AccountOwner\" TEXT(500) DEFAULT \'\'"
+}
+}, {
+name: "AccountOwnerNIF",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"AccountOwnerNIF\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "AccountOwnerEmail",
+type: /*TEXT*/ 0,
+length: 250,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"AccountOwnerEmail\" TEXT(250) DEFAULT \'\'"
+}
+}, {
+name: "AccountOwnerPhoneNr",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"AccountOwnerPhoneNr\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "CustCode_ClientNumber",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"CustCode_ClientNumber\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "PersonId",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"PersonId\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "IsPending",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"IsPending\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "UA",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" ADD \"UA\" TEXT(50) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "64226bd4-89b8-fba7-2b5f-7c9591b0d43a",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_ASSOCIATIONRecord(WTF_MBPModel.Local_ASSOCIATIONRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_ASSOCIATION\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"DisplayValue\" TEXT(100) DEFAULT \'\', \"FriendlyName\" TEXT(100) DEFAULT \'\', \"RoleName\" TEXT(50) DEFAULT \'\', \"Key\" TEXT(50) DEFAULT \'\', \"Value\" TEXT(50) DEFAULT \'\', \"Master\" TEXT(50) DEFAULT \'\', \"ContractDN\" TEXT(50) DEFAULT \'\', \"AccountOwner\" TEXT(500) DEFAULT \'\', \"AccountOwnerNIF\" TEXT(50) DEFAULT \'\', \"AccountOwnerEmail\" TEXT(250) DEFAULT \'\', \"AccountOwnerPhoneNr\" TEXT(50) DEFAULT \'\', \"CustCode_ClientNumber\" TEXT(50) DEFAULT \'\', \"PersonId\" TEXT(50) DEFAULT \'\', \"IsPending\" BOOLEAN DEFAULT 0, \"UA\" TEXT(50) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"DisplayValue\" o1, \"FriendlyName\" o2, \"RoleName\" o3, \"Key\" o4, \"Value\" o5, \"Master\" o6, \"ContractDN\" o7, \"AccountOwner\" o8, \"AccountOwnerNIF\" o9, \"AccountOwnerEmail\" o10, \"AccountOwnerPhoneNr\" o11, \"CustCode_ClientNumber\" o12, \"PersonId\" o13, \"IsPending\" o14, \"UA\" o15 FROM \"OSUSR_P9G_LOCAL_ASSOCIATION\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_ASSOCIATION\" (\"Id\", \"DisplayValue\", \"FriendlyName\", \"RoleName\", \"Key\", \"Value\", \"Master\", \"ContractDN\", \"AccountOwner\", \"AccountOwnerNIF\", \"AccountOwnerEmail\", \"AccountOwnerPhoneNr\", \"CustCode_ClientNumber\", \"PersonId\", \"IsPending\", \"UA\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_ASSOCIATIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("DisplayValue", /*TEXT*/ 0, obj.displayValueAttr);
+argsList.add("FriendlyName", /*TEXT*/ 0, obj.friendlyNameAttr);
+argsList.add("RoleName", /*TEXT*/ 0, obj.roleNameAttr);
+argsList.add("Key", /*TEXT*/ 0, obj.keyAttr);
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+argsList.add("Master", /*TEXT*/ 0, obj.masterAttr);
+argsList.add("ContractDN", /*TEXT*/ 0, obj.contractDNAttr);
+argsList.add("AccountOwner", /*TEXT*/ 0, obj.accountOwnerAttr);
+argsList.add("AccountOwnerNIF", /*TEXT*/ 0, obj.accountOwnerNIFAttr);
+argsList.add("AccountOwnerEmail", /*TEXT*/ 0, obj.accountOwnerEmailAttr);
+argsList.add("AccountOwnerPhoneNr", /*TEXT*/ 0, obj.accountOwnerPhoneNrAttr);
+argsList.add("CustCode_ClientNumber", /*TEXT*/ 0, obj.custCode_ClientNumberAttr);
+argsList.add("PersonId", /*TEXT*/ 0, obj.personIdAttr);
+argsList.add("IsPending", /*BOOLEAN*/ 2, obj.isPendingAttr);
+argsList.add("UA", /*TEXT*/ 0, obj.uAAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_ASSOCIATION\" (\"Id\", \"DisplayValue\", \"FriendlyName\", \"RoleName\", \"Key\", \"Value\", \"Master\", \"ContractDN\", \"AccountOwner\", \"AccountOwnerNIF\", \"AccountOwnerEmail\", \"AccountOwnerPhoneNr\", \"CustCode_ClientNumber\", \"PersonId\", \"IsPending\", \"UA\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_ASSOCIATIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("DisplayValue", /*TEXT*/ 0, obj.displayValueAttr);
+argsList.add("FriendlyName", /*TEXT*/ 0, obj.friendlyNameAttr);
+argsList.add("RoleName", /*TEXT*/ 0, obj.roleNameAttr);
+argsList.add("Key", /*TEXT*/ 0, obj.keyAttr);
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+argsList.add("Master", /*TEXT*/ 0, obj.masterAttr);
+argsList.add("ContractDN", /*TEXT*/ 0, obj.contractDNAttr);
+argsList.add("AccountOwner", /*TEXT*/ 0, obj.accountOwnerAttr);
+argsList.add("AccountOwnerNIF", /*TEXT*/ 0, obj.accountOwnerNIFAttr);
+argsList.add("AccountOwnerEmail", /*TEXT*/ 0, obj.accountOwnerEmailAttr);
+argsList.add("AccountOwnerPhoneNr", /*TEXT*/ 0, obj.accountOwnerPhoneNrAttr);
+argsList.add("CustCode_ClientNumber", /*TEXT*/ 0, obj.custCode_ClientNumberAttr);
+argsList.add("PersonId", /*TEXT*/ 0, obj.personIdAttr);
+argsList.add("IsPending", /*BOOLEAN*/ 2, obj.isPendingAttr);
+argsList.add("UA", /*TEXT*/ 0, obj.uAAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_ASSOCIATION\" SET \"DisplayValue\" = ?, \"FriendlyName\" = ?, \"RoleName\" = ?, \"Key\" = ?, \"Value\" = ?, \"Master\" = ?, \"ContractDN\" = ?, \"AccountOwner\" = ?, \"AccountOwnerNIF\" = ?, \"AccountOwnerEmail\" = ?, \"AccountOwnerPhoneNr\" = ?, \"CustCode_ClientNumber\" = ?, \"PersonId\" = ?, \"IsPending\" = ?, \"UA\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_ASSOCIATIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("DisplayValue", /*TEXT*/ 0, obj.displayValueAttr);
+argsList.add("FriendlyName", /*TEXT*/ 0, obj.friendlyNameAttr);
+argsList.add("RoleName", /*TEXT*/ 0, obj.roleNameAttr);
+argsList.add("Key", /*TEXT*/ 0, obj.keyAttr);
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+argsList.add("Master", /*TEXT*/ 0, obj.masterAttr);
+argsList.add("ContractDN", /*TEXT*/ 0, obj.contractDNAttr);
+argsList.add("AccountOwner", /*TEXT*/ 0, obj.accountOwnerAttr);
+argsList.add("AccountOwnerNIF", /*TEXT*/ 0, obj.accountOwnerNIFAttr);
+argsList.add("AccountOwnerEmail", /*TEXT*/ 0, obj.accountOwnerEmailAttr);
+argsList.add("AccountOwnerPhoneNr", /*TEXT*/ 0, obj.accountOwnerPhoneNrAttr);
+argsList.add("CustCode_ClientNumber", /*TEXT*/ 0, obj.custCode_ClientNumberAttr);
+argsList.add("PersonId", /*TEXT*/ 0, obj.personIdAttr);
+argsList.add("IsPending", /*BOOLEAN*/ 2, obj.isPendingAttr);
+argsList.add("UA", /*TEXT*/ 0, obj.uAAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_ASSOCIATION\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_ASSOCIATION\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_ASSOCIATIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("DisplayValue", /*TEXT*/ 0, obj.displayValueAttr);
+argsList.add("FriendlyName", /*TEXT*/ 0, obj.friendlyNameAttr);
+argsList.add("RoleName", /*TEXT*/ 0, obj.roleNameAttr);
+argsList.add("Key", /*TEXT*/ 0, obj.keyAttr);
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+argsList.add("Master", /*TEXT*/ 0, obj.masterAttr);
+argsList.add("ContractDN", /*TEXT*/ 0, obj.contractDNAttr);
+argsList.add("AccountOwner", /*TEXT*/ 0, obj.accountOwnerAttr);
+argsList.add("AccountOwnerNIF", /*TEXT*/ 0, obj.accountOwnerNIFAttr);
+argsList.add("AccountOwnerEmail", /*TEXT*/ 0, obj.accountOwnerEmailAttr);
+argsList.add("AccountOwnerPhoneNr", /*TEXT*/ 0, obj.accountOwnerPhoneNrAttr);
+argsList.add("CustCode_ClientNumber", /*TEXT*/ 0, obj.custCode_ClientNumberAttr);
+argsList.add("PersonId", /*TEXT*/ 0, obj.personIdAttr);
+argsList.add("IsPending", /*BOOLEAN*/ 2, obj.isPendingAttr);
+argsList.add("UA", /*TEXT*/ 0, obj.uAAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_ASSOCIATIONAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_ASSOCIATIONAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_TEMPDEEPLINK = {
+key: "66a3906c-263b-4a2f-a888-9cb35a62065b",
+name: "Local_TEMPDEEPLINK",
+tableName: "OSUSR_P9G_LOCAL_TEMPDEEPLINK",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "URL",
+type: /*TEXT*/ 0,
+length: 250,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TEMPDEEPLINK\" ADD \"URL\" TEXT(250) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "8290d25e-d811-d6fd-57ae-d4c9b2c23a67",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_TEMPDEEPLINKRecord(WTF_MBPModel.Local_TEMPDEEPLINKRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TEMPDEEPLINK\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"URL\" TEXT(250) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"URL\" o1 FROM \"OSUSR_P9G_LOCAL_TEMPDEEPLINK\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_TEMPDEEPLINK\" (\"Id\", \"URL\") VALUES (?, ?)",
+getArguments: function (record) {
+var obj = record.local_TEMPDEEPLINKAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_TEMPDEEPLINK\" (\"Id\", \"URL\") VALUES (?, ?)",
+getArguments: function (record) {
+var obj = record.local_TEMPDEEPLINKAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_TEMPDEEPLINK\" SET \"URL\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_TEMPDEEPLINKAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_TEMPDEEPLINK\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_TEMPDEEPLINK\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_TEMPDEEPLINKAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_TEMPDEEPLINKAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_TEMPDEEPLINKAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_TMCODE_TO_CHANGE = {
+key: "79ca97ae-16f0-4e35-b35f-658bd6075779",
+name: "Local_TMCODE_TO_CHANGE",
+tableName: "OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Amount",
+type: /*DECIMAL*/ 5,
+length: 15,
+decimals: 5,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" ADD \"Amount\" REAL(37,8) DEFAULT 0"
+}
+}, {
+name: "Tmcode",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" ADD \"Tmcode\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RatePlanCode",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" ADD \"RatePlanCode\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Name",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" ADD \"Name\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Internet",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" ADD \"Internet\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Minutes",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" ADD \"Minutes\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "PriceMonthly",
+type: /*DECIMAL*/ 5,
+length: 15,
+decimals: 5,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" ADD \"PriceMonthly\" REAL(37,8) DEFAULT 0"
+}
+}, {
+name: "PriceWeekly",
+type: /*DECIMAL*/ 5,
+length: 15,
+decimals: 5,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" ADD \"PriceWeekly\" REAL(37,8) DEFAULT 0"
+}
+}, {
+name: "ConditionsUrl",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" ADD \"ConditionsUrl\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "isBestOffer",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" ADD \"isBestOffer\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "Is_MonthlyRenewal",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" ADD \"Is_MonthlyRenewal\" BOOLEAN DEFAULT 0"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "d4ea5dbf-32a1-06b6-8868-5815984ca38c",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_TMCODE_TO_CHANGERecord(WTF_MBPModel.Local_TMCODE_TO_CHANGERecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Amount\" REAL(37,8) DEFAULT 0, \"Tmcode\" TEXT(50) DEFAULT \'\', \"RatePlanCode\" TEXT(50) DEFAULT \'\', \"Name\" TEXT(50) DEFAULT \'\', \"Internet\" TEXT(50) DEFAULT \'\', \"Minutes\" TEXT(50) DEFAULT \'\', \"PriceMonthly\" REAL(37,8) DEFAULT 0, \"PriceWeekly\" REAL(37,8) DEFAULT 0, \"ConditionsUrl\" TEXT(50) DEFAULT \'\', \"isBestOffer\" BOOLEAN DEFAULT 0, \"Is_MonthlyRenewal\" BOOLEAN DEFAULT 0)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Amount\" o1, \"Tmcode\" o2, \"RatePlanCode\" o3, \"Name\" o4, \"Internet\" o5, \"Minutes\" o6, \"PriceMonthly\" o7, \"PriceWeekly\" o8, \"ConditionsUrl\" o9, \"isBestOffer\" o10, \"Is_MonthlyRenewal\" o11 FROM \"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" (\"Id\", \"Amount\", \"Tmcode\", \"RatePlanCode\", \"Name\", \"Internet\", \"Minutes\", \"PriceMonthly\", \"PriceWeekly\", \"ConditionsUrl\", \"isBestOffer\", \"Is_MonthlyRenewal\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_TMCODE_TO_CHANGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("Tmcode", /*TEXT*/ 0, obj.tmcodeAttr);
+argsList.add("RatePlanCode", /*TEXT*/ 0, obj.ratePlanCodeAttr);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("Internet", /*TEXT*/ 0, obj.internetAttr);
+argsList.add("Minutes", /*TEXT*/ 0, obj.minutesAttr);
+argsList.add("PriceMonthly", /*DECIMAL*/ 5, obj.priceMonthlyAttr, 15, 5);
+argsList.add("PriceWeekly", /*DECIMAL*/ 5, obj.priceWeeklyAttr, 15, 5);
+argsList.add("ConditionsUrl", /*TEXT*/ 0, obj.conditionsUrlAttr);
+argsList.add("isBestOffer", /*BOOLEAN*/ 2, obj.isBestOfferAttr);
+argsList.add("Is_MonthlyRenewal", /*BOOLEAN*/ 2, obj.is_MonthlyRenewalAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" (\"Id\", \"Amount\", \"Tmcode\", \"RatePlanCode\", \"Name\", \"Internet\", \"Minutes\", \"PriceMonthly\", \"PriceWeekly\", \"ConditionsUrl\", \"isBestOffer\", \"Is_MonthlyRenewal\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_TMCODE_TO_CHANGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("Tmcode", /*TEXT*/ 0, obj.tmcodeAttr);
+argsList.add("RatePlanCode", /*TEXT*/ 0, obj.ratePlanCodeAttr);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("Internet", /*TEXT*/ 0, obj.internetAttr);
+argsList.add("Minutes", /*TEXT*/ 0, obj.minutesAttr);
+argsList.add("PriceMonthly", /*DECIMAL*/ 5, obj.priceMonthlyAttr, 15, 5);
+argsList.add("PriceWeekly", /*DECIMAL*/ 5, obj.priceWeeklyAttr, 15, 5);
+argsList.add("ConditionsUrl", /*TEXT*/ 0, obj.conditionsUrlAttr);
+argsList.add("isBestOffer", /*BOOLEAN*/ 2, obj.isBestOfferAttr);
+argsList.add("Is_MonthlyRenewal", /*BOOLEAN*/ 2, obj.is_MonthlyRenewalAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" SET \"Amount\" = ?, \"Tmcode\" = ?, \"RatePlanCode\" = ?, \"Name\" = ?, \"Internet\" = ?, \"Minutes\" = ?, \"PriceMonthly\" = ?, \"PriceWeekly\" = ?, \"ConditionsUrl\" = ?, \"isBestOffer\" = ?, \"Is_MonthlyRenewal\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_TMCODE_TO_CHANGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("Tmcode", /*TEXT*/ 0, obj.tmcodeAttr);
+argsList.add("RatePlanCode", /*TEXT*/ 0, obj.ratePlanCodeAttr);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("Internet", /*TEXT*/ 0, obj.internetAttr);
+argsList.add("Minutes", /*TEXT*/ 0, obj.minutesAttr);
+argsList.add("PriceMonthly", /*DECIMAL*/ 5, obj.priceMonthlyAttr, 15, 5);
+argsList.add("PriceWeekly", /*DECIMAL*/ 5, obj.priceWeeklyAttr, 15, 5);
+argsList.add("ConditionsUrl", /*TEXT*/ 0, obj.conditionsUrlAttr);
+argsList.add("isBestOffer", /*BOOLEAN*/ 2, obj.isBestOfferAttr);
+argsList.add("Is_MonthlyRenewal", /*BOOLEAN*/ 2, obj.is_MonthlyRenewalAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_TMCODE_TO_CHANGE\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_TMCODE_TO_CHANGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("Tmcode", /*TEXT*/ 0, obj.tmcodeAttr);
+argsList.add("RatePlanCode", /*TEXT*/ 0, obj.ratePlanCodeAttr);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("Internet", /*TEXT*/ 0, obj.internetAttr);
+argsList.add("Minutes", /*TEXT*/ 0, obj.minutesAttr);
+argsList.add("PriceMonthly", /*DECIMAL*/ 5, obj.priceMonthlyAttr, 15, 5);
+argsList.add("PriceWeekly", /*DECIMAL*/ 5, obj.priceWeeklyAttr, 15, 5);
+argsList.add("ConditionsUrl", /*TEXT*/ 0, obj.conditionsUrlAttr);
+argsList.add("isBestOffer", /*BOOLEAN*/ 2, obj.isBestOfferAttr);
+argsList.add("Is_MonthlyRenewal", /*BOOLEAN*/ 2, obj.is_MonthlyRenewalAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_TMCODE_TO_CHANGEAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_TMCODE_TO_CHANGEAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_PRIZE = {
+key: "87e2fc83-f585-4331-aa13-d7a05b39cc34",
+name: "Local_PRIZE",
+tableName: "OSUSR_P9G_LOCAL_PRIZE",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+isPrimaryKey: true
+}, {
+name: "ItemTypesId",
+type: /*INTEGER*/ 3,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_PRIZE\" ADD \"ItemTypesId\" INTEGER DEFAULT NULL"
+}
+}, {
+name: "PictureId",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_PRIZE\" ADD \"PictureId\" BIGINT DEFAULT NULL"
+}
+}, {
+name: "Name",
+type: /*TEXT*/ 0,
+length: 75,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_PRIZE\" ADD \"Name\" TEXT(75) DEFAULT \'\'"
+}
+}, {
+name: "Description",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_PRIZE\" ADD \"Description\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "CopyForScratch",
+type: /*TEXT*/ 0,
+length: 100,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_PRIZE\" ADD \"CopyForScratch\" TEXT(100) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "b5d5e6d1-ddba-76b4-0533-f8d3b625237b",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_PRIZERecord(WTF_MBPModel.Local_PRIZERecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_PRIZE\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"ItemTypesId\" INTEGER DEFAULT NULL, \"PictureId\" BIGINT DEFAULT NULL, \"Name\" TEXT(75) DEFAULT \'\', \"Description\" TEXT(1000) DEFAULT \'\', \"CopyForScratch\" TEXT(100) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"ItemTypesId\" o1, \"PictureId\" o2, \"Name\" o3, \"Description\" o4, \"CopyForScratch\" o5 FROM \"OSUSR_P9G_LOCAL_PRIZE\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_PRIZE\" (\"Id\", \"ItemTypesId\", \"PictureId\", \"Name\", \"Description\", \"CopyForScratch\") VALUES (?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_PRIZEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr, null, null, true);
+argsList.add("ItemTypesId", /*INTEGER*/ 3, obj.itemTypesIdAttr, null, null, true);
+argsList.add("PictureId", /*LONGINTEGER*/ 4, obj.pictureIdAttr, null, null, true);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("Description", /*TEXT*/ 0, obj.descriptionAttr);
+argsList.add("CopyForScratch", /*TEXT*/ 0, obj.copyForScratchAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_PRIZE\" (\"Id\", \"ItemTypesId\", \"PictureId\", \"Name\", \"Description\", \"CopyForScratch\") VALUES (?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_PRIZEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr, null, null, true);
+argsList.add("ItemTypesId", /*INTEGER*/ 3, obj.itemTypesIdAttr, null, null, true);
+argsList.add("PictureId", /*LONGINTEGER*/ 4, obj.pictureIdAttr, null, null, true);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("Description", /*TEXT*/ 0, obj.descriptionAttr);
+argsList.add("CopyForScratch", /*TEXT*/ 0, obj.copyForScratchAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_PRIZE\" SET \"ItemTypesId\" = ?, \"PictureId\" = ?, \"Name\" = ?, \"Description\" = ?, \"CopyForScratch\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_PRIZEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("ItemTypesId", /*INTEGER*/ 3, obj.itemTypesIdAttr, null, null, true);
+argsList.add("PictureId", /*LONGINTEGER*/ 4, obj.pictureIdAttr, null, null, true);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("Description", /*TEXT*/ 0, obj.descriptionAttr);
+argsList.add("CopyForScratch", /*TEXT*/ 0, obj.copyForScratchAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr, null, null, true);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_PRIZE\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_PRIZE\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_PRIZEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr, null, null, true);
+argsList.add("ItemTypesId", /*INTEGER*/ 3, obj.itemTypesIdAttr, null, null, true);
+argsList.add("PictureId", /*LONGINTEGER*/ 4, obj.pictureIdAttr, null, null, true);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("Description", /*TEXT*/ 0, obj.descriptionAttr);
+argsList.add("CopyForScratch", /*TEXT*/ 0, obj.copyForScratchAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_PRIZEAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_PRIZEAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_DIARY_DIAMOND_PARTS = {
+key: "8c73608d-f0a9-48b8-a1d2-430fa3da92f9",
+name: "Local_DIARY_DIAMOND_PARTS",
+tableName: "OSUSR_P9G_LOCAL_DIARY_DIAMOND_PARTS",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Quantity",
+type: /*DECIMAL*/ 5,
+length: 10,
+decimals: 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIARY_DIAMOND_PARTS\" ADD \"Quantity\" REAL(10,2) DEFAULT 0"
+}
+}, {
+name: "CreatedAt",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIARY_DIAMOND_PARTS\" ADD \"CreatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "UserWTFID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIARY_DIAMOND_PARTS\" ADD \"UserWTFID\" BIGINT DEFAULT NULL"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "661cb09f-cdeb-7c07-3f7f-96ef2c39b425",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_DIARY_DIAMOND_PARTSRecord(WTF_MBPModel.Local_DIARY_DIAMOND_PARTSRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIARY_DIAMOND_PARTS\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Quantity\" REAL(10,2) DEFAULT 0, \"CreatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"UserWTFID\" BIGINT DEFAULT NULL)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Quantity\" o1, \"CreatedAt\" o2, \"UserWTFID\" o3 FROM \"OSUSR_P9G_LOCAL_DIARY_DIAMOND_PARTS\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_DIARY_DIAMOND_PARTS\" (\"Id\", \"Quantity\", \"CreatedAt\", \"UserWTFID\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_DIARY_DIAMOND_PARTSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Quantity", /*DECIMAL*/ 5, obj.quantityAttr, 10, 2);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_DIARY_DIAMOND_PARTS\" (\"Id\", \"Quantity\", \"CreatedAt\", \"UserWTFID\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_DIARY_DIAMOND_PARTSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Quantity", /*DECIMAL*/ 5, obj.quantityAttr, 10, 2);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_DIARY_DIAMOND_PARTS\" SET \"Quantity\" = ?, \"CreatedAt\" = ?, \"UserWTFID\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_DIARY_DIAMOND_PARTSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Quantity", /*DECIMAL*/ 5, obj.quantityAttr, 10, 2);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_DIARY_DIAMOND_PARTS\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_DIARY_DIAMOND_PARTS\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_DIARY_DIAMOND_PARTSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Quantity", /*DECIMAL*/ 5, obj.quantityAttr, 10, 2);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_DIARY_DIAMOND_PARTSAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_DIARY_DIAMOND_PARTSAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_APP_ACCESS_CONTROL = {
+key: "ac6b41dd-dbb6-48c7-a448-6ef25294a067",
+name: "Local_APP_ACCESS_CONTROL",
+tableName: "OSUSR_P9G_LOCAL_APP_ACCESS_CONTROL",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "UserID",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_APP_ACCESS_CONTROL\" ADD \"UserID\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "LastAccess_AppBuildVersion",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_APP_ACCESS_CONTROL\" ADD \"LastAccess_AppBuildVersion\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "IsDemo",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_APP_ACCESS_CONTROL\" ADD \"IsDemo\" BOOLEAN DEFAULT 0"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "7ee128db-5f36-7715-cae8-17393e7c0d12",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_APP_ACCESS_CONTROLRecord(WTF_MBPModel.Local_APP_ACCESS_CONTROLRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_APP_ACCESS_CONTROL\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"UserID\" TEXT(50) DEFAULT \'\', \"LastAccess_AppBuildVersion\" TEXT(50) DEFAULT \'\', \"IsDemo\" BOOLEAN DEFAULT 0)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"UserID\" o1, \"LastAccess_AppBuildVersion\" o2, \"IsDemo\" o3 FROM \"OSUSR_P9G_LOCAL_APP_ACCESS_CONTROL\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_APP_ACCESS_CONTROL\" (\"Id\", \"UserID\", \"LastAccess_AppBuildVersion\", \"IsDemo\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_APP_ACCESS_CONTROLAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("UserID", /*TEXT*/ 0, obj.userIDAttr);
+argsList.add("LastAccess_AppBuildVersion", /*TEXT*/ 0, obj.lastAccess_AppBuildVersionAttr);
+argsList.add("IsDemo", /*BOOLEAN*/ 2, obj.isDemoAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_APP_ACCESS_CONTROL\" (\"Id\", \"UserID\", \"LastAccess_AppBuildVersion\", \"IsDemo\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_APP_ACCESS_CONTROLAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("UserID", /*TEXT*/ 0, obj.userIDAttr);
+argsList.add("LastAccess_AppBuildVersion", /*TEXT*/ 0, obj.lastAccess_AppBuildVersionAttr);
+argsList.add("IsDemo", /*BOOLEAN*/ 2, obj.isDemoAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_APP_ACCESS_CONTROL\" SET \"UserID\" = ?, \"LastAccess_AppBuildVersion\" = ?, \"IsDemo\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_APP_ACCESS_CONTROLAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("UserID", /*TEXT*/ 0, obj.userIDAttr);
+argsList.add("LastAccess_AppBuildVersion", /*TEXT*/ 0, obj.lastAccess_AppBuildVersionAttr);
+argsList.add("IsDemo", /*BOOLEAN*/ 2, obj.isDemoAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_APP_ACCESS_CONTROL\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_APP_ACCESS_CONTROL\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_APP_ACCESS_CONTROLAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("UserID", /*TEXT*/ 0, obj.userIDAttr);
+argsList.add("LastAccess_AppBuildVersion", /*TEXT*/ 0, obj.lastAccess_AppBuildVersionAttr);
+argsList.add("IsDemo", /*BOOLEAN*/ 2, obj.isDemoAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_APP_ACCESS_CONTROLAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_APP_ACCESS_CONTROLAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_DIARY_DIAMOND_MOVEMENT = {
+key: "ade29af7-648e-4810-acf1-7eb7fb7c3ffd",
+name: "Local_DIARY_DIAMOND_MOVEMENT",
+tableName: "OSUSR_P9G_LOCAL_DIARY_DIAMOND_MOVEMENT",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Quantity",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIARY_DIAMOND_MOVEMENT\" ADD \"Quantity\" INTEGER DEFAULT 0"
+}
+}, {
+name: "Observation",
+type: /*TEXT*/ 0,
+length: 200,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIARY_DIAMOND_MOVEMENT\" ADD \"Observation\" TEXT(200) DEFAULT \'\'"
+}
+}, {
+name: "CreatedAt",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIARY_DIAMOND_MOVEMENT\" ADD \"CreatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "UpdatedAt",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIARY_DIAMOND_MOVEMENT\" ADD \"UpdatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "UserWTFID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIARY_DIAMOND_MOVEMENT\" ADD \"UserWTFID\" BIGINT DEFAULT NULL"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "2ccb4d7d-a284-6da3-13f2-c21647a81e68",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_DIARY_DIAMOND_MOVEMENTRecord(WTF_MBPModel.Local_DIARY_DIAMOND_MOVEMENTRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIARY_DIAMOND_MOVEMENT\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Quantity\" INTEGER DEFAULT 0, \"Observation\" TEXT(200) DEFAULT \'\', \"CreatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"UpdatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"UserWTFID\" BIGINT DEFAULT NULL)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Quantity\" o1, \"Observation\" o2, \"CreatedAt\" o3, \"UpdatedAt\" o4, \"UserWTFID\" o5 FROM \"OSUSR_P9G_LOCAL_DIARY_DIAMOND_MOVEMENT\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_DIARY_DIAMOND_MOVEMENT\" (\"Id\", \"Quantity\", \"Observation\", \"CreatedAt\", \"UpdatedAt\", \"UserWTFID\") VALUES (?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_DIARY_DIAMOND_MOVEMENTAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Quantity", /*INTEGER*/ 3, obj.quantityAttr);
+argsList.add("Observation", /*TEXT*/ 0, obj.observationAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_DIARY_DIAMOND_MOVEMENT\" (\"Id\", \"Quantity\", \"Observation\", \"CreatedAt\", \"UpdatedAt\", \"UserWTFID\") VALUES (?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_DIARY_DIAMOND_MOVEMENTAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Quantity", /*INTEGER*/ 3, obj.quantityAttr);
+argsList.add("Observation", /*TEXT*/ 0, obj.observationAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_DIARY_DIAMOND_MOVEMENT\" SET \"Quantity\" = ?, \"Observation\" = ?, \"CreatedAt\" = ?, \"UpdatedAt\" = ?, \"UserWTFID\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_DIARY_DIAMOND_MOVEMENTAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Quantity", /*INTEGER*/ 3, obj.quantityAttr);
+argsList.add("Observation", /*TEXT*/ 0, obj.observationAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_DIARY_DIAMOND_MOVEMENT\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_DIARY_DIAMOND_MOVEMENT\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_DIARY_DIAMOND_MOVEMENTAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Quantity", /*INTEGER*/ 3, obj.quantityAttr);
+argsList.add("Observation", /*TEXT*/ 0, obj.observationAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_DIARY_DIAMOND_MOVEMENTAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_DIARY_DIAMOND_MOVEMENTAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_SCRATCH_REGULATION = {
+key: "bf704c7b-d1e9-4dd2-93ae-a4738cd715bd",
+name: "Local_SCRATCH_REGULATION",
+tableName: "OSUSR_P9G_LOCAL_SCRATCH_REGULATION",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Title",
+type: /*TEXT*/ 0,
+length: 150,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SCRATCH_REGULATION\" ADD \"Title\" TEXT(150) DEFAULT \'\'"
+}
+}, {
+name: "Body",
+type: /*TEXT*/ 0,
+length: 20000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SCRATCH_REGULATION\" ADD \"Body\" TEXT(20000) DEFAULT \'\'"
+}
+}, {
+name: "DateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SCRATCH_REGULATION\" ADD \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "64304424-c63c-8b1c-2658-093575f69d7a",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_SCRATCH_REGULATIONRecord(WTF_MBPModel.Local_SCRATCH_REGULATIONRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_SCRATCH_REGULATION\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Title\" TEXT(150) DEFAULT \'\', \"Body\" TEXT(20000) DEFAULT \'\', \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Title\" o1, \"Body\" o2, \"DateTime\" o3 FROM \"OSUSR_P9G_LOCAL_SCRATCH_REGULATION\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_SCRATCH_REGULATION\" (\"Id\", \"Title\", \"Body\", \"DateTime\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_SCRATCH_REGULATIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Title", /*TEXT*/ 0, obj.titleAttr);
+argsList.add("Body", /*TEXT*/ 0, obj.bodyAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_SCRATCH_REGULATION\" (\"Id\", \"Title\", \"Body\", \"DateTime\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_SCRATCH_REGULATIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Title", /*TEXT*/ 0, obj.titleAttr);
+argsList.add("Body", /*TEXT*/ 0, obj.bodyAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_SCRATCH_REGULATION\" SET \"Title\" = ?, \"Body\" = ?, \"DateTime\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_SCRATCH_REGULATIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Title", /*TEXT*/ 0, obj.titleAttr);
+argsList.add("Body", /*TEXT*/ 0, obj.bodyAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_SCRATCH_REGULATION\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_SCRATCH_REGULATION\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_SCRATCH_REGULATIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Title", /*TEXT*/ 0, obj.titleAttr);
+argsList.add("Body", /*TEXT*/ 0, obj.bodyAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_SCRATCH_REGULATIONAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_SCRATCH_REGULATIONAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_PICTURE = {
+key: "c96eb2a6-3aac-4038-96cb-36b202346961",
+name: "Local_PICTURE",
+tableName: "OSUSR_P9G_LOCAL_PICTURE",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+isPrimaryKey: true
+}, {
+name: "Content",
+type: /*BINARY_DATA*/ 1,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_PICTURE\" ADD \"Content\" BLOB DEFAULT NULL"
+}
+}, {
+name: "Filename",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_PICTURE\" ADD \"Filename\" TEXT(50) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "60a439da-3d3e-3312-7143-cac8f9b4af6d",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_PICTURERecord(WTF_MBPModel.Local_PICTURERecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_PICTURE\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Content\" BLOB DEFAULT NULL, \"Filename\" TEXT(50) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Content\" o1, \"Filename\" o2 FROM \"OSUSR_P9G_LOCAL_PICTURE\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_PICTURE\" (\"Id\", \"Content\", \"Filename\") VALUES (?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_PICTUREAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr, null, null, true);
+argsList.add("Content", /*BINARY_DATA*/ 1, obj.contentAttr);
+argsList.add("Filename", /*TEXT*/ 0, obj.filenameAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_PICTURE\" (\"Id\", \"Content\", \"Filename\") VALUES (?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_PICTUREAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr, null, null, true);
+argsList.add("Content", /*BINARY_DATA*/ 1, obj.contentAttr);
+argsList.add("Filename", /*TEXT*/ 0, obj.filenameAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_PICTURE\" SET \"Content\" = ?, \"Filename\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_PICTUREAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Content", /*BINARY_DATA*/ 1, obj.contentAttr);
+argsList.add("Filename", /*TEXT*/ 0, obj.filenameAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr, null, null, true);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_PICTURE\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_PICTURE\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_PICTUREAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr, null, null, true);
+argsList.add("Content", /*BINARY_DATA*/ 1, obj.contentAttr);
+argsList.add("Filename", /*TEXT*/ 0, obj.filenameAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_PICTUREAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_PICTUREAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_DIAMOND = {
+key: "d006a6cd-2e4e-44fc-a678-96ad75ba7480",
+name: "Local_DIAMOND",
+tableName: "OSUSR_P9G_LOCAL_DIAMOND",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Quantity",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIAMOND\" ADD \"Quantity\" INTEGER DEFAULT 0"
+}
+}, {
+name: "ExpirationAt",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIAMOND\" ADD \"ExpirationAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "Is_Active",
+type: /*BOOLEAN*/ 2,
+default: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIAMOND\" ADD \"Is_Active\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "CreatedAt",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIAMOND\" ADD \"CreatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "UpdatedAt",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIAMOND\" ADD \"UpdatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "UserWTFID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIAMOND\" ADD \"UserWTFID\" BIGINT DEFAULT NULL"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "ed2e2ea5-a9f2-a3c1-9c31-7b1ef3f7b25e",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_DIAMONDRecord(WTF_MBPModel.Local_DIAMONDRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_DIAMOND\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Quantity\" INTEGER DEFAULT 0, \"ExpirationAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"Is_Active\" BOOLEAN DEFAULT 0, \"CreatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"UpdatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"UserWTFID\" BIGINT DEFAULT NULL)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Quantity\" o1, \"ExpirationAt\" o2, \"Is_Active\" o3, \"CreatedAt\" o4, \"UpdatedAt\" o5, \"UserWTFID\" o6 FROM \"OSUSR_P9G_LOCAL_DIAMOND\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_DIAMOND\" (\"Id\", \"Quantity\", \"ExpirationAt\", \"Is_Active\", \"CreatedAt\", \"UpdatedAt\", \"UserWTFID\") VALUES (?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_DIAMONDAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Quantity", /*INTEGER*/ 3, obj.quantityAttr);
+argsList.add("ExpirationAt", /*DATE_TIME*/ 6, obj.expirationAtAttr);
+argsList.add("Is_Active", /*BOOLEAN*/ 2, obj.is_ActiveAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_DIAMOND\" (\"Id\", \"Quantity\", \"ExpirationAt\", \"Is_Active\", \"CreatedAt\", \"UpdatedAt\", \"UserWTFID\") VALUES (?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_DIAMONDAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Quantity", /*INTEGER*/ 3, obj.quantityAttr);
+argsList.add("ExpirationAt", /*DATE_TIME*/ 6, obj.expirationAtAttr);
+argsList.add("Is_Active", /*BOOLEAN*/ 2, obj.is_ActiveAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_DIAMOND\" SET \"Quantity\" = ?, \"ExpirationAt\" = ?, \"Is_Active\" = ?, \"CreatedAt\" = ?, \"UpdatedAt\" = ?, \"UserWTFID\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_DIAMONDAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Quantity", /*INTEGER*/ 3, obj.quantityAttr);
+argsList.add("ExpirationAt", /*DATE_TIME*/ 6, obj.expirationAtAttr);
+argsList.add("Is_Active", /*BOOLEAN*/ 2, obj.is_ActiveAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_DIAMOND\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_DIAMOND\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_DIAMONDAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Quantity", /*INTEGER*/ 3, obj.quantityAttr);
+argsList.add("ExpirationAt", /*DATE_TIME*/ 6, obj.expirationAtAttr);
+argsList.add("Is_Active", /*BOOLEAN*/ 2, obj.is_ActiveAttr);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("UserWTFID", /*LONGINTEGER*/ 4, obj.userWTFIDAttr, null, null, true);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_DIAMONDAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_DIAMONDAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_APP_CONFIG = {
+key: "d3894782-15a3-4aaf-b479-c94e9057f7b9",
+name: "Local_APP_CONFIG",
+tableName: "OSUSR_P9G_LOCAL_APP_CONFIG",
+attributes: [{
+name: "Key",
+type: /*TEXT*/ 0,
+length: 50,
+isPrimaryKey: true
+}, {
+name: "Value",
+type: /*TEXT*/ 0,
+length: 2500,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_APP_CONFIG\" ADD \"Value\" TEXT(2500) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*No*/ 0,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "378ab5b6-3e22-5f4c-89c4-9558af4e3f8c",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_APP_CONFIGRecord(WTF_MBPModel.Local_APP_CONFIGRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_APP_CONFIG\" (\"Key\" TEXT(50) PRIMARY KEY NOT NULL, \"Value\" TEXT(2500) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Key\" o0, \"Value\" o1 FROM \"OSUSR_P9G_LOCAL_APP_CONFIG\" WHERE \"Key\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_APP_CONFIG\" (\"Key\", \"Value\") VALUES (?, ?)",
+getArguments: function (record) {
+var obj = record.local_APP_CONFIGAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Key", /*TEXT*/ 0, obj.keyAttr);
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_APP_CONFIG\" (\"Key\", \"Value\") VALUES (?, ?)",
+getArguments: function (record) {
+var obj = record.local_APP_CONFIGAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Key", /*TEXT*/ 0, obj.keyAttr);
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_APP_CONFIG\" SET \"Value\" = ? WHERE \"Key\" = ?",
+getArguments: function (record) {
+var obj = record.local_APP_CONFIGAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+argsList.add("Key", /*TEXT*/ 0, obj.keyAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_APP_CONFIG\" WHERE \"Key\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_APP_CONFIG\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_APP_CONFIGAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Key", /*TEXT*/ 0, obj.keyAttr);
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_APP_CONFIGAttr;
+return false;
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_APP_CONFIGAttr;
+return obj.keyAttr;
+
+}
+};
+var infoLocal_LAYOUT_LEVELS = {
+key: "f98323e7-816e-46b7-a723-885000003b72",
+name: "Local_LAYOUT_LEVELS",
+tableName: "OSUSR_P9G_LOCAL_LAYOUT_LEVELS",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Label",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_LAYOUT_LEVELS\" ADD \"Label\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Level",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_LAYOUT_LEVELS\" ADD \"Level\" TEXT(50) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "b6566519-8085-79d6-6d80-a1190073a3a7",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_LAYOUT_LEVELSRecord(WTF_MBPModel.Local_LAYOUT_LEVELSRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCAL_LAYOUT_LEVELS\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Label\" TEXT(50) DEFAULT \'\', \"Level\" TEXT(50) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Label\" o1, \"Level\" o2 FROM \"OSUSR_P9G_LOCAL_LAYOUT_LEVELS\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCAL_LAYOUT_LEVELS\" (\"Id\", \"Label\", \"Level\") VALUES (?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_LAYOUT_LEVELSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("Level", /*TEXT*/ 0, obj.levelAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCAL_LAYOUT_LEVELS\" (\"Id\", \"Label\", \"Level\") VALUES (?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_LAYOUT_LEVELSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("Level", /*TEXT*/ 0, obj.levelAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCAL_LAYOUT_LEVELS\" SET \"Label\" = ?, \"Level\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_LAYOUT_LEVELSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("Level", /*TEXT*/ 0, obj.levelAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_LAYOUT_LEVELS\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCAL_LAYOUT_LEVELS\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_LAYOUT_LEVELSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("Level", /*TEXT*/ 0, obj.levelAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_LAYOUT_LEVELSAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_LAYOUT_LEVELSAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_VOUCHERS = {
+key: "fa22d86f-607f-45f6-8a04-df11f535fc8c",
+name: "Local_VOUCHERS",
+tableName: "OSUSR_P9G_LOCALVOUCHERS",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Application",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCALVOUCHERS\" ADD \"Application\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Module",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCALVOUCHERS\" ADD \"Module\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "InitDate",
+type: /*DATE*/ 7,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCALVOUCHERS\" ADD \"InitDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "FinishDate",
+type: /*DATE*/ 7,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCALVOUCHERS\" ADD \"FinishDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "Code",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCALVOUCHERS\" ADD \"Code\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RequestDateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCALVOUCHERS\" ADD \"RequestDateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "UsernameBO",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCALVOUCHERS\" ADD \"UsernameBO\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Amount",
+type: /*DECIMAL*/ 5,
+length: 15,
+decimals: 5,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCALVOUCHERS\" ADD \"Amount\" REAL(37,8) DEFAULT 0"
+}
+}, {
+name: "CreatedAt",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCALVOUCHERS\" ADD \"CreatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "UpdatedAt",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCALVOUCHERS\" ADD \"UpdatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "VoucherType",
+type: /*TEXT*/ 0,
+length: 250,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_P9G_LOCALVOUCHERS\" ADD \"VoucherType\" TEXT(250) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "5f4b70f1-f548-c0b7-5def-71377f958f45",
+dbRecordToRecord: function (dbRecord) {
+return new WTF_MBPModel.Local_VOUCHERSRecord(WTF_MBPModel.Local_VOUCHERSRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_P9G_LOCALVOUCHERS\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Application\" TEXT(50) DEFAULT \'\', \"Module\" TEXT(50) DEFAULT \'\', \"InitDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"FinishDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"Code\" TEXT(50) DEFAULT \'\', \"RequestDateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"UsernameBO\" TEXT(50) DEFAULT \'\', \"Amount\" REAL(37,8) DEFAULT 0, \"CreatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"UpdatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"VoucherType\" TEXT(250) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Application\" o1, \"Module\" o2, \"InitDate\" o3, \"FinishDate\" o4, \"Code\" o5, \"RequestDateTime\" o6, \"UsernameBO\" o7, \"Amount\" o8, \"CreatedAt\" o9, \"UpdatedAt\" o10, \"VoucherType\" o11 FROM \"OSUSR_P9G_LOCALVOUCHERS\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_P9G_LOCALVOUCHERS\" (\"Id\", \"Application\", \"Module\", \"InitDate\", \"FinishDate\", \"Code\", \"RequestDateTime\", \"UsernameBO\", \"Amount\", \"CreatedAt\", \"UpdatedAt\", \"VoucherType\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_VOUCHERSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Application", /*TEXT*/ 0, obj.applicationAttr);
+argsList.add("Module", /*TEXT*/ 0, obj.moduleAttr);
+argsList.add("InitDate", /*DATE*/ 7, obj.initDateAttr);
+argsList.add("FinishDate", /*DATE*/ 7, obj.finishDateAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("RequestDateTime", /*DATE_TIME*/ 6, obj.requestDateTimeAttr);
+argsList.add("UsernameBO", /*TEXT*/ 0, obj.usernameBOAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("VoucherType", /*TEXT*/ 0, obj.voucherTypeAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_P9G_LOCALVOUCHERS\" (\"Id\", \"Application\", \"Module\", \"InitDate\", \"FinishDate\", \"Code\", \"RequestDateTime\", \"UsernameBO\", \"Amount\", \"CreatedAt\", \"UpdatedAt\", \"VoucherType\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_VOUCHERSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Application", /*TEXT*/ 0, obj.applicationAttr);
+argsList.add("Module", /*TEXT*/ 0, obj.moduleAttr);
+argsList.add("InitDate", /*DATE*/ 7, obj.initDateAttr);
+argsList.add("FinishDate", /*DATE*/ 7, obj.finishDateAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("RequestDateTime", /*DATE_TIME*/ 6, obj.requestDateTimeAttr);
+argsList.add("UsernameBO", /*TEXT*/ 0, obj.usernameBOAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("VoucherType", /*TEXT*/ 0, obj.voucherTypeAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_P9G_LOCALVOUCHERS\" SET \"Application\" = ?, \"Module\" = ?, \"InitDate\" = ?, \"FinishDate\" = ?, \"Code\" = ?, \"RequestDateTime\" = ?, \"UsernameBO\" = ?, \"Amount\" = ?, \"CreatedAt\" = ?, \"UpdatedAt\" = ?, \"VoucherType\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_VOUCHERSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Application", /*TEXT*/ 0, obj.applicationAttr);
+argsList.add("Module", /*TEXT*/ 0, obj.moduleAttr);
+argsList.add("InitDate", /*DATE*/ 7, obj.initDateAttr);
+argsList.add("FinishDate", /*DATE*/ 7, obj.finishDateAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("RequestDateTime", /*DATE_TIME*/ 6, obj.requestDateTimeAttr);
+argsList.add("UsernameBO", /*TEXT*/ 0, obj.usernameBOAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("VoucherType", /*TEXT*/ 0, obj.voucherTypeAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCALVOUCHERS\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_P9G_LOCALVOUCHERS\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_VOUCHERSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Application", /*TEXT*/ 0, obj.applicationAttr);
+argsList.add("Module", /*TEXT*/ 0, obj.moduleAttr);
+argsList.add("InitDate", /*DATE*/ 7, obj.initDateAttr);
+argsList.add("FinishDate", /*DATE*/ 7, obj.finishDateAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("RequestDateTime", /*DATE_TIME*/ 6, obj.requestDateTimeAttr);
+argsList.add("UsernameBO", /*TEXT*/ 0, obj.usernameBOAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("CreatedAt", /*DATE_TIME*/ 6, obj.createdAtAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("VoucherType", /*TEXT*/ 0, obj.voucherTypeAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_VOUCHERSAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_VOUCHERSAttr;
+return obj.idAttr;
+
+}
+};
+var moduleKey = "6a6d0719-17ba-4fc1-bc33-2b2571b6a951";
+WTF_MBPModel.entities = {
+Local_WHATSNEW_USER_CONTROL: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_WHATSNEW_USER_CONTROL, moduleKey),
+Local_USER_WTF: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_USER_WTF, moduleKey),
+Local_WALLET_ITEM: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_WALLET_ITEM, moduleKey),
+Local_LAST_PAGE: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_LAST_PAGE, moduleKey),
+Local_SERVICE: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_SERVICE, moduleKey),
+Local_TEMPDYNAMICLINK: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_TEMPDYNAMICLINK, moduleKey),
+Local_SESSION_TEMP_TABLE: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_SESSION_TEMP_TABLE, moduleKey),
+Local_ADDONS_REFILLS: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_ADDONS_REFILLS, moduleKey),
+Local_ACCESS_TOKEN_INFO: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_ACCESS_TOKEN_INFO, moduleKey),
+Local_HOT_DEAL_PURCHASE: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_HOT_DEAL_PURCHASE, moduleKey),
+Local_SCRATCH_REGULATION_ACCEPT: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_SCRATCH_REGULATION_ACCEPT, moduleKey),
+Local_CACHE_CONTROL_SERVICES: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_CACHE_CONTROL_SERVICES, moduleKey),
+Local_USER_NOS_INFO: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_USER_NOS_INFO, moduleKey),
+Local_APP_FAQS: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_APP_FAQS, moduleKey),
+Local_INFOCARDS: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_INFOCARDS, moduleKey),
+Local_ASSOCIATION: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_ASSOCIATION, moduleKey),
+Local_TEMPDEEPLINK: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_TEMPDEEPLINK, moduleKey),
+Local_TMCODE_TO_CHANGE: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_TMCODE_TO_CHANGE, moduleKey),
+Local_PRIZE: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_PRIZE, moduleKey),
+Local_DIARY_DIAMOND_PARTS: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_DIARY_DIAMOND_PARTS, moduleKey),
+Local_APP_ACCESS_CONTROL: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_APP_ACCESS_CONTROL, moduleKey),
+Local_DIARY_DIAMOND_MOVEMENT: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_DIARY_DIAMOND_MOVEMENT, moduleKey),
+Local_SCRATCH_REGULATION: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_SCRATCH_REGULATION, moduleKey),
+Local_PICTURE: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_PICTURE, moduleKey),
+Local_DIAMOND: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_DIAMOND, moduleKey),
+Local_APP_CONFIG: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_APP_CONFIG, moduleKey),
+Local_LAYOUT_LEVELS: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_LAYOUT_LEVELS, moduleKey),
+Local_VOUCHERS: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_VOUCHERS, moduleKey)
+};
+return {
+init: function (runner) {
+return OS.Entities.webSQLStorageInstance.initModule([infoLocal_WHATSNEW_USER_CONTROL, infoLocal_USER_WTF, infoLocal_WALLET_ITEM, infoLocal_LAST_PAGE, infoLocal_SERVICE, infoLocal_TEMPDYNAMICLINK, infoLocal_SESSION_TEMP_TABLE, infoLocal_ADDONS_REFILLS, infoLocal_ACCESS_TOKEN_INFO, infoLocal_HOT_DEAL_PURCHASE, infoLocal_SCRATCH_REGULATION_ACCEPT, infoLocal_CACHE_CONTROL_SERVICES, infoLocal_USER_NOS_INFO, infoLocal_APP_FAQS, infoLocal_INFOCARDS, infoLocal_ASSOCIATION, infoLocal_TEMPDEEPLINK, infoLocal_TMCODE_TO_CHANGE, infoLocal_PRIZE, infoLocal_DIARY_DIAMOND_PARTS, infoLocal_APP_ACCESS_CONTROL, infoLocal_DIARY_DIAMOND_MOVEMENT, infoLocal_SCRATCH_REGULATION, infoLocal_PICTURE, infoLocal_DIAMOND, infoLocal_APP_CONFIG, infoLocal_LAYOUT_LEVELS, infoLocal_VOUCHERS], runner, moduleKey);
+},
+switch: function (runner) {
+return OS.Entities.webSQLStorageInstance.switchModule(runner, moduleKey);
+}
+};
+});

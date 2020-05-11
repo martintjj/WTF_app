@@ -1,0 +1,149 @@
+﻿define("WTF_MOB.Common.controller", ["exports", "OutSystems", "WTF_MOB.model", "WTF_MOB.controller", "WTF_MBP.controller", "WTF_MBP.controller$ValidateIfUserAreBlocked", "WTF_MOB.referencesHealth", "WTF_MOB.referencesHealth$WTF_MBP", "WTF_MOB.controller$ValidateUserSession", "WTF_MOB.controller$Logout", "WTF_MOB.controller$VerifyNetworkStatus", "WTF_MOB.controller$Analytics_TrackException"], function (exports, OutSystems, WTF_MOBModel, WTF_MOBController, WTF_MBPController) {
+var OS = OutSystems.Internal;
+var WTF_MOB_CommonController = exports;
+var Controller = (function (_super) {
+__extends(Controller, _super);
+function Controller() {
+_super.apply(this, arguments);
+}
+Controller.prototype.getDefaultTimeout = function () {
+return WTF_MOBController.default.defaultTimeout;
+};
+Controller.prototype.handleError = function (ex, callContext) {
+var controller = this.controller;
+var allExceptionsVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var communicationExceptionVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var cordovaIsNotDefinedVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var securityExceptionVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var validateIfUserAreBlockedVar = new OS.DataTypes.VariableHolder();
+var validateUserSessionVar = new OS.DataTypes.VariableHolder();
+var logoutVar = new OS.DataTypes.VariableHolder();
+var verifyNetworkStatusVar = new OS.DataTypes.VariableHolder();
+OS.Logger.trace("Common.OnException", OS.Exceptions.getMessage(ex), ex.name);
+if(OS.ErrorHandling.ignoreError(ex, callContext)) {
+return OS.ErrorHandling.IGNORED_ERROR_RESULT;
+}
+
+return OS.Flow.tryCatch(function () {
+OS.Logger.trace("Common.OnException", OS.Exceptions.getMessage(ex), ex.name);
+// Handle Error: CommunicationException
+if(OS.Exceptions.isInstanceOf(ex, OS.Exceptions.Exceptions.CommunicationException)) {
+OS.Logger.error(null, ex);
+communicationExceptionVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: Analytics_TrackException
+return WTF_MOBController.default.analytics_TrackException$Action(communicationExceptionVar.value.exceptionMessageAttr, true, callContext).then(function () {
+// Destination: /WTF_MOB/NoConnection
+return OS.Flow.returnAsync(OS.Navigation.navigateTo(OS.Navigation.generateScreenURL("/WTF_MOB/NoConnection", {}), OS.Transitions.createTransition(OS.Transitions.TransitionAnimation.Default), callContext, true));
+});
+});
+}
+
+// Handle Error: CordovaIsNotDefined
+if(OS.Exceptions.isInstanceOf(ex, OS.Exceptions.Exceptions.UserException, "WTF_MOB.CordovaIsNotDefined")) {
+OS.Logger.error(null, ex);
+cordovaIsNotDefinedVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return OS.Flow.executeAsyncFlow(function () {
+// Destination: /WTF_MOB/InvalidPermissions
+return OS.Flow.returnAsync(OS.Navigation.navigateTo(OS.Navigation.generateScreenURL("/WTF_MOB/InvalidPermissions", {
+ErrorMessage: "Não tem permissão para aceder a este ecrã."
+}), OS.Transitions.createTransition(OS.Transitions.TransitionAnimation.Default), callContext, true));
+});
+}
+
+// Handle Error: SecurityException
+if(OS.Exceptions.isInstanceOf(ex, OS.Exceptions.Exceptions.SecurityException)) {
+OS.Logger.error(null, ex);
+securityExceptionVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: ValidateUserSession
+return WTF_MOBController.default.validateUserSession$Action(false, callContext).then(function (value) {
+validateUserSessionVar.value = value;
+}).then(function () {
+return OS.Flow.executeSequence(function () {
+if((validateUserSessionVar.value.isOnlineOut)) {
+// ValidateUserSession.IsValid?
+return OS.Flow.executeSequence(function () {
+if((validateUserSessionVar.value.isValidOut)) {
+// Destination: /WTF_MOB/PageUnavailable
+return OS.Flow.returnAsync(OS.Navigation.navigateTo(OS.Navigation.generateScreenURL("/WTF_MOB/PageUnavailable", {}), OS.Transitions.createTransition(OS.Transitions.TransitionAnimation.Default), callContext, true));
+} else {
+// Execute Action: Logout
+return WTF_MOBController.default.logout$Action(callContext).then(function (value) {
+logoutVar.value = value;
+}).then(function () {
+// Destination: /WTF_MOB/
+return OS.Flow.returnAsync(OS.Navigation.navigateTo(OS.Navigation.generateScreenURL(logoutVar.value.uRLOut, {}), OS.Transitions.createTransition(OS.Transitions.TransitionAnimation.Default), callContext, true));
+});
+}
+
+});
+} else {
+// Destination: /WTF_MOB/NoConnection
+return OS.Flow.returnAsync(OS.Navigation.navigateTo(OS.Navigation.generateScreenURL("/WTF_MOB/NoConnection", {}), OS.Transitions.createTransition(OS.Transitions.TransitionAnimation.Default), callContext, true));
+}
+
+});
+});
+});
+}
+
+// Handle Error: AllExceptions
+if(!(OS.Exceptions.isSystem(ex))) {
+OS.Logger.error(null, ex);
+allExceptionsVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: Analytics_TrackException2
+return WTF_MOBController.default.analytics_TrackException$Action(allExceptionsVar.value.exceptionMessageAttr, true, callContext).then(function () {
+// Execute Action: VerifyNetworkStatus
+return WTF_MOBController.default.verifyNetworkStatus$Action(callContext).then(function (value) {
+verifyNetworkStatusVar.value = value;
+});
+}).then(function () {
+return OS.Flow.executeSequence(function () {
+if((verifyNetworkStatusVar.value.isOnlineOut)) {
+// Execute Action: ValidateIfUserAreBlocked
+return WTF_MBPController.default.validateIfUserAreBlocked$Action(callContext).then(function (value) {
+validateIfUserAreBlockedVar.value = value;
+}).then(function () {
+if(((validateIfUserAreBlockedVar.value.hasBockOut === true))) {
+// Execute Action: LogMessage4
+OS.SystemActions.logMessage(((("Date Time: " + OS.BuiltinFunctions.dateTimeToText(OS.BuiltinFunctions.currDateTime())) + "\r\n") + "The user is blocked..."), "WTF_MOB", callContext);
+// Destination: /WTF_MOB/UserBlocked
+return OS.Flow.returnAsync(OS.Navigation.navigateTo(OS.Navigation.generateScreenURL("/WTF_MOB/UserBlocked", {}), OS.Transitions.createTransition(OS.Transitions.TransitionAnimation.SlideFromBottom), callContext, true));
+} else {
+return OS.Flow.returnAsync();
+
+}
+
+});
+} else {
+// Destination: /WTF_MOB/NoConnection
+return OS.Flow.returnAsync(OS.Navigation.navigateTo(OS.Navigation.generateScreenURL("/WTF_MOB/NoConnection", {}), OS.Transitions.createTransition(OS.Transitions.TransitionAnimation.Default), callContext, true));
+}
+
+});
+});
+});
+}
+
+throw ex;
+}, function (unhandledEx) {
+OS.Logger.trace("Common.OnException", OS.Exceptions.getMessage(ex), ex.name);
+if(!(OS.ErrorHandling.ignoreError(unhandledEx, callContext))) {
+OS.ErrorHandling.handleError(unhandledEx, callContext);
+return OS.ErrorHandling.UNHANDLED_ERROR_RESULT;
+
+}
+
+return OS.ErrorHandling.IGNORED_ERROR_RESULT;
+
+});
+
+
+};
+return Controller;
+})(OS.Controller.BaseController);
+WTF_MOB_CommonController.default = new Controller();
+});
+

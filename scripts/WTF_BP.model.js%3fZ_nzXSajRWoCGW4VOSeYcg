@@ -1,0 +1,4884 @@
+﻿define("WTF_BP.model$PRIZE_ERRORRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var PRIZE_ERRORRec = (function (_super) {
+__extends(PRIZE_ERRORRec, _super);
+function PRIZE_ERRORRec(defaults) {
+_super.apply(this, arguments);
+}
+PRIZE_ERRORRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PRIZE_ERRORRec.generateFromLocalStorage = function () {
+return false;
+};
+PRIZE_ERRORRec.init();
+return PRIZE_ERRORRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.PRIZE_ERRORRec = PRIZE_ERRORRec;
+
+});
+define("WTF_BP.model$App_PictureRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_PictureRec = (function (_super) {
+__extends(App_PictureRec, _super);
+function App_PictureRec(defaults) {
+_super.apply(this, arguments);
+}
+App_PictureRec.attributesToDeclare = function () {
+return [
+this.attr("PictureId", "pictureIdAttr", "PictureId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Filename", "filenameAttr", "Filename", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Content", "contentAttr", "Content", false, OS.Types.BinaryData, function () {
+return OS.DataTypes.BinaryData.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_PictureRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_PictureRec.init();
+return App_PictureRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_PictureRec = App_PictureRec;
+
+});
+define("WTF_BP.model$App_UserWtfPrizeAddressRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_UserWtfPrizeAddressRec = (function (_super) {
+__extends(App_UserWtfPrizeAddressRec, _super);
+function App_UserWtfPrizeAddressRec(defaults) {
+_super.apply(this, arguments);
+}
+App_UserWtfPrizeAddressRec.attributesToDeclare = function () {
+return [
+this.attr("Name", "nameAttr", "Name", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AddressStreet", "addressStreetAttr", "AddressStreet", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AddressPostalCity", "addressPostalCityAttr", "AddressPostalCity", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AddressPostalCode", "addressPostalCodeAttr", "AddressPostalCode", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Msisdn", "msisdnAttr", "Msisdn", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Authorize", "authorizeAttr", "Authorize", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("PrizeRequiredAddress", "prizeRequiredAddressAttr", "PrizeRequiredAddress", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_UserWtfPrizeAddressRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_UserWtfPrizeAddressRec.init();
+return App_UserWtfPrizeAddressRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_UserWtfPrizeAddressRec = App_UserWtfPrizeAddressRec;
+
+});
+define("WTF_BP.model$App_PrizeRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_PictureRec", "WTF_BP.model$App_UserWtfPrizeAddressRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_PrizeRec = (function (_super) {
+__extends(App_PrizeRec, _super);
+function App_PrizeRec(defaults) {
+_super.apply(this, arguments);
+}
+App_PrizeRec.attributesToDeclare = function () {
+return [
+this.attr("ItemTypeId", "itemTypeIdAttr", "ItemTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("ItemTypeLabel", "itemTypeLabelAttr", "ItemTypeLabel", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("UserPlaysQuizId", "userPlaysQuizIdAttr", "UserPlaysQuizId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("PrizeRequiredAddress", "prizeRequiredAddressAttr", "PrizeRequiredAddress", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("VoucherCode", "voucherCodeAttr", "VoucherCode", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("RequestDate", "requestDateAttr", "RequestDate", false, OS.Types.Date, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("ExpiresDate", "expiresDateAttr", "ExpiresDate", false, OS.Types.Date, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("CopyForScratch", "copyForScratchAttr", "CopyForScratch", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("App_Picture", "app_PictureAttr", "App_Picture", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_PictureRec());
+}, WTF_BPModel.App_PictureRec), 
+this.attr("App_UserWtfPrizeAddress", "app_UserWtfPrizeAddressAttr", "App_UserWtfPrizeAddress", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_UserWtfPrizeAddressRec());
+}, WTF_BPModel.App_UserWtfPrizeAddressRec), 
+this.attr("FillRequiredAddress", "fillRequiredAddressAttr", "FillRequiredAddress", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_PrizeRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_PrizeRec.init();
+return App_PrizeRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_PrizeRec = App_PrizeRec;
+
+});
+define("WTF_BP.model$WALLET_ITEM_HISTORYRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var WALLET_ITEM_HISTORYRec = (function (_super) {
+__extends(WALLET_ITEM_HISTORYRec, _super);
+function WALLET_ITEM_HISTORYRec(defaults) {
+_super.apply(this, arguments);
+}
+WALLET_ITEM_HISTORYRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("WalletItemId", "walletItemIdAttr", "WalletItemId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("WalletItemStatusId", "walletItemStatusIdAttr", "WalletItemStatusId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("PreviousWalletItemStatusId", "previousWalletItemStatusIdAttr", "PreviousWalletItemStatusId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+WALLET_ITEM_HISTORYRec.generateFromLocalStorage = function () {
+return false;
+};
+WALLET_ITEM_HISTORYRec.init();
+return WALLET_ITEM_HISTORYRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.WALLET_ITEM_HISTORYRec = WALLET_ITEM_HISTORYRec;
+
+});
+define("WTF_BP.model$WALLET_ITEM_STATUSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var WALLET_ITEM_STATUSRec = (function (_super) {
+__extends(WALLET_ITEM_STATUSRec, _super);
+function WALLET_ITEM_STATUSRec(defaults) {
+_super.apply(this, arguments);
+}
+WALLET_ITEM_STATUSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+WALLET_ITEM_STATUSRec.generateFromLocalStorage = function () {
+return false;
+};
+WALLET_ITEM_STATUSRec.init();
+return WALLET_ITEM_STATUSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.WALLET_ITEM_STATUSRec = WALLET_ITEM_STATUSRec;
+
+});
+define("WTF_BP.model$UBER_VOUCHER_RULE_BENEFIT_TMCODERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var UBER_VOUCHER_RULE_BENEFIT_TMCODERec = (function (_super) {
+__extends(UBER_VOUCHER_RULE_BENEFIT_TMCODERec, _super);
+function UBER_VOUCHER_RULE_BENEFIT_TMCODERec(defaults) {
+_super.apply(this, arguments);
+}
+UBER_VOUCHER_RULE_BENEFIT_TMCODERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UberVoucherRuleBenefitId", "uberVoucherRuleBenefitIdAttr", "UberVoucherRuleBenefitId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("TmcodeId", "tmcodeIdAttr", "TmcodeId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+UBER_VOUCHER_RULE_BENEFIT_TMCODERec.generateFromLocalStorage = function () {
+return false;
+};
+UBER_VOUCHER_RULE_BENEFIT_TMCODERec.init();
+return UBER_VOUCHER_RULE_BENEFIT_TMCODERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.UBER_VOUCHER_RULE_BENEFIT_TMCODERec = UBER_VOUCHER_RULE_BENEFIT_TMCODERec;
+
+});
+define("WTF_BP.model$TMCODE_TYPERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var TMCODE_TYPERec = (function (_super) {
+__extends(TMCODE_TYPERec, _super);
+function TMCODE_TYPERec(defaults) {
+_super.apply(this, arguments);
+}
+TMCODE_TYPERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+TMCODE_TYPERec.generateFromLocalStorage = function () {
+return false;
+};
+TMCODE_TYPERec.init();
+return TMCODE_TYPERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.TMCODE_TYPERec = TMCODE_TYPERec;
+
+});
+define("WTF_BP.model$App_UserWtfAddress_SqlQueryRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_UserWtfAddress_SqlQueryRec = (function (_super) {
+__extends(App_UserWtfAddress_SqlQueryRec, _super);
+function App_UserWtfAddress_SqlQueryRec(defaults) {
+_super.apply(this, arguments);
+}
+App_UserWtfAddress_SqlQueryRec.attributesToDeclare = function () {
+return [
+this.attr("RowNumber", "rowNumberAttr", "RowNumber", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UserWtfAddressId", "userWtfAddressIdAttr", "UserWtfAddressId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("NameOfAddress", "nameOfAddressAttr", "NameOfAddress", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Name", "nameAttr", "Name", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AddressStreet", "addressStreetAttr", "AddressStreet", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PostalCode", "postalCodeAttr", "PostalCode", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AddressPostalCity", "addressPostalCityAttr", "AddressPostalCity", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Msisdn", "msisdnAttr", "Msisdn", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_UserWtfAddress_SqlQueryRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_UserWtfAddress_SqlQueryRec.init();
+return App_UserWtfAddress_SqlQueryRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_UserWtfAddress_SqlQueryRec = App_UserWtfAddress_SqlQueryRec;
+
+});
+define("WTF_BP.model$STR_REGULATIONRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var STR_REGULATIONRec = (function (_super) {
+__extends(STR_REGULATIONRec, _super);
+function STR_REGULATIONRec(defaults) {
+_super.apply(this, arguments);
+}
+STR_REGULATIONRec.attributesToDeclare = function () {
+return [
+this.attr("Title", "titleAttr", "Title", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Body", "bodyAttr", "Body", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+STR_REGULATIONRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+STR_REGULATIONRec.init();
+return STR_REGULATIONRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.STR_REGULATIONRec = STR_REGULATIONRec;
+
+});
+define("WTF_BP.model$PHOPERATION_CAMPIDRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var PHOPERATION_CAMPIDRec = (function (_super) {
+__extends(PHOPERATION_CAMPIDRec, _super);
+function PHOPERATION_CAMPIDRec(defaults) {
+_super.apply(this, arguments);
+}
+PHOPERATION_CAMPIDRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CampId", "campIdAttr", "CampId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PHOPERATION_CAMPIDRec.generateFromLocalStorage = function () {
+return false;
+};
+PHOPERATION_CAMPIDRec.init();
+return PHOPERATION_CAMPIDRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.PHOPERATION_CAMPIDRec = PHOPERATION_CAMPIDRec;
+
+});
+define("WTF_BP.model$VOUCHERS_TYPERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var VOUCHERS_TYPERec = (function (_super) {
+__extends(VOUCHERS_TYPERec, _super);
+function VOUCHERS_TYPERec(defaults) {
+_super.apply(this, arguments);
+}
+VOUCHERS_TYPERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Application", "applicationAttr", "Application", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Module", "moduleAttr", "Module", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("HasAmmount", "hasAmmountAttr", "HasAmmount", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("IsRecurring", "isRecurringAttr", "IsRecurring", false, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("showInScratch", "showInScratchAttr", "showInScratch", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+VOUCHERS_TYPERec.generateFromLocalStorage = function () {
+return false;
+};
+VOUCHERS_TYPERec.init();
+return VOUCHERS_TYPERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.VOUCHERS_TYPERec = VOUCHERS_TYPERec;
+
+});
+define("WTF_BP.model$SECRETFRIENDRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var SECRETFRIENDRec = (function (_super) {
+__extends(SECRETFRIENDRec, _super);
+function SECRETFRIENDRec(defaults) {
+_super.apply(this, arguments);
+}
+SECRETFRIENDRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Assignment_InitDate", "assignment_InitDateAttr", "Assignment_InitDate", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("Assignment_FinishDate", "assignment_FinishDateAttr", "Assignment_FinishDate", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("Redeem_FinishDate", "redeem_FinishDateAttr", "Redeem_FinishDate", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("SendGift_PictureId", "sendGift_PictureIdAttr", "SendGift_PictureId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("SendGift_Title", "sendGift_TitleAttr", "SendGift_Title", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("SendGift_Desc", "sendGift_DescAttr", "SendGift_Desc", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("RedeemGift_PictureId", "redeemGift_PictureIdAttr", "RedeemGift_PictureId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("RedeemGift_Title", "redeemGift_TitleAttr", "RedeemGift_Title", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("RedeemGift_Desc", "redeemGift_DescAttr", "RedeemGift_Desc", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("MaxItensToSend", "maxItensToSendAttr", "MaxItensToSend", true, OS.Types.Integer, function () {
+return 1;
+}), 
+this.attr("Conditions", "conditionsAttr", "Conditions", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+SECRETFRIENDRec.generateFromLocalStorage = function () {
+return false;
+};
+SECRETFRIENDRec.init();
+return SECRETFRIENDRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.SECRETFRIENDRec = SECRETFRIENDRec;
+
+});
+define("WTF_BP.model$USER_PLAYS_QUIZRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var USER_PLAYS_QUIZRec = (function (_super) {
+__extends(USER_PLAYS_QUIZRec, _super);
+function USER_PLAYS_QUIZRec(defaults) {
+_super.apply(this, arguments);
+}
+USER_PLAYS_QUIZRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserPlaysId", "userPlaysIdAttr", "UserPlaysId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("QuizId", "quizIdAttr", "QuizId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserWtfId", "userWtfIdAttr", "UserWtfId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("PrizeMovementId", "prizeMovementIdAttr", "PrizeMovementId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("QuizAnswerId", "quizAnswerIdAttr", "QuizAnswerId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("VoucherId", "voucherIdAttr", "VoucherId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("HasWon", "hasWonAttr", "HasWon", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("FillRequiredAddress", "fillRequiredAddressAttr", "FillRequiredAddress", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+USER_PLAYS_QUIZRec.generateFromLocalStorage = function () {
+return false;
+};
+USER_PLAYS_QUIZRec.init();
+return USER_PLAYS_QUIZRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.USER_PLAYS_QUIZRec = USER_PLAYS_QUIZRec;
+
+});
+define("WTF_BP.model$App_VoucherRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_VoucherRec = (function (_super) {
+__extends(App_VoucherRec, _super);
+function App_VoucherRec(defaults) {
+_super.apply(this, arguments);
+}
+App_VoucherRec.attributesToDeclare = function () {
+return [
+this.attr("Code", "codeAttr", "Code", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("VoucherTypeId", "voucherTypeIdAttr", "VoucherTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("VoucherTypeLabel", "voucherTypeLabelAttr", "VoucherTypeLabel", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ExpiresDate", "expiresDateAttr", "ExpiresDate", false, OS.Types.Date, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_VoucherRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_VoucherRec.init();
+return App_VoucherRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_VoucherRec = App_VoucherRec;
+
+});
+define("WTF_BP.model$App_WalletCardRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_PictureRec", "WTF_BP.model$App_UserWtfPrizeAddressRec", "WTF_BP.model$App_VoucherRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_WalletCardRec = (function (_super) {
+__extends(App_WalletCardRec, _super);
+function App_WalletCardRec(defaults) {
+_super.apply(this, arguments);
+}
+App_WalletCardRec.attributesToDeclare = function () {
+return [
+this.attr("WalletItemId", "walletItemIdAttr", "WalletItemId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("CategoryLabel", "categoryLabelAttr", "CategoryLabel", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ItemTypeId", "itemTypeIdAttr", "ItemTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("WalletItemOriginId", "walletItemOriginIdAttr", "WalletItemOriginId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("WalletItemOriginLabel", "walletItemOriginLabelAttr", "WalletItemOriginLabel", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("WalletItemStatusId", "walletItemStatusIdAttr", "WalletItemStatusId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Title", "titleAttr", "Title", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("App_Picture", "app_PictureAttr", "App_Picture", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_PictureRec());
+}, WTF_BPModel.App_PictureRec), 
+this.attr("ActionDateTime", "actionDateTimeAttr", "ActionDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("ExpireDateTime", "expireDateTimeAttr", "ExpireDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("AssetId", "assetIdAttr", "AssetId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("App_UserWtfPrizeAddress", "app_UserWtfPrizeAddressAttr", "App_UserWtfPrizeAddress", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_UserWtfPrizeAddressRec());
+}, WTF_BPModel.App_UserWtfPrizeAddressRec), 
+this.attr("App_Voucher", "app_VoucherAttr", "App_Voucher", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_VoucherRec());
+}, WTF_BPModel.App_VoucherRec), 
+this.attr("StatusLabel", "statusLabelAttr", "StatusLabel", true, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_WalletCardRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_WalletCardRec.init();
+return App_WalletCardRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_WalletCardRec = App_WalletCardRec;
+
+});
+define("WTF_BP.model$WALLET_ITEMRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var WALLET_ITEMRec = (function (_super) {
+__extends(WALLET_ITEMRec, _super);
+function WALLET_ITEMRec(defaults) {
+_super.apply(this, arguments);
+}
+WALLET_ITEMRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserWtfId", "userWtfIdAttr", "UserWtfId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("WalletItemOriginId", "walletItemOriginIdAttr", "WalletItemOriginId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("ExternalOriginIdentifier", "externalOriginIdentifierAttr", "ExternalOriginIdentifier", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("ExternalItemIdentifier", "externalItemIdentifierAttr", "ExternalItemIdentifier", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("ExternalItemIdentifierText", "externalItemIdentifierTextAttr", "ExternalItemIdentifierText", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ExternalUPlaysQuizIdentifier", "externalUPlaysQuizIdentifierAttr", "ExternalUPlaysQuizIdentifier", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("WalletItemStatusId", "walletItemStatusIdAttr", "WalletItemStatusId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("ExpiresAt", "expiresAtAttr", "ExpiresAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("Paygate_payment_type_code", "paygate_payment_type_codeAttr", "Paygate_payment_type_code", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Paygate_transaction_id", "paygate_transaction_idAttr", "Paygate_transaction_id", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Paygate_payment_ref", "paygate_payment_refAttr", "Paygate_payment_ref", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Paygate_paymentValue", "paygate_paymentValueAttr", "Paygate_paymentValue", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Paygate_phone_number", "paygate_phone_numberAttr", "Paygate_phone_number", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Paygate_refmb_entity", "paygate_refmb_entityAttr", "Paygate_refmb_entity", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Paygate_refmb_reference", "paygate_refmb_referenceAttr", "Paygate_refmb_reference", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Paygate_returnCode", "paygate_returnCodeAttr", "Paygate_returnCode", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Paygate_shortMsg", "paygate_shortMsgAttr", "Paygate_shortMsg", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Paygate_name", "paygate_nameAttr", "Paygate_name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("SendPushNotification", "sendPushNotificationAttr", "SendPushNotification", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+WALLET_ITEMRec.generateFromLocalStorage = function () {
+return false;
+};
+WALLET_ITEMRec.init();
+return WALLET_ITEMRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.WALLET_ITEMRec = WALLET_ITEMRec;
+
+});
+define("WTF_BP.model$PRIZES_QUEUERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var PRIZES_QUEUERec = (function (_super) {
+__extends(PRIZES_QUEUERec, _super);
+function PRIZES_QUEUERec(defaults) {
+_super.apply(this, arguments);
+}
+PRIZES_QUEUERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("PrizeId", "prizeIdAttr", "PrizeId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("DiamondTypeId", "diamondTypeIdAttr", "DiamondTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UserPlaysId", "userPlaysIdAttr", "UserPlaysId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("PrizeErrorId", "prizeErrorIdAttr", "PrizeErrorId", false, OS.Types.Integer, function () {
+return 0;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PRIZES_QUEUERec.generateFromLocalStorage = function () {
+return false;
+};
+PRIZES_QUEUERec.init();
+return PRIZES_QUEUERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.PRIZES_QUEUERec = PRIZES_QUEUERec;
+
+});
+define("WTF_BP.model$LAYOUT_LEVELS_WTFRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var LAYOUT_LEVELS_WTFRec = (function (_super) {
+__extends(LAYOUT_LEVELS_WTFRec, _super);
+function LAYOUT_LEVELS_WTFRec(defaults) {
+_super.apply(this, arguments);
+}
+LAYOUT_LEVELS_WTFRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Level", "levelAttr", "Level", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+LAYOUT_LEVELS_WTFRec.generateFromLocalStorage = function () {
+return false;
+};
+LAYOUT_LEVELS_WTFRec.init();
+return LAYOUT_LEVELS_WTFRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.LAYOUT_LEVELS_WTFRec = LAYOUT_LEVELS_WTFRec;
+
+});
+define("WTF_BP.model$App_SecretFriendMyOffersRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_PictureRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_SecretFriendMyOffersRec = (function (_super) {
+__extends(App_SecretFriendMyOffersRec, _super);
+function App_SecretFriendMyOffersRec(defaults) {
+_super.apply(this, arguments);
+}
+App_SecretFriendMyOffersRec.attributesToDeclare = function () {
+return [
+this.attr("SenderUserWTFName", "senderUserWTFNameAttr", "SenderUserWTFName", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ItemTypeId", "itemTypeIdAttr", "ItemTypeId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Identifier", "identifierAttr", "Identifier", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("MessageItem", "messageItemAttr", "MessageItem", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("App_Picture", "app_PictureAttr", "App_Picture", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_PictureRec());
+}, WTF_BPModel.App_PictureRec), 
+this.attr("HasReedem", "hasReedemAttr", "HasReedem", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("ExpireRedeemAt", "expireRedeemAtAttr", "ExpireRedeemAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_SecretFriendMyOffersRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_SecretFriendMyOffersRec.init();
+return App_SecretFriendMyOffersRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_SecretFriendMyOffersRec = App_SecretFriendMyOffersRec;
+
+});
+define("WTF_BP.model$UBER_VOUCHER_RULE_BENEFITRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var UBER_VOUCHER_RULE_BENEFITRec = (function (_super) {
+__extends(UBER_VOUCHER_RULE_BENEFITRec, _super);
+function UBER_VOUCHER_RULE_BENEFITRec(defaults) {
+_super.apply(this, arguments);
+}
+UBER_VOUCHER_RULE_BENEFITRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Label", "labelAttr", "Label", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Quantity", "quantityAttr", "Quantity", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Observation", "observationAttr", "Observation", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("UsernameBO", "usernameBOAttr", "UsernameBO", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("InitDate", "initDateAttr", "InitDate", true, OS.Types.Date, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("FinishDate", "finishDateAttr", "FinishDate", true, OS.Types.Date, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("WillChangeFlag", "willChangeFlagAttr", "WillChangeFlag", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("WillChangeMessage", "willChangeMessageAttr", "WillChangeMessage", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("MessageEmptyQuantity", "messageEmptyQuantityAttr", "MessageEmptyQuantity", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+UBER_VOUCHER_RULE_BENEFITRec.generateFromLocalStorage = function () {
+return false;
+};
+UBER_VOUCHER_RULE_BENEFITRec.init();
+return UBER_VOUCHER_RULE_BENEFITRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.UBER_VOUCHER_RULE_BENEFITRec = UBER_VOUCHER_RULE_BENEFITRec;
+
+});
+define("WTF_BP.model$PROMOTIONSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var PROMOTIONSRec = (function (_super) {
+__extends(PROMOTIONSRec, _super);
+function PROMOTIONSRec(defaults) {
+_super.apply(this, arguments);
+}
+PROMOTIONSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description", "descriptionAttr", "Description", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ItemTypeId", "itemTypeIdAttr", "ItemTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("PictureId", "pictureIdAttr", "PictureId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("StartDateTime", "startDateTimeAttr", "StartDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("ExpirationDateTime", "expirationDateTimeAttr", "ExpirationDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("HasCountdown", "hasCountdownAttr", "HasCountdown", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CallToAction_Active", "callToAction_ActiveAttr", "CallToAction_Active", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CallToActionLabel", "callToActionLabelAttr", "CallToActionLabel", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CallToActionUrl", "callToActionUrlAttr", "CallToActionUrl", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CallToActionInApp", "callToActionInAppAttr", "CallToActionInApp", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PROMOTIONSRec.generateFromLocalStorage = function () {
+return false;
+};
+PROMOTIONSRec.init();
+return PROMOTIONSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.PROMOTIONSRec = PROMOTIONSRec;
+
+});
+define("WTF_BP.model$TOUR_CONTENT_TYPE_WTFRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var TOUR_CONTENT_TYPE_WTFRec = (function (_super) {
+__extends(TOUR_CONTENT_TYPE_WTFRec, _super);
+function TOUR_CONTENT_TYPE_WTFRec(defaults) {
+_super.apply(this, arguments);
+}
+TOUR_CONTENT_TYPE_WTFRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+TOUR_CONTENT_TYPE_WTFRec.generateFromLocalStorage = function () {
+return false;
+};
+TOUR_CONTENT_TYPE_WTFRec.init();
+return TOUR_CONTENT_TYPE_WTFRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.TOUR_CONTENT_TYPE_WTFRec = TOUR_CONTENT_TYPE_WTFRec;
+
+});
+define("WTF_BP.model$App_HotDealsRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_PictureRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_HotDealsRec = (function (_super) {
+__extends(App_HotDealsRec, _super);
+function App_HotDealsRec(defaults) {
+_super.apply(this, arguments);
+}
+App_HotDealsRec.attributesToDeclare = function () {
+return [
+this.attr("Identifier", "identifierAttr", "Identifier", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("FillRequiredAddress", "fillRequiredAddressAttr", "FillRequiredAddress", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PriceMarket", "priceMarketAttr", "PriceMarket", false, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("PriceHotDeal", "priceHotDealAttr", "PriceHotDeal", false, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("StartDateTime", "startDateTimeAttr", "StartDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("ExpirationDateTime", "expirationDateTimeAttr", "ExpirationDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("Stock", "stockAttr", "Stock", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("HasStock", "hasStockAttr", "HasStock", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("NumberAlertStock", "numberAlertStockAttr", "NumberAlertStock", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("HasMessageAlertStock", "hasMessageAlertStockAttr", "HasMessageAlertStock", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("MessageAlertStock", "messageAlertStockAttr", "MessageAlertStock", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("RequiredAddress", "requiredAddressAttr", "RequiredAddress", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("PromoDateTime", "promoDateTimeAttr", "PromoDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("App_Picture", "app_PictureAttr", "App_Picture", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_PictureRec());
+}, WTF_BPModel.App_PictureRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+App_HotDealsRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_HotDealsRec.init();
+return App_HotDealsRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_HotDealsRec = App_HotDealsRec;
+
+});
+define("WTF_BP.model$USER_DIAMONDRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var USER_DIAMONDRec = (function (_super) {
+__extends(USER_DIAMONDRec, _super);
+function USER_DIAMONDRec(defaults) {
+_super.apply(this, arguments);
+}
+USER_DIAMONDRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserWtfId", "userWtfIdAttr", "UserWtfId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("DiamondTypesId", "diamondTypesIdAttr", "DiamondTypesId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Quantity", "quantityAttr", "Quantity", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("ExpirationAt", "expirationAtAttr", "ExpirationAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+USER_DIAMONDRec.generateFromLocalStorage = function () {
+return false;
+};
+USER_DIAMONDRec.init();
+return USER_DIAMONDRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.USER_DIAMONDRec = USER_DIAMONDRec;
+
+});
+define("WTF_BP.model$App_TmcodeRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_TmcodeRec = (function (_super) {
+__extends(App_TmcodeRec, _super);
+function App_TmcodeRec(defaults) {
+_super.apply(this, arguments);
+}
+App_TmcodeRec.attributesToDeclare = function () {
+return [
+this.attr("TmcodeId", "tmcodeIdAttr", "TmcodeId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Desc", "descAttr", "Desc", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_TmcodeRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_TmcodeRec.init();
+return App_TmcodeRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_TmcodeRec = App_TmcodeRec;
+
+});
+define("WTF_BP.model$SCRATCH_COPIESRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var SCRATCH_COPIESRec = (function (_super) {
+__extends(SCRATCH_COPIESRec, _super);
+function SCRATCH_COPIESRec(defaults) {
+_super.apply(this, arguments);
+}
+SCRATCH_COPIESRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Copy1", "copy1Attr", "Copy1", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Copy2", "copy2Attr", "Copy2", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+SCRATCH_COPIESRec.generateFromLocalStorage = function () {
+return false;
+};
+SCRATCH_COPIESRec.init();
+return SCRATCH_COPIESRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.SCRATCH_COPIESRec = SCRATCH_COPIESRec;
+
+});
+define("WTF_BP.model$SECRETFRIEND_OFFER_FRIENDRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var SECRETFRIEND_OFFER_FRIENDRec = (function (_super) {
+__extends(SECRETFRIEND_OFFER_FRIENDRec, _super);
+function SECRETFRIEND_OFFER_FRIENDRec(defaults) {
+_super.apply(this, arguments);
+}
+SECRETFRIEND_OFFER_FRIENDRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("SecretFriendId", "secretFriendIdAttr", "SecretFriendId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("SecretFriendOfferId", "secretFriendOfferIdAttr", "SecretFriendOfferId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserWtfId_Sender", "userWtfId_SenderAttr", "UserWtfId_Sender", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Msisdn_Receiver", "msisdn_ReceiverAttr", "Msisdn_Receiver", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UserWtfId_Receiver", "userWtfId_ReceiverAttr", "UserWtfId_Receiver", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("SecretFriendStatusId", "secretFriendStatusIdAttr", "SecretFriendStatusId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("RedeemAt", "redeemAtAttr", "RedeemAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+SECRETFRIEND_OFFER_FRIENDRec.generateFromLocalStorage = function () {
+return false;
+};
+SECRETFRIEND_OFFER_FRIENDRec.init();
+return SECRETFRIEND_OFFER_FRIENDRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.SECRETFRIEND_OFFER_FRIENDRec = SECRETFRIEND_OFFER_FRIENDRec;
+
+});
+define("WTF_BP.model$UBER_VOUCHER_RULE_RECHARGERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var UBER_VOUCHER_RULE_RECHARGERec = (function (_super) {
+__extends(UBER_VOUCHER_RULE_RECHARGERec, _super);
+function UBER_VOUCHER_RULE_RECHARGERec(defaults) {
+_super.apply(this, arguments);
+}
+UBER_VOUCHER_RULE_RECHARGERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Label", "labelAttr", "Label", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Quantity", "quantityAttr", "Quantity", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Observation", "observationAttr", "Observation", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("UsernameBO", "usernameBOAttr", "UsernameBO", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("MinAmount", "minAmountAttr", "MinAmount", true, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("MaxAmount", "maxAmountAttr", "MaxAmount", true, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+UBER_VOUCHER_RULE_RECHARGERec.generateFromLocalStorage = function () {
+return false;
+};
+UBER_VOUCHER_RULE_RECHARGERec.init();
+return UBER_VOUCHER_RULE_RECHARGERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.UBER_VOUCHER_RULE_RECHARGERec = UBER_VOUCHER_RULE_RECHARGERec;
+
+});
+define("WTF_BP.model$DIAMOND_TYPESRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var DIAMOND_TYPESRec = (function (_super) {
+__extends(DIAMOND_TYPESRec, _super);
+function DIAMOND_TYPESRec(defaults) {
+_super.apply(this, arguments);
+}
+DIAMOND_TYPESRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("NumberOfParts", "numberOfPartsAttr", "NumberOfParts", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("showInScratch", "showInScratchAttr", "showInScratch", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+DIAMOND_TYPESRec.generateFromLocalStorage = function () {
+return false;
+};
+DIAMOND_TYPESRec.init();
+return DIAMOND_TYPESRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.DIAMOND_TYPESRec = DIAMOND_TYPESRec;
+
+});
+define("WTF_BP.model$USER_NOS_BLACK_LISTRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var USER_NOS_BLACK_LISTRec = (function (_super) {
+__extends(USER_NOS_BLACK_LISTRec, _super);
+function USER_NOS_BLACK_LISTRec(defaults) {
+_super.apply(this, arguments);
+}
+USER_NOS_BLACK_LISTRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserUID", "userUIDAttr", "UserUID", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+USER_NOS_BLACK_LISTRec.generateFromLocalStorage = function () {
+return false;
+};
+USER_NOS_BLACK_LISTRec.init();
+return USER_NOS_BLACK_LISTRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.USER_NOS_BLACK_LISTRec = USER_NOS_BLACK_LISTRec;
+
+});
+define("WTF_BP.model$App_TmcodeChangeRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_TmcodeChangeRec = (function (_super) {
+__extends(App_TmcodeChangeRec, _super);
+function App_TmcodeChangeRec(defaults) {
+_super.apply(this, arguments);
+}
+App_TmcodeChangeRec.attributesToDeclare = function () {
+return [
+this.attr("Amount", "amountAttr", "Amount", false, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("Tmcode", "tmcodeAttr", "Tmcode", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("RatePlanCode", "ratePlanCodeAttr", "RatePlanCode", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Internet", "internetAttr", "Internet", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Minutes", "minutesAttr", "Minutes", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PriceMonthly", "priceMonthlyAttr", "PriceMonthly", false, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("PriceWeekly", "priceWeeklyAttr", "PriceWeekly", false, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("ConditionsUrl", "conditionsUrlAttr", "ConditionsUrl", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("isBestOffer", "isBestOfferAttr", "isBestOffer", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Is_MonthlyRenewal", "is_MonthlyRenewalAttr", "Is_MonthlyRenewal", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_TmcodeChangeRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_TmcodeChangeRec.init();
+return App_TmcodeChangeRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_TmcodeChangeRec = App_TmcodeChangeRec;
+
+});
+define("WTF_BP.model$UBER_VOUCHER_REQUEST_RETURN_CODESRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var UBER_VOUCHER_REQUEST_RETURN_CODESRec = (function (_super) {
+__extends(UBER_VOUCHER_REQUEST_RETURN_CODESRec, _super);
+function UBER_VOUCHER_REQUEST_RETURN_CODESRec(defaults) {
+_super.apply(this, arguments);
+}
+UBER_VOUCHER_REQUEST_RETURN_CODESRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CodeIdentifier", "codeIdentifierAttr", "CodeIdentifier", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+UBER_VOUCHER_REQUEST_RETURN_CODESRec.generateFromLocalStorage = function () {
+return false;
+};
+UBER_VOUCHER_REQUEST_RETURN_CODESRec.init();
+return UBER_VOUCHER_REQUEST_RETURN_CODESRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.UBER_VOUCHER_REQUEST_RETURN_CODESRec = UBER_VOUCHER_REQUEST_RETURN_CODESRec;
+
+});
+define("WTF_BP.model$USER_TERMS_ACCEPTANCERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var USER_TERMS_ACCEPTANCERec = (function (_super) {
+__extends(USER_TERMS_ACCEPTANCERec, _super);
+function USER_TERMS_ACCEPTANCERec(defaults) {
+_super.apply(this, arguments);
+}
+USER_TERMS_ACCEPTANCERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("RegulationVersionId", "regulationVersionIdAttr", "RegulationVersionId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserUID", "userUIDAttr", "UserUID", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DateTime", "dateTimeAttr", "DateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("OperativeSystem", "operativeSystemAttr", "OperativeSystem", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+USER_TERMS_ACCEPTANCERec.generateFromLocalStorage = function () {
+return false;
+};
+USER_TERMS_ACCEPTANCERec.init();
+return USER_TERMS_ACCEPTANCERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.USER_TERMS_ACCEPTANCERec = USER_TERMS_ACCEPTANCERec;
+
+});
+define("WTF_BP.model$WALLET_ITEM_ACTIONS_BORec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var WALLET_ITEM_ACTIONS_BORec = (function (_super) {
+__extends(WALLET_ITEM_ACTIONS_BORec, _super);
+function WALLET_ITEM_ACTIONS_BORec(defaults) {
+_super.apply(this, arguments);
+}
+WALLET_ITEM_ACTIONS_BORec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("ExternalOriginIdentifier", "externalOriginIdentifierAttr", "ExternalOriginIdentifier", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("WalletItemIdentifier", "walletItemIdentifierAttr", "WalletItemIdentifier", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("WalletItemOriginId", "walletItemOriginIdAttr", "WalletItemOriginId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("WalletItemActionsLabelsId", "walletItemActionsLabelsIdAttr", "WalletItemActionsLabelsId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedBy", "createdByAttr", "CreatedBy", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+WALLET_ITEM_ACTIONS_BORec.generateFromLocalStorage = function () {
+return false;
+};
+WALLET_ITEM_ACTIONS_BORec.init();
+return WALLET_ITEM_ACTIONS_BORec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.WALLET_ITEM_ACTIONS_BORec = WALLET_ITEM_ACTIONS_BORec;
+
+});
+define("WTF_BP.model$VOUCHERSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var VOUCHERSRec = (function (_super) {
+__extends(VOUCHERSRec, _super);
+function VOUCHERSRec(defaults) {
+_super.apply(this, arguments);
+}
+VOUCHERSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Application", "applicationAttr", "Application", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Module", "moduleAttr", "Module", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("VoucherTypeId", "voucherTypeIdAttr", "VoucherTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("InitDate", "initDateAttr", "InitDate", false, OS.Types.Date, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("FinishDate", "finishDateAttr", "FinishDate", false, OS.Types.Date, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("Code", "codeAttr", "Code", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("VoucherRequestOriginId", "voucherRequestOriginIdAttr", "VoucherRequestOriginId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("VoucherStatusId", "voucherStatusIdAttr", "VoucherStatusId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("RequestDateTime", "requestDateTimeAttr", "RequestDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UsernameBO", "usernameBOAttr", "UsernameBO", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Amount", "amountAttr", "Amount", false, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+VOUCHERSRec.generateFromLocalStorage = function () {
+return false;
+};
+VOUCHERSRec.init();
+return VOUCHERSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.VOUCHERSRec = VOUCHERSRec;
+
+});
+define("WTF_BP.model$WELCOME_PRIZE_MSISDNRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var WELCOME_PRIZE_MSISDNRec = (function (_super) {
+__extends(WELCOME_PRIZE_MSISDNRec, _super);
+function WELCOME_PRIZE_MSISDNRec(defaults) {
+_super.apply(this, arguments);
+}
+WELCOME_PRIZE_MSISDNRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("WelcomePrizeId", "welcomePrizeIdAttr", "WelcomePrizeId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Msisdn", "msisdnAttr", "Msisdn", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("AllowNewRequest", "allowNewRequestAttr", "AllowNewRequest", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+WELCOME_PRIZE_MSISDNRec.generateFromLocalStorage = function () {
+return false;
+};
+WELCOME_PRIZE_MSISDNRec.init();
+return WELCOME_PRIZE_MSISDNRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.WELCOME_PRIZE_MSISDNRec = WELCOME_PRIZE_MSISDNRec;
+
+});
+define("WTF_BP.model$USER_WTFRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var USER_WTFRec = (function (_super) {
+__extends(USER_WTFRec, _super);
+function USER_WTFRec(defaults) {
+_super.apply(this, arguments);
+}
+USER_WTFRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserNOSId", "userNOSIdAttr", "UserNOSId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("TmcodeId", "tmcodeIdAttr", "TmcodeId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Msisdn", "msisdnAttr", "Msisdn", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CodeMember", "codeMemberAttr", "CodeMember", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+USER_WTFRec.generateFromLocalStorage = function () {
+return false;
+};
+USER_WTFRec.init();
+return USER_WTFRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.USER_WTFRec = USER_WTFRec;
+
+});
+define("WTF_BP.model$REGULATION_VERSIONSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var REGULATION_VERSIONSRec = (function (_super) {
+__extends(REGULATION_VERSIONSRec, _super);
+function REGULATION_VERSIONSRec(defaults) {
+_super.apply(this, arguments);
+}
+REGULATION_VERSIONSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Regulation_id", "regulation_idAttr", "Regulation_id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Title", "titleAttr", "Title", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Body", "bodyAttr", "Body", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("RegulationStatusId", "regulationStatusIdAttr", "RegulationStatusId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UsernameBO", "usernameBOAttr", "UsernameBO", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PublishedAt", "publishedAtAttr", "PublishedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("NeedAccept", "needAcceptAttr", "NeedAccept", false, OS.Types.Boolean, function () {
+return true;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+REGULATION_VERSIONSRec.generateFromLocalStorage = function () {
+return false;
+};
+REGULATION_VERSIONSRec.init();
+return REGULATION_VERSIONSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.REGULATION_VERSIONSRec = REGULATION_VERSIONSRec;
+
+});
+define("WTF_BP.model$App_CopiesRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_CopiesRec = (function (_super) {
+__extends(App_CopiesRec, _super);
+function App_CopiesRec(defaults) {
+_super.apply(this, arguments);
+}
+App_CopiesRec.attributesToDeclare = function () {
+return [
+this.attr("Copy1", "copy1Attr", "Copy1", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Copy2", "copy2Attr", "Copy2", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_CopiesRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_CopiesRec.init();
+return App_CopiesRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_CopiesRec = App_CopiesRec;
+
+});
+define("WTF_BP.model$SCREENS_PARAMETERDATARec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var SCREENS_PARAMETERDATARec = (function (_super) {
+__extends(SCREENS_PARAMETERDATARec, _super);
+function SCREENS_PARAMETERDATARec(defaults) {
+_super.apply(this, arguments);
+}
+SCREENS_PARAMETERDATARec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("ScreenOriginTypeId", "screenOriginTypeIdAttr", "ScreenOriginTypeId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("OriginIdentifier", "originIdentifierAttr", "OriginIdentifier", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("ScreenId", "screenIdAttr", "ScreenId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("ParameterId", "parameterIdAttr", "ParameterId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Value", "valueAttr", "Value", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+SCREENS_PARAMETERDATARec.generateFromLocalStorage = function () {
+return false;
+};
+SCREENS_PARAMETERDATARec.init();
+return SCREENS_PARAMETERDATARec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.SCREENS_PARAMETERDATARec = SCREENS_PARAMETERDATARec;
+
+});
+define("WTF_BP.model$DIAMOND_MOVEMENT_HISTORYRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var DIAMOND_MOVEMENT_HISTORYRec = (function (_super) {
+__extends(DIAMOND_MOVEMENT_HISTORYRec, _super);
+function DIAMOND_MOVEMENT_HISTORYRec(defaults) {
+_super.apply(this, arguments);
+}
+DIAMOND_MOVEMENT_HISTORYRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserWtfId", "userWtfIdAttr", "UserWtfId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("DiamondTypesId", "diamondTypesIdAttr", "DiamondTypesId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("RequestOriginTypeId", "requestOriginTypeIdAttr", "RequestOriginTypeId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("RequestMovementTypesId", "requestMovementTypesIdAttr", "RequestMovementTypesId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Quantity", "quantityAttr", "Quantity", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Observation", "observationAttr", "Observation", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("UsernameBO", "usernameBOAttr", "UsernameBO", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+DIAMOND_MOVEMENT_HISTORYRec.generateFromLocalStorage = function () {
+return false;
+};
+DIAMOND_MOVEMENT_HISTORYRec.init();
+return DIAMOND_MOVEMENT_HISTORYRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.DIAMOND_MOVEMENT_HISTORYRec = DIAMOND_MOVEMENT_HISTORYRec;
+
+});
+define("WTF_BP.model$PRIZES_QUEUE_HISTORY_USERBACKOFFICERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var PRIZES_QUEUE_HISTORY_USERBACKOFFICERec = (function (_super) {
+__extends(PRIZES_QUEUE_HISTORY_USERBACKOFFICERec, _super);
+function PRIZES_QUEUE_HISTORY_USERBACKOFFICERec(defaults) {
+_super.apply(this, arguments);
+}
+PRIZES_QUEUE_HISTORY_USERBACKOFFICERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UsernameBO", "usernameBOAttr", "UsernameBO", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DiamondTypesId", "diamondTypesIdAttr", "DiamondTypesId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Quantity", "quantityAttr", "Quantity", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PRIZES_QUEUE_HISTORY_USERBACKOFFICERec.generateFromLocalStorage = function () {
+return false;
+};
+PRIZES_QUEUE_HISTORY_USERBACKOFFICERec.init();
+return PRIZES_QUEUE_HISTORY_USERBACKOFFICERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.PRIZES_QUEUE_HISTORY_USERBACKOFFICERec = PRIZES_QUEUE_HISTORY_USERBACKOFFICERec;
+
+});
+define("WTF_BP.model$App_HistoryRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_HistoryRec = (function (_super) {
+__extends(App_HistoryRec, _super);
+function App_HistoryRec(defaults) {
+_super.apply(this, arguments);
+}
+App_HistoryRec.attributesToDeclare = function () {
+return [
+this.attr("Category", "categoryAttr", "Category", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PrizeLabel", "prizeLabelAttr", "PrizeLabel", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ActionName", "actionNameAttr", "ActionName", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ActionDateTime", "actionDateTimeAttr", "ActionDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("ExpireDateTime", "expireDateTimeAttr", "ExpireDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_HistoryRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_HistoryRec.init();
+return App_HistoryRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_HistoryRec = App_HistoryRec;
+
+});
+define("WTF_BP.model$App_WelcomePrizeRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_PictureRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_WelcomePrizeRec = (function (_super) {
+__extends(App_WelcomePrizeRec, _super);
+function App_WelcomePrizeRec(defaults) {
+_super.apply(this, arguments);
+}
+App_WelcomePrizeRec.attributesToDeclare = function () {
+return [
+this.attr("App_Picture", "app_PictureAttr", "App_Picture", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_PictureRec());
+}, WTF_BPModel.App_PictureRec), 
+this.attr("Name", "nameAttr", "Name", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Identifier", "identifierAttr", "Identifier", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("ClassType", "classTypeAttr", "ClassType", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Text1", "text1Attr", "Text1", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Text2", "text2Attr", "Text2", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Text3", "text3Attr", "Text3", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("BtnActionLabel", "btnActionLabelAttr", "BtnActionLabel", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("BtnActionURL", "btnActionURLAttr", "BtnActionURL", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ShareIsActive", "shareIsActiveAttr", "ShareIsActive", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("ShareMsg", "shareMsgAttr", "ShareMsg", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_WelcomePrizeRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_WelcomePrizeRec.init();
+return App_WelcomePrizeRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_WelcomePrizeRec = App_WelcomePrizeRec;
+
+});
+define("WTF_BP.model$FIREBASE_DYNAMICLINKSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var FIREBASE_DYNAMICLINKSRec = (function (_super) {
+__extends(FIREBASE_DYNAMICLINKSRec, _super);
+function FIREBASE_DYNAMICLINKSRec(defaults) {
+_super.apply(this, arguments);
+}
+FIREBASE_DYNAMICLINKSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("DynamicLink", "dynamicLinkAttr", "DynamicLink", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DestinationScreen", "destinationScreenAttr", "DestinationScreen", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+FIREBASE_DYNAMICLINKSRec.generateFromLocalStorage = function () {
+return false;
+};
+FIREBASE_DYNAMICLINKSRec.init();
+return FIREBASE_DYNAMICLINKSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.FIREBASE_DYNAMICLINKSRec = FIREBASE_DYNAMICLINKSRec;
+
+});
+define("WTF_BP.model$PRIZE_MOVEMENTRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var PRIZE_MOVEMENTRec = (function (_super) {
+__extends(PRIZE_MOVEMENTRec, _super);
+function PRIZE_MOVEMENTRec(defaults) {
+_super.apply(this, arguments);
+}
+PRIZE_MOVEMENTRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("PrizeId", "prizeIdAttr", "PrizeId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("RequestMovementTypesId", "requestMovementTypesIdAttr", "RequestMovementTypesId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Quantity", "quantityAttr", "Quantity", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PRIZE_MOVEMENTRec.generateFromLocalStorage = function () {
+return false;
+};
+PRIZE_MOVEMENTRec.init();
+return PRIZE_MOVEMENTRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.PRIZE_MOVEMENTRec = PRIZE_MOVEMENTRec;
+
+});
+define("WTF_BP.model$CACHE_SERVICERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var CACHE_SERVICERec = (function (_super) {
+__extends(CACHE_SERVICERec, _super);
+function CACHE_SERVICERec(defaults) {
+_super.apply(this, arguments);
+}
+CACHE_SERVICERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+CACHE_SERVICERec.generateFromLocalStorage = function () {
+return false;
+};
+CACHE_SERVICERec.init();
+return CACHE_SERVICERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.CACHE_SERVICERec = CACHE_SERVICERec;
+
+});
+define("WTF_BP.model$App_UserNosRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_UserNosRec = (function (_super) {
+__extends(App_UserNosRec, _super);
+function App_UserNosRec(defaults) {
+_super.apply(this, arguments);
+}
+App_UserNosRec.attributesToDeclare = function () {
+return [
+this.attr("UserUID", "userUIDAttr", "UserUID", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("BirthDate", "birthDateAttr", "BirthDate", false, OS.Types.Date, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("Gender", "genderAttr", "Gender", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Username", "usernameAttr", "Username", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Picture", "pictureAttr", "Picture", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_UserNosRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_UserNosRec.init();
+return App_UserNosRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_UserNosRec = App_UserNosRec;
+
+});
+define("WTF_BP.model$PAYMENTTYPOLOGYRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var PAYMENTTYPOLOGYRec = (function (_super) {
+__extends(PAYMENTTYPOLOGYRec, _super);
+function PAYMENTTYPOLOGYRec(defaults) {
+_super.apply(this, arguments);
+}
+PAYMENTTYPOLOGYRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PAYMENTTYPOLOGYRec.generateFromLocalStorage = function () {
+return false;
+};
+PAYMENTTYPOLOGYRec.init();
+return PAYMENTTYPOLOGYRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.PAYMENTTYPOLOGYRec = PAYMENTTYPOLOGYRec;
+
+});
+define("WTF_BP.model$SECRETFRIEND_OFFERRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var SECRETFRIEND_OFFERRec = (function (_super) {
+__extends(SECRETFRIEND_OFFERRec, _super);
+function SECRETFRIEND_OFFERRec(defaults) {
+_super.apply(this, arguments);
+}
+SECRETFRIEND_OFFERRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("SecretFriendId", "secretFriendIdAttr", "SecretFriendId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("MessageItem", "messageItemAttr", "MessageItem", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsWTFGift", "isWTFGiftAttr", "IsWTFGift", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description", "descriptionAttr", "Description", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ItemTypeId", "itemTypeIdAttr", "ItemTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("PictureId", "pictureIdAttr", "PictureId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("HasStock", "hasStockAttr", "HasStock", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Stock", "stockAttr", "Stock", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("NumberAlertStock", "numberAlertStockAttr", "NumberAlertStock", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("HasMessageAlertStock", "hasMessageAlertStockAttr", "HasMessageAlertStock", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("MessageAlertStock", "messageAlertStockAttr", "MessageAlertStock", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("VoucherTypeId", "voucherTypeIdAttr", "VoucherTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("VoucherAmount", "voucherAmountAttr", "VoucherAmount", false, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("RequiredAddress", "requiredAddressAttr", "RequiredAddress", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("DiamondTypeId", "diamondTypeIdAttr", "DiamondTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("ItemUnityId", "itemUnityIdAttr", "ItemUnityId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("PhoperationCampId", "phoperationCampIdAttr", "PhoperationCampId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("QuantityUnit", "quantityUnitAttr", "QuantityUnit", false, OS.Types.Decimal, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("AssetId", "assetIdAttr", "AssetId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Duration", "durationAttr", "Duration", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+SECRETFRIEND_OFFERRec.generateFromLocalStorage = function () {
+return false;
+};
+SECRETFRIEND_OFFERRec.init();
+return SECRETFRIEND_OFFERRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.SECRETFRIEND_OFFERRec = SECRETFRIEND_OFFERRec;
+
+});
+define("WTF_BP.model$USER_NOSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var USER_NOSRec = (function (_super) {
+__extends(USER_NOSRec, _super);
+function USER_NOSRec(defaults) {
+_super.apply(this, arguments);
+}
+USER_NOSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserUID", "userUIDAttr", "UserUID", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("BirthDate", "birthDateAttr", "BirthDate", false, OS.Types.Date, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("Gender", "genderAttr", "Gender", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Username", "usernameAttr", "Username", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Picture", "pictureAttr", "Picture", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("IsForceReloadAssociations", "isForceReloadAssociationsAttr", "IsForceReloadAssociations", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+USER_NOSRec.generateFromLocalStorage = function () {
+return false;
+};
+USER_NOSRec.init();
+return USER_NOSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.USER_NOSRec = USER_NOSRec;
+
+});
+define("WTF_BP.model$UBER_VOUCHER_RULE_RECHARGE_VOUCHER_TYPERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var UBER_VOUCHER_RULE_RECHARGE_VOUCHER_TYPERec = (function (_super) {
+__extends(UBER_VOUCHER_RULE_RECHARGE_VOUCHER_TYPERec, _super);
+function UBER_VOUCHER_RULE_RECHARGE_VOUCHER_TYPERec(defaults) {
+_super.apply(this, arguments);
+}
+UBER_VOUCHER_RULE_RECHARGE_VOUCHER_TYPERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UberVoucherRuleRechargeId", "uberVoucherRuleRechargeIdAttr", "UberVoucherRuleRechargeId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("VoucherTypeId", "voucherTypeIdAttr", "VoucherTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+UBER_VOUCHER_RULE_RECHARGE_VOUCHER_TYPERec.generateFromLocalStorage = function () {
+return false;
+};
+UBER_VOUCHER_RULE_RECHARGE_VOUCHER_TYPERec.init();
+return UBER_VOUCHER_RULE_RECHARGE_VOUCHER_TYPERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.UBER_VOUCHER_RULE_RECHARGE_VOUCHER_TYPERec = UBER_VOUCHER_RULE_RECHARGE_VOUCHER_TYPERec;
+
+});
+define("WTF_BP.model$App_PrizeListRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_PictureRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_PrizeListRec = (function (_super) {
+__extends(App_PrizeListRec, _super);
+function App_PrizeListRec(defaults) {
+_super.apply(this, arguments);
+}
+App_PrizeListRec.attributesToDeclare = function () {
+return [
+this.attr("PrizeId", "prizeIdAttr", "PrizeId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("ItemTypeId", "itemTypeIdAttr", "ItemTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("App_Picture", "app_PictureAttr", "App_Picture", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_PictureRec());
+}, WTF_BPModel.App_PictureRec), 
+this.attr("CopyForScratch", "copyForScratchAttr", "CopyForScratch", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Montra_Class", "montra_ClassAttr", "Montra_Class", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("OpenClose_Class", "openClose_ClassAttr", "OpenClose_Class", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Category", "categoryAttr", "Category", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_PrizeListRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_PrizeListRec.init();
+return App_PrizeListRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_PrizeListRec = App_PrizeListRec;
+
+});
+define("WTF_BP.model$App_PhoneContactsRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_PhoneContactsRec = (function (_super) {
+__extends(App_PhoneContactsRec, _super);
+function App_PhoneContactsRec(defaults) {
+_super.apply(this, arguments);
+}
+App_PhoneContactsRec.attributesToDeclare = function () {
+return [
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Msisdn", "msisdnAttr", "Msisdn", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Photo_url", "photo_urlAttr", "Photo_url", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsWtf", "isWtfAttr", "IsWtf", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_PhoneContactsRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_PhoneContactsRec.init();
+return App_PhoneContactsRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_PhoneContactsRec = App_PhoneContactsRec;
+
+});
+define("WTF_BP.model$VOUCHER_STATUSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var VOUCHER_STATUSRec = (function (_super) {
+__extends(VOUCHER_STATUSRec, _super);
+function VOUCHER_STATUSRec(defaults) {
+_super.apply(this, arguments);
+}
+VOUCHER_STATUSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+VOUCHER_STATUSRec.generateFromLocalStorage = function () {
+return false;
+};
+VOUCHER_STATUSRec.init();
+return VOUCHER_STATUSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.VOUCHER_STATUSRec = VOUCHER_STATUSRec;
+
+});
+define("WTF_BP.model$SECRETFRIEND_STATUSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var SECRETFRIEND_STATUSRec = (function (_super) {
+__extends(SECRETFRIEND_STATUSRec, _super);
+function SECRETFRIEND_STATUSRec(defaults) {
+_super.apply(this, arguments);
+}
+SECRETFRIEND_STATUSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+SECRETFRIEND_STATUSRec.generateFromLocalStorage = function () {
+return false;
+};
+SECRETFRIEND_STATUSRec.init();
+return SECRETFRIEND_STATUSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.SECRETFRIEND_STATUSRec = SECRETFRIEND_STATUSRec;
+
+});
+define("WTF_BP.model$App_AnswersRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_AnswersRec = (function (_super) {
+__extends(App_AnswersRec, _super);
+function App_AnswersRec(defaults) {
+_super.apply(this, arguments);
+}
+App_AnswersRec.attributesToDeclare = function () {
+return [
+this.attr("QuizAnswerId", "quizAnswerIdAttr", "QuizAnswerId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Answer", "answerAttr", "Answer", true, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_AnswersRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_AnswersRec.init();
+return App_AnswersRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_AnswersRec = App_AnswersRec;
+
+});
+define("WTF_BP.model$App_AnswersList", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_AnswersRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_AnswersList = (function (_super) {
+__extends(App_AnswersList, _super);
+function App_AnswersList(defaults) {
+_super.apply(this, arguments);
+}
+App_AnswersList.RecordType = WTF_BPModel.App_AnswersRec;
+return App_AnswersList;
+})(OS.DataTypes.GenericRecordList);
+WTF_BPModel.App_AnswersList = App_AnswersList;
+
+});
+define("WTF_BP.model$App_QuizRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_AnswersList"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_QuizRec = (function (_super) {
+__extends(App_QuizRec, _super);
+function App_QuizRec(defaults) {
+_super.apply(this, arguments);
+}
+App_QuizRec.attributesToDeclare = function () {
+return [
+this.attr("UserPlaysQuizId", "userPlaysQuizIdAttr", "UserPlaysQuizId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("QuizId", "quizIdAttr", "QuizId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Question", "questionAttr", "Question", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AppAnswers", "appAnswersAttr", "AppAnswers", false, OS.Types.RecordList, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_AnswersList());
+}, WTF_BPModel.App_AnswersList)
+].concat(_super.attributesToDeclare.call(this));
+};
+App_QuizRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_QuizRec.init();
+return App_QuizRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_QuizRec = App_QuizRec;
+
+});
+define("WTF_BP.model$App_InfoCardsRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_InfoCardsRec = (function (_super) {
+__extends(App_InfoCardsRec, _super);
+function App_InfoCardsRec(defaults) {
+_super.apply(this, arguments);
+}
+App_InfoCardsRec.attributesToDeclare = function () {
+return [
+this.attr("Identifier", "identifierAttr", "Identifier", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("HasRead", "hasReadAttr", "HasRead", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("TitleCard", "titleCardAttr", "TitleCard", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DescCard", "descCardAttr", "DescCard", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("TitleHeaderPage", "titleHeaderPageAttr", "TitleHeaderPage", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Content_Type", "content_TypeAttr", "Content_Type", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Content_Binary", "content_BinaryAttr", "Content_Binary", true, OS.Types.BinaryData, function () {
+return OS.DataTypes.BinaryData.defaultValue;
+}), 
+this.attr("HasDetail", "hasDetailAttr", "HasDetail", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("TitleDetail", "titleDetailAttr", "TitleDetail", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("SubtitleDetail", "subtitleDetailAttr", "SubtitleDetail", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("BodyDetail", "bodyDetailAttr", "BodyDetail", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("HasAction", "hasActionAttr", "HasAction", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("BtnActionExternalLink", "btnActionExternalLinkAttr", "BtnActionExternalLink", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("BtnActionLabel", "btnActionLabelAttr", "BtnActionLabel", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("BtnActionInApp", "btnActionInAppAttr", "BtnActionInApp", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("BtnActionUrl", "btnActionUrlAttr", "BtnActionUrl", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("HasDeleteAction", "hasDeleteActionAttr", "HasDeleteAction", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("HasDeleteActionAfterRead", "hasDeleteActionAfterReadAttr", "HasDeleteActionAfterRead", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_InfoCardsRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_InfoCardsRec.init();
+return App_InfoCardsRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_InfoCardsRec = App_InfoCardsRec;
+
+});
+define("WTF_BP.model$WALLET_ITEM_ACTIONS_LABELSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var WALLET_ITEM_ACTIONS_LABELSRec = (function (_super) {
+__extends(WALLET_ITEM_ACTIONS_LABELSRec, _super);
+function WALLET_ITEM_ACTIONS_LABELSRec(defaults) {
+_super.apply(this, arguments);
+}
+WALLET_ITEM_ACTIONS_LABELSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+WALLET_ITEM_ACTIONS_LABELSRec.generateFromLocalStorage = function () {
+return false;
+};
+WALLET_ITEM_ACTIONS_LABELSRec.init();
+return WALLET_ITEM_ACTIONS_LABELSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.WALLET_ITEM_ACTIONS_LABELSRec = WALLET_ITEM_ACTIONS_LABELSRec;
+
+});
+define("WTF_BP.model$VERSION_APPLICATIONRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var VERSION_APPLICATIONRec = (function (_super) {
+__extends(VERSION_APPLICATIONRec, _super);
+function VERSION_APPLICATIONRec(defaults) {
+_super.apply(this, arguments);
+}
+VERSION_APPLICATIONRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Version", "versionAttr", "Version", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CreatedBy", "createdByAttr", "CreatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedBy", "updatedByAttr", "UpdatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+VERSION_APPLICATIONRec.generateFromLocalStorage = function () {
+return false;
+};
+VERSION_APPLICATIONRec.init();
+return VERSION_APPLICATIONRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.VERSION_APPLICATIONRec = VERSION_APPLICATIONRec;
+
+});
+define("WTF_BP.model$USER_DIAMOND_PARTSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var USER_DIAMOND_PARTSRec = (function (_super) {
+__extends(USER_DIAMOND_PARTSRec, _super);
+function USER_DIAMOND_PARTSRec(defaults) {
+_super.apply(this, arguments);
+}
+USER_DIAMOND_PARTSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserWtfId", "userWtfIdAttr", "UserWtfId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("DiamondTypesId", "diamondTypesIdAttr", "DiamondTypesId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Type", "typeAttr", "Type", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Quantity", "quantityAttr", "Quantity", true, OS.Types.Decimal, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+USER_DIAMOND_PARTSRec.generateFromLocalStorage = function () {
+return false;
+};
+USER_DIAMOND_PARTSRec.init();
+return USER_DIAMOND_PARTSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.USER_DIAMOND_PARTSRec = USER_DIAMOND_PARTSRec;
+
+});
+define("WTF_BP.model$USER_PLAYSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var USER_PLAYSRec = (function (_super) {
+__extends(USER_PLAYSRec, _super);
+function USER_PLAYSRec(defaults) {
+_super.apply(this, arguments);
+}
+USER_PLAYSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserWtfId", "userWtfIdAttr", "UserWtfId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("DiamondTypesId", "diamondTypesIdAttr", "DiamondTypesId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UserDiamondId", "userDiamondIdAttr", "UserDiamondId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("HasWon", "hasWonAttr", "HasWon", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+USER_PLAYSRec.generateFromLocalStorage = function () {
+return false;
+};
+USER_PLAYSRec.init();
+return USER_PLAYSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.USER_PLAYSRec = USER_PLAYSRec;
+
+});
+define("WTF_BP.model$VOUCHERS_REQUEST_ORIGINRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var VOUCHERS_REQUEST_ORIGINRec = (function (_super) {
+__extends(VOUCHERS_REQUEST_ORIGINRec, _super);
+function VOUCHERS_REQUEST_ORIGINRec(defaults) {
+_super.apply(this, arguments);
+}
+VOUCHERS_REQUEST_ORIGINRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+VOUCHERS_REQUEST_ORIGINRec.generateFromLocalStorage = function () {
+return false;
+};
+VOUCHERS_REQUEST_ORIGINRec.init();
+return VOUCHERS_REQUEST_ORIGINRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.VOUCHERS_REQUEST_ORIGINRec = VOUCHERS_REQUEST_ORIGINRec;
+
+});
+define("WTF_BP.model$App_UserAssociationsRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_TmcodeRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_UserAssociationsRec = (function (_super) {
+__extends(App_UserAssociationsRec, _super);
+function App_UserAssociationsRec(defaults) {
+_super.apply(this, arguments);
+}
+App_UserAssociationsRec.attributesToDeclare = function () {
+return [
+this.attr("Msisdn", "msisdnAttr", "Msisdn", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AssociationId", "associationIdAttr", "AssociationId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("App_Tmcode", "app_TmcodeAttr", "App_Tmcode", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_TmcodeRec());
+}, WTF_BPModel.App_TmcodeRec), 
+this.attr("CustCode", "custCodeAttr", "CustCode", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_UserAssociationsRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_UserAssociationsRec.init();
+return App_UserAssociationsRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_UserAssociationsRec = App_UserAssociationsRec;
+
+});
+define("WTF_BP.model$App_IdentifierRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_IdentifierRec = (function (_super) {
+__extends(App_IdentifierRec, _super);
+function App_IdentifierRec(defaults) {
+_super.apply(this, arguments);
+}
+App_IdentifierRec.attributesToDeclare = function () {
+return [
+this.attr("Android", "androidAttr", "Android", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Ios", "iosAttr", "Ios", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_IdentifierRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_IdentifierRec.init();
+return App_IdentifierRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_IdentifierRec = App_IdentifierRec;
+
+});
+define("WTF_BP.model$STR_LAYOUT_LEVELRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var STR_LAYOUT_LEVELRec = (function (_super) {
+__extends(STR_LAYOUT_LEVELRec, _super);
+function STR_LAYOUT_LEVELRec(defaults) {
+_super.apply(this, arguments);
+}
+STR_LAYOUT_LEVELRec.attributesToDeclare = function () {
+return [
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Level", "levelAttr", "Level", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+STR_LAYOUT_LEVELRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+STR_LAYOUT_LEVELRec.init();
+return STR_LAYOUT_LEVELRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.STR_LAYOUT_LEVELRec = STR_LAYOUT_LEVELRec;
+
+});
+define("WTF_BP.model$UBER_VOUCHER_RULE_RECHARGE_TMCODERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var UBER_VOUCHER_RULE_RECHARGE_TMCODERec = (function (_super) {
+__extends(UBER_VOUCHER_RULE_RECHARGE_TMCODERec, _super);
+function UBER_VOUCHER_RULE_RECHARGE_TMCODERec(defaults) {
+_super.apply(this, arguments);
+}
+UBER_VOUCHER_RULE_RECHARGE_TMCODERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UberVoucherRuleRechargeId", "uberVoucherRuleRechargeIdAttr", "UberVoucherRuleRechargeId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("TmcodeId", "tmcodeIdAttr", "TmcodeId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+UBER_VOUCHER_RULE_RECHARGE_TMCODERec.generateFromLocalStorage = function () {
+return false;
+};
+UBER_VOUCHER_RULE_RECHARGE_TMCODERec.init();
+return UBER_VOUCHER_RULE_RECHARGE_TMCODERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.UBER_VOUCHER_RULE_RECHARGE_TMCODERec = UBER_VOUCHER_RULE_RECHARGE_TMCODERec;
+
+});
+define("WTF_BP.model$QUIZRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var QUIZRec = (function (_super) {
+__extends(QUIZRec, _super);
+function QUIZRec(defaults) {
+_super.apply(this, arguments);
+}
+QUIZRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Question", "questionAttr", "Question", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+QUIZRec.generateFromLocalStorage = function () {
+return false;
+};
+QUIZRec.init();
+return QUIZRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.QUIZRec = QUIZRec;
+
+});
+define("WTF_BP.model$App_PromotionsRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_PictureRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_PromotionsRec = (function (_super) {
+__extends(App_PromotionsRec, _super);
+function App_PromotionsRec(defaults) {
+_super.apply(this, arguments);
+}
+App_PromotionsRec.attributesToDeclare = function () {
+return [
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("App_Picture", "app_PictureAttr", "App_Picture", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_PictureRec());
+}, WTF_BPModel.App_PictureRec), 
+this.attr("Category", "categoryAttr", "Category", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("StartDateTime", "startDateTimeAttr", "StartDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("ExpirationDateTime", "expirationDateTimeAttr", "ExpirationDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("HasCountdown", "hasCountdownAttr", "HasCountdown", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CallToAction_Active", "callToAction_ActiveAttr", "CallToAction_Active", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CallToActionLabel", "callToActionLabelAttr", "CallToActionLabel", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CallToActionUrl", "callToActionUrlAttr", "CallToActionUrl", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CallToActionInApp", "callToActionInAppAttr", "CallToActionInApp", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_PromotionsRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_PromotionsRec.init();
+return App_PromotionsRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_PromotionsRec = App_PromotionsRec;
+
+});
+define("WTF_BP.model$USER_WTF_PRIZE_ADDRESSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var USER_WTF_PRIZE_ADDRESSRec = (function (_super) {
+__extends(USER_WTF_PRIZE_ADDRESSRec, _super);
+function USER_WTF_PRIZE_ADDRESSRec(defaults) {
+_super.apply(this, arguments);
+}
+USER_WTF_PRIZE_ADDRESSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserWTFId", "userWTFIdAttr", "UserWTFId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserPlaysQuizId", "userPlaysQuizIdAttr", "UserPlaysQuizId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Name", "nameAttr", "Name", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AddressStreet", "addressStreetAttr", "AddressStreet", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AddressPostalCity", "addressPostalCityAttr", "AddressPostalCity", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AddressPostalCode", "addressPostalCodeAttr", "AddressPostalCode", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Msisdn", "msisdnAttr", "Msisdn", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Authorize", "authorizeAttr", "Authorize", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+USER_WTF_PRIZE_ADDRESSRec.generateFromLocalStorage = function () {
+return false;
+};
+USER_WTF_PRIZE_ADDRESSRec.init();
+return USER_WTF_PRIZE_ADDRESSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.USER_WTF_PRIZE_ADDRESSRec = USER_WTF_PRIZE_ADDRESSRec;
+
+});
+define("WTF_BP.model$STR_ASSOCIATION_TERMSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var STR_ASSOCIATION_TERMSRec = (function (_super) {
+__extends(STR_ASSOCIATION_TERMSRec, _super);
+function STR_ASSOCIATION_TERMSRec(defaults) {
+_super.apply(this, arguments);
+}
+STR_ASSOCIATION_TERMSRec.attributesToDeclare = function () {
+return [
+this.attr("AssociationID", "associationIDAttr", "AssociationID", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("CustCode", "custCodeAttr", "CustCode", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+STR_ASSOCIATION_TERMSRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+STR_ASSOCIATION_TERMSRec.init();
+return STR_ASSOCIATION_TERMSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.STR_ASSOCIATION_TERMSRec = STR_ASSOCIATION_TERMSRec;
+
+});
+define("WTF_BP.model$App_UserWtfRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_UserWtfRec = (function (_super) {
+__extends(App_UserWtfRec, _super);
+function App_UserWtfRec(defaults) {
+_super.apply(this, arguments);
+}
+App_UserWtfRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Msisdn", "msisdnAttr", "Msisdn", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CodeMember", "codeMemberAttr", "CodeMember", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Tmcode_Label", "tmcode_LabelAttr", "Tmcode_Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Is_MonthlyRenewal", "is_MonthlyRenewalAttr", "Is_MonthlyRenewal", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_UserWtfRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_UserWtfRec.init();
+return App_UserWtfRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_UserWtfRec = App_UserWtfRec;
+
+});
+define("WTF_BP.model$STR_SERVICES_BPRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_TmcodeRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var STR_SERVICES_BPRec = (function (_super) {
+__extends(STR_SERVICES_BPRec, _super);
+function STR_SERVICES_BPRec(defaults) {
+_super.apply(this, arguments);
+}
+STR_SERVICES_BPRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ServiceNumber", "serviceNumberAttr", "ServiceNumber", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("UiLabel", "uiLabelAttr", "UiLabel", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Plan", "planAttr", "Plan", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ServiceAccount", "serviceAccountAttr", "ServiceAccount", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("App_Tmcode", "app_TmcodeAttr", "App_Tmcode", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_TmcodeRec());
+}, WTF_BPModel.App_TmcodeRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+STR_SERVICES_BPRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+STR_SERVICES_BPRec.init();
+return STR_SERVICES_BPRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.STR_SERVICES_BPRec = STR_SERVICES_BPRec;
+
+});
+define("WTF_BP.model$ITEM_TYPESRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var ITEM_TYPESRec = (function (_super) {
+__extends(ITEM_TYPESRec, _super);
+function ITEM_TYPESRec(defaults) {
+_super.apply(this, arguments);
+}
+ITEM_TYPESRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+ITEM_TYPESRec.generateFromLocalStorage = function () {
+return false;
+};
+ITEM_TYPESRec.init();
+return ITEM_TYPESRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.ITEM_TYPESRec = ITEM_TYPESRec;
+
+});
+define("WTF_BP.model$REGULATION_STATUSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var REGULATION_STATUSRec = (function (_super) {
+__extends(REGULATION_STATUSRec, _super);
+function REGULATION_STATUSRec(defaults) {
+_super.apply(this, arguments);
+}
+REGULATION_STATUSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+REGULATION_STATUSRec.generateFromLocalStorage = function () {
+return false;
+};
+REGULATION_STATUSRec.init();
+return REGULATION_STATUSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.REGULATION_STATUSRec = REGULATION_STATUSRec;
+
+});
+define("WTF_BP.model$USER_WTF_VOUCHERSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var USER_WTF_VOUCHERSRec = (function (_super) {
+__extends(USER_WTF_VOUCHERSRec, _super);
+function USER_WTF_VOUCHERSRec(defaults) {
+_super.apply(this, arguments);
+}
+USER_WTF_VOUCHERSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("VoucherId", "voucherIdAttr", "VoucherId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserWTFId", "userWTFIdAttr", "UserWTFId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("RequestMsisdn", "requestMsisdnAttr", "RequestMsisdn", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+USER_WTF_VOUCHERSRec.generateFromLocalStorage = function () {
+return false;
+};
+USER_WTF_VOUCHERSRec.init();
+return USER_WTF_VOUCHERSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.USER_WTF_VOUCHERSRec = USER_WTF_VOUCHERSRec;
+
+});
+define("WTF_BP.model$REQUEST_ORIGIN_TYPERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var REQUEST_ORIGIN_TYPERec = (function (_super) {
+__extends(REQUEST_ORIGIN_TYPERec, _super);
+function REQUEST_ORIGIN_TYPERec(defaults) {
+_super.apply(this, arguments);
+}
+REQUEST_ORIGIN_TYPERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+REQUEST_ORIGIN_TYPERec.generateFromLocalStorage = function () {
+return false;
+};
+REQUEST_ORIGIN_TYPERec.init();
+return REQUEST_ORIGIN_TYPERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.REQUEST_ORIGIN_TYPERec = REQUEST_ORIGIN_TYPERec;
+
+});
+define("WTF_BP.model$STR_TOUR_CONTENT_HTMLRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_PictureRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var STR_TOUR_CONTENT_HTMLRec = (function (_super) {
+__extends(STR_TOUR_CONTENT_HTMLRec, _super);
+function STR_TOUR_CONTENT_HTMLRec(defaults) {
+_super.apply(this, arguments);
+}
+STR_TOUR_CONTENT_HTMLRec.attributesToDeclare = function () {
+return [
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("App_picture", "app_pictureAttr", "App_picture", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_PictureRec());
+}, WTF_BPModel.App_PictureRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+STR_TOUR_CONTENT_HTMLRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+STR_TOUR_CONTENT_HTMLRec.init();
+return STR_TOUR_CONTENT_HTMLRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.STR_TOUR_CONTENT_HTMLRec = STR_TOUR_CONTENT_HTMLRec;
+
+});
+define("WTF_BP.model$INFO_CARDSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var INFO_CARDSRec = (function (_super) {
+__extends(INFO_CARDSRec, _super);
+function INFO_CARDSRec(defaults) {
+_super.apply(this, arguments);
+}
+INFO_CARDSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("TitleCard", "titleCardAttr", "TitleCard", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DescCard", "descCardAttr", "DescCard", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("TitleHeaderPage", "titleHeaderPageAttr", "TitleHeaderPage", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ContentId", "contentIdAttr", "ContentId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("HasDetail", "hasDetailAttr", "HasDetail", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("TitleDetail", "titleDetailAttr", "TitleDetail", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("SubtitleDetail", "subtitleDetailAttr", "SubtitleDetail", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("BodyDetail", "bodyDetailAttr", "BodyDetail", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("HasAction", "hasActionAttr", "HasAction", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("BtnActionExternalLink", "btnActionExternalLinkAttr", "BtnActionExternalLink", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("BtnActionLabel", "btnActionLabelAttr", "BtnActionLabel", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("BtnActionInApp", "btnActionInAppAttr", "BtnActionInApp", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("BtnActionUrl", "btnActionUrlAttr", "BtnActionUrl", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("HasDeleteAction", "hasDeleteActionAttr", "HasDeleteAction", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("HasDeleteActionAfterRead", "hasDeleteActionAfterReadAttr", "HasDeleteActionAfterRead", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+INFO_CARDSRec.generateFromLocalStorage = function () {
+return false;
+};
+INFO_CARDSRec.init();
+return INFO_CARDSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.INFO_CARDSRec = INFO_CARDSRec;
+
+});
+define("WTF_BP.model$QUIZ_ANSWERRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var QUIZ_ANSWERRec = (function (_super) {
+__extends(QUIZ_ANSWERRec, _super);
+function QUIZ_ANSWERRec(defaults) {
+_super.apply(this, arguments);
+}
+QUIZ_ANSWERRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("QuizId", "quizIdAttr", "QuizId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Answer", "answerAttr", "Answer", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsCorrect", "isCorrectAttr", "IsCorrect", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+QUIZ_ANSWERRec.generateFromLocalStorage = function () {
+return false;
+};
+QUIZ_ANSWERRec.init();
+return QUIZ_ANSWERRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.QUIZ_ANSWERRec = QUIZ_ANSWERRec;
+
+});
+define("WTF_BP.model$STR_SERVICES_BPList", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$STR_SERVICES_BPRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var STR_SERVICES_BPList = (function (_super) {
+__extends(STR_SERVICES_BPList, _super);
+function STR_SERVICES_BPList(defaults) {
+_super.apply(this, arguments);
+}
+STR_SERVICES_BPList.RecordType = WTF_BPModel.STR_SERVICES_BPRec;
+return STR_SERVICES_BPList;
+})(OS.DataTypes.GenericRecordList);
+WTF_BPModel.STR_SERVICES_BPList = STR_SERVICES_BPList;
+
+});
+define("WTF_BP.model$STR_ASSOCIATION_FULL_BPRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$STR_SERVICES_BPList"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var STR_ASSOCIATION_FULL_BPRec = (function (_super) {
+__extends(STR_ASSOCIATION_FULL_BPRec, _super);
+function STR_ASSOCIATION_FULL_BPRec(defaults) {
+_super.apply(this, arguments);
+}
+STR_ASSOCIATION_FULL_BPRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("DisplayValue", "displayValueAttr", "DisplayValue", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("FriendlyName", "friendlyNameAttr", "FriendlyName", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("RoleName", "roleNameAttr", "RoleName", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Key", "keyAttr", "Key", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Value", "valueAttr", "Value", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PersonId", "personIdAttr", "PersonId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("OwnerName", "ownerNameAttr", "OwnerName", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("OwnerNIF", "ownerNIFAttr", "OwnerNIF", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Master", "masterAttr", "Master", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CounterVoiceMobile", "counterVoiceMobileAttr", "CounterVoiceMobile", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UnitAddress", "unitAddressAttr", "UnitAddress", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CustomerAccount", "customerAccountAttr", "CustomerAccount", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CustCode", "custCodeAttr", "CustCode", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Phonenumber", "phonenumberAttr", "Phonenumber", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("OwnerAddress", "ownerAddressAttr", "OwnerAddress", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("OwnerEmail", "ownerEmailAttr", "OwnerEmail", false, OS.Types.Email, function () {
+return "";
+}), 
+this.attr("OwnerPhonenumber", "ownerPhonenumberAttr", "OwnerPhonenumber", false, OS.Types.PhoneNumber, function () {
+return "";
+}), 
+this.attr("HasPendingAssociations", "hasPendingAssociationsAttr", "HasPendingAssociations", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Services", "servicesAttr", "Services", false, OS.Types.RecordList, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.STR_SERVICES_BPList());
+}, WTF_BPModel.STR_SERVICES_BPList), 
+this.attr("CustomerID", "customerIDAttr", "CustomerID", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+STR_ASSOCIATION_FULL_BPRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+STR_ASSOCIATION_FULL_BPRec.init();
+return STR_ASSOCIATION_FULL_BPRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.STR_ASSOCIATION_FULL_BPRec = STR_ASSOCIATION_FULL_BPRec;
+
+});
+define("WTF_BP.model$REGULATION_USERWTF_ACCEPTRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var REGULATION_USERWTF_ACCEPTRec = (function (_super) {
+__extends(REGULATION_USERWTF_ACCEPTRec, _super);
+function REGULATION_USERWTF_ACCEPTRec(defaults) {
+_super.apply(this, arguments);
+}
+REGULATION_USERWTF_ACCEPTRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserWtfId", "userWtfIdAttr", "UserWtfId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("RegulationVersionId", "regulationVersionIdAttr", "RegulationVersionId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("AcceptedAt", "acceptedAtAttr", "AcceptedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+REGULATION_USERWTF_ACCEPTRec.generateFromLocalStorage = function () {
+return false;
+};
+REGULATION_USERWTF_ACCEPTRec.init();
+return REGULATION_USERWTF_ACCEPTRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.REGULATION_USERWTF_ACCEPTRec = REGULATION_USERWTF_ACCEPTRec;
+
+});
+define("WTF_BP.model$HOTDEAL_TMCODERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var HOTDEAL_TMCODERec = (function (_super) {
+__extends(HOTDEAL_TMCODERec, _super);
+function HOTDEAL_TMCODERec(defaults) {
+_super.apply(this, arguments);
+}
+HOTDEAL_TMCODERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("HotDealId", "hotDealIdAttr", "HotDealId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("TmcodeId", "tmcodeIdAttr", "TmcodeId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+HOTDEAL_TMCODERec.generateFromLocalStorage = function () {
+return false;
+};
+HOTDEAL_TMCODERec.init();
+return HOTDEAL_TMCODERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.HOTDEAL_TMCODERec = HOTDEAL_TMCODERec;
+
+});
+define("WTF_BP.model$STR_AUTHORIZATION_INFORec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var STR_AUTHORIZATION_INFORec = (function (_super) {
+__extends(STR_AUTHORIZATION_INFORec, _super);
+function STR_AUTHORIZATION_INFORec(defaults) {
+_super.apply(this, arguments);
+}
+STR_AUTHORIZATION_INFORec.attributesToDeclare = function () {
+return [
+this.attr("Type", "typeAttr", "Type", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Label", "labelAttr", "Label", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("SelectedValue", "selectedValueAttr", "SelectedValue", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Option1Label", "option1LabelAttr", "Option1Label", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Option1Value", "option1ValueAttr", "Option1Value", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Option2Label", "option2LabelAttr", "Option2Label", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Option2Value", "option2ValueAttr", "Option2Value", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+STR_AUTHORIZATION_INFORec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+STR_AUTHORIZATION_INFORec.init();
+return STR_AUTHORIZATION_INFORec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.STR_AUTHORIZATION_INFORec = STR_AUTHORIZATION_INFORec;
+
+});
+define("WTF_BP.model$USERNOS_MOBILE_ACTIVATION_TOKENRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var USERNOS_MOBILE_ACTIVATION_TOKENRec = (function (_super) {
+__extends(USERNOS_MOBILE_ACTIVATION_TOKENRec, _super);
+function USERNOS_MOBILE_ACTIVATION_TOKENRec(defaults) {
+_super.apply(this, arguments);
+}
+USERNOS_MOBILE_ACTIVATION_TOKENRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserUID", "userUIDAttr", "UserUID", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Token", "tokenAttr", "Token", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Msisdn", "msisdnAttr", "Msisdn", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UsedAt", "usedAtAttr", "UsedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+USERNOS_MOBILE_ACTIVATION_TOKENRec.generateFromLocalStorage = function () {
+return false;
+};
+USERNOS_MOBILE_ACTIVATION_TOKENRec.init();
+return USERNOS_MOBILE_ACTIVATION_TOKENRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.USERNOS_MOBILE_ACTIVATION_TOKENRec = USERNOS_MOBILE_ACTIVATION_TOKENRec;
+
+});
+define("WTF_BP.model$TMCODERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var TMCODERec = (function (_super) {
+__extends(TMCODERec, _super);
+function TMCODERec(defaults) {
+_super.apply(this, arguments);
+}
+TMCODERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Tmcode", "tmcodeAttr", "Tmcode", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("TmcodeTypeId", "tmcodeTypeIdAttr", "TmcodeTypeId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("BestOfferTmcodeId", "bestOfferTmcodeIdAttr", "BestOfferTmcodeId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Desc", "descAttr", "Desc", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NDiamondsForRecharge", "nDiamondsForRechargeAttr", "NDiamondsForRecharge", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_MonthlyRenewal", "is_MonthlyRenewalAttr", "Is_MonthlyRenewal", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("PriceMonthly", "priceMonthlyAttr", "PriceMonthly", false, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("PriceWeekly", "priceWeeklyAttr", "PriceWeekly", false, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("Qty_minutes", "qty_minutesAttr", "Qty_minutes", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Qty_internet", "qty_internetAttr", "Qty_internet", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("ConditionsUrl", "conditionsUrlAttr", "ConditionsUrl", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+TMCODERec.generateFromLocalStorage = function () {
+return false;
+};
+TMCODERec.init();
+return TMCODERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.TMCODERec = TMCODERec;
+
+});
+define("WTF_BP.model$WELCOME_PRIZERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var WELCOME_PRIZERec = (function (_super) {
+__extends(WELCOME_PRIZERec, _super);
+function WELCOME_PRIZERec(defaults) {
+_super.apply(this, arguments);
+}
+WELCOME_PRIZERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Name", "nameAttr", "Name", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ItemTypesId", "itemTypesIdAttr", "ItemTypesId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("PictureId", "pictureIdAttr", "PictureId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Duration", "durationAttr", "Duration", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("QuantityUnit", "quantityUnitAttr", "QuantityUnit", false, OS.Types.Decimal, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("Text1", "text1Attr", "Text1", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Text2", "text2Attr", "Text2", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Text3", "text3Attr", "Text3", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("BtnActionLabel", "btnActionLabelAttr", "BtnActionLabel", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("BtnActionURL", "btnActionURLAttr", "BtnActionURL", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ShareIsActive", "shareIsActiveAttr", "ShareIsActive", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("ShareMsg", "shareMsgAttr", "ShareMsg", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("OnlyNewUsers", "onlyNewUsersAttr", "OnlyNewUsers", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("MaximumUserRegistrationDate", "maximumUserRegistrationDateAttr", "MaximumUserRegistrationDate", false, OS.Types.Date, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("VisibleOnboarding", "visibleOnboardingAttr", "VisibleOnboarding", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+WELCOME_PRIZERec.generateFromLocalStorage = function () {
+return false;
+};
+WELCOME_PRIZERec.init();
+return WELCOME_PRIZERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.WELCOME_PRIZERec = WELCOME_PRIZERec;
+
+});
+define("WTF_BP.model$WALLET_ITEM_PRIZE_ADDRESSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var WALLET_ITEM_PRIZE_ADDRESSRec = (function (_super) {
+__extends(WALLET_ITEM_PRIZE_ADDRESSRec, _super);
+function WALLET_ITEM_PRIZE_ADDRESSRec(defaults) {
+_super.apply(this, arguments);
+}
+WALLET_ITEM_PRIZE_ADDRESSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserWTFId", "userWTFIdAttr", "UserWTFId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("WalletItemId", "walletItemIdAttr", "WalletItemId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Name", "nameAttr", "Name", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AddressStreet", "addressStreetAttr", "AddressStreet", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AddressPostalCity", "addressPostalCityAttr", "AddressPostalCity", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AddressPostalCode", "addressPostalCodeAttr", "AddressPostalCode", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Msisdn", "msisdnAttr", "Msisdn", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Authorize", "authorizeAttr", "Authorize", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+WALLET_ITEM_PRIZE_ADDRESSRec.generateFromLocalStorage = function () {
+return false;
+};
+WALLET_ITEM_PRIZE_ADDRESSRec.init();
+return WALLET_ITEM_PRIZE_ADDRESSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.WALLET_ITEM_PRIZE_ADDRESSRec = WALLET_ITEM_PRIZE_ADDRESSRec;
+
+});
+define("WTF_BP.model$CONTENT_TOUR_WTFRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var CONTENT_TOUR_WTFRec = (function (_super) {
+__extends(CONTENT_TOUR_WTFRec, _super);
+function CONTENT_TOUR_WTFRec(defaults) {
+_super.apply(this, arguments);
+}
+CONTENT_TOUR_WTFRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("TourContentTypeID", "tourContentTypeIDAttr", "TourContentTypeID", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CreatedBy", "createdByAttr", "CreatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedBy", "updatedByAttr", "UpdatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+CONTENT_TOUR_WTFRec.generateFromLocalStorage = function () {
+return false;
+};
+CONTENT_TOUR_WTFRec.init();
+return CONTENT_TOUR_WTFRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.CONTENT_TOUR_WTFRec = CONTENT_TOUR_WTFRec;
+
+});
+define("WTF_BP.model$App_History_AdvancedSQLRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_History_AdvancedSQLRec = (function (_super) {
+__extends(App_History_AdvancedSQLRec, _super);
+function App_History_AdvancedSQLRec(defaults) {
+_super.apply(this, arguments);
+}
+App_History_AdvancedSQLRec.attributesToDeclare = function () {
+return [
+this.attr("RowNumber", "rowNumberAttr", "RowNumber", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Category", "categoryAttr", "Category", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PrizeLabel", "prizeLabelAttr", "PrizeLabel", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ActionName", "actionNameAttr", "ActionName", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ActionDateTime", "actionDateTimeAttr", "ActionDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("ExpireDateTime", "expireDateTimeAttr", "ExpireDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_History_AdvancedSQLRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_History_AdvancedSQLRec.init();
+return App_History_AdvancedSQLRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_History_AdvancedSQLRec = App_History_AdvancedSQLRec;
+
+});
+define("WTF_BP.model$App_UserWtfAddressRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_UserWtfAddressRec = (function (_super) {
+__extends(App_UserWtfAddressRec, _super);
+function App_UserWtfAddressRec(defaults) {
+_super.apply(this, arguments);
+}
+App_UserWtfAddressRec.attributesToDeclare = function () {
+return [
+this.attr("UserWtfAddressId", "userWtfAddressIdAttr", "UserWtfAddressId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Name", "nameAttr", "Name", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AddressStreet", "addressStreetAttr", "AddressStreet", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PostalCodeLeftSide", "postalCodeLeftSideAttr", "PostalCodeLeftSide", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PostalCodeRightSide", "postalCodeRightSideAttr", "PostalCodeRightSide", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("AddressPostalCity", "addressPostalCityAttr", "AddressPostalCity", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Msisdn", "msisdnAttr", "Msisdn", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("NameOfAddress", "nameOfAddressAttr", "NameOfAddress", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_UserWtfAddressRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_UserWtfAddressRec.init();
+return App_UserWtfAddressRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_UserWtfAddressRec = App_UserWtfAddressRec;
+
+});
+define("WTF_BP.model$ITEM_UNITYRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var ITEM_UNITYRec = (function (_super) {
+__extends(ITEM_UNITYRec, _super);
+function ITEM_UNITYRec(defaults) {
+_super.apply(this, arguments);
+}
+ITEM_UNITYRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+ITEM_UNITYRec.generateFromLocalStorage = function () {
+return false;
+};
+ITEM_UNITYRec.init();
+return ITEM_UNITYRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.ITEM_UNITYRec = ITEM_UNITYRec;
+
+});
+define("WTF_BP.model$UBER_VOUCHER_RULE_BENEFIT_VOUCHER_TYPERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var UBER_VOUCHER_RULE_BENEFIT_VOUCHER_TYPERec = (function (_super) {
+__extends(UBER_VOUCHER_RULE_BENEFIT_VOUCHER_TYPERec, _super);
+function UBER_VOUCHER_RULE_BENEFIT_VOUCHER_TYPERec(defaults) {
+_super.apply(this, arguments);
+}
+UBER_VOUCHER_RULE_BENEFIT_VOUCHER_TYPERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UberVoucherRuleBenefitId", "uberVoucherRuleBenefitIdAttr", "UberVoucherRuleBenefitId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("VoucherTypeId", "voucherTypeIdAttr", "VoucherTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+UBER_VOUCHER_RULE_BENEFIT_VOUCHER_TYPERec.generateFromLocalStorage = function () {
+return false;
+};
+UBER_VOUCHER_RULE_BENEFIT_VOUCHER_TYPERec.init();
+return UBER_VOUCHER_RULE_BENEFIT_VOUCHER_TYPERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.UBER_VOUCHER_RULE_BENEFIT_VOUCHER_TYPERec = UBER_VOUCHER_RULE_BENEFIT_VOUCHER_TYPERec;
+
+});
+define("WTF_BP.model$SCREENS_ORIGIN_TYPERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var SCREENS_ORIGIN_TYPERec = (function (_super) {
+__extends(SCREENS_ORIGIN_TYPERec, _super);
+function SCREENS_ORIGIN_TYPERec(defaults) {
+_super.apply(this, arguments);
+}
+SCREENS_ORIGIN_TYPERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+SCREENS_ORIGIN_TYPERec.generateFromLocalStorage = function () {
+return false;
+};
+SCREENS_ORIGIN_TYPERec.init();
+return SCREENS_ORIGIN_TYPERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.SCREENS_ORIGIN_TYPERec = SCREENS_ORIGIN_TYPERec;
+
+});
+define("WTF_BP.model$App_ConfigRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_ConfigRec = (function (_super) {
+__extends(App_ConfigRec, _super);
+function App_ConfigRec(defaults) {
+_super.apply(this, arguments);
+}
+App_ConfigRec.attributesToDeclare = function () {
+return [
+this.attr("Key", "keyAttr", "Key", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Value", "valueAttr", "Value", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_ConfigRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_ConfigRec.init();
+return App_ConfigRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_ConfigRec = App_ConfigRec;
+
+});
+define("WTF_BP.model$App_RegulationRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_RegulationRec = (function (_super) {
+__extends(App_RegulationRec, _super);
+function App_RegulationRec(defaults) {
+_super.apply(this, arguments);
+}
+App_RegulationRec.attributesToDeclare = function () {
+return [
+this.attr("Title", "titleAttr", "Title", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Body", "bodyAttr", "Body", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_RegulationRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_RegulationRec.init();
+return App_RegulationRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_RegulationRec = App_RegulationRec;
+
+});
+define("WTF_BP.model$HOTDEALRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var HOTDEALRec = (function (_super) {
+__extends(HOTDEALRec, _super);
+function HOTDEALRec(defaults) {
+_super.apply(this, arguments);
+}
+HOTDEALRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description", "descriptionAttr", "Description", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ItemTypeId", "itemTypeIdAttr", "ItemTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("PictureId", "pictureIdAttr", "PictureId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("HasStock", "hasStockAttr", "HasStock", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Stock", "stockAttr", "Stock", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("NumberAlertStock", "numberAlertStockAttr", "NumberAlertStock", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("HasMessageAlertStock", "hasMessageAlertStockAttr", "HasMessageAlertStock", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("MessageAlertStock", "messageAlertStockAttr", "MessageAlertStock", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PriceMarket", "priceMarketAttr", "PriceMarket", false, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("PriceHotDeal", "priceHotDealAttr", "PriceHotDeal", false, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("PaymentTypologyId", "paymentTypologyIdAttr", "PaymentTypologyId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("VoucherTypeId", "voucherTypeIdAttr", "VoucherTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("VoucherAmount", "voucherAmountAttr", "VoucherAmount", false, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("RequiredAddress", "requiredAddressAttr", "RequiredAddress", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("PromoDateTime", "promoDateTimeAttr", "PromoDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("StartDateTime", "startDateTimeAttr", "StartDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("ExpirationDateTime", "expirationDateTimeAttr", "ExpirationDateTime", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("MaxQuantityItemPerUserWTf", "maxQuantityItemPerUserWTfAttr", "MaxQuantityItemPerUserWTf", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("DiamondTypeId", "diamondTypeIdAttr", "DiamondTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("ItemUnityId", "itemUnityIdAttr", "ItemUnityId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("PhoperationCampId", "phoperationCampIdAttr", "PhoperationCampId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("QuantityUnit", "quantityUnitAttr", "QuantityUnit", false, OS.Types.Decimal, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("AssetId", "assetIdAttr", "AssetId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Duration", "durationAttr", "Duration", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+HOTDEALRec.generateFromLocalStorage = function () {
+return false;
+};
+HOTDEALRec.init();
+return HOTDEALRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.HOTDEALRec = HOTDEALRec;
+
+});
+define("WTF_BP.model$PICTURERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var PICTURERec = (function (_super) {
+__extends(PICTURERec, _super);
+function PICTURERec(defaults) {
+_super.apply(this, arguments);
+}
+PICTURERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Content", "contentAttr", "Content", false, OS.Types.BinaryData, function () {
+return OS.DataTypes.BinaryData.defaultValue;
+}), 
+this.attr("Filename", "filenameAttr", "Filename", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PICTURERec.generateFromLocalStorage = function () {
+return false;
+};
+PICTURERec.init();
+return PICTURERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.PICTURERec = PICTURERec;
+
+});
+define("WTF_BP.model$PUSH_REVIEWRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var PUSH_REVIEWRec = (function (_super) {
+__extends(PUSH_REVIEWRec, _super);
+function PUSH_REVIEWRec(defaults) {
+_super.apply(this, arguments);
+}
+PUSH_REVIEWRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserWtfId", "userWtfIdAttr", "UserWtfId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("PushReviewStatusId", "pushReviewStatusIdAttr", "PushReviewStatusId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("FeedbackMessage", "feedbackMessageAttr", "FeedbackMessage", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Origin", "originAttr", "Origin", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NextDateTime", "nextDateTimeAttr", "NextDateTime", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", false, OS.Types.Boolean, function () {
+return true;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PUSH_REVIEWRec.generateFromLocalStorage = function () {
+return false;
+};
+PUSH_REVIEWRec.init();
+return PUSH_REVIEWRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.PUSH_REVIEWRec = PUSH_REVIEWRec;
+
+});
+define("WTF_BP.model$REGULATIONRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var REGULATIONRec = (function (_super) {
+__extends(REGULATIONRec, _super);
+function REGULATIONRec(defaults) {
+_super.apply(this, arguments);
+}
+REGULATIONRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Application", "applicationAttr", "Application", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Module", "moduleAttr", "Module", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+REGULATIONRec.generateFromLocalStorage = function () {
+return false;
+};
+REGULATIONRec.init();
+return REGULATIONRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.REGULATIONRec = REGULATIONRec;
+
+});
+define("WTF_BP.model$USER_WTF_MSISDN_HISTORYRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var USER_WTF_MSISDN_HISTORYRec = (function (_super) {
+__extends(USER_WTF_MSISDN_HISTORYRec, _super);
+function USER_WTF_MSISDN_HISTORYRec(defaults) {
+_super.apply(this, arguments);
+}
+USER_WTF_MSISDN_HISTORYRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserWTFId", "userWTFIdAttr", "UserWTFId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Msisdn", "msisdnAttr", "Msisdn", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+USER_WTF_MSISDN_HISTORYRec.generateFromLocalStorage = function () {
+return false;
+};
+USER_WTF_MSISDN_HISTORYRec.init();
+return USER_WTF_MSISDN_HISTORYRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.USER_WTF_MSISDN_HISTORYRec = USER_WTF_MSISDN_HISTORYRec;
+
+});
+define("WTF_BP.model$PROMOTIONS_TMCODERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var PROMOTIONS_TMCODERec = (function (_super) {
+__extends(PROMOTIONS_TMCODERec, _super);
+function PROMOTIONS_TMCODERec(defaults) {
+_super.apply(this, arguments);
+}
+PROMOTIONS_TMCODERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("PromotionId", "promotionIdAttr", "PromotionId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("TmcodeId", "tmcodeIdAttr", "TmcodeId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PROMOTIONS_TMCODERec.generateFromLocalStorage = function () {
+return false;
+};
+PROMOTIONS_TMCODERec.init();
+return PROMOTIONS_TMCODERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.PROMOTIONS_TMCODERec = PROMOTIONS_TMCODERec;
+
+});
+define("WTF_BP.model$USER_WTF_INFO_CARDSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var USER_WTF_INFO_CARDSRec = (function (_super) {
+__extends(USER_WTF_INFO_CARDSRec, _super);
+function USER_WTF_INFO_CARDSRec(defaults) {
+_super.apply(this, arguments);
+}
+USER_WTF_INFO_CARDSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("InfoCardId", "infoCardIdAttr", "InfoCardId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("UserWtfId", "userWtfIdAttr", "UserWtfId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("InfoCardsStatusId", "infoCardsStatusIdAttr", "InfoCardsStatusId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+USER_WTF_INFO_CARDSRec.generateFromLocalStorage = function () {
+return false;
+};
+USER_WTF_INFO_CARDSRec.init();
+return USER_WTF_INFO_CARDSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.USER_WTF_INFO_CARDSRec = USER_WTF_INFO_CARDSRec;
+
+});
+define("WTF_BP.model$App_SecretFriendOfferRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_PictureRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_SecretFriendOfferRec = (function (_super) {
+__extends(App_SecretFriendOfferRec, _super);
+function App_SecretFriendOfferRec(defaults) {
+_super.apply(this, arguments);
+}
+App_SecretFriendOfferRec.attributesToDeclare = function () {
+return [
+this.attr("Identifier", "identifierAttr", "Identifier", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("MessageItem", "messageItemAttr", "MessageItem", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Stock", "stockAttr", "Stock", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("HasStock", "hasStockAttr", "HasStock", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("NumberAlertStock", "numberAlertStockAttr", "NumberAlertStock", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("HasMessageAlertStock", "hasMessageAlertStockAttr", "HasMessageAlertStock", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("MessageAlertStock", "messageAlertStockAttr", "MessageAlertStock", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("RequiredAddress", "requiredAddressAttr", "RequiredAddress", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("App_Picture", "app_PictureAttr", "App_Picture", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_PictureRec());
+}, WTF_BPModel.App_PictureRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+App_SecretFriendOfferRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_SecretFriendOfferRec.init();
+return App_SecretFriendOfferRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_SecretFriendOfferRec = App_SecretFriendOfferRec;
+
+});
+define("WTF_BP.model$WALLET_ITEM_ORIGINRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var WALLET_ITEM_ORIGINRec = (function (_super) {
+__extends(WALLET_ITEM_ORIGINRec, _super);
+function WALLET_ITEM_ORIGINRec(defaults) {
+_super.apply(this, arguments);
+}
+WALLET_ITEM_ORIGINRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+WALLET_ITEM_ORIGINRec.generateFromLocalStorage = function () {
+return false;
+};
+WALLET_ITEM_ORIGINRec.init();
+return WALLET_ITEM_ORIGINRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.WALLET_ITEM_ORIGINRec = WALLET_ITEM_ORIGINRec;
+
+});
+define("WTF_BP.model$PRIZERec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var PRIZERec = (function (_super) {
+__extends(PRIZERec, _super);
+function PRIZERec(defaults) {
+_super.apply(this, arguments);
+}
+PRIZERec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("ItemTypesId", "itemTypesIdAttr", "ItemTypesId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("PictureId", "pictureIdAttr", "PictureId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Name", "nameAttr", "Name", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description", "descriptionAttr", "Description", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Stock", "stockAttr", "Stock", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Price", "priceAttr", "Price", false, OS.Types.Decimal, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("Duration", "durationAttr", "Duration", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("DiamondTypeId", "diamondTypeIdAttr", "DiamondTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("VoucherTypeId", "voucherTypeIdAttr", "VoucherTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("ItemUnityId", "itemUnityIdAttr", "ItemUnityId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("PhoperationCampId", "phoperationCampIdAttr", "PhoperationCampId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("VoucherAmount", "voucherAmountAttr", "VoucherAmount", false, OS.Types.Currency, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("RequiredAddress", "requiredAddressAttr", "RequiredAddress", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("QuantityUnit", "quantityUnitAttr", "QuantityUnit", false, OS.Types.Decimal, function () {
+return OS.DataTypes.Decimal.defaultValue;
+}), 
+this.attr("AssetId", "assetIdAttr", "AssetId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CopyForScratch", "copyForScratchAttr", "CopyForScratch", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", true, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PRIZERec.generateFromLocalStorage = function () {
+return false;
+};
+PRIZERec.init();
+return PRIZERec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.PRIZERec = PRIZERec;
+
+});
+define("WTF_BP.model$NotificationTargetRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var NotificationTargetRec = (function (_super) {
+__extends(NotificationTargetRec, _super);
+function NotificationTargetRec(defaults) {
+_super.apply(this, arguments);
+}
+NotificationTargetRec.attributesToDeclare = function () {
+return [
+this.attr("UserUID", "userUIDAttr", "UserUID", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("MSISDN", "mSISDNAttr", "MSISDN", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+NotificationTargetRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+NotificationTargetRec.init();
+return NotificationTargetRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.NotificationTargetRec = NotificationTargetRec;
+
+});
+define("WTF_BP.model$CONTENT_STEP_WTFRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var CONTENT_STEP_WTFRec = (function (_super) {
+__extends(CONTENT_STEP_WTFRec, _super);
+function CONTENT_STEP_WTFRec(defaults) {
+_super.apply(this, arguments);
+}
+CONTENT_STEP_WTFRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("ContentTourID", "contentTourIDAttr", "ContentTourID", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Step", "stepAttr", "Step", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("PictureId", "pictureIdAttr", "PictureId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Label", "labelAttr", "Label", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CreatedBy", "createdByAttr", "CreatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedBy", "updatedByAttr", "UpdatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("HTML", "hTMLAttr", "HTML", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+CONTENT_STEP_WTFRec.generateFromLocalStorage = function () {
+return false;
+};
+CONTENT_STEP_WTFRec.init();
+return CONTENT_STEP_WTFRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.CONTENT_STEP_WTFRec = CONTENT_STEP_WTFRec;
+
+});
+define("WTF_BP.model$PUSH_REVIEW_STATUSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var PUSH_REVIEW_STATUSRec = (function (_super) {
+__extends(PUSH_REVIEW_STATUSRec, _super);
+function PUSH_REVIEW_STATUSRec(defaults) {
+_super.apply(this, arguments);
+}
+PUSH_REVIEW_STATUSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("FinalState", "finalStateAttr", "FinalState", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PUSH_REVIEW_STATUSRec.generateFromLocalStorage = function () {
+return false;
+};
+PUSH_REVIEW_STATUSRec.init();
+return PUSH_REVIEW_STATUSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.PUSH_REVIEW_STATUSRec = PUSH_REVIEW_STATUSRec;
+
+});
+define("WTF_BP.model$REQUEST_MOVEMENT_TYPESRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var REQUEST_MOVEMENT_TYPESRec = (function (_super) {
+__extends(REQUEST_MOVEMENT_TYPESRec, _super);
+function REQUEST_MOVEMENT_TYPESRec(defaults) {
+_super.apply(this, arguments);
+}
+REQUEST_MOVEMENT_TYPESRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+REQUEST_MOVEMENT_TYPESRec.generateFromLocalStorage = function () {
+return false;
+};
+REQUEST_MOVEMENT_TYPESRec.init();
+return REQUEST_MOVEMENT_TYPESRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.REQUEST_MOVEMENT_TYPESRec = REQUEST_MOVEMENT_TYPESRec;
+
+});
+define("WTF_BP.model$App_SecretFriendOfferList", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_SecretFriendOfferRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_SecretFriendOfferList = (function (_super) {
+__extends(App_SecretFriendOfferList, _super);
+function App_SecretFriendOfferList(defaults) {
+_super.apply(this, arguments);
+}
+App_SecretFriendOfferList.RecordType = WTF_BPModel.App_SecretFriendOfferRec;
+return App_SecretFriendOfferList;
+})(OS.DataTypes.GenericRecordList);
+WTF_BPModel.App_SecretFriendOfferList = App_SecretFriendOfferList;
+
+});
+define("WTF_BP.model$App_SecretFriendConditionsAndOffersRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_SecretFriendOfferList"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_SecretFriendConditionsAndOffersRec = (function (_super) {
+__extends(App_SecretFriendConditionsAndOffersRec, _super);
+function App_SecretFriendConditionsAndOffersRec(defaults) {
+_super.apply(this, arguments);
+}
+App_SecretFriendConditionsAndOffersRec.attributesToDeclare = function () {
+return [
+this.attr("App_FriendSecretOfferList", "app_FriendSecretOfferListAttr", "App_FriendSecretOfferList", true, OS.Types.RecordList, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_SecretFriendOfferList());
+}, WTF_BPModel.App_SecretFriendOfferList), 
+this.attr("Conditions", "conditionsAttr", "Conditions", true, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_SecretFriendConditionsAndOffersRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_SecretFriendConditionsAndOffersRec.init();
+return App_SecretFriendConditionsAndOffersRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_SecretFriendConditionsAndOffersRec = App_SecretFriendConditionsAndOffersRec;
+
+});
+define("WTF_BP.model$INFO_CARDS_STATUSRec", ["exports", "OutSystems", "WTF_BP.model"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var INFO_CARDS_STATUSRec = (function (_super) {
+__extends(INFO_CARDS_STATUSRec, _super);
+function INFO_CARDS_STATUSRec(defaults) {
+_super.apply(this, arguments);
+}
+INFO_CARDS_STATUSRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+INFO_CARDS_STATUSRec.generateFromLocalStorage = function () {
+return false;
+};
+INFO_CARDS_STATUSRec.init();
+return INFO_CARDS_STATUSRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.INFO_CARDS_STATUSRec = INFO_CARDS_STATUSRec;
+
+});
+define("WTF_BP.model$App_SecretFriendRec", ["exports", "OutSystems", "WTF_BP.model", "WTF_BP.model$App_PictureRec"], function (exports, OutSystems, WTF_BPModel) {
+var OS = OutSystems.Internal;
+var App_SecretFriendRec = (function (_super) {
+__extends(App_SecretFriendRec, _super);
+function App_SecretFriendRec(defaults) {
+_super.apply(this, arguments);
+}
+App_SecretFriendRec.attributesToDeclare = function () {
+return [
+this.attr("AlreadySendOffer", "alreadySendOfferAttr", "AlreadySendOffer", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("ShowSendGift", "showSendGiftAttr", "ShowSendGift", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("ShowRedeemGift", "showRedeemGiftAttr", "ShowRedeemGift", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("App_Picture_SendGift", "app_Picture_SendGiftAttr", "App_Picture_SendGift", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_PictureRec());
+}, WTF_BPModel.App_PictureRec), 
+this.attr("SendGift_Title", "sendGift_TitleAttr", "SendGift_Title", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("SendGift_Desc", "sendGift_DescAttr", "SendGift_Desc", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("App_Picture_RedeemGift", "app_Picture_RedeemGiftAttr", "App_Picture_RedeemGift", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new WTF_BPModel.App_PictureRec());
+}, WTF_BPModel.App_PictureRec), 
+this.attr("RedeemGift_Title", "redeemGift_TitleAttr", "RedeemGift_Title", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("RedeemGift_Desc", "redeemGift_DescAttr", "RedeemGift_Desc", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+App_SecretFriendRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+App_SecretFriendRec.init();
+return App_SecretFriendRec;
+})(OS.DataTypes.GenericRecord);
+WTF_BPModel.App_SecretFriendRec = App_SecretFriendRec;
+
+});
+define("WTF_BP.model", ["exports", "OutSystems"], function (exports, OutSystems) {
+var OS = OutSystems.Internal;
+var WTF_BPModel = exports;
+});

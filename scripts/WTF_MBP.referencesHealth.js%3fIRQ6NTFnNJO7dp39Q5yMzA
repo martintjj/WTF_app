@@ -1,0 +1,44 @@
+﻿define("WTF_MBP.referencesHealth$ActivityLogger", [], function () {
+// Reference to producer 'ActivityLogger' is OK.
+});
+define("WTF_MBP.referencesHealth$ADDONS_BP", [], function () {
+// Reference to producer 'ADDONS_BP' is OK.
+});
+define("WTF_MBP.referencesHealth$BALANCE_MBP", [], function () {
+// Reference to producer 'BALANCE_MBP' is OK.
+});
+define("WTF_MBP.referencesHealth$BuildInfoPlugin", [], function () {
+// Reference to producer 'BuildInfoPlugin' is OK.
+});
+define("WTF_MBP.referencesHealth$CommonPlugin", [], function () {
+// Reference to producer 'CommonPlugin' is OK.
+});
+define("WTF_MBP.referencesHealth$Essentials_MOB", [], function () {
+// Reference to producer 'Essentials_MOB' is OK.
+});
+define("WTF_MBP.referencesHealth$FacebookSDKWTF", [], function () {
+// Reference to producer 'FacebookSDKWTF' is OK.
+});
+define("WTF_MBP.referencesHealth$FAQs_Config", [], function () {
+// Reference to producer 'FAQs_Config' is OK.
+});
+define("WTF_MBP.referencesHealth$Mobile_LoginNOS", [], function () {
+// Reference to producer 'Mobile_LoginNOS' is OK.
+});
+define("WTF_MBP.referencesHealth$MobileUtilities", [], function () {
+// Reference to producer 'MobileUtilities' is OK.
+});
+define("WTF_MBP.referencesHealth$NewFirebaseMobilePlugin_WTF", [], function () {
+// Reference to producer 'NewFirebaseMobilePlugin_WTF' is OK.
+});
+define("WTF_MBP.referencesHealth$ServiceCenter", [], function () {
+// Reference to producer 'ServiceCenter' is OK.
+});
+define("WTF_MBP.referencesHealth$WhatsNew", [], function () {
+// Reference to producer 'WhatsNew' is OK.
+});
+define("WTF_MBP.referencesHealth$WTF_BP", [], function () {
+// Reference to producer 'WTF_BP' is OK.
+});
+define("WTF_MBP.referencesHealth", [], function () {
+});

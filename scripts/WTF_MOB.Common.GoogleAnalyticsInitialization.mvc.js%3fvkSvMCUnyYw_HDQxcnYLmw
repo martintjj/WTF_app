@@ -1,0 +1,516 @@
+﻿define("WTF_MOB.Common.GoogleAnalyticsInitialization.mvc$model", ["OutSystems", "WTF_MOB.model", "WTF_MBP.controller", "WTF_MBP.model", "CommonPlugin.model", "BuildInfoPlugin.controller", "WTF_MBP.controller$FB_SetUserProperty", "WTF_MOB.referencesHealth", "WTF_MOB.referencesHealth$WTF_MBP", "WTF_MBP.model$Local_USER_WTFRec", "WTF_MBP.controller$GetActiveUserWTF", "WTF_MBP.controller$GetConfigValueAsText_MBP", "WTF_MBP.controller$FB_SetScreenName", "CommonPlugin.model$ErrorRec", "WTF_MOB.referencesHealth$CommonPlugin", "BuildInfoPlugin.controller$GetBuildInfo", "WTF_MOB.referencesHealth$BuildInfoPlugin", "WTF_MBP.entities", "WTF_MOB.model$Local_USER_WTFRecordList"], function (OutSystems, WTF_MOBModel, WTF_MBPController, WTF_MBPModel, CommonPluginModel, BuildInfoPluginController) {
+var OS = OutSystems.Internal;
+var GetLocalUSERWTFSAggrRec = (function (_super) {
+__extends(GetLocalUSERWTFSAggrRec, _super);
+function GetLocalUSERWTFSAggrRec(defaults) {
+_super.apply(this, arguments);
+}
+GetLocalUSERWTFSAggrRec.RecordListType = WTF_MOBModel.Local_USER_WTFRecordList;
+GetLocalUSERWTFSAggrRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+GetLocalUSERWTFSAggrRec.init();
+return GetLocalUSERWTFSAggrRec;
+})(OS.Model.AggregateRecord);
+
+
+var VariablesRecord = (function (_super) {
+__extends(VariablesRecord, _super);
+function VariablesRecord(defaults) {
+_super.apply(this, arguments);
+}
+VariablesRecord.attributesToDeclare = function () {
+return [
+this.attr("CustomerTarif", "customerTarifVar", "CustomerTarif", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PageTitle", "pageTitleIn", "PageTitle", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("_pageTitleInDataFetchStatus", "_pageTitleInDataFetchStatus", "_pageTitleInDataFetchStatus", true, OS.Types.Integer, function () {
+return /*Fetched*/ 1;
+}), 
+this.attr("PageSection", "pageSectionIn", "PageSection", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("_pageSectionInDataFetchStatus", "_pageSectionInDataFetchStatus", "_pageSectionInDataFetchStatus", true, OS.Types.Integer, function () {
+return /*Fetched*/ 1;
+}), 
+this.attr("PageType", "pageTypeIn", "PageType", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("_pageTypeInDataFetchStatus", "_pageTypeInDataFetchStatus", "_pageTypeInDataFetchStatus", true, OS.Types.Integer, function () {
+return /*Fetched*/ 1;
+}), 
+this.attr("PageUrl", "pageUrlIn", "PageUrl", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("_pageUrlInDataFetchStatus", "_pageUrlInDataFetchStatus", "_pageUrlInDataFetchStatus", true, OS.Types.Integer, function () {
+return /*Fetched*/ 1;
+}), 
+this.attr("Diamante", "diamanteIn", "Diamante", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("_diamanteInDataFetchStatus", "_diamanteInDataFetchStatus", "_diamanteInDataFetchStatus", true, OS.Types.Integer, function () {
+return /*Fetched*/ 1;
+}), 
+this.attr("Premio", "premioIn", "Premio", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("_premioInDataFetchStatus", "_premioInDataFetchStatus", "_premioInDataFetchStatus", true, OS.Types.Integer, function () {
+return /*Fetched*/ 1;
+}), 
+this.attr("Hotdeal", "hotdealIn", "Hotdeal", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("_hotdealInDataFetchStatus", "_hotdealInDataFetchStatus", "_hotdealInDataFetchStatus", true, OS.Types.Integer, function () {
+return /*Fetched*/ 1;
+}), 
+this.attr("Promo", "promoIn", "Promo", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("_promoInDataFetchStatus", "_promoInDataFetchStatus", "_promoInDataFetchStatus", true, OS.Types.Integer, function () {
+return /*Fetched*/ 1;
+}), 
+this.attr("GetLocalUSERWTFS", "getLocalUSERWTFSAggr", "getLocalUSERWTFSAggr", true, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new GetLocalUSERWTFSAggrRec());
+}, GetLocalUSERWTFSAggrRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+VariablesRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+VariablesRecord.init();
+return VariablesRecord;
+})(OS.DataTypes.GenericRecord);
+var WidgetsRecord = (function (_super) {
+__extends(WidgetsRecord, _super);
+function WidgetsRecord() {
+_super.apply(this, arguments);
+}
+WidgetsRecord.getWidgetsType = function () {
+return {};
+};
+
+return WidgetsRecord;
+})(OS.Model.BaseWidgetRecordMap);
+var Model = (function (_super) {
+__extends(Model, _super);
+function Model() {
+_super.apply(this, arguments);
+}
+Model.getVariablesRecordConstructor = function () {
+return VariablesRecord;
+};
+Model.getWidgetsRecordConstructor = function () {
+return WidgetsRecord;
+};
+Object.defineProperty(Model, "hasValidationWidgets", {
+enumerable: true,
+configurable: true,
+get: function () {
+return false;
+}
+});
+
+Model.prototype.setInputs = function (inputs) {
+if("PageTitle" in inputs) {
+this.variables.pageTitleIn = inputs.PageTitle;
+if("_pageTitleInDataFetchStatus" in inputs) {
+this.variables._pageTitleInDataFetchStatus = inputs._pageTitleInDataFetchStatus;
+}
+
+}
+
+if("PageSection" in inputs) {
+this.variables.pageSectionIn = inputs.PageSection;
+if("_pageSectionInDataFetchStatus" in inputs) {
+this.variables._pageSectionInDataFetchStatus = inputs._pageSectionInDataFetchStatus;
+}
+
+}
+
+if("PageType" in inputs) {
+this.variables.pageTypeIn = inputs.PageType;
+if("_pageTypeInDataFetchStatus" in inputs) {
+this.variables._pageTypeInDataFetchStatus = inputs._pageTypeInDataFetchStatus;
+}
+
+}
+
+if("PageUrl" in inputs) {
+this.variables.pageUrlIn = inputs.PageUrl;
+if("_pageUrlInDataFetchStatus" in inputs) {
+this.variables._pageUrlInDataFetchStatus = inputs._pageUrlInDataFetchStatus;
+}
+
+}
+
+if("Diamante" in inputs) {
+this.variables.diamanteIn = inputs.Diamante;
+if("_diamanteInDataFetchStatus" in inputs) {
+this.variables._diamanteInDataFetchStatus = inputs._diamanteInDataFetchStatus;
+}
+
+}
+
+if("Premio" in inputs) {
+this.variables.premioIn = inputs.Premio;
+if("_premioInDataFetchStatus" in inputs) {
+this.variables._premioInDataFetchStatus = inputs._premioInDataFetchStatus;
+}
+
+}
+
+if("Hotdeal" in inputs) {
+this.variables.hotdealIn = inputs.Hotdeal;
+if("_hotdealInDataFetchStatus" in inputs) {
+this.variables._hotdealInDataFetchStatus = inputs._hotdealInDataFetchStatus;
+}
+
+}
+
+if("Promo" in inputs) {
+this.variables.promoIn = inputs.Promo;
+if("_promoInDataFetchStatus" in inputs) {
+this.variables._promoInDataFetchStatus = inputs._promoInDataFetchStatus;
+}
+
+}
+
+};
+return Model;
+})(OS.Model.BaseViewModel);
+return new OS.Model.ModelFactory(Model);
+});
+define("WTF_MOB.Common.GoogleAnalyticsInitialization.mvc$view", ["OutSystems", "WTF_MOB.model", "WTF_MOB.controller", "WTF_MBP.controller", "WTF_MBP.model", "CommonPlugin.model", "BuildInfoPlugin.controller", "react", "OutSystemsReactView", "WTF_MOB.Common.GoogleAnalyticsInitialization.mvc$model", "WTF_MOB.Common.GoogleAnalyticsInitialization.mvc$controller", "WTF_MBP.controller$FB_SetUserProperty", "WTF_MOB.referencesHealth", "WTF_MOB.referencesHealth$WTF_MBP", "WTF_MBP.model$Local_USER_WTFRec", "WTF_MBP.controller$GetActiveUserWTF", "WTF_MBP.controller$GetConfigValueAsText_MBP", "WTF_MBP.controller$FB_SetScreenName", "CommonPlugin.model$ErrorRec", "WTF_MOB.referencesHealth$CommonPlugin", "BuildInfoPlugin.controller$GetBuildInfo", "WTF_MOB.referencesHealth$BuildInfoPlugin", "WTF_MBP.entities", "WTF_MOB.model$Local_USER_WTFRecordList"], function (OutSystems, WTF_MOBModel, WTF_MOBController, WTF_MBPController, WTF_MBPModel, CommonPluginModel, BuildInfoPluginController, React, OSView, WTF_MOB_Common_GoogleAnalyticsInitialization_mvc_model, WTF_MOB_Common_GoogleAnalyticsInitialization_mvc_controller) {
+    var OS = OutSystems.Internal;
+var PlaceholderContent = OSView.Widget.PlaceholderContent;
+var IteratorPlaceholderContent = OSView.Widget.IteratorPlaceholderContent;
+
+
+    var View = (function (_super) {
+        __extends(View,_super);
+        function View() {
+            try {
+                this.initialize.apply(this, arguments);
+            } catch (error) {
+                View.handleError(error);
+                throw error;
+            }
+        }
+        View.prototype.initialize = function() {
+            _super.apply(this, arguments);
+        };
+        View.displayName = "Common.GoogleAnalyticsInitialization";
+        View.getCssDependencies = function() {
+            return [];
+        };
+        View.getJsDependencies = function() {
+            return [];
+        };
+        View.getBlocks = function() {
+            return [];
+        };
+        Object.defineProperty(View.prototype, "modelFactory", {
+            get: function () {
+                return WTF_MOB_Common_GoogleAnalyticsInitialization_mvc_model;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(View.prototype, "controllerFactory", {
+            get: function () {
+                return WTF_MOB_Common_GoogleAnalyticsInitialization_mvc_controller;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(View.prototype, "title", {
+            get: function () {
+                return "";
+            },
+            enumerable: true,
+            configurable: true
+        });
+        View.prototype.internalRender = function() {
+            var model = this.model;
+            var controller = this.controller;
+            var idService = this.idService;
+            var validationService = controller.validationService;
+            var widgetsRecordProvider = this.widgetsRecordProvider;
+            var callContext = controller.callContext();
+            var $if = View.ifWidget;
+            var asPrimitiveValue = View.asPrimitiveValue;
+            var _this = this;
+
+            return React.DOM.div(this.getRootNodeProperties(), $if(false, false, this, function () {
+return [];
+}, function () {
+return [];
+}));
+        };
+        return View;
+    })(OSView.BaseView.BaseWebBlock);
+	
+    return View;
+});
+define("WTF_MOB.Common.GoogleAnalyticsInitialization.mvc$controller", ["OutSystems", "WTF_MOB.model", "WTF_MOB.controller", "WTF_MBP.controller", "WTF_MBP.model", "CommonPlugin.model", "BuildInfoPlugin.controller", "WTF_MOB.languageResources", "WTF_MOB.Common.GoogleAnalyticsInitialization.mvc$controller.AfterFetch.AddGtagScriptJS", "WTF_MOB.Common.GoogleAnalyticsInitialization.mvc$controller.AfterFetch.AddGoogleAnalyticsScriptJS", "WTF_MBP.controller$FB_SetUserProperty", "WTF_MOB.referencesHealth", "WTF_MOB.referencesHealth$WTF_MBP", "WTF_MBP.model$Local_USER_WTFRec", "WTF_MBP.controller$GetActiveUserWTF", "WTF_MBP.controller$GetConfigValueAsText_MBP", "WTF_MBP.controller$FB_SetScreenName", "CommonPlugin.model$ErrorRec", "WTF_MOB.referencesHealth$CommonPlugin", "BuildInfoPlugin.controller$GetBuildInfo", "WTF_MOB.referencesHealth$BuildInfoPlugin", "WTF_MBP.entities", "WTF_MOB.model$Local_USER_WTFRecordList"], function (OutSystems, WTF_MOBModel, WTF_MOBController, WTF_MBPController, WTF_MBPModel, CommonPluginModel, BuildInfoPluginController, WTF_MOBLanguageResources, WTF_MOB_Common_GoogleAnalyticsInitialization_mvc_controller_AfterFetch_AddGtagScriptJS, WTF_MOB_Common_GoogleAnalyticsInitialization_mvc_controller_AfterFetch_AddGoogleAnalyticsScriptJS) {
+var OS = OutSystems.Internal;
+var Controller = (function (_super) {
+__extends(Controller, _super);
+function Controller() {
+_super.apply(this, arguments);
+var controller = this.controller;
+this.clientActionProxies = {};
+}
+// Server Actions
+
+// Aggregates and Data Actions
+Controller.prototype.getLocalUSERWTFS$AggrRefresh = function (maxRecords) {
+var model = this.model;
+var controller = this.controller;
+var callContext = controller.callContext();
+
+var executeQuery = function () {
+var targetListType = WTF_MOBModel.Local_USER_WTFRecordList;
+var result = {
+list: null,
+count: OS.DataTypes.LongInteger.defaultValue
+};
+var countArgsList = new OS.Entities.QueryArgumentsList();
+if(!(maxRecords)) {
+maxRecords = 1;
+}
+
+
+var optimizeSelect = false;
+var selectSql = "";
+var fromAndWhereSql = "";
+var groupByAndHavingSql = "";
+var orderBySql = "";
+var argsList = new OS.Entities.QueryArgumentsList();
+
+selectSql += "SELECT ";
+if (optimizeSelect) {
+selectSql += "\"ENLocal_USER_WTF\".\"Id\" o0, \"ENLocal_USER_WTF\".\"Msisdn\" o1, \"ENLocal_USER_WTF\".\"CodeMember\" o2, \"ENLocal_USER_WTF\".\"Tmcode_label\" o3, \"ENLocal_USER_WTF\".\"Is_MonthlyRenewal\" o4";
+} else {
+selectSql += "\"ENLocal_USER_WTF\".\"Id\" o0, \"ENLocal_USER_WTF\".\"Msisdn\" o1, \"ENLocal_USER_WTF\".\"CodeMember\" o2, \"ENLocal_USER_WTF\".\"Tmcode_label\" o3, \"ENLocal_USER_WTF\".\"Is_MonthlyRenewal\" o4";
+}
+fromAndWhereSql += " FROM \"MAIN\".\"OSUSR_p9g_Local_USER_WTF\" \"ENLocal_USER_WTF\"";
+if (maxRecords > 0) {
+orderBySql += " LIMIT ";
+orderBySql += maxRecords;
+}
+var sql = selectSql + fromAndWhereSql + groupByAndHavingSql + orderBySql;
+
+return OS.Entities.webSQLStorageInstance.executeQuery(sql, WTF_MOBModel.Local_USER_WTFRecordList, function (rec, r) {
+var indexRef = {
+value: 0
+};
+var attrOrder = [
+"local_USER_WTFAttr",
+];
+return targetListType.RecordType.fromLocalStorage(r, indexRef, attrOrder);
+
+}, argsList).then(function (resultList) {
+result.list = resultList;
+}).then(function () {
+}).then(function () {
+return result;
+});
+};
+return controller.executeScreenClientAggregate(executeQuery, function () {
+return model.variables.getLocalUSERWTFSAggr;
+}, function () {
+return controller._afterFetch$Action(controller.callContext(callContext));
+});
+};
+
+Controller.prototype.dataFetchActionNames = ["getLocalUSERWTFS$AggrRefresh"];
+// Client Actions
+Controller.prototype._afterFetch$Action = function (callContext) {
+var model = this.model;
+var controller = this.controller;
+var idService = this.idService;
+controller.ensureControllerAlive("AfterFetch");
+callContext = controller.callContext(callContext);
+var setUserProperty_hotdealVar = new OS.DataTypes.VariableHolder();
+var setUserProperty_app_nameVar = new OS.DataTypes.VariableHolder();
+var getActiveUserWTFVar = new OS.DataTypes.VariableHolder();
+var setUserProperty_promoVar = new OS.DataTypes.VariableHolder();
+var setUserProperty_customer_tarifVar = new OS.DataTypes.VariableHolder();
+var setUserProperty_app_installer_idVar = new OS.DataTypes.VariableHolder();
+var setUserProperty_premioVar = new OS.DataTypes.VariableHolder();
+var setUserProperty_page_sectionVar = new OS.DataTypes.VariableHolder();
+var setUserProperty_typeVar = new OS.DataTypes.VariableHolder();
+var getConfig_WEB_BASE_URLVar = new OS.DataTypes.VariableHolder();
+var aNALYTICS_SITE_SPEED_RATEVar = new OS.DataTypes.VariableHolder();
+var setUserProperty_diamanteVar = new OS.DataTypes.VariableHolder();
+var setScreenNameVar = new OS.DataTypes.VariableHolder();
+var setUserProperty_app_versionVar = new OS.DataTypes.VariableHolder();
+var getBuildInfoVar = new OS.DataTypes.VariableHolder();
+var aNALYTICS_APPIDVar = new OS.DataTypes.VariableHolder();
+var setUserProperty_app_idVar = new OS.DataTypes.VariableHolder();
+return OS.Flow.executeAsyncFlow(function () {
+// CustomerTarif = GetLocalUSERWTFS.List.Current.Local_USER_WTF.Tmcode_label
+model.variables.customerTarifVar = model.variables.getLocalUSERWTFSAggr.listOut.getCurrent(callContext.iterationContext).local_USER_WTFAttr.tmcode_labelAttr;
+// Execute Action: GetActiveUserWTF
+model.flush();
+return WTF_MBPController.default.getActiveUserWTF$Action(callContext).then(function (value) {
+getActiveUserWTFVar.value = value;
+}).then(function () {
+// CustomerTarif = GetActiveUserWTF.UserWTFActiveNow.Tmcode_label
+model.variables.customerTarifVar = getActiveUserWTFVar.value.userWTFActiveNowOut.tmcode_labelAttr;
+// Execute Action: ANALYTICS_APPID
+model.flush();
+return WTF_MBPController.default.getConfigValueAsText_MBP$Action("ANALYTICS_APPID", callContext).then(function (value) {
+aNALYTICS_APPIDVar.value = value;
+});
+}).then(function () {
+// Execute Action: ANALYTICS_SITE_SPEED_RATE
+model.flush();
+return WTF_MBPController.default.getConfigValueAsText_MBP$Action("ANALYTICS_SITE_SPEED_RATE", callContext).then(function (value) {
+aNALYTICS_SITE_SPEED_RATEVar.value = value;
+});
+}).then(function () {
+// Execute Action: GetBuildInfo
+getBuildInfoVar.value = BuildInfoPluginController.default.getBuildInfo$Action(callContext);
+
+// Execute Action: LogMessage
+OS.SystemActions.logMessage((((((((((((((((("Success [" + (getBuildInfoVar.value.successOut ? "True" : "False")) + "] Version [") + getBuildInfoVar.value.versionOut) + "] Build [") + getBuildInfoVar.value.buildOut) + "] PackageName [") + getBuildInfoVar.value.packageNameOut) + "] Name [") + getBuildInfoVar.value.nameOut) + "] Debug [") + (getBuildInfoVar.value.debugOut ? "True" : "False")) + "] ErrorCode [") + getBuildInfoVar.value.errorOut.errorCodeAttr) + "] ErrorMessage [") + getBuildInfoVar.value.errorOut.errorMessageAttr) + "]"), "GetBuildInfo", callContext);
+controller.safeExecuteJSNode(WTF_MOB_Common_GoogleAnalyticsInitialization_mvc_controller_AfterFetch_AddGtagScriptJS, "AddGtagScript", "AfterFetch", {
+GtagScriptUrl: OS.DataTypes.JSConversions.basicTypeToJS(("https://www.googletagmanager.com/gtag/js?id=" + aNALYTICS_APPIDVar.value.valueOut), OS.Types.Text, true)
+}, function ($parameters) {
+}, {}, {});
+// Execute Action: GetConfig_WEB_BASE_URL
+model.flush();
+return WTF_MBPController.default.getConfigValueAsText_MBP$Action("OUTSYSTEMS_WEB_BASE_URL", callContext).then(function (value) {
+getConfig_WEB_BASE_URLVar.value = value;
+});
+}).then(function () {
+controller.safeExecuteJSNode(WTF_MOB_Common_GoogleAnalyticsInitialization_mvc_controller_AfterFetch_AddGoogleAnalyticsScriptJS, "AddGoogleAnalyticsScript", "AfterFetch", {
+Script: OS.DataTypes.JSConversions.basicTypeToJS((((((((((((((((((((("window.dataLayer = window.dataLayer || [];\r\nfunction gtag(){dataLayer.push(arguments);}\r\ngtag(\'js\', new Date());\r\ngtag(\'config\', \'" + OS.BuiltinFunctions.encodeJavascript(aNALYTICS_APPIDVar.value.valueOut)) + "\', \r\n{\r\n    \'app_id\' : \'") + OS.BuiltinFunctions.encodeJavascript(getBuildInfoVar.value.packageNameOut)) + "\',\r\n    \'app_name\' : \'") + OS.BuiltinFunctions.encodeJavascript(getBuildInfoVar.value.nameOut)) + "\',\r\n    \'app_version\' : \'") + OS.BuiltinFunctions.encodeJavascript(getBuildInfoVar.value.versionOut)) + "\',\r\n    \'app_installer_id\' : \'") + OS.BuiltinFunctions.encodeJavascript(getBuildInfoVar.value.buildOut)) + "\',\r\n    \'page_title\' : \'") + OS.BuiltinFunctions.encodeJavascript(model.variables.pageTitleIn)) + "\',\r\n    \'page_location\' : \'") + OS.BuiltinFunctions.encodeJavascript(getConfig_WEB_BASE_URLVar.value.valueOut)) + "/WTF_MOB/") + OS.BuiltinFunctions.encodeJavascript(model.variables.pageUrlIn)) + "\',\r\n    \'page_path\' : \'/") + OS.BuiltinFunctions.encodeJavascript(model.variables.pageUrlIn)) + "\',\r\n    \'send_page_view\': true,\r\n    \'linker\': {\'accept_incoming\': true},\r\n    \'site_speed_sample_rate\': ") + (((OS.BuiltinFunctions.encodeJavascript(aNALYTICS_SITE_SPEED_RATEVar.value.valueOut) === "")) ? ("100") : (OS.BuiltinFunctions.encodeJavascript(aNALYTICS_SITE_SPEED_RATEVar.value.valueOut)))) + ",\r\n    \'custom_map\': {\'dimension1\': \'customer_segment\',\'dimension2\': \'customer_tariff\',\'dimension3\': \'customer_level\',\'dimension4\': \'type\',\'dimension5\': \'page_section\'}\r\n});"), OS.Types.Text, true)
+}, function ($parameters) {
+}, {}, {});
+// Execute Action: SetScreenName
+model.flush();
+return WTF_MBPController.default.fB_SetScreenName$Action(model.variables.pageTitleIn, callContext).then(function (value) {
+setScreenNameVar.value = value;
+});
+}).then(function () {
+// Execute Action: SetUserProperty_app_id
+model.flush();
+return WTF_MBPController.default.fB_SetUserProperty$Action("app_id", getBuildInfoVar.value.packageNameOut, callContext).then(function (value) {
+setUserProperty_app_idVar.value = value;
+});
+}).then(function () {
+// Execute Action: SetUserProperty_app_name
+model.flush();
+return WTF_MBPController.default.fB_SetUserProperty$Action("app_name", getBuildInfoVar.value.nameOut, callContext).then(function (value) {
+setUserProperty_app_nameVar.value = value;
+});
+}).then(function () {
+// Execute Action: SetUserProperty_app_version
+model.flush();
+return WTF_MBPController.default.fB_SetUserProperty$Action("app_version", getBuildInfoVar.value.versionOut, callContext).then(function (value) {
+setUserProperty_app_versionVar.value = value;
+});
+}).then(function () {
+// Execute Action: SetUserProperty_app_installer_id
+model.flush();
+return WTF_MBPController.default.fB_SetUserProperty$Action("app_installer_id", getBuildInfoVar.value.buildOut, callContext).then(function (value) {
+setUserProperty_app_installer_idVar.value = value;
+});
+}).then(function () {
+// Execute Action: SetUserProperty_type
+model.flush();
+return WTF_MBPController.default.fB_SetUserProperty$Action("type", model.variables.pageTypeIn, callContext).then(function (value) {
+setUserProperty_typeVar.value = value;
+});
+}).then(function () {
+// Execute Action: SetUserProperty_page_section
+model.flush();
+return WTF_MBPController.default.fB_SetUserProperty$Action("page_section", model.variables.pageSectionIn, callContext).then(function (value) {
+setUserProperty_page_sectionVar.value = value;
+});
+}).then(function () {
+// Execute Action: SetUserProperty_customer_tarif
+model.flush();
+return WTF_MBPController.default.fB_SetUserProperty$Action("customer_tarif", model.variables.customerTarifVar, callContext).then(function (value) {
+setUserProperty_customer_tarifVar.value = value;
+});
+}).then(function () {
+// Execute Action: SetUserProperty_diamante
+model.flush();
+return WTF_MBPController.default.fB_SetUserProperty$Action("diamante", model.variables.diamanteIn, callContext).then(function (value) {
+setUserProperty_diamanteVar.value = value;
+});
+}).then(function () {
+// Execute Action: SetUserProperty_premio
+model.flush();
+return WTF_MBPController.default.fB_SetUserProperty$Action("premio", model.variables.premioIn, callContext).then(function (value) {
+setUserProperty_premioVar.value = value;
+});
+}).then(function () {
+// Execute Action: SetUserProperty_hotdeal
+model.flush();
+return WTF_MBPController.default.fB_SetUserProperty$Action("hotdeal", model.variables.hotdealIn, callContext).then(function (value) {
+setUserProperty_hotdealVar.value = value;
+});
+}).then(function () {
+// Execute Action: SetUserProperty_promo
+model.flush();
+return WTF_MBPController.default.fB_SetUserProperty$Action("promo", model.variables.promoIn, callContext).then(function (value) {
+setUserProperty_promoVar.value = value;
+});
+});
+});
+};
+
+Controller.prototype.afterFetch$Action = function (callContext) {
+var controller = this.controller;
+return controller.safeExecuteClientAction(controller._afterFetch$Action, callContext);
+
+};
+
+// Event Handler Actions
+Controller.prototype.onInitializeEventHandler = null;
+Controller.prototype.onReadyEventHandler = null;
+Controller.prototype.onRenderEventHandler = null;
+Controller.prototype.onDestroyEventHandler = null;
+Controller.prototype.onParametersChangedEventHandler = null;
+Controller.prototype.handleError = function (ex) {
+return controller.handleError(ex);
+};
+Controller.checkPermissions = function () {
+};
+Controller.prototype.getDefaultTimeout = function () {
+return WTF_MOBController.default.defaultTimeout;
+};
+return Controller;
+})(OS.Controller.BaseViewController);
+return new OS.Controller.ControllerFactory(Controller, WTF_MOBLanguageResources);
+});
+define("WTF_MOB.Common.GoogleAnalyticsInitialization.mvc$controller.AfterFetch.AddGtagScriptJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+var script_src = $parameters.GtagScriptUrl;
+var head = document.getElementsByTagName('head')[0];
+var new_script = document.createElement('script');
+new_script.type = 'text/javascript';
+new_script.src= script_src;
+head.appendChild(new_script);
+};
+});
+define("WTF_MOB.Common.GoogleAnalyticsInitialization.mvc$controller.AfterFetch.AddGoogleAnalyticsScriptJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+var head= document.getElementsByTagName('head')[0];
+
+var script= document.createElement('script');
+script.type= 'text/javascript';
+script.innerHTML = $parameters.Script;
+
+head.appendChild(script);
+};
+});
+

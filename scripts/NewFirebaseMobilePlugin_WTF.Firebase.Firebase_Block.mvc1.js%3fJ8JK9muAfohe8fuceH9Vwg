@@ -1,0 +1,554 @@
+﻿define("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.mvc$model", ["OutSystems", "NewFirebaseMobilePlugin_WTF.model", "CommonPlugin.model", "NewFirebaseMobilePlugin_WTF.controller", "CommonPlugin.model$ErrorRec", "NewFirebaseMobilePlugin_WTF.referencesHealth", "NewFirebaseMobilePlugin_WTF.referencesHealth$CommonPlugin", "NewFirebaseMobilePlugin_WTF.controller$CheckFirebase_Plugin", "NewFirebaseMobilePlugin_WTF.controller$IsIos", "NewFirebaseMobilePlugin_WTF.controller$Create_DYNAMICLINK_CONTROLLER", "NewFirebaseMobilePlugin_WTF.model$DYNAMICLINK_CONTROLLERRecordList", "NewFirebaseMobilePlugin_WTF.model$DynamicLinkJSONDataRec", "NewFirebaseMobilePlugin_WTF.model$DYNAMICLINK_CONTROLLERRec", "NewFirebaseMobilePlugin_WTF.entities", "NewFirebaseMobilePlugin_WTF.model$RegisterDevice_ResponseRec", "NewFirebaseMobilePlugin_WTF.controller$RegisterDevice", "NewFirebaseMobilePlugin_WTF.controller$GeneralLog", "NewFirebaseMobilePlugin_WTF.model$NotificationDataRec", "NewFirebaseMobilePlugin_WTF.controller$HandleNotificationData"], function (OutSystems, NewFirebaseMobilePlugin_WTFModel, CommonPluginModel, NewFirebaseMobilePlugin_WTFController) {
+var OS = OutSystems.Internal;
+
+
+var VariablesRecord = (function (_super) {
+__extends(VariablesRecord, _super);
+function VariablesRecord(defaults) {
+_super.apply(this, arguments);
+}
+VariablesRecord.attributesToDeclare = function () {
+return [].concat(_super.attributesToDeclare.call(this));
+};
+VariablesRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+VariablesRecord.init();
+return VariablesRecord;
+})(OS.DataTypes.GenericRecord);
+var WidgetsRecord = (function (_super) {
+__extends(WidgetsRecord, _super);
+function WidgetsRecord() {
+_super.apply(this, arguments);
+}
+WidgetsRecord.getWidgetsType = function () {
+return {};
+};
+
+return WidgetsRecord;
+})(OS.Model.BaseWidgetRecordMap);
+var Model = (function (_super) {
+__extends(Model, _super);
+function Model() {
+_super.apply(this, arguments);
+}
+Model.getVariablesRecordConstructor = function () {
+return VariablesRecord;
+};
+Model.getWidgetsRecordConstructor = function () {
+return WidgetsRecord;
+};
+Object.defineProperty(Model, "hasValidationWidgets", {
+enumerable: true,
+configurable: true,
+get: function () {
+return false;
+}
+});
+
+Model.prototype.setInputs = function (inputs) {
+};
+return Model;
+})(OS.Model.VariablelessViewModel);
+return new OS.Model.ModelFactory(Model);
+});
+define("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.mvc$view", ["OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.controller", "CommonPlugin.model", "react", "OutSystemsReactView", "NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.mvc$model", "NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.mvc$controller", "CommonPlugin.model$ErrorRec", "NewFirebaseMobilePlugin_WTF.referencesHealth", "NewFirebaseMobilePlugin_WTF.referencesHealth$CommonPlugin", "NewFirebaseMobilePlugin_WTF.controller$CheckFirebase_Plugin", "NewFirebaseMobilePlugin_WTF.controller$IsIos", "NewFirebaseMobilePlugin_WTF.controller$Create_DYNAMICLINK_CONTROLLER", "NewFirebaseMobilePlugin_WTF.model$DYNAMICLINK_CONTROLLERRecordList", "NewFirebaseMobilePlugin_WTF.model$DynamicLinkJSONDataRec", "NewFirebaseMobilePlugin_WTF.model$DYNAMICLINK_CONTROLLERRec", "NewFirebaseMobilePlugin_WTF.entities", "NewFirebaseMobilePlugin_WTF.model$RegisterDevice_ResponseRec", "NewFirebaseMobilePlugin_WTF.controller$RegisterDevice", "NewFirebaseMobilePlugin_WTF.controller$GeneralLog", "NewFirebaseMobilePlugin_WTF.model$NotificationDataRec", "NewFirebaseMobilePlugin_WTF.controller$HandleNotificationData"], function (OutSystems, NewFirebaseMobilePlugin_WTFModel, NewFirebaseMobilePlugin_WTFController, CommonPluginModel, React, OSView, NewFirebaseMobilePlugin_WTF_Firebase_Firebase_Block_mvc_model, NewFirebaseMobilePlugin_WTF_Firebase_Firebase_Block_mvc_controller) {
+    var OS = OutSystems.Internal;
+var PlaceholderContent = OSView.Widget.PlaceholderContent;
+var IteratorPlaceholderContent = OSView.Widget.IteratorPlaceholderContent;
+
+
+    var View = (function (_super) {
+        __extends(View,_super);
+        function View() {
+            try {
+                this.initialize.apply(this, arguments);
+            } catch (error) {
+                View.handleError(error);
+                throw error;
+            }
+        }
+        View.prototype.initialize = function() {
+            _super.apply(this, arguments);
+        };
+        View.displayName = "Firebase.Firebase_Block";
+        View.getCssDependencies = function() {
+            return [];
+        };
+        View.getJsDependencies = function() {
+            return ["scripts/CommonPlugin.PluginManager.js"];
+        };
+        View.getBlocks = function() {
+            return [];
+        };
+        Object.defineProperty(View.prototype, "modelFactory", {
+            get: function () {
+                return NewFirebaseMobilePlugin_WTF_Firebase_Firebase_Block_mvc_model;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(View.prototype, "controllerFactory", {
+            get: function () {
+                return NewFirebaseMobilePlugin_WTF_Firebase_Firebase_Block_mvc_controller;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(View.prototype, "title", {
+            get: function () {
+                return "";
+            },
+            enumerable: true,
+            configurable: true
+        });
+        View.prototype.internalRender = function() {
+            var model = this.model;
+            var controller = this.controller;
+            var idService = this.idService;
+            var validationService = controller.validationService;
+            var widgetsRecordProvider = this.widgetsRecordProvider;
+            var callContext = controller.callContext();
+            var $if = View.ifWidget;
+            var asPrimitiveValue = View.asPrimitiveValue;
+            var _this = this;
+
+            return React.DOM.div(this.getRootNodeProperties());
+        };
+        return View;
+    })(OSView.BaseView.BaseWebBlock);
+	
+    return View;
+});
+define("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.mvc$controller", ["OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.controller", "CommonPlugin.model", "NewFirebaseMobilePlugin_WTF.languageResources", "NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.mvc$controller.OnDestroy.UnregisterPluginJS", "NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.mvc$controller.OnReady.RegisterPluginJS", "NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.mvc$controller.OnReady.CheckOldFirebasePluginJS", "NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.mvc$controller.OnReady.OldFirebasePlugin_NotificationOpenJS", "CommonPlugin.model$ErrorRec", "NewFirebaseMobilePlugin_WTF.referencesHealth", "NewFirebaseMobilePlugin_WTF.referencesHealth$CommonPlugin", "NewFirebaseMobilePlugin_WTF.controller$CheckFirebase_Plugin", "NewFirebaseMobilePlugin_WTF.controller$IsIos", "NewFirebaseMobilePlugin_WTF.controller$Create_DYNAMICLINK_CONTROLLER", "NewFirebaseMobilePlugin_WTF.model$DYNAMICLINK_CONTROLLERRecordList", "NewFirebaseMobilePlugin_WTF.model$DynamicLinkJSONDataRec", "NewFirebaseMobilePlugin_WTF.model$DYNAMICLINK_CONTROLLERRec", "NewFirebaseMobilePlugin_WTF.entities", "NewFirebaseMobilePlugin_WTF.model$RegisterDevice_ResponseRec", "NewFirebaseMobilePlugin_WTF.controller$RegisterDevice", "NewFirebaseMobilePlugin_WTF.controller$GeneralLog", "NewFirebaseMobilePlugin_WTF.model$NotificationDataRec", "NewFirebaseMobilePlugin_WTF.controller$HandleNotificationData"], function (OutSystems, NewFirebaseMobilePlugin_WTFModel, NewFirebaseMobilePlugin_WTFController, CommonPluginModel, NewFirebaseMobilePlugin_WTFLanguageResources, NewFirebaseMobilePlugin_WTF_Firebase_Firebase_Block_mvc_controller_OnDestroy_UnregisterPluginJS, NewFirebaseMobilePlugin_WTF_Firebase_Firebase_Block_mvc_controller_OnReady_RegisterPluginJS, NewFirebaseMobilePlugin_WTF_Firebase_Firebase_Block_mvc_controller_OnReady_CheckOldFirebasePluginJS, NewFirebaseMobilePlugin_WTF_Firebase_Firebase_Block_mvc_controller_OnReady_OldFirebasePlugin_NotificationOpenJS) {
+var OS = OutSystems.Internal;
+var Controller = (function (_super) {
+__extends(Controller, _super);
+function Controller() {
+_super.apply(this, arguments);
+var controller = this.controller;
+this.clientActionProxies = {
+notificationHandler$Action: function (notificationJSONIn) {
+notificationJSONIn = (notificationJSONIn === undefined) ? "" : notificationJSONIn;
+return controller.executeActionInsideJSNode(controller._notificationHandler$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(notificationJSONIn, OS.Types.Text)), controller.callContext(), function (actionResults) {
+return {};
+});
+},
+errorHandler$Action: function (dataIn) {
+dataIn = (dataIn === undefined) ? "" : dataIn;
+return controller.executeActionInsideJSNode(controller._errorHandler$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(dataIn, OS.Types.Text)), controller.callContext(), function (actionResults) {
+return {};
+});
+},
+dynamicLink$Action: function (dynamicLinkDataIn) {
+dynamicLinkDataIn = (dynamicLinkDataIn === undefined) ? "" : dynamicLinkDataIn;
+return controller.executeActionInsideJSNode(controller._dynamicLink$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(dynamicLinkDataIn, OS.Types.Text)), controller.callContext(), function (actionResults) {
+return {};
+});
+}
+};
+}
+// Server Actions
+
+// Aggregates and Data Actions
+
+Controller.prototype.dataFetchActionNames = [];
+// Client Actions
+Controller.prototype._onDestroy$Action = function (callContext) {
+var model = this.model;
+var controller = this.controller;
+var idService = this.idService;
+controller.ensureControllerAlive("OnDestroy");
+callContext = controller.callContext(callContext);
+var checkNewFirebase_PluginVar = new OS.DataTypes.VariableHolder();
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: CheckNewFirebase_Plugin
+checkNewFirebase_PluginVar.value = NewFirebaseMobilePlugin_WTFController.default.checkFirebase_Plugin$Action(callContext);
+
+return OS.Flow.executeSequence(function () {
+if((checkNewFirebase_PluginVar.value.isAvailableOut)) {
+controller.safeExecuteJSNode(NewFirebaseMobilePlugin_WTF_Firebase_Firebase_Block_mvc_controller_OnDestroy_UnregisterPluginJS, "UnregisterPlugin", "OnDestroy", null, function ($parameters) {
+}, {}, {});
+} else {
+// Execute Action: ErrorHandler
+return controller._errorHandler$Action(checkNewFirebase_PluginVar.value.errorOut.errorMessageAttr, callContext);
+}
+
+});
+});
+};
+Controller.prototype._dynamicLink$Action = function (dynamicLinkDataIn, callContext) {
+var model = this.model;
+var controller = this.controller;
+var idService = this.idService;
+controller.ensureControllerAlive("DynamicLink");
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.DynamicLink$vars"))());
+vars.value.dynamicLinkDataInLocal = dynamicLinkDataIn;
+var isIosVar = new OS.DataTypes.VariableHolder();
+var create_DYNAMICLINK_CONTROLLERVar = new OS.DataTypes.VariableHolder();
+var checkIfLinkAlreadyClickedVar = new OS.DataTypes.VariableHolder(new (OS.Controller.BaseController.getAggregateOutputType(NewFirebaseMobilePlugin_WTFModel.DYNAMICLINK_CONTROLLERRecordList))());
+var jSONDeserializeDynamicLinkJSONDataVar = new OS.DataTypes.VariableHolder(new (OS.Controller.BaseController.getJSONDeserializeOutputType(NewFirebaseMobilePlugin_WTFModel.DynamicLinkJSONDataRec))());
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: IsIos
+isIosVar.value = NewFirebaseMobilePlugin_WTFController.default.isIos$Action(callContext);
+
+return OS.Flow.executeSequence(function () {
+if((isIosVar.value.isIOSOut)) {
+// Trigger Event: DynamicLinkEvent2
+return controller.dynamicLinkEvent$Action(vars.value.dynamicLinkDataInLocal, callContext);
+} else {
+// JSON Deserialize: JSONDeserializeDynamicLinkJSONData
+jSONDeserializeDynamicLinkJSONDataVar.value.dataOut = OS.JSONUtils.deserializeFromJSON(vars.value.dynamicLinkDataInLocal, NewFirebaseMobilePlugin_WTFModel.DynamicLinkJSONDataRec, false);
+// Aggregate: CheckIfLinkAlreadyClicked
+var checkIfLinkAlreadyClickedAggr = function (maxRecords) {
+var executeQuery = function () {
+var targetListType = NewFirebaseMobilePlugin_WTFModel.DYNAMICLINK_CONTROLLERRecordList;
+var result = {
+list: null,
+count: OS.DataTypes.LongInteger.defaultValue
+};
+var countArgsList = new OS.Entities.QueryArgumentsList();
+if(!(maxRecords)) {
+maxRecords = 0;
+}
+
+var qpstClickTimestamp = jSONDeserializeDynamicLinkJSONDataVar.value.dataOut.clickTimestampAttr;
+var qpstURL = jSONDeserializeDynamicLinkJSONDataVar.value.dataOut.deepLinkAttr;
+
+var optimizeSelect = false;
+var selectSql = "";
+var fromAndWhereSql = "";
+var groupByAndHavingSql = "";
+var orderBySql = "";
+var argsList = new OS.Entities.QueryArgumentsList();
+
+selectSql += "SELECT ";
+if (optimizeSelect) {
+selectSql += "NULL o0, NULL o1, NULL o2";
+} else {
+selectSql += "\"ENDYNAMICLINK_CONTROLLER\".\"Id\" o0, \"ENDYNAMICLINK_CONTROLLER\".\"URL\" o1, \"ENDYNAMICLINK_CONTROLLER\".\"ClickTimestamp\" o2";
+}
+fromAndWhereSql += " FROM \"MAIN\".\"OSUSR_wek_DYNAMICLINK_CONTROLLER\" \"ENDYNAMICLINK_CONTROLLER\"";
+fromAndWhereSql += " WHERE ((\"ENDYNAMICLINK_CONTROLLER\".\"URL\" = :qpstURL) AND (\"ENDYNAMICLINK_CONTROLLER\".\"URL\" <> '')) AND ((\"ENDYNAMICLINK_CONTROLLER\".\"ClickTimestamp\" = :qpstClickTimestamp) AND (\"ENDYNAMICLINK_CONTROLLER\".\"ClickTimestamp\" <> ''))";
+orderBySql += " ORDER BY \"ENDYNAMICLINK_CONTROLLER\".\"URL\" ASC ";
+argsList.add("qpstURL", /*TEXT*/ 0, qpstURL);
+argsList.add("qpstClickTimestamp", /*TEXT*/ 0, qpstClickTimestamp);
+if (maxRecords > 0) {
+orderBySql += " LIMIT ";
+orderBySql += maxRecords;
+}
+var sql = selectSql + fromAndWhereSql + groupByAndHavingSql + orderBySql;
+
+return OS.Entities.webSQLStorageInstance.executeQuery(sql, NewFirebaseMobilePlugin_WTFModel.DYNAMICLINK_CONTROLLERRecordList, function (rec, r) {
+var indexRef = {
+value: 0
+};
+var attrOrder = [
+"dYNAMICLINK_CONTROLLERAttr",
+];
+return targetListType.RecordType.fromLocalStorage(r, indexRef, attrOrder);
+
+}, argsList).then(function (resultList) {
+result.list = resultList;
+}).then(function () {
+}).then(function () {
+return result;
+});
+};
+return controller.executeClientAggregate(executeQuery, function () {
+return checkIfLinkAlreadyClickedVar.value;
+});
+};
+return checkIfLinkAlreadyClickedAggr().then(function () {
+// IsLinkNotClicked
+return OS.Flow.executeSequence(function () {
+if((checkIfLinkAlreadyClickedVar.value.listOut.isEmpty)) {
+// Execute Action: Create_DYNAMICLINK_CONTROLLER
+model.flush();
+return NewFirebaseMobilePlugin_WTFController.default.create_DYNAMICLINK_CONTROLLER$Action(jSONDeserializeDynamicLinkJSONDataVar.value.dataOut.deepLinkAttr, jSONDeserializeDynamicLinkJSONDataVar.value.dataOut.clickTimestampAttr, callContext).then(function (value) {
+create_DYNAMICLINK_CONTROLLERVar.value = value;
+}).then(function () {
+// Trigger Event: DynamicLinkEvent
+return controller.dynamicLinkEvent$Action(vars.value.dynamicLinkDataInLocal, callContext);
+});
+}
+
+});
+});
+}
+
+});
+});
+};
+Controller.registerVariableGroupType("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.DynamicLink$vars", [{
+name: "DynamicLinkData",
+attrName: "dynamicLinkDataInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Controller.prototype._errorHandler$Action = function (dataIn, callContext) {
+var model = this.model;
+var controller = this.controller;
+var idService = this.idService;
+controller.ensureControllerAlive("ErrorHandler");
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.ErrorHandler$vars"))());
+vars.value.dataInLocal = dataIn;
+return OS.Flow.executeAsyncFlow(function () {
+// Trigger Event: ErrorHandlerEvent
+return controller.errorHandlerEvent$Action(vars.value.dataInLocal, callContext);
+});
+};
+Controller.registerVariableGroupType("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.ErrorHandler$vars", [{
+name: "Data",
+attrName: "dataInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Controller.prototype._onReady$Action = function (callContext) {
+var model = this.model;
+var controller = this.controller;
+var idService = this.idService;
+controller.ensureControllerAlive("OnReady");
+callContext = controller.callContext(callContext);
+var checkNewFirebase_PluginVar = new OS.DataTypes.VariableHolder();
+var registerDevice2Var = new OS.DataTypes.VariableHolder();
+var checkOldFirebasePluginJSResult = new OS.DataTypes.VariableHolder();
+return OS.Flow.executeAsyncFlow(function () {
+checkOldFirebasePluginJSResult.value = controller.safeExecuteJSNode(NewFirebaseMobilePlugin_WTF_Firebase_Firebase_Block_mvc_controller_OnReady_CheckOldFirebasePluginJS, "CheckOldFirebasePlugin", "OnReady", {
+IsAvailable: OS.DataTypes.JSConversions.basicTypeToJS(false, OS.Types.Boolean, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.OnReady$checkOldFirebasePluginJSResult"))();
+jsNodeResult.isAvailableOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.IsAvailable, OS.Types.Boolean);
+return jsNodeResult;
+}, {}, {});
+return OS.Flow.executeSequence(function () {
+if((checkOldFirebasePluginJSResult.value.isAvailableOut)) {
+return controller.safeExecuteAsyncJSNode(NewFirebaseMobilePlugin_WTF_Firebase_Firebase_Block_mvc_controller_OnReady_OldFirebasePlugin_NotificationOpenJS, "OldFirebasePlugin_NotificationOpen", "OnReady", null, function ($parameters) {
+}, {
+NotificationHandler: controller.clientActionProxies.notificationHandler$Action,
+ErrorHandler: controller.clientActionProxies.errorHandler$Action
+}, {});
+} else {
+// Execute Action: CheckNewFirebase_Plugin
+checkNewFirebase_PluginVar.value = NewFirebaseMobilePlugin_WTFController.default.checkFirebase_Plugin$Action(callContext);
+
+return OS.Flow.executeSequence(function () {
+if((checkNewFirebase_PluginVar.value.isAvailableOut)) {
+return controller.safeExecuteAsyncJSNode(NewFirebaseMobilePlugin_WTF_Firebase_Firebase_Block_mvc_controller_OnReady_RegisterPluginJS, "RegisterPlugin", "OnReady", null, function ($parameters) {
+}, {
+NotificationHandler: controller.clientActionProxies.notificationHandler$Action,
+ErrorHandler: controller.clientActionProxies.errorHandler$Action,
+DynamicLink: controller.clientActionProxies.dynamicLink$Action
+}, {}).then(function () {
+// Execute Action: RegisterDevice2
+model.flush();
+return NewFirebaseMobilePlugin_WTFController.default.registerDevice$Action(callContext).then(function (value) {
+registerDevice2Var.value = value;
+});
+});
+} else {
+// Execute Action: ErrorHandler
+return controller._errorHandler$Action(checkNewFirebase_PluginVar.value.errorOut.errorMessageAttr, callContext);
+}
+
+});
+}
+
+});
+});
+};
+Controller.registerVariableGroupType("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.OnReady$checkOldFirebasePluginJSResult", [{
+name: "IsAvailable",
+attrName: "isAvailableOut",
+mandatory: true,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+Controller.prototype._notificationHandler$Action = function (notificationJSONIn, callContext) {
+var model = this.model;
+var controller = this.controller;
+var idService = this.idService;
+controller.ensureControllerAlive("NotificationHandler");
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.NotificationHandler$vars"))());
+vars.value.notificationJSONInLocal = notificationJSONIn;
+var handleNotificationDataVar = new OS.DataTypes.VariableHolder();
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: GeneralLog
+model.flush();
+return NewFirebaseMobilePlugin_WTFController.default.generalLog$Action(((("Notification Received: " + "\r\n") + "NotificationData: ") + vars.value.notificationJSONInLocal), callContext).then(function () {
+// Execute Action: HandleNotificationData
+handleNotificationDataVar.value = NewFirebaseMobilePlugin_WTFController.default.handleNotificationData$Action(vars.value.notificationJSONInLocal, callContext);
+
+}).then(function () {
+// Has deeplink and app is in background?
+return OS.Flow.executeSequence(function () {
+if(((handleNotificationDataVar.value.notificationDataOut.appInBackgroundAttr && ((handleNotificationDataVar.value.notificationDataOut.deeplinkAttr) !== (""))))) {
+// Destination: /NewFirebaseMobilePlugin_WTF/
+return OS.Flow.returnAsync(OS.Navigation.navigateTo(OS.Navigation.generateScreenURL(handleNotificationDataVar.value.notificationDataOut.deeplinkAttr, {}), OS.Transitions.createTransition(OS.Transitions.TransitionAnimation.Default), callContext, true));
+} else {
+// Trigger Event: NewNotificationEvent
+return controller.newNotificationEvent$Action(handleNotificationDataVar.value.notificationDataOut, vars.value.notificationJSONInLocal, callContext);
+}
+
+});
+});
+});
+};
+Controller.registerVariableGroupType("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.NotificationHandler$vars", [{
+name: "NotificationJSON",
+attrName: "notificationJSONInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+
+Controller.prototype.onDestroy$Action = function (callContext) {
+var controller = this.controller;
+return controller.safeExecuteClientAction(controller._onDestroy$Action, callContext);
+
+};
+Controller.prototype.dynamicLink$Action = function (dynamicLinkDataIn, callContext) {
+var controller = this.controller;
+return controller.safeExecuteClientAction(controller._dynamicLink$Action, callContext, dynamicLinkDataIn);
+
+};
+Controller.prototype.errorHandler$Action = function (dataIn, callContext) {
+var controller = this.controller;
+return controller.safeExecuteClientAction(controller._errorHandler$Action, callContext, dataIn);
+
+};
+Controller.prototype.onReady$Action = function (callContext) {
+var controller = this.controller;
+return controller.safeExecuteClientAction(controller._onReady$Action, callContext);
+
+};
+Controller.prototype.notificationHandler$Action = function (notificationJSONIn, callContext) {
+var controller = this.controller;
+return controller.safeExecuteClientAction(controller._notificationHandler$Action, callContext, notificationJSONIn);
+
+};
+Controller.prototype.errorHandlerEvent$Action = function () {
+return Promise.resolve();
+};
+Controller.prototype.newNotificationEvent$Action = function () {
+return Promise.resolve();
+};
+Controller.prototype.dynamicLinkEvent$Action = function () {
+return Promise.resolve();
+};
+
+// Event Handler Actions
+Controller.prototype.onInitializeEventHandler = null;
+Controller.prototype.onReadyEventHandler = function (callContext) {
+var controller = this.controller;
+var model = this.model;
+var idService = this.idService;
+
+return controller.onReady$Action(callContext);
+
+};
+Controller.prototype.onRenderEventHandler = null;
+Controller.prototype.onDestroyEventHandler = function (callContext) {
+var controller = this.controller;
+var model = this.model;
+var idService = this.idService;
+
+return controller.onDestroy$Action(callContext);
+
+};
+Controller.prototype.onParametersChangedEventHandler = null;
+Controller.prototype.handleError = function (ex) {
+return controller.handleError(ex);
+};
+Controller.checkPermissions = function () {
+};
+Controller.prototype.getDefaultTimeout = function () {
+return NewFirebaseMobilePlugin_WTFController.default.defaultTimeout;
+};
+return Controller;
+})(OS.Controller.BaseViewController);
+return new OS.Controller.ControllerFactory(Controller, NewFirebaseMobilePlugin_WTFLanguageResources);
+});
+define("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.mvc$controller.OnDestroy.UnregisterPluginJS", [], function () {
+return function ($actions, $roles, $public) {
+// require(["PluginManager"], function(module){
+//     module.destroyScope("FirebaseDynamicLinks");
+//     $resolve();
+// });
+
+};
+});
+define("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.mvc$controller.OnReady.RegisterPluginJS", [], function () {
+return function ($actions, $roles, $public) {
+return new Promise(function ($resolve, $reject) {
+
+// require(["PluginManager"], function(module){
+//         var onReady = function(scope) {
+//     };
+    
+//     var onDestroy = function(scope) {
+//     };
+    
+//     module.createScope("FirebaseDynamicLinks",  onReady, onDestroy);
+//     $resolve();
+// });
+
+
+
+Firebase.onNotificationOpen(success, error);
+
+function success(notification) {
+    var notificationData = JSON.stringify(notification);
+    $actions.NotificationHandler(notificationData);
+    $resolve();
+}
+
+function error(err) {
+    $actions.ErrorHandler(err);
+    $resolve();
+}
+
+Firebase.onDynamicLink(function(data) {
+    var stringifiedData = JSON.stringify(data);
+    $actions.DynamicLink(stringifiedData);
+});
+});
+};
+});
+define("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.mvc$controller.OnReady.CheckOldFirebasePluginJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+$parameters.IsAvailable = !!window.fp;
+};
+});
+define("NewFirebaseMobilePlugin_WTF.Firebase.Firebase_Block.mvc$controller.OnReady.OldFirebasePlugin_NotificationOpenJS", [], function () {
+return function ($actions, $roles, $public) {
+return new Promise(function ($resolve, $reject) {
+window.fp.onNotificationOpen(success, error);
+
+function success(notification) {
+    var notificationData = JSON.stringify(notification);
+    $actions.NotificationHandler(notificationData);
+    $resolve();
+}
+
+function error(err) {
+    $actions.ErrorHandler(err);
+    $resolve();
+}
+});
+};
+});
+
