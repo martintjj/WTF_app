@@ -1,0 +1,119 @@
+﻿define("NewFirebaseMobilePlugin_WTF.entities", ["OutSystems", "NewFirebaseMobilePlugin_WTF.model", "NewFirebaseMobilePlugin_WTF.model$DYNAMICLINK_CONTROLLERRecord"], function (OutSystems, NewFirebaseMobilePlugin_WTFModel) {
+var OS = OutSystems.Internal;
+var infoDYNAMICLINK_CONTROLLER = {
+key: "7fc6f467-0fba-4810-8344-958bd7cfabc0",
+name: "DYNAMICLINK_CONTROLLER",
+tableName: "OSUSR_WEK_DYNAMICLINK_CONTROLLER",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "URL",
+type: /*TEXT*/ 0,
+length: 250,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_WEK_DYNAMICLINK_CONTROLLER\" ADD \"URL\" TEXT(250) DEFAULT \'\'"
+}
+}, {
+name: "ClickTimestamp",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_WEK_DYNAMICLINK_CONTROLLER\" ADD \"ClickTimestamp\" TEXT(50) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "21076b72-e7ed-b89f-4612-c9ea9d920a42",
+dbRecordToRecord: function (dbRecord) {
+return new NewFirebaseMobilePlugin_WTFModel.DYNAMICLINK_CONTROLLERRecord(NewFirebaseMobilePlugin_WTFModel.DYNAMICLINK_CONTROLLERRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_WEK_DYNAMICLINK_CONTROLLER\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"URL\" TEXT(250) DEFAULT \'\', \"ClickTimestamp\" TEXT(50) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"URL\" o1, \"ClickTimestamp\" o2 FROM \"OSUSR_WEK_DYNAMICLINK_CONTROLLER\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_WEK_DYNAMICLINK_CONTROLLER\" (\"Id\", \"URL\", \"ClickTimestamp\") VALUES (?, ?, ?)",
+getArguments: function (record) {
+var obj = record.dYNAMICLINK_CONTROLLERAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+argsList.add("ClickTimestamp", /*TEXT*/ 0, obj.clickTimestampAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_WEK_DYNAMICLINK_CONTROLLER\" (\"Id\", \"URL\", \"ClickTimestamp\") VALUES (?, ?, ?)",
+getArguments: function (record) {
+var obj = record.dYNAMICLINK_CONTROLLERAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+argsList.add("ClickTimestamp", /*TEXT*/ 0, obj.clickTimestampAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_WEK_DYNAMICLINK_CONTROLLER\" SET \"URL\" = ?, \"ClickTimestamp\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.dYNAMICLINK_CONTROLLERAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+argsList.add("ClickTimestamp", /*TEXT*/ 0, obj.clickTimestampAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_WEK_DYNAMICLINK_CONTROLLER\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_WEK_DYNAMICLINK_CONTROLLER\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.dYNAMICLINK_CONTROLLERAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("URL", /*TEXT*/ 0, obj.uRLAttr);
+argsList.add("ClickTimestamp", /*TEXT*/ 0, obj.clickTimestampAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.dYNAMICLINK_CONTROLLERAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.dYNAMICLINK_CONTROLLERAttr;
+return obj.idAttr;
+
+}
+};
+var moduleKey = "ec35c841-fb40-4e68-89ec-ab63f491c0d8";
+NewFirebaseMobilePlugin_WTFModel.entities = {
+DYNAMICLINK_CONTROLLER: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoDYNAMICLINK_CONTROLLER, moduleKey)
+};
+return {
+init: function (runner) {
+return OS.Entities.webSQLStorageInstance.initModule([infoDYNAMICLINK_CONTROLLER], runner, moduleKey);
+},
+switch: function (runner) {
+return OS.Entities.webSQLStorageInstance.switchModule(runner, moduleKey);
+}
+};
+});

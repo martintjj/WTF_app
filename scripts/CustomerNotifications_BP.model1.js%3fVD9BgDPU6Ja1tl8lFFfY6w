@@ -1,0 +1,1539 @@
+﻿define("CustomerNotifications_BP.model$Interaction_MessageRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var Interaction_MessageRec = (function (_super) {
+__extends(Interaction_MessageRec, _super);
+function Interaction_MessageRec(defaults) {
+_super.apply(this, arguments);
+}
+Interaction_MessageRec.attributesToDeclare = function () {
+return [
+this.attr("NosId", "nosIdAttr", "NosId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("RegistrationToken", "registrationTokenAttr", "RegistrationToken", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NotificationId", "notificationIdAttr", "NotificationId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Title", "titleAttr", "Title", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Status", "statusAttr", "Status", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+Interaction_MessageRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+Interaction_MessageRec.init();
+return Interaction_MessageRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.Interaction_MessageRec = Interaction_MessageRec;
+
+});
+define("CustomerNotifications_BP.model$Data_StructureRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var Data_StructureRec = (function (_super) {
+__extends(Data_StructureRec, _super);
+function Data_StructureRec(defaults) {
+_super.apply(this, arguments);
+}
+Data_StructureRec.attributesToDeclare = function () {
+return [
+this.attr("Key", "keyAttr", "Key", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Value", "valueAttr", "Value", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+Data_StructureRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+Data_StructureRec.init();
+return Data_StructureRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.Data_StructureRec = Data_StructureRec;
+
+});
+define("CustomerNotifications_BP.model$Data_StructureList", ["exports", "OutSystems", "CustomerNotifications_BP.model", "CustomerNotifications_BP.model$Data_StructureRec"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var Data_StructureList = (function (_super) {
+__extends(Data_StructureList, _super);
+function Data_StructureList(defaults) {
+_super.apply(this, arguments);
+}
+Data_StructureList.RecordType = CustomerNotifications_BPModel.Data_StructureRec;
+return Data_StructureList;
+})(OS.DataTypes.GenericRecordList);
+CustomerNotifications_BPModel.Data_StructureList = Data_StructureList;
+
+});
+define("CustomerNotifications_BP.model$Messages_StructureRec", ["exports", "OutSystems", "CustomerNotifications_BP.model", "CustomerNotifications_BP.model$Data_StructureList"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var Messages_StructureRec = (function (_super) {
+__extends(Messages_StructureRec, _super);
+function Messages_StructureRec(defaults) {
+_super.apply(this, arguments);
+}
+Messages_StructureRec.attributesToDeclare = function () {
+return [
+this.attr("NotificationId", "notificationIdAttr", "NotificationId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("RegistrationToken", "registrationTokenAttr", "RegistrationToken", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsPush", "isPushAttr", "IsPush", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Title_Push", "title_PushAttr", "Title_Push", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Content_Push", "content_PushAttr", "Content_Push", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DeepLink_Push", "deepLink_PushAttr", "DeepLink_Push", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsInbox", "isInboxAttr", "IsInbox", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Title_Inbox", "title_InboxAttr", "Title_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description_Inbox", "description_InboxAttr", "Description_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Content_Inbox", "content_InboxAttr", "Content_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Action_Inbox", "action_InboxAttr", "Action_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DeepLink_Inbox", "deepLink_InboxAttr", "DeepLink_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Data", "dataAttr", "Data", false, OS.Types.RecordList, function () {
+return OS.DataTypes.ImmutableBase.getData(new CustomerNotifications_BPModel.Data_StructureList());
+}, CustomerNotifications_BPModel.Data_StructureList), 
+this.attr("CreateInteraction", "createInteractionAttr", "CreateInteraction", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("IsInteractionCreated", "isInteractionCreatedAttr", "IsInteractionCreated", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("PushNotificationStatus", "pushNotificationStatusAttr", "PushNotificationStatus", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("InboxNotificationStatus", "inboxNotificationStatusAttr", "InboxNotificationStatus", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+Messages_StructureRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+Messages_StructureRec.init();
+return Messages_StructureRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.Messages_StructureRec = Messages_StructureRec;
+
+});
+define("CustomerNotifications_BP.model$NotificationRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var NotificationRec = (function (_super) {
+__extends(NotificationRec, _super);
+function NotificationRec(defaults) {
+_super.apply(this, arguments);
+}
+NotificationRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("MessageId", "messageIdAttr", "MessageId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CollapsibleKey", "collapsibleKeyAttr", "CollapsibleKey", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PushNotificationTypeId", "pushNotificationTypeIdAttr", "PushNotificationTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("IsPush", "isPushAttr", "IsPush", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("IsInbox", "isInboxAttr", "IsInbox", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Title_Inbox", "title_InboxAttr", "Title_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description_Inbox", "description_InboxAttr", "Description_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Content_Inbox", "content_InboxAttr", "Content_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Action_Inbox", "action_InboxAttr", "Action_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DeepLink_Inbox", "deepLink_InboxAttr", "DeepLink_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Title_Push", "title_PushAttr", "Title_Push", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Content_Push", "content_PushAttr", "Content_Push", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DeepLink_Push", "deepLink_PushAttr", "DeepLink_Push", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("TimetoLive", "timetoLiveAttr", "TimetoLive", false, OS.Types.Integer, function () {
+return 28;
+}), 
+this.attr("ApplicationScreenId_Push", "applicationScreenId_PushAttr", "ApplicationScreenId_Push", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("ApplicationScreenId_Inbox", "applicationScreenId_InboxAttr", "ApplicationScreenId_Inbox", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("NotificationChannelId", "notificationChannelIdAttr", "NotificationChannelId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("NotificationPriorityId", "notificationPriorityIdAttr", "NotificationPriorityId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("NotificationCategoryId", "notificationCategoryIdAttr", "NotificationCategoryId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("InboxNotificationTypeId", "inboxNotificationTypeIdAttr", "InboxNotificationTypeId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("StartHourOfDelivery", "startHourOfDeliveryAttr", "StartHourOfDelivery", false, OS.Types.Time, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("EndHourOfDelivery", "endHourOfDeliveryAttr", "EndHourOfDelivery", false, OS.Types.Time, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("DeliveryPriorityId", "deliveryPriorityIdAttr", "DeliveryPriorityId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("ImageUrl", "imageUrlAttr", "ImageUrl", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CreateInteraction", "createInteractionAttr", "CreateInteraction", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("NotificationSourceId", "notificationSourceIdAttr", "NotificationSourceId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedBy", "createdByAttr", "CreatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedBy", "updatedByAttr", "UpdatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", true, OS.Types.Boolean, function () {
+return true;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+NotificationRec.generateFromLocalStorage = function () {
+return false;
+};
+NotificationRec.init();
+return NotificationRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.NotificationRec = NotificationRec;
+
+});
+define("CustomerNotifications_BP.model$PushNotificationInfoStatusHistoryRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var PushNotificationInfoStatusHistoryRec = (function (_super) {
+__extends(PushNotificationInfoStatusHistoryRec, _super);
+function PushNotificationInfoStatusHistoryRec(defaults) {
+_super.apply(this, arguments);
+}
+PushNotificationInfoStatusHistoryRec.attributesToDeclare = function () {
+return [
+this.attr("NOSId", "nOSIdAttr", "NOSId", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NotificationId", "notificationIdAttr", "NotificationId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("RegistrationToken", "registrationTokenAttr", "RegistrationToken", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PushNotificationStatusId", "pushNotificationStatusIdAttr", "PushNotificationStatusId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("IsBroadcast", "isBroadcastAttr", "IsBroadcast", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CreatedBy", "createdByAttr", "CreatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", true, OS.Types.Boolean, function () {
+return true;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PushNotificationInfoStatusHistoryRec.generateFromLocalStorage = function () {
+return false;
+};
+PushNotificationInfoStatusHistoryRec.init();
+return PushNotificationInfoStatusHistoryRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.PushNotificationInfoStatusHistoryRec = PushNotificationInfoStatusHistoryRec;
+
+});
+define("CustomerNotifications_BP.model$Notification_StructureRec", ["exports", "OutSystems", "CustomerNotifications_BP.model", "CustomerNotifications_BP.model$Data_StructureList"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var Notification_StructureRec = (function (_super) {
+__extends(Notification_StructureRec, _super);
+function Notification_StructureRec(defaults) {
+_super.apply(this, arguments);
+}
+Notification_StructureRec.attributesToDeclare = function () {
+return [
+this.attr("PushNotificationType", "pushNotificationTypeAttr", "PushNotificationType", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Title_Inbox", "title_InboxAttr", "Title_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Content_Inbox", "content_InboxAttr", "Content_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Action_Inbox", "action_InboxAttr", "Action_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DeepLink_Inbox", "deepLink_InboxAttr", "DeepLink_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsPush", "isPushAttr", "IsPush", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Title_Push", "title_PushAttr", "Title_Push", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Content_Push", "content_PushAttr", "Content_Push", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Action_Push", "action_PushAttr", "Action_Push", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DeepLink_Push", "deepLink_PushAttr", "DeepLink_Push", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Data", "dataAttr", "Data", false, OS.Types.RecordList, function () {
+return OS.DataTypes.ImmutableBase.getData(new CustomerNotifications_BPModel.Data_StructureList());
+}, CustomerNotifications_BPModel.Data_StructureList), 
+this.attr("TimetoLive", "timetoLiveAttr", "TimetoLive", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("NotificationChannel", "notificationChannelAttr", "NotificationChannel", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NotificationPriority", "notificationPriorityAttr", "NotificationPriority", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NotificationCategory", "notificationCategoryAttr", "NotificationCategory", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("StartHourOfDelivery", "startHourOfDeliveryAttr", "StartHourOfDelivery", false, OS.Types.Time, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("EndHourOfDelivery", "endHourOfDeliveryAttr", "EndHourOfDelivery", false, OS.Types.Time, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("DeliveryPriority", "deliveryPriorityAttr", "DeliveryPriority", false, OS.Types.Integer, function () {
+return 10;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+Notification_StructureRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+Notification_StructureRec.init();
+return Notification_StructureRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.Notification_StructureRec = Notification_StructureRec;
+
+});
+define("CustomerNotifications_BP.model$InboxNotificationWithContentRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var InboxNotificationWithContentRec = (function (_super) {
+__extends(InboxNotificationWithContentRec, _super);
+function InboxNotificationWithContentRec(defaults) {
+_super.apply(this, arguments);
+}
+InboxNotificationWithContentRec.attributesToDeclare = function () {
+return [
+this.attr("NotificationId", "notificationIdAttr", "NotificationId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Title_Inbox", "title_InboxAttr", "Title_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description_Inbox", "description_InboxAttr", "Description_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Content_Inbox", "content_InboxAttr", "Content_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DeepLink_Inbox", "deepLink_InboxAttr", "DeepLink_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("InboxNotificationInfoStatus_CreatedAt", "inboxNotificationInfoStatus_CreatedAtAttr", "InboxNotificationInfoStatus_CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("IsRead", "isReadAttr", "IsRead", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+InboxNotificationWithContentRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+InboxNotificationWithContentRec.init();
+return InboxNotificationWithContentRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.InboxNotificationWithContentRec = InboxNotificationWithContentRec;
+
+});
+define("CustomerNotifications_BP.model$TokenInfo_StructureRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var TokenInfo_StructureRec = (function (_super) {
+__extends(TokenInfo_StructureRec, _super);
+function TokenInfo_StructureRec(defaults) {
+_super.apply(this, arguments);
+}
+TokenInfo_StructureRec.attributesToDeclare = function () {
+return [
+this.attr("ChannelName", "channelNameAttr", "ChannelName", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("RegistrationToken", "registrationTokenAttr", "RegistrationToken", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+TokenInfo_StructureRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+TokenInfo_StructureRec.init();
+return TokenInfo_StructureRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.TokenInfo_StructureRec = TokenInfo_StructureRec;
+
+});
+define("CustomerNotifications_BP.model$Notification_InfoRec", ["exports", "OutSystems", "CustomerNotifications_BP.model", "CustomerNotifications_BP.model$Data_StructureList"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var Notification_InfoRec = (function (_super) {
+__extends(Notification_InfoRec, _super);
+function Notification_InfoRec(defaults) {
+_super.apply(this, arguments);
+}
+Notification_InfoRec.attributesToDeclare = function () {
+return [
+this.attr("Description", "descriptionAttr", "Description", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("MessageId", "messageIdAttr", "MessageId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CollapsibleKey", "collapsibleKeyAttr", "CollapsibleKey", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PushNotificationType", "pushNotificationTypeAttr", "PushNotificationType", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsPush", "isPushAttr", "IsPush", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("IsInbox", "isInboxAttr", "IsInbox", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Title_Inbox", "title_InboxAttr", "Title_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Description_Inbox", "description_InboxAttr", "Description_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Content_Inbox", "content_InboxAttr", "Content_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Action_Inbox", "action_InboxAttr", "Action_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DeepLink_Inbox", "deepLink_InboxAttr", "DeepLink_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Title_Push", "title_PushAttr", "Title_Push", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Content_Push", "content_PushAttr", "Content_Push", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DeepLink_Push", "deepLink_PushAttr", "DeepLink_Push", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("TimetoLive", "timetoLiveAttr", "TimetoLive", false, OS.Types.Integer, function () {
+return 28;
+}), 
+this.attr("ScreenName_Push", "screenName_PushAttr", "ScreenName_Push", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ScreenName_Inbox", "screenName_InboxAttr", "ScreenName_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NotificationChannel", "notificationChannelAttr", "NotificationChannel", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NotificationPriority", "notificationPriorityAttr", "NotificationPriority", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NotificationCategory", "notificationCategoryAttr", "NotificationCategory", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("InboxNotificationType", "inboxNotificationTypeAttr", "InboxNotificationType", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CreateInteraction", "createInteractionAttr", "CreateInteraction", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("StartHourOfDelivery", "startHourOfDeliveryAttr", "StartHourOfDelivery", false, OS.Types.Time, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("EndHourOfDelivery", "endHourOfDeliveryAttr", "EndHourOfDelivery", false, OS.Types.Time, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("DeliveryPriorityId", "deliveryPriorityIdAttr", "DeliveryPriorityId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("ImageUrl", "imageUrlAttr", "ImageUrl", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Data", "dataAttr", "Data", false, OS.Types.RecordList, function () {
+return OS.DataTypes.ImmutableBase.getData(new CustomerNotifications_BPModel.Data_StructureList());
+}, CustomerNotifications_BPModel.Data_StructureList)
+].concat(_super.attributesToDeclare.call(this));
+};
+Notification_InfoRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+Notification_InfoRec.init();
+return Notification_InfoRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.Notification_InfoRec = Notification_InfoRec;
+
+});
+define("CustomerNotifications_BP.model$DeeplinkParamRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var DeeplinkParamRec = (function (_super) {
+__extends(DeeplinkParamRec, _super);
+function DeeplinkParamRec(defaults) {
+_super.apply(this, arguments);
+}
+DeeplinkParamRec.attributesToDeclare = function () {
+return [
+this.attr("Name", "nameAttr", "Name", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Value", "valueAttr", "Value", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+DeeplinkParamRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+DeeplinkParamRec.init();
+return DeeplinkParamRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.DeeplinkParamRec = DeeplinkParamRec;
+
+});
+define("CustomerNotifications_BP.model$DeeplinkParamList", ["exports", "OutSystems", "CustomerNotifications_BP.model", "CustomerNotifications_BP.model$DeeplinkParamRec"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var DeeplinkParamList = (function (_super) {
+__extends(DeeplinkParamList, _super);
+function DeeplinkParamList(defaults) {
+_super.apply(this, arguments);
+}
+DeeplinkParamList.RecordType = CustomerNotifications_BPModel.DeeplinkParamRec;
+return DeeplinkParamList;
+})(OS.DataTypes.GenericRecordList);
+CustomerNotifications_BPModel.DeeplinkParamList = DeeplinkParamList;
+
+});
+define("CustomerNotifications_BP.model$DeeplinkRec", ["exports", "OutSystems", "CustomerNotifications_BP.model", "CustomerNotifications_BP.model$DeeplinkParamList"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var DeeplinkRec = (function (_super) {
+__extends(DeeplinkRec, _super);
+function DeeplinkRec(defaults) {
+_super.apply(this, arguments);
+}
+DeeplinkRec.attributesToDeclare = function () {
+return [
+this.attr("ScreenName", "screenNameAttr", "ScreenName", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DeeplinkParams", "deeplinkParamsAttr", "DeeplinkParams", false, OS.Types.RecordList, function () {
+return OS.DataTypes.ImmutableBase.getData(new CustomerNotifications_BPModel.DeeplinkParamList());
+}, CustomerNotifications_BPModel.DeeplinkParamList)
+].concat(_super.attributesToDeclare.call(this));
+};
+DeeplinkRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+DeeplinkRec.init();
+return DeeplinkRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.DeeplinkRec = DeeplinkRec;
+
+});
+define("CustomerNotifications_BP.model$InboxNotificationTypeRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var InboxNotificationTypeRec = (function (_super) {
+__extends(InboxNotificationTypeRec, _super);
+function InboxNotificationTypeRec(defaults) {
+_super.apply(this, arguments);
+}
+InboxNotificationTypeRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+InboxNotificationTypeRec.generateFromLocalStorage = function () {
+return false;
+};
+InboxNotificationTypeRec.init();
+return InboxNotificationTypeRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.InboxNotificationTypeRec = InboxNotificationTypeRec;
+
+});
+define("CustomerNotifications_BP.model$NotificationDataRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var NotificationDataRec = (function (_super) {
+__extends(NotificationDataRec, _super);
+function NotificationDataRec(defaults) {
+_super.apply(this, arguments);
+}
+NotificationDataRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("NotificationId", "notificationIdAttr", "NotificationId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("DataId", "dataIdAttr", "DataId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+NotificationDataRec.generateFromLocalStorage = function () {
+return false;
+};
+NotificationDataRec.init();
+return NotificationDataRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.NotificationDataRec = NotificationDataRec;
+
+});
+define("CustomerNotifications_BP.model$QueueImportRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var QueueImportRec = (function (_super) {
+__extends(QueueImportRec, _super);
+function QueueImportRec(defaults) {
+_super.apply(this, arguments);
+}
+QueueImportRec.attributesToDeclare = function () {
+return [
+this.attr("NOSId", "nOSIdAttr", "NOSId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NotificationId", "notificationIdAttr", "NotificationId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("GUID", "gUIDAttr", "GUID", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsSending", "isSendingAttr", "IsSending", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+QueueImportRec.generateFromLocalStorage = function () {
+return false;
+};
+QueueImportRec.init();
+return QueueImportRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.QueueImportRec = QueueImportRec;
+
+});
+define("CustomerNotifications_BP.model$Error_StructureRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var Error_StructureRec = (function (_super) {
+__extends(Error_StructureRec, _super);
+function Error_StructureRec(defaults) {
+_super.apply(this, arguments);
+}
+Error_StructureRec.attributesToDeclare = function () {
+return [
+this.attr("HasError", "hasErrorAttr", "HasError", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("ErrorCode", "errorCodeAttr", "ErrorCode", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ErrorMessage", "errorMessageAttr", "ErrorMessage", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+Error_StructureRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+Error_StructureRec.init();
+return Error_StructureRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.Error_StructureRec = Error_StructureRec;
+
+});
+define("CustomerNotifications_BP.model$PostSendJSONRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var PostSendJSONRec = (function (_super) {
+__extends(PostSendJSONRec, _super);
+function PostSendJSONRec(defaults) {
+_super.apply(this, arguments);
+}
+PostSendJSONRec.attributesToDeclare = function () {
+return [
+this.attr("Request", "requestAttr", "Request", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Response", "responseAttr", "Response", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PostSendJSONRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+PostSendJSONRec.init();
+return PostSendJSONRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.PostSendJSONRec = PostSendJSONRec;
+
+});
+define("CustomerNotifications_BP.model$NotificationsToExcelRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var NotificationsToExcelRec = (function (_super) {
+__extends(NotificationsToExcelRec, _super);
+function NotificationsToExcelRec(defaults) {
+_super.apply(this, arguments);
+}
+NotificationsToExcelRec.attributesToDeclare = function () {
+return [
+this.attr("NOSId", "nOSIdAttr", "NOSId", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+NotificationsToExcelRec.fromStructure = function (str) {
+return new NotificationsToExcelRec(new NotificationsToExcelRec.RecordClass({
+nOSIdAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+NotificationsToExcelRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+NotificationsToExcelRec.init();
+return NotificationsToExcelRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.NotificationsToExcelRec = NotificationsToExcelRec;
+
+});
+define("CustomerNotifications_BP.model$InboxNotificationRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var InboxNotificationRec = (function (_super) {
+__extends(InboxNotificationRec, _super);
+function InboxNotificationRec(defaults) {
+_super.apply(this, arguments);
+}
+InboxNotificationRec.attributesToDeclare = function () {
+return [
+this.attr("NotificationId", "notificationIdAttr", "NotificationId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Title_Inbox", "title_InboxAttr", "Title_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DeepLink_Inbox", "deepLink_InboxAttr", "DeepLink_Inbox", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("InboxNotificationInfoStatus_CreatedAt", "inboxNotificationInfoStatus_CreatedAtAttr", "InboxNotificationInfoStatus_CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("InboxNotificationInfoStatus_UpdatedAt", "inboxNotificationInfoStatus_UpdatedAtAttr", "InboxNotificationInfoStatus_UpdatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("IsRead", "isReadAttr", "IsRead", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+InboxNotificationRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+InboxNotificationRec.init();
+return InboxNotificationRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.InboxNotificationRec = InboxNotificationRec;
+
+});
+define("CustomerNotifications_BP.model$PushNotificationTypeRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var PushNotificationTypeRec = (function (_super) {
+__extends(PushNotificationTypeRec, _super);
+function PushNotificationTypeRec(defaults) {
+_super.apply(this, arguments);
+}
+PushNotificationTypeRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PushNotificationTypeRec.generateFromLocalStorage = function () {
+return false;
+};
+PushNotificationTypeRec.init();
+return PushNotificationTypeRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.PushNotificationTypeRec = PushNotificationTypeRec;
+
+});
+define("CustomerNotifications_BP.model$InboxNotificationInfoStatusHistoryRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var InboxNotificationInfoStatusHistoryRec = (function (_super) {
+__extends(InboxNotificationInfoStatusHistoryRec, _super);
+function InboxNotificationInfoStatusHistoryRec(defaults) {
+_super.apply(this, arguments);
+}
+InboxNotificationInfoStatusHistoryRec.attributesToDeclare = function () {
+return [
+this.attr("NOSId", "nOSIdAttr", "NOSId", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NotificationId", "notificationIdAttr", "NotificationId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("InboxNotificationStatusId", "inboxNotificationStatusIdAttr", "InboxNotificationStatusId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("IsBroadcast", "isBroadcastAttr", "IsBroadcast", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CreatedBy", "createdByAttr", "CreatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", true, OS.Types.Boolean, function () {
+return true;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+InboxNotificationInfoStatusHistoryRec.generateFromLocalStorage = function () {
+return false;
+};
+InboxNotificationInfoStatusHistoryRec.init();
+return InboxNotificationInfoStatusHistoryRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.InboxNotificationInfoStatusHistoryRec = InboxNotificationInfoStatusHistoryRec;
+
+});
+define("CustomerNotifications_BP.model$InboxNotificationInfoStatusRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var InboxNotificationInfoStatusRec = (function (_super) {
+__extends(InboxNotificationInfoStatusRec, _super);
+function InboxNotificationInfoStatusRec(defaults) {
+_super.apply(this, arguments);
+}
+InboxNotificationInfoStatusRec.attributesToDeclare = function () {
+return [
+this.attr("NOSId", "nOSIdAttr", "NOSId", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NotificationId", "notificationIdAttr", "NotificationId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("InboxNotificationStatusId", "inboxNotificationStatusIdAttr", "InboxNotificationStatusId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("IsBroadcast", "isBroadcastAttr", "IsBroadcast", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CreatedBy", "createdByAttr", "CreatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedBy", "updatedByAttr", "UpdatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("IsInteractionCreated", "isInteractionCreatedAttr", "IsInteractionCreated", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Motive", "motiveAttr", "Motive", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+InboxNotificationInfoStatusRec.generateFromLocalStorage = function () {
+return false;
+};
+InboxNotificationInfoStatusRec.init();
+return InboxNotificationInfoStatusRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.InboxNotificationInfoStatusRec = InboxNotificationInfoStatusRec;
+
+});
+define("CustomerNotifications_BP.model$NotificationCategoryRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var NotificationCategoryRec = (function (_super) {
+__extends(NotificationCategoryRec, _super);
+function NotificationCategoryRec(defaults) {
+_super.apply(this, arguments);
+}
+NotificationCategoryRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+NotificationCategoryRec.generateFromLocalStorage = function () {
+return false;
+};
+NotificationCategoryRec.init();
+return NotificationCategoryRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.NotificationCategoryRec = NotificationCategoryRec;
+
+});
+define("CustomerNotifications_BP.model$DeliveryPriorityRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var DeliveryPriorityRec = (function (_super) {
+__extends(DeliveryPriorityRec, _super);
+function DeliveryPriorityRec(defaults) {
+_super.apply(this, arguments);
+}
+DeliveryPriorityRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ImmediateDelivery", "immediateDeliveryAttr", "ImmediateDelivery", true, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+DeliveryPriorityRec.generateFromLocalStorage = function () {
+return false;
+};
+DeliveryPriorityRec.init();
+return DeliveryPriorityRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.DeliveryPriorityRec = DeliveryPriorityRec;
+
+});
+define("CustomerNotifications_BP.model$QueueHistoryRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var QueueHistoryRec = (function (_super) {
+__extends(QueueHistoryRec, _super);
+function QueueHistoryRec(defaults) {
+_super.apply(this, arguments);
+}
+QueueHistoryRec.attributesToDeclare = function () {
+return [
+this.attr("NOSId", "nOSIdAttr", "NOSId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("RegistrationToken", "registrationTokenAttr", "RegistrationToken", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NotificationId", "notificationIdAttr", "NotificationId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("IsSending", "isSendingAttr", "IsSending", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("IsSend", "isSendAttr", "IsSend", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("HasError", "hasErrorAttr", "HasError", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Guid", "guidAttr", "Guid", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+QueueHistoryRec.generateFromLocalStorage = function () {
+return false;
+};
+QueueHistoryRec.init();
+return QueueHistoryRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.QueueHistoryRec = QueueHistoryRec;
+
+});
+define("CustomerNotifications_BP.model$DevicePlatformRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var DevicePlatformRec = (function (_super) {
+__extends(DevicePlatformRec, _super);
+function DevicePlatformRec(defaults) {
+_super.apply(this, arguments);
+}
+DevicePlatformRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+DevicePlatformRec.generateFromLocalStorage = function () {
+return false;
+};
+DevicePlatformRec.init();
+return DevicePlatformRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.DevicePlatformRec = DevicePlatformRec;
+
+});
+define("CustomerNotifications_BP.model$NotificationSourceRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var NotificationSourceRec = (function (_super) {
+__extends(NotificationSourceRec, _super);
+function NotificationSourceRec(defaults) {
+_super.apply(this, arguments);
+}
+NotificationSourceRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+NotificationSourceRec.generateFromLocalStorage = function () {
+return false;
+};
+NotificationSourceRec.init();
+return NotificationSourceRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.NotificationSourceRec = NotificationSourceRec;
+
+});
+define("CustomerNotifications_BP.model$ApplicationScreenRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var ApplicationScreenRec = (function (_super) {
+__extends(ApplicationScreenRec, _super);
+function ApplicationScreenRec(defaults) {
+_super.apply(this, arguments);
+}
+ApplicationScreenRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("NotificationChannelId", "notificationChannelIdAttr", "NotificationChannelId", false, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("FriendlyName", "friendlyNameAttr", "FriendlyName", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ScreenName", "screenNameAttr", "ScreenName", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CreatedBy", "createdByAttr", "CreatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedBy", "updatedByAttr", "UpdatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", true, OS.Types.Boolean, function () {
+return true;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+ApplicationScreenRec.generateFromLocalStorage = function () {
+return false;
+};
+ApplicationScreenRec.init();
+return ApplicationScreenRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.ApplicationScreenRec = ApplicationScreenRec;
+
+});
+define("CustomerNotifications_BP.model$NotificationPriorityRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var NotificationPriorityRec = (function (_super) {
+__extends(NotificationPriorityRec, _super);
+function NotificationPriorityRec(defaults) {
+_super.apply(this, arguments);
+}
+NotificationPriorityRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+NotificationPriorityRec.generateFromLocalStorage = function () {
+return false;
+};
+NotificationPriorityRec.init();
+return NotificationPriorityRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.NotificationPriorityRec = NotificationPriorityRec;
+
+});
+define("CustomerNotifications_BP.model$DeviceInformationRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var DeviceInformationRec = (function (_super) {
+__extends(DeviceInformationRec, _super);
+function DeviceInformationRec(defaults) {
+_super.apply(this, arguments);
+}
+DeviceInformationRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("DeviceHardwareId", "deviceHardwareIdAttr", "DeviceHardwareId", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NotificationChannelId", "notificationChannelIdAttr", "NotificationChannelId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("NOSId", "nOSIdAttr", "NOSId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("RegistrationToken", "registrationTokenAttr", "RegistrationToken", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("DevicePlatformId", "devicePlatformIdAttr", "DevicePlatformId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("HasPermissionNotification", "hasPermissionNotificationAttr", "HasPermissionNotification", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CreatedBy", "createdByAttr", "CreatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedBy", "updatedByAttr", "UpdatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", true, OS.Types.Boolean, function () {
+return true;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+DeviceInformationRec.generateFromLocalStorage = function () {
+return false;
+};
+DeviceInformationRec.init();
+return DeviceInformationRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.DeviceInformationRec = DeviceInformationRec;
+
+});
+define("CustomerNotifications_BP.model$NotificationChannelRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var NotificationChannelRec = (function (_super) {
+__extends(NotificationChannelRec, _super);
+function NotificationChannelRec(defaults) {
+_super.apply(this, arguments);
+}
+NotificationChannelRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Name", "nameAttr", "Name", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("FMCServerKey", "fMCServerKeyAttr", "FMCServerKey", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CallbackPageURL", "callbackPageURLAttr", "CallbackPageURL", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ApplicationId", "applicationIdAttr", "ApplicationId", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedBy", "createdByAttr", "CreatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedBy", "updatedByAttr", "UpdatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", true, OS.Types.Boolean, function () {
+return true;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+NotificationChannelRec.generateFromLocalStorage = function () {
+return false;
+};
+NotificationChannelRec.init();
+return NotificationChannelRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.NotificationChannelRec = NotificationChannelRec;
+
+});
+define("CustomerNotifications_BP.model$QueueRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var QueueRec = (function (_super) {
+__extends(QueueRec, _super);
+function QueueRec(defaults) {
+_super.apply(this, arguments);
+}
+QueueRec.attributesToDeclare = function () {
+return [
+this.attr("NOSId", "nOSIdAttr", "NOSId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("RegistrationToken", "registrationTokenAttr", "RegistrationToken", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NotificationId", "notificationIdAttr", "NotificationId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("IsSending", "isSendingAttr", "IsSending", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("IsSend", "isSendAttr", "IsSend", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("HasError", "hasErrorAttr", "HasError", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("ToBeDeleted", "toBeDeletedAttr", "ToBeDeleted", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Guid", "guidAttr", "Guid", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("IsInteractionCreated", "isInteractionCreatedAttr", "IsInteractionCreated", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+QueueRec.generateFromLocalStorage = function () {
+return false;
+};
+QueueRec.init();
+return QueueRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.QueueRec = QueueRec;
+
+});
+define("CustomerNotifications_BP.model$PushNotificationInfoStatusRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var PushNotificationInfoStatusRec = (function (_super) {
+__extends(PushNotificationInfoStatusRec, _super);
+function PushNotificationInfoStatusRec(defaults) {
+_super.apply(this, arguments);
+}
+PushNotificationInfoStatusRec.attributesToDeclare = function () {
+return [
+this.attr("NOSId", "nOSIdAttr", "NOSId", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("NotificationId", "notificationIdAttr", "NotificationId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("RegistrationToken", "registrationTokenAttr", "RegistrationToken", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("PushNotificationStatusId", "pushNotificationStatusIdAttr", "PushNotificationStatusId", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("IsBroadcast", "isBroadcastAttr", "IsBroadcast", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("CreatedBy", "createdByAttr", "CreatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedBy", "updatedByAttr", "UpdatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", true, OS.Types.Boolean, function () {
+return true;
+}), 
+this.attr("IsInteractionCreated", "isInteractionCreatedAttr", "IsInteractionCreated", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("Motive", "motiveAttr", "Motive", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+PushNotificationInfoStatusRec.generateFromLocalStorage = function () {
+return false;
+};
+PushNotificationInfoStatusRec.init();
+return PushNotificationInfoStatusRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.PushNotificationInfoStatusRec = PushNotificationInfoStatusRec;
+
+});
+define("CustomerNotifications_BP.model$NotificationStatusRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var NotificationStatusRec = (function (_super) {
+__extends(NotificationStatusRec, _super);
+function NotificationStatusRec(defaults) {
+_super.apply(this, arguments);
+}
+NotificationStatusRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+NotificationStatusRec.generateFromLocalStorage = function () {
+return false;
+};
+NotificationStatusRec.init();
+return NotificationStatusRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.NotificationStatusRec = NotificationStatusRec;
+
+});
+define("CustomerNotifications_BP.model$NotificationMessageListRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var NotificationMessageListRec = (function (_super) {
+__extends(NotificationMessageListRec, _super);
+function NotificationMessageListRec(defaults) {
+_super.apply(this, arguments);
+}
+NotificationMessageListRec.attributesToDeclare = function () {
+return [
+this.attr("NotificationId", "notificationIdAttr", "NotificationId", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("NOSId", "nOSIdAttr", "NOSId", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("IsSelected", "isSelectedAttr", "IsSelected", false, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+NotificationMessageListRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+NotificationMessageListRec.init();
+return NotificationMessageListRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.NotificationMessageListRec = NotificationMessageListRec;
+
+});
+define("CustomerNotifications_BP.model$DataRec", ["exports", "OutSystems", "CustomerNotifications_BP.model"], function (exports, OutSystems, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+var DataRec = (function (_super) {
+__extends(DataRec, _super);
+function DataRec(defaults) {
+_super.apply(this, arguments);
+}
+DataRec.attributesToDeclare = function () {
+return [
+this.attr("Id", "idAttr", "Id", true, OS.Types.LongInteger, function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}), 
+this.attr("Key", "keyAttr", "Key", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Value", "valueAttr", "Value", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("CreatedBy", "createdByAttr", "CreatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("CreatedAt", "createdAtAttr", "CreatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("UpdatedBy", "updatedByAttr", "UpdatedBy", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("UpdatedAt", "updatedAtAttr", "UpdatedAt", false, OS.Types.DateTime, function () {
+return OS.DataTypes.DateTime.defaultValue;
+}), 
+this.attr("IsActive", "isActiveAttr", "IsActive", true, OS.Types.Boolean, function () {
+return true;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+DataRec.generateFromLocalStorage = function () {
+return false;
+};
+DataRec.init();
+return DataRec;
+})(OS.DataTypes.GenericRecord);
+CustomerNotifications_BPModel.DataRec = DataRec;
+
+});
+define("CustomerNotifications_BP.model", ["exports", "OutSystems"], function (exports, OutSystems) {
+var OS = OutSystems.Internal;
+var CustomerNotifications_BPModel = exports;
+});

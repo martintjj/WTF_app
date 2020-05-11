@@ -1,0 +1,2450 @@
+﻿define("Essentials_MOB.controller$CheckNetworkStatus", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "MobilePatterns.controller", "MobilePatterns.controller$GetNetworkStatus", "Essentials_MOB.referencesHealth", "Essentials_MOB.referencesHealth$MobilePatterns", "Essentials_MOB.controller$ServerAction.CheckServerStatus"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController, MobilePatternsController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.checkNetworkStatus$Action = function (callContext) {
+callContext = controller.callContext(callContext);
+var allExceptionsVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var getNetworkStatusVar = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Network.CheckNetworkStatus$outVars"))());
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: GetNetworkStatus
+getNetworkStatusVar.value = MobilePatternsController.default.getNetworkStatus$Action(callContext);
+
+// is online?
+return OS.Flow.executeSequence(function () {
+if((getNetworkStatusVar.value.isOnlineOut)) {
+// Execute Action: CheckServerStatus
+return controller.checkServerStatus$ServerAction(callContext).then(function () {
+// online
+// isOnline = True
+outVars.value.isOnlineOut = true;
+});
+}
+
+});
+}).catch(function (ex) {
+OS.Logger.trace("Network.CheckNetworkStatus", OS.Exceptions.getMessage(ex), ex.name);
+// Handle Error: AllExceptions
+if(!(OS.Exceptions.isSystem(ex))) {
+allExceptionsVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return OS.Flow.executeAsyncFlow(function () {
+return OS.Flow.returnAsync(outVars.value);
+
+});
+}
+
+throw ex;
+}).then(function () {
+return outVars.value;
+});
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Network.CheckNetworkStatus$outVars", [{
+name: "isOnline",
+attrName: "isOnlineOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.checkNetworkStatus$Action = function () {
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.checkNetworkStatus$Action.bind(controller), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+isOnline: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.isOnlineOut, OS.Types.Boolean, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$CheckOnlyNumbers", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "Essentials_MOB.controller$CheckOnlyNumbers.Regex_CheckIsNumberJS"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController, Essentials_MOB_controller_CheckOnlyNumbers_Regex_CheckIsNumberJS) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.checkOnlyNumbers$Action = function (numberIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Integer.CheckOnlyNumbers$vars"))());
+vars.value.numberInLocal = numberIn;
+var regex_CheckIsNumberJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Integer.CheckOnlyNumbers$outVars"))());
+regex_CheckIsNumberJSResult.value = controller.safeExecuteJSNode(Essentials_MOB_controller_CheckOnlyNumbers_Regex_CheckIsNumberJS, "Regex_CheckIsNumber", "CheckOnlyNumbers", {
+Number: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.numberInLocal, OS.Types.Text, true),
+Valid: OS.DataTypes.JSConversions.basicTypeToJS(false, OS.Types.Boolean, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("Essentials_MOB.Integer.CheckOnlyNumbers$regex_CheckIsNumberJSResult"))();
+jsNodeResult.validOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.Valid, OS.Types.Boolean);
+return jsNodeResult;
+}, {}, {});
+// Valid = Regex_CheckIsNumber.Valid
+outVars.value.validOut = regex_CheckIsNumberJSResult.value.validOut;
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Integer.CheckOnlyNumbers$vars", [{
+name: "Number",
+attrName: "numberInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Integer.CheckOnlyNumbers$regex_CheckIsNumberJSResult", [{
+name: "Valid",
+attrName: "validOut",
+mandatory: true,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Integer.CheckOnlyNumbers$outVars", [{
+name: "Valid",
+attrName: "validOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.checkOnlyNumbers$Action = function (numberIn) {
+numberIn = (numberIn === undefined) ? "" : numberIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.checkOnlyNumbers$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(numberIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Valid: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.validOut, OS.Types.Boolean, true)
+};
+});
+};
+});
+define("Essentials_MOB.controller$CheckOnlyNumbers.Regex_CheckIsNumberJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+$parameters.Valid = /^\d*$/.test($parameters.Number)
+};
+});
+
+define("Essentials_MOB.controller$ConvertToHumanReadable", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "Essentials_MOB.controller$ConvertToHumanReadable.SizeList_GetFactorUnitJS", "Essentials_MOB.controller$ConvertToHumanReadable.SizeList_ArrayLengthJS", "Essentials_MOB.controller$RoundAwayFromZero", "Essentials_MOB.controller$Floor"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController, Essentials_MOB_controller_ConvertToHumanReadable_SizeList_GetFactorUnitJS, Essentials_MOB_controller_ConvertToHumanReadable_SizeList_ArrayLengthJS) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.convertToHumanReadable$Action = function (valueIn, decimalPlacesIn, baseIn, unitIn, valueFactorIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadable$vars"))());
+vars.value.valueInLocal = valueIn;
+vars.value.decimalPlacesInLocal = decimalPlacesIn;
+vars.value.baseInLocal = baseIn;
+vars.value.unitInLocal = unitIn;
+vars.value.valueFactorInLocal = valueFactorIn;
+var sizeList_GetFactorUnitJSResult = new OS.DataTypes.VariableHolder();
+var sizeList_ArrayLengthJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadable$outVars"))());
+// SizeList = Unit + "," + "k" + Unit + "M" + Unit + "G" + Unit + "T" + Unit + "P" + Unit + "E" + Unit + "Z" + Unit + "Y" + Unit
+vars.value.sizeListVar = (((((((((((((((((vars.value.unitInLocal + ",") + "k") + vars.value.unitInLocal) + "M") + vars.value.unitInLocal) + "G") + vars.value.unitInLocal) + "T") + vars.value.unitInLocal) + "P") + vars.value.unitInLocal) + "E") + vars.value.unitInLocal) + "Z") + vars.value.unitInLocal) + "Y") + vars.value.unitInLocal);
+sizeList_ArrayLengthJSResult.value = controller.safeExecuteJSNode(Essentials_MOB_controller_ConvertToHumanReadable_SizeList_ArrayLengthJS, "SizeList_ArrayLength", "ConvertToHumanReadable", {
+SizeList: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.sizeListVar, OS.Types.Text, true),
+Length: OS.DataTypes.JSConversions.basicTypeToJS(OS.DataTypes.LongInteger.defaultValue, OS.Types.LongInteger, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadable$sizeList_ArrayLengthJSResult"))();
+jsNodeResult.lengthOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.Length, OS.Types.LongInteger);
+return jsNodeResult;
+}, {}, {});
+// ConvertedValue
+// ConvertedValue = Value
+vars.value.convertedValueVar = vars.value.valueInLocal;
+// ConvertedValue = ConvertedValue * Power
+vars.value.convertedValueVar = vars.value.convertedValueVar.times(OS.BuiltinFunctions.power(OS.BuiltinFunctions.integerToDecimal(vars.value.baseInLocal), OS.BuiltinFunctions.integerToDecimal(vars.value.valueFactorInLocal)));
+// Factor
+// Factor = Floor(Length - 1 / 3)
+vars.value.factorVar = Essentials_MOBController.default.floor$Action(OS.BuiltinFunctions.integerToDecimal((OS.BuiltinFunctions.length(OS.BuiltinFunctions.decimalToText(vars.value.convertedValueVar)) - 1)).div(OS.BuiltinFunctions.integerToDecimal(3)), callContext.withoutIterationContext()).resultOut;
+// Factor = Min
+vars.value.factorVar = OS.BuiltinFunctions.decimalToLongInteger(OS.BuiltinFunctions.trunc(OS.BuiltinFunctions.min(OS.BuiltinFunctions.longIntegerToDecimal(vars.value.factorVar), OS.BuiltinFunctions.longIntegerToDecimal(sizeList_ArrayLengthJSResult.value.lengthOut.sub(OS.BuiltinFunctions.integerToLongInteger(1))))));
+// ConvertedValue = RoundAwayFromZero(ConvertedValue / Power, DecimalPlaces)
+vars.value.convertedValueVar = Essentials_MOBController.default.roundAwayFromZero$Action(vars.value.convertedValueVar.div(OS.BuiltinFunctions.power(OS.BuiltinFunctions.integerToDecimal(vars.value.baseInLocal), OS.BuiltinFunctions.longIntegerToDecimal(vars.value.factorVar))), vars.value.decimalPlacesInLocal, callContext.withoutIterationContext()).resultOut;
+sizeList_GetFactorUnitJSResult.value = controller.safeExecuteJSNode(Essentials_MOB_controller_ConvertToHumanReadable_SizeList_GetFactorUnitJS, "SizeList_GetFactorUnit", "ConvertToHumanReadable", {
+SizeList: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.sizeListVar, OS.Types.Text, true),
+Factor: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.factorVar, OS.Types.LongInteger, true),
+FactorUnit: OS.DataTypes.JSConversions.basicTypeToJS("", OS.Types.Text, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadable$sizeList_GetFactorUnitJSResult"))();
+jsNodeResult.factorUnitOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.FactorUnit, OS.Types.Text);
+return jsNodeResult;
+}, {}, {});
+// Result = FormatDecimal + " " + SizeList_GetFactorUnit.FactorUnit
+outVars.value.resultOut = ((OS.BuiltinFunctions.formatDecimal(vars.value.convertedValueVar, ((vars.value.convertedValueVar.equals(OS.BuiltinFunctions.trunc(vars.value.convertedValueVar))) ? (0) : (vars.value.decimalPlacesInLocal)), ",", ".") + " ") + sizeList_GetFactorUnitJSResult.value.factorUnitOut);
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadable$vars", [{
+name: "Value",
+attrName: "valueInLocal",
+mandatory: true,
+dataType: OS.Types.Decimal,
+defaultValue: function () {
+return OS.DataTypes.Decimal.defaultValue;
+}
+}, {
+name: "DecimalPlaces",
+attrName: "decimalPlacesInLocal",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 2;
+}
+}, {
+name: "Base",
+attrName: "baseInLocal",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 1000;
+}
+}, {
+name: "Unit",
+attrName: "unitInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "ValueFactor",
+attrName: "valueFactorInLocal",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}, {
+name: "Factor",
+attrName: "factorVar",
+mandatory: false,
+dataType: OS.Types.LongInteger,
+defaultValue: function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}
+}, {
+name: "ConvertedValue",
+attrName: "convertedValueVar",
+mandatory: false,
+dataType: OS.Types.Decimal,
+defaultValue: function () {
+return OS.DataTypes.Decimal.defaultValue;
+}
+}, {
+name: "SizeList",
+attrName: "sizeListVar",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadable$sizeList_GetFactorUnitJSResult", [{
+name: "FactorUnit",
+attrName: "factorUnitOut",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadable$sizeList_ArrayLengthJSResult", [{
+name: "Length",
+attrName: "lengthOut",
+mandatory: true,
+dataType: OS.Types.LongInteger,
+defaultValue: function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadable$outVars", [{
+name: "Result",
+attrName: "resultOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.convertToHumanReadable$Action = function (valueIn, decimalPlacesIn, baseIn, unitIn, valueFactorIn) {
+valueIn = (valueIn === undefined) ? OS.DataTypes.Decimal.defaultValue : valueIn;
+decimalPlacesIn = (decimalPlacesIn === undefined) ? 2 : decimalPlacesIn;
+baseIn = (baseIn === undefined) ? 1000 : baseIn;
+unitIn = (unitIn === undefined) ? "" : unitIn;
+valueFactorIn = (valueFactorIn === undefined) ? 0 : valueFactorIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.convertToHumanReadable$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(valueIn, OS.Types.Decimal), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(decimalPlacesIn, OS.Types.Integer), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(baseIn, OS.Types.Integer), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(unitIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(valueFactorIn, OS.Types.Integer)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Result: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.resultOut, OS.Types.Text, true)
+};
+});
+};
+});
+define("Essentials_MOB.controller$ConvertToHumanReadable.SizeList_GetFactorUnitJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+var str = $parameters.SizeList;
+var res = str.split(",");
+$parameters.FactorUnit = res[$parameters.Factor];
+};
+});
+define("Essentials_MOB.controller$ConvertToHumanReadable.SizeList_ArrayLengthJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+var str = $parameters.SizeList;
+var res = str.split(",");
+$parameters.Length = res.length;
+};
+});
+
+define("Essentials_MOB.controller$ConvertToHumanReadableBits", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "Essentials_MOB.controller$ConvertToHumanReadable"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.convertToHumanReadableBits$Action = function (valueIn, decimalPlacesIn, valueFactorIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadableBits$vars"))());
+vars.value.valueInLocal = valueIn;
+vars.value.decimalPlacesInLocal = decimalPlacesIn;
+vars.value.valueFactorInLocal = valueFactorIn;
+var convertToHumanReadableVar = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadableBits$outVars"))());
+// Execute Action: ConvertToHumanReadable
+convertToHumanReadableVar.value = Essentials_MOBController.default.convertToHumanReadable$Action(vars.value.valueInLocal, vars.value.decimalPlacesInLocal, 1000, "bps", vars.value.valueFactorInLocal, callContext);
+
+// Result = ConvertToHumanReadable.Result
+outVars.value.resultOut = convertToHumanReadableVar.value.resultOut;
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadableBits$vars", [{
+name: "Value",
+attrName: "valueInLocal",
+mandatory: true,
+dataType: OS.Types.Decimal,
+defaultValue: function () {
+return OS.DataTypes.Decimal.defaultValue;
+}
+}, {
+name: "DecimalPlaces",
+attrName: "decimalPlacesInLocal",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 2;
+}
+}, {
+name: "ValueFactor",
+attrName: "valueFactorInLocal",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadableBits$outVars", [{
+name: "Result",
+attrName: "resultOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.convertToHumanReadableBits$Action = function (valueIn, decimalPlacesIn, valueFactorIn) {
+valueIn = (valueIn === undefined) ? OS.DataTypes.Decimal.defaultValue : valueIn;
+decimalPlacesIn = (decimalPlacesIn === undefined) ? 2 : decimalPlacesIn;
+valueFactorIn = (valueFactorIn === undefined) ? 0 : valueFactorIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.convertToHumanReadableBits$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(valueIn, OS.Types.Decimal), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(decimalPlacesIn, OS.Types.Integer), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(valueFactorIn, OS.Types.Integer)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Result: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.resultOut, OS.Types.Text, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$ConvertToHumanReadableBytes", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "Essentials_MOB.controller$ConvertToHumanReadable"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.convertToHumanReadableBytes$Action = function (valueIn, decimalPlacesIn, valueFactorIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadableBytes$vars"))());
+vars.value.valueInLocal = valueIn;
+vars.value.decimalPlacesInLocal = decimalPlacesIn;
+vars.value.valueFactorInLocal = valueFactorIn;
+var convertToHumanReadableVar = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadableBytes$outVars"))());
+// Execute Action: ConvertToHumanReadable
+convertToHumanReadableVar.value = Essentials_MOBController.default.convertToHumanReadable$Action(vars.value.valueInLocal, vars.value.decimalPlacesInLocal, 1024, "B", vars.value.valueFactorInLocal, callContext);
+
+// Result = ConvertToHumanReadable.Result
+outVars.value.resultOut = convertToHumanReadableVar.value.resultOut;
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadableBytes$vars", [{
+name: "Value",
+attrName: "valueInLocal",
+mandatory: true,
+dataType: OS.Types.Decimal,
+defaultValue: function () {
+return OS.DataTypes.Decimal.defaultValue;
+}
+}, {
+name: "DecimalPlaces",
+attrName: "decimalPlacesInLocal",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 2;
+}
+}, {
+name: "ValueFactor",
+attrName: "valueFactorInLocal",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Conversions.ConvertToHumanReadableBytes$outVars", [{
+name: "Result",
+attrName: "resultOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.convertToHumanReadableBytes$Action = function (valueIn, decimalPlacesIn, valueFactorIn) {
+valueIn = (valueIn === undefined) ? OS.DataTypes.Decimal.defaultValue : valueIn;
+decimalPlacesIn = (decimalPlacesIn === undefined) ? 2 : decimalPlacesIn;
+valueFactorIn = (valueFactorIn === undefined) ? 0 : valueFactorIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.convertToHumanReadableBytes$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(valueIn, OS.Types.Decimal), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(decimalPlacesIn, OS.Types.Integer), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(valueFactorIn, OS.Types.Integer)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Result: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.resultOut, OS.Types.Text, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$CurrentOS", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.currentOS$Action = function (callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.CurrentOS$vars"))());
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.CurrentOS$outVars"))());
+// UserAgent
+// UserAgent = ToLower
+vars.value.userAgentVar = OS.BuiltinFunctions.toLower(OS.BuiltinFunctions.getUserAgent());
+// OS
+if(((OS.BuiltinFunctions.index(vars.value.userAgentVar, "windows", 0, false, false) > -1))) {
+// Windows
+// OperatingSystem = Windows
+outVars.value.operatingSystemOut = Essentials_MOBModel.staticEntities.operativeSystem.windows;
+} else {
+if((((OS.BuiltinFunctions.index(vars.value.userAgentVar, "ipad", 0, false, false) > -1) || (OS.BuiltinFunctions.index(vars.value.userAgentVar, "iphone", 0, false, false) > -1)) || (OS.BuiltinFunctions.index(vars.value.userAgentVar, "ipod", 0, false, false) > -1))) {
+// IOS
+// OperatingSystem = IOS
+outVars.value.operatingSystemOut = Essentials_MOBModel.staticEntities.operativeSystem.iOS;
+} else {
+if((OS.BuiltinFunctions.index(vars.value.userAgentVar, "android", 0, false, false) > -1)) {
+// Android
+// OperatingSystem = Android
+outVars.value.operatingSystemOut = Essentials_MOBModel.staticEntities.operativeSystem.android;
+} else {
+if(((OS.BuiltinFunctions.index(vars.value.userAgentVar, "mac", 0, false, false) > -1) && (OS.BuiltinFunctions.index(vars.value.userAgentVar, "os", 0, false, false) > -1))) {
+// OSX
+// OperatingSystem = OSX
+outVars.value.operatingSystemOut = Essentials_MOBModel.staticEntities.operativeSystem.oSX;
+} else {
+if((OS.BuiltinFunctions.index(vars.value.userAgentVar, "ubunto", 0, false, false) > -1)) {
+// Ubuntu
+// OperatingSystem = Ubuntu
+outVars.value.operatingSystemOut = Essentials_MOBModel.staticEntities.operativeSystem.ubuntu;
+} else {
+if((OS.BuiltinFunctions.index(vars.value.userAgentVar, "linux", 0, false, false) > -1)) {
+// Linux
+// OperatingSystem = Linux
+outVars.value.operatingSystemOut = Essentials_MOBModel.staticEntities.operativeSystem.linux;
+} else {
+// UnknownOs
+// OperatingSystem = UnknownOs
+outVars.value.operatingSystemOut = Essentials_MOBModel.staticEntities.operativeSystem.unknownOs;
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.CurrentOS$vars", [{
+name: "UserAgent",
+attrName: "userAgentVar",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.CurrentOS$outVars", [{
+name: "OperatingSystem",
+attrName: "operatingSystemOut",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.currentOS$Action = function () {
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.currentOS$Action.bind(controller), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+OperatingSystem: actionResults.operatingSystemOut
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$Date_GetMonthName", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.date_GetMonthName$Action = function (dateIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Date.Date_GetMonthName$vars"))());
+vars.value.dateInLocal = dateIn;
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Date.Date_GetMonthName$outVars"))());
+if(((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 1))) {
+// Janeiro
+// MonthName = "Janeiro"
+outVars.value.monthNameOut = "Janeiro";
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 2)) {
+// Fevereiro
+// MonthName = "Fevereiro"
+outVars.value.monthNameOut = "Fevereiro";
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 3)) {
+// Março
+// MonthName = "Março"
+outVars.value.monthNameOut = "Março";
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 4)) {
+// Abril
+// MonthName = "Abril"
+outVars.value.monthNameOut = "Abril";
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 5)) {
+// Maio
+// MonthName = "Maio"
+outVars.value.monthNameOut = "Maio";
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 6)) {
+// Junho
+// MonthName = "Junho"
+outVars.value.monthNameOut = "Junho";
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 7)) {
+// Julho
+// MonthName = "Julho"
+outVars.value.monthNameOut = "Julho";
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 8)) {
+// Agosto
+// MonthName = "Agosto"
+outVars.value.monthNameOut = "Agosto";
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 9)) {
+// Setembro
+// MonthName = "Setembro"
+outVars.value.monthNameOut = "Setembro";
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 10)) {
+// Outubro
+// MonthName = "Outubro"
+outVars.value.monthNameOut = "Outubro";
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 11)) {
+// Novembro
+// MonthName = "Novembro"
+outVars.value.monthNameOut = "Novembro";
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 12)) {
+// Dezembro
+// MonthName = "Dezembro"
+outVars.value.monthNameOut = "Dezembro";
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Date.Date_GetMonthName$vars", [{
+name: "Date",
+attrName: "dateInLocal",
+mandatory: true,
+dataType: OS.Types.Date,
+defaultValue: function () {
+return OS.DataTypes.DateTime.defaultValue;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Date.Date_GetMonthName$outVars", [{
+name: "MonthName",
+attrName: "monthNameOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.date_GetMonthName$Action = function (dateIn) {
+dateIn = (dateIn === undefined) ? OS.DataTypes.DateTime.defaultValue : dateIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.date_GetMonthName$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(dateIn, OS.Types.Date)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+MonthName: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.monthNameOut, OS.Types.Text, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$Date_MonthYearPT", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.date_MonthYearPT$Action = function (dateIn, hasFullNameIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Date.Date_MonthYearPT$vars"))());
+vars.value.dateInLocal = dateIn;
+vars.value.hasFullNameInLocal = hasFullNameIn;
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Date.Date_MonthYearPT$outVars"))());
+if(((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 1))) {
+// Jan
+// Month = If
+outVars.value.monthOut = ((vars.value.hasFullNameInLocal) ? ("Janeiro") : ("Jan"));
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 2)) {
+// Fev
+// Month = If
+outVars.value.monthOut = ((vars.value.hasFullNameInLocal) ? ("Fevereiro") : ("Fev"));
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 3)) {
+// Mar
+// Month = If
+outVars.value.monthOut = ((vars.value.hasFullNameInLocal) ? ("Março") : ("Mar"));
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 4)) {
+// Abr
+// Month = If
+outVars.value.monthOut = ((vars.value.hasFullNameInLocal) ? ("Abril") : ("Abr"));
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 5)) {
+// Mai
+// Month = If
+outVars.value.monthOut = ((vars.value.hasFullNameInLocal) ? ("Maio") : ("Mai"));
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 6)) {
+// Jun
+// Month = If
+outVars.value.monthOut = ((vars.value.hasFullNameInLocal) ? ("Junho") : ("Jun"));
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 7)) {
+// Jul
+// Month = If
+outVars.value.monthOut = ((vars.value.hasFullNameInLocal) ? ("Julho") : ("Jul"));
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 8)) {
+// Ago
+// Month = If
+outVars.value.monthOut = ((vars.value.hasFullNameInLocal) ? ("Agosto") : ("Ago"));
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 9)) {
+// Set
+// Month = If
+outVars.value.monthOut = ((vars.value.hasFullNameInLocal) ? ("Setembro") : ("Set"));
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 10)) {
+// Out
+// Month = If
+outVars.value.monthOut = ((vars.value.hasFullNameInLocal) ? ("Outubro") : ("Out"));
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 11)) {
+// Nov
+// Month = If
+outVars.value.monthOut = ((vars.value.hasFullNameInLocal) ? ("Novembro") : ("Nov"));
+} else {
+if((OS.BuiltinFunctions.month(vars.value.dateInLocal) === 12)) {
+// Dez
+// Month = If
+outVars.value.monthOut = ((vars.value.hasFullNameInLocal) ? ("Dezembro") : ("Dez"));
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+// Month = Month + " " + Year
+outVars.value.monthOut = ((outVars.value.monthOut + " ") + (OS.BuiltinFunctions.year(vars.value.dateInLocal)).toString());
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Date.Date_MonthYearPT$vars", [{
+name: "Date",
+attrName: "dateInLocal",
+mandatory: true,
+dataType: OS.Types.Date,
+defaultValue: function () {
+return OS.DataTypes.DateTime.defaultValue;
+}
+}, {
+name: "HasFullName",
+attrName: "hasFullNameInLocal",
+mandatory: true,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Date.Date_MonthYearPT$outVars", [{
+name: "Month",
+attrName: "monthOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.date_MonthYearPT$Action = function (dateIn, hasFullNameIn) {
+dateIn = (dateIn === undefined) ? OS.DataTypes.DateTime.defaultValue : dateIn;
+hasFullNameIn = (hasFullNameIn === undefined) ? false : hasFullNameIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.date_MonthYearPT$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(dateIn, OS.Types.Date), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(hasFullNameIn, OS.Types.Boolean)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Month: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.monthOut, OS.Types.Text, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$F_FormatDatetimeToPattern", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.f_FormatDatetimeToPattern$Action = function (datetimeIn, patternIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Date.F_FormatDatetimeToPattern$vars"))());
+vars.value.datetimeInLocal = datetimeIn;
+vars.value.patternInLocal = patternIn;
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Date.F_FormatDatetimeToPattern$outVars"))());
+// trim
+// Datetime = TrimStart
+vars.value.datetimeInLocal = OS.BuiltinFunctions.trimStart(OS.BuiltinFunctions.trimEnd(vars.value.datetimeInLocal));
+// Tamanho correcto?
+if(((OS.BuiltinFunctions.length(vars.value.datetimeInLocal) === 19))) {
+// split dos valores
+// year = Substr
+vars.value.yearVar = OS.BuiltinFunctions.substr(vars.value.datetimeInLocal, 0, 4);
+// month = Substr
+vars.value.monthVar = OS.BuiltinFunctions.substr(vars.value.datetimeInLocal, 5, 2);
+// day = Substr
+vars.value.dayVar = OS.BuiltinFunctions.substr(vars.value.datetimeInLocal, 8, 2);
+// time = Substr
+vars.value.timeVar = OS.BuiltinFunctions.substr(vars.value.datetimeInLocal, 11, 8);
+// hour = Substr
+vars.value.hourVar = OS.BuiltinFunctions.substr(vars.value.datetimeInLocal, 11, 2);
+// minute = Substr
+vars.value.minuteVar = OS.BuiltinFunctions.substr(vars.value.datetimeInLocal, 14, 2);
+// second = Substr
+vars.value.secondVar = OS.BuiltinFunctions.substr(vars.value.datetimeInLocal, 17, 2);
+// Formated = ToUpper
+outVars.value.formatedOut = OS.BuiltinFunctions.toUpper(vars.value.patternInLocal);
+// dia
+// Formated = Replace
+outVars.value.formatedOut = OS.BuiltinFunctions.replace(outVars.value.formatedOut, "DD", vars.value.dayVar);
+// mês
+// Formated = Replace
+outVars.value.formatedOut = OS.BuiltinFunctions.replace(outVars.value.formatedOut, "MM", vars.value.monthVar);
+// ano
+// Formated = Replace
+outVars.value.formatedOut = OS.BuiltinFunctions.replace(outVars.value.formatedOut, "A", "Y");
+// Formated = Replace
+outVars.value.formatedOut = OS.BuiltinFunctions.replace(outVars.value.formatedOut, "YYYY", vars.value.yearVar);
+// Formated = Replace
+outVars.value.formatedOut = OS.BuiltinFunctions.replace(outVars.value.formatedOut, "YYY", OS.BuiltinFunctions.substr(vars.value.yearVar, 1, 3));
+// Formated = Replace
+outVars.value.formatedOut = OS.BuiltinFunctions.replace(outVars.value.formatedOut, "YY", OS.BuiltinFunctions.substr(vars.value.yearVar, 2, 2));
+// hora
+// Formated = Replace
+outVars.value.formatedOut = OS.BuiltinFunctions.replace(outVars.value.formatedOut, "HH", vars.value.hourVar);
+// minutos
+// Formated = Replace
+outVars.value.formatedOut = OS.BuiltinFunctions.replace(outVars.value.formatedOut, "MI", vars.value.minuteVar);
+// segundos
+// Formated = Replace
+outVars.value.formatedOut = OS.BuiltinFunctions.replace(outVars.value.formatedOut, "SS", vars.value.secondVar);
+}
+
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Date.F_FormatDatetimeToPattern$vars", [{
+name: "Datetime",
+attrName: "datetimeInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "Pattern",
+attrName: "patternInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "time",
+attrName: "timeVar",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "year",
+attrName: "yearVar",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "month",
+attrName: "monthVar",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "day",
+attrName: "dayVar",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "hour",
+attrName: "hourVar",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "minute",
+attrName: "minuteVar",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "second",
+attrName: "secondVar",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Date.F_FormatDatetimeToPattern$outVars", [{
+name: "Formated",
+attrName: "formatedOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.f_FormatDatetimeToPattern$Action = function (datetimeIn, patternIn) {
+datetimeIn = (datetimeIn === undefined) ? "" : datetimeIn;
+patternIn = (patternIn === undefined) ? "" : patternIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.f_FormatDatetimeToPattern$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(datetimeIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(patternIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Formated: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.formatedOut, OS.Types.Text, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$Floor", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "Essentials_MOB.controller$Floor.Math_floorJS"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController, Essentials_MOB_controller_Floor_Math_floorJS) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.floor$Action = function (numberIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Math.Floor$vars"))());
+vars.value.numberInLocal = numberIn;
+var math_floorJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Math.Floor$outVars"))());
+math_floorJSResult.value = controller.safeExecuteJSNode(Essentials_MOB_controller_Floor_Math_floorJS, "Math_floor", "Floor", {
+Number: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.numberInLocal, OS.Types.Decimal, true),
+Result: OS.DataTypes.JSConversions.basicTypeToJS(OS.DataTypes.LongInteger.defaultValue, OS.Types.LongInteger, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("Essentials_MOB.Math.Floor$math_floorJSResult"))();
+jsNodeResult.resultOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.Result, OS.Types.LongInteger);
+return jsNodeResult;
+}, {}, {});
+// Result = Math_floor.Result
+outVars.value.resultOut = math_floorJSResult.value.resultOut;
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Math.Floor$vars", [{
+name: "Number",
+attrName: "numberInLocal",
+mandatory: true,
+dataType: OS.Types.Decimal,
+defaultValue: function () {
+return OS.DataTypes.Decimal.defaultValue;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Math.Floor$math_floorJSResult", [{
+name: "Result",
+attrName: "resultOut",
+mandatory: true,
+dataType: OS.Types.LongInteger,
+defaultValue: function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Math.Floor$outVars", [{
+name: "Result",
+attrName: "resultOut",
+mandatory: false,
+dataType: OS.Types.LongInteger,
+defaultValue: function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.floor$Action = function (numberIn) {
+numberIn = (numberIn === undefined) ? OS.DataTypes.Decimal.defaultValue : numberIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.floor$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(numberIn, OS.Types.Decimal)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Result: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.resultOut, OS.Types.LongInteger, true)
+};
+});
+};
+});
+define("Essentials_MOB.controller$Floor.Math_floorJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+$parameters.Result = Math.floor($parameters.Number);
+};
+});
+
+define("Essentials_MOB.controller$FormatDatePT", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.formatDatePT$Action = function (dateIn, removeCurrYearIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Date.FormatDatePT$vars"))());
+vars.value.dateInLocal = dateIn;
+vars.value.removeCurrYearInLocal = removeCurrYearIn;
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Date.FormatDatePT$outVars"))());
+// NewDate = FormatText + "-" + FormatText + If
+outVars.value.newDateOut = (((OS.BuiltinFunctions.formatText((OS.BuiltinFunctions.day(vars.value.dateInLocal)).toString(), 2, 2, true, "0") + "-") + OS.BuiltinFunctions.formatText((OS.BuiltinFunctions.month(vars.value.dateInLocal)).toString(), 2, 2, true, "0")) + (((vars.value.removeCurrYearInLocal && (OS.BuiltinFunctions.year(vars.value.dateInLocal) === OS.BuiltinFunctions.year(OS.BuiltinFunctions.currDate())))) ? ("") : (("-" + (OS.BuiltinFunctions.year(vars.value.dateInLocal)).toString()))));
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Date.FormatDatePT$vars", [{
+name: "Date",
+attrName: "dateInLocal",
+mandatory: true,
+dataType: OS.Types.DateTime,
+defaultValue: function () {
+return OS.DataTypes.DateTime.defaultValue;
+}
+}, {
+name: "RemoveCurrYear",
+attrName: "removeCurrYearInLocal",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Date.FormatDatePT$outVars", [{
+name: "NewDate",
+attrName: "newDateOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.formatDatePT$Action = function (dateIn, removeCurrYearIn) {
+dateIn = (dateIn === undefined) ? OS.DataTypes.DateTime.defaultValue : dateIn;
+removeCurrYearIn = (removeCurrYearIn === undefined) ? false : removeCurrYearIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.formatDatePT$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(dateIn, OS.Types.DateTime), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(removeCurrYearIn, OS.Types.Boolean)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+NewDate: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.newDateOut, OS.Types.Text, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$GetEntryURL", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.getEntryURL$Action = function (screenNameIn, moduleNameIn, firstParameterNameIn, firstParameterValueIn, secondParameterNameIn, secondParameterValueIn, thirdParameterNameIn, thirdParameterValueIn, fourthParameterNameIn, fourthParameterValueIn, fifthParameterNameIn, fifthParameterValueIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.URL.GetEntryURL$vars"))());
+vars.value.screenNameInLocal = screenNameIn;
+vars.value.moduleNameInLocal = moduleNameIn;
+vars.value.firstParameterNameInLocal = firstParameterNameIn;
+vars.value.firstParameterValueInLocal = firstParameterValueIn;
+vars.value.secondParameterNameInLocal = secondParameterNameIn;
+vars.value.secondParameterValueInLocal = secondParameterValueIn;
+vars.value.thirdParameterNameInLocal = thirdParameterNameIn;
+vars.value.thirdParameterValueInLocal = thirdParameterValueIn;
+vars.value.fourthParameterNameInLocal = fourthParameterNameIn;
+vars.value.fourthParameterValueInLocal = fourthParameterValueIn;
+vars.value.fifthParameterNameInLocal = fifthParameterNameIn;
+vars.value.fifthParameterValueInLocal = fifthParameterValueIn;
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.URL.GetEntryURL$outVars"))());
+// URL
+// URL = "/" + ModuleName + "/" + ScreenName
+outVars.value.uRLOut = ((("/" + vars.value.moduleNameInLocal) + "/") + vars.value.screenNameInLocal);
+// Valid Parameter 1
+if((((vars.value.firstParameterNameInLocal) !== ("")))) {
+// Parameters = If + FirstParameterName + "=" + FirstParameterValue
+vars.value.parametersVar = (((((((vars.value.parametersVar) !== (""))) ? ((vars.value.parametersVar + "&")) : ("")) + vars.value.firstParameterNameInLocal) + "=") + vars.value.firstParameterValueInLocal);
+}
+
+// Valid Parameter 2
+if((((vars.value.secondParameterNameInLocal) !== ("")))) {
+// Parameters = If + SecondParameterName + "=" + SecondParameterValue
+vars.value.parametersVar = (((((((vars.value.parametersVar) !== (""))) ? ((vars.value.parametersVar + "&")) : ("")) + vars.value.secondParameterNameInLocal) + "=") + vars.value.secondParameterValueInLocal);
+}
+
+// Valid Parameter 3
+if((((vars.value.thirdParameterNameInLocal) !== ("")))) {
+// Parameters = If + ThirdParameterName + "=" + ThirdParameterValue
+vars.value.parametersVar = (((((((vars.value.parametersVar) !== (""))) ? ((vars.value.parametersVar + "&")) : ("")) + vars.value.thirdParameterNameInLocal) + "=") + vars.value.thirdParameterValueInLocal);
+}
+
+// Valid Parameter 4
+if((((vars.value.fourthParameterNameInLocal) !== ("")))) {
+// Parameters = If + FourthParameterName + "=" + FourthParameterValue
+vars.value.parametersVar = (((((((vars.value.parametersVar) !== (""))) ? ((vars.value.parametersVar + "&")) : ("")) + vars.value.fourthParameterNameInLocal) + "=") + vars.value.fourthParameterValueInLocal);
+}
+
+// Valid Parameter 5
+if((((vars.value.fifthParameterNameInLocal) !== ("")))) {
+// Parameters = If + FifthParameterName + "=" + FifthParameterValue
+vars.value.parametersVar = (((((((vars.value.parametersVar) !== (""))) ? ((vars.value.parametersVar + "&")) : ("")) + vars.value.fifthParameterNameInLocal) + "=") + vars.value.fifthParameterValueInLocal);
+}
+
+if((((vars.value.parametersVar) !== ("")))) {
+// URL = URL + "?" + Parameters
+outVars.value.uRLOut = ((outVars.value.uRLOut + "?") + vars.value.parametersVar);
+}
+
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.URL.GetEntryURL$vars", [{
+name: "ScreenName",
+attrName: "screenNameInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "ModuleName",
+attrName: "moduleNameInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "FirstParameterName",
+attrName: "firstParameterNameInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "FirstParameterValue",
+attrName: "firstParameterValueInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "SecondParameterName",
+attrName: "secondParameterNameInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "SecondParameterValue",
+attrName: "secondParameterValueInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "ThirdParameterName",
+attrName: "thirdParameterNameInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "ThirdParameterValue",
+attrName: "thirdParameterValueInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "FourthParameterName",
+attrName: "fourthParameterNameInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "FourthParameterValue",
+attrName: "fourthParameterValueInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "FifthParameterName",
+attrName: "fifthParameterNameInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "FifthParameterValue",
+attrName: "fifthParameterValueInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "Parameters",
+attrName: "parametersVar",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.URL.GetEntryURL$outVars", [{
+name: "URL",
+attrName: "uRLOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.getEntryURL$Action = function (screenNameIn, moduleNameIn, firstParameterNameIn, firstParameterValueIn, secondParameterNameIn, secondParameterValueIn, thirdParameterNameIn, thirdParameterValueIn, fourthParameterNameIn, fourthParameterValueIn, fifthParameterNameIn, fifthParameterValueIn) {
+screenNameIn = (screenNameIn === undefined) ? "" : screenNameIn;
+moduleNameIn = (moduleNameIn === undefined) ? "" : moduleNameIn;
+firstParameterNameIn = (firstParameterNameIn === undefined) ? "" : firstParameterNameIn;
+firstParameterValueIn = (firstParameterValueIn === undefined) ? "" : firstParameterValueIn;
+secondParameterNameIn = (secondParameterNameIn === undefined) ? "" : secondParameterNameIn;
+secondParameterValueIn = (secondParameterValueIn === undefined) ? "" : secondParameterValueIn;
+thirdParameterNameIn = (thirdParameterNameIn === undefined) ? "" : thirdParameterNameIn;
+thirdParameterValueIn = (thirdParameterValueIn === undefined) ? "" : thirdParameterValueIn;
+fourthParameterNameIn = (fourthParameterNameIn === undefined) ? "" : fourthParameterNameIn;
+fourthParameterValueIn = (fourthParameterValueIn === undefined) ? "" : fourthParameterValueIn;
+fifthParameterNameIn = (fifthParameterNameIn === undefined) ? "" : fifthParameterNameIn;
+fifthParameterValueIn = (fifthParameterValueIn === undefined) ? "" : fifthParameterValueIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.getEntryURL$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(screenNameIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(moduleNameIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(firstParameterNameIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(firstParameterValueIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(secondParameterNameIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(secondParameterValueIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(thirdParameterNameIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(thirdParameterValueIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(fourthParameterNameIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(fourthParameterValueIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(fifthParameterNameIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(fifthParameterValueIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+URL: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.uRLOut, OS.Types.Text, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$GetMaxValue", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "Essentials_MOB.controller$GetMaxValue.JS_MathJS"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController, Essentials_MOB_controller_GetMaxValue_JS_MathJS) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.getMaxValue$Action = function (valuesIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Math.GetMaxValue$vars"))());
+vars.value.valuesInLocal = valuesIn.clone();
+var jS_MathJSResult = new OS.DataTypes.VariableHolder();
+var jSONSerialize1Var = new OS.DataTypes.VariableHolder(new OS.DataTypes.JSONSerializeOutputType());
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Math.GetMaxValue$outVars"))());
+// JSON Serialize: JSONSerialize1
+jSONSerialize1Var.value.jSONOut = OS.JSONUtils.serializeToJSON(vars.value.valuesInLocal, false, false, OS.Types.Decimal);
+jS_MathJSResult.value = controller.safeExecuteJSNode(Essentials_MOB_controller_GetMaxValue_JS_MathJS, "JS_Math", "GetMaxValue", {
+Value: OS.DataTypes.JSConversions.basicTypeToJS(jSONSerialize1Var.value.jSONOut, OS.Types.Text, true),
+Result: OS.DataTypes.JSConversions.basicTypeToJS(OS.DataTypes.Decimal.defaultValue, OS.Types.Decimal, true),
+Success: OS.DataTypes.JSConversions.basicTypeToJS(false, OS.Types.Boolean, true),
+ErrorMessage: OS.DataTypes.JSConversions.basicTypeToJS("", OS.Types.Text, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("Essentials_MOB.Math.GetMaxValue$jS_MathJSResult"))();
+jsNodeResult.resultOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.Result, OS.Types.Decimal);
+jsNodeResult.successOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.Success, OS.Types.Boolean);
+jsNodeResult.errorMessageOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.ErrorMessage, OS.Types.Text);
+return jsNodeResult;
+}, {}, {});
+if((jS_MathJSResult.value.successOut)) {
+// Set Value
+// Result = JS_Math.Result
+outVars.value.resultOut = jS_MathJSResult.value.resultOut;
+}
+
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Math.GetMaxValue$vars", [{
+name: "Values",
+attrName: "valuesInLocal",
+mandatory: true,
+dataType: OS.Types.RecordList,
+defaultValue: function () {
+return new OS.DataTypes.DecimalList();
+},
+complexType: OS.DataTypes.DecimalList
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Math.GetMaxValue$jS_MathJSResult", [{
+name: "Result",
+attrName: "resultOut",
+mandatory: true,
+dataType: OS.Types.Decimal,
+defaultValue: function () {
+return OS.DataTypes.Decimal.defaultValue;
+}
+}, {
+name: "Success",
+attrName: "successOut",
+mandatory: true,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "ErrorMessage",
+attrName: "errorMessageOut",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Math.GetMaxValue$outVars", [{
+name: "Result",
+attrName: "resultOut",
+mandatory: false,
+dataType: OS.Types.Decimal,
+defaultValue: function () {
+return OS.DataTypes.Decimal.defaultValue;
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.getMaxValue$Action = function (valuesIn) {
+valuesIn = (valuesIn === undefined) ? new OS.DataTypes.DecimalList() : valuesIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.getMaxValue$Action.bind(controller, valuesIn), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Result: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.resultOut, OS.Types.Decimal, true)
+};
+});
+};
+});
+define("Essentials_MOB.controller$GetMaxValue.JS_MathJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+var obj = JSON.parse($parameters.Value);
+
+var result = Math.max.apply(null, obj);
+
+if(isNaN(result)) {
+    
+    $parameters.ErrorMessage = "Result is Not-a-Number";
+    
+} else {
+    $parameters.Result = result;
+    $parameters.Success = true;
+}
+};
+});
+
+define("Essentials_MOB.controller$GetPercentage", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "Essentials_MOB.controller$GetPercentage.GetPercentageJS"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController, Essentials_MOB_controller_GetPercentage_GetPercentageJS) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.getPercentage$Action = function (totalValueIn, otherValueIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Math.GetPercentage$vars"))());
+vars.value.totalValueInLocal = totalValueIn;
+vars.value.otherValueInLocal = otherValueIn;
+var getPercentageJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Math.GetPercentage$outVars"))());
+getPercentageJSResult.value = controller.safeExecuteJSNode(Essentials_MOB_controller_GetPercentage_GetPercentageJS, "GetPercentage", "GetPercentage", {
+Total: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.totalValueInLocal, OS.Types.Integer, true),
+OtherValue: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.otherValueInLocal, OS.Types.Integer, true),
+PercentageOfTotal: OS.DataTypes.JSConversions.basicTypeToJS(0, OS.Types.Integer, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("Essentials_MOB.Math.GetPercentage$getPercentageJSResult"))();
+jsNodeResult.percentageOfTotalOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.PercentageOfTotal, OS.Types.Integer);
+return jsNodeResult;
+}, {}, {});
+// Percentage = DecimalToInteger
+outVars.value.percentageOut = OS.BuiltinFunctions.decimalToInteger(OS.BuiltinFunctions.integerToDecimal(getPercentageJSResult.value.percentageOfTotalOut));
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Math.GetPercentage$vars", [{
+name: "TotalValue",
+attrName: "totalValueInLocal",
+mandatory: true,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}, {
+name: "OtherValue",
+attrName: "otherValueInLocal",
+mandatory: true,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Math.GetPercentage$getPercentageJSResult", [{
+name: "PercentageOfTotal",
+attrName: "percentageOfTotalOut",
+mandatory: true,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Math.GetPercentage$outVars", [{
+name: "Percentage",
+attrName: "percentageOut",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.getPercentage$Action = function (totalValueIn, otherValueIn) {
+totalValueIn = (totalValueIn === undefined) ? 0 : totalValueIn;
+otherValueIn = (otherValueIn === undefined) ? 0 : otherValueIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.getPercentage$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(totalValueIn, OS.Types.Integer), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(otherValueIn, OS.Types.Integer)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Percentage: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.percentageOut, OS.Types.Integer, true)
+};
+});
+};
+});
+define("Essentials_MOB.controller$GetPercentage.GetPercentageJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+$parameters.PercentageOfTotal = (($parameters.Total - $parameters.OtherValue) / $parameters.OtherValue) * 100;
+};
+});
+
+define("Essentials_MOB.controller$IntegerList_Get", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.integerList_Get$Action = function (numberOfItemsIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Integer.IntegerList_Get$vars"))());
+vars.value.numberOfItemsInLocal = numberOfItemsIn;
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Integer.IntegerList_Get$outVars"))());
+while (((vars.value.counterVar <= vars.value.numberOfItemsInLocal))) {
+// Execute Action: ListAppend
+OS.SystemActions.listAppend(outVars.value.quantityListOut, vars.value.counterVar, callContext);
+// Counter = Counter + 1
+vars.value.counterVar = (vars.value.counterVar + 1);
+}
+
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Integer.IntegerList_Get$vars", [{
+name: "NumberOfItems",
+attrName: "numberOfItemsInLocal",
+mandatory: true,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}, {
+name: "Counter",
+attrName: "counterVar",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 1;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Integer.IntegerList_Get$outVars", [{
+name: "QuantityList",
+attrName: "quantityListOut",
+mandatory: false,
+dataType: OS.Types.RecordList,
+defaultValue: function () {
+return new OS.DataTypes.IntegerList();
+},
+complexType: OS.DataTypes.IntegerList
+}]);
+Essentials_MOBController.default.clientActionProxies.integerList_Get$Action = function (numberOfItemsIn) {
+numberOfItemsIn = (numberOfItemsIn === undefined) ? 0 : numberOfItemsIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.integerList_Get$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(numberOfItemsIn, OS.Types.Integer)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+QuantityList: actionResults.quantityListOut
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$IsValid_NIF", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.isValid_NIF$Action = function (nIFIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Validations.IsValid_NIF$vars"))());
+vars.value.nIFInLocal = nIFIn;
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Validations.IsValid_NIF$outVars"))());
+// Verification Digits
+// CheckSum = Mod
+vars.value.checkSumVar = OS.BuiltinFunctions.decimalToInteger(OS.BuiltinFunctions.trunc(OS.BuiltinFunctions.mod(OS.BuiltinFunctions.integerToDecimal(((((((((9 * OS.BuiltinFunctions.textToInteger(OS.BuiltinFunctions.substr(vars.value.nIFInLocal, 0, 1))) + (8 * OS.BuiltinFunctions.textToInteger(OS.BuiltinFunctions.substr(vars.value.nIFInLocal, 1, 1)))) + (7 * OS.BuiltinFunctions.textToInteger(OS.BuiltinFunctions.substr(vars.value.nIFInLocal, 2, 1)))) + (6 * OS.BuiltinFunctions.textToInteger(OS.BuiltinFunctions.substr(vars.value.nIFInLocal, 3, 1)))) + (5 * OS.BuiltinFunctions.textToInteger(OS.BuiltinFunctions.substr(vars.value.nIFInLocal, 4, 1)))) + (4 * OS.BuiltinFunctions.textToInteger(OS.BuiltinFunctions.substr(vars.value.nIFInLocal, 5, 1)))) + (3 * OS.BuiltinFunctions.textToInteger(OS.BuiltinFunctions.substr(vars.value.nIFInLocal, 6, 1)))) + (2 * OS.BuiltinFunctions.textToInteger(OS.BuiltinFunctions.substr(vars.value.nIFInLocal, 7, 1))))), OS.BuiltinFunctions.integerToDecimal(11))));
+// CheckDigit = TextToInteger
+vars.value.checkDigitVar = OS.BuiltinFunctions.textToInteger(OS.BuiltinFunctions.substr(vars.value.nIFInLocal, 8, 1));
+// Result = CheckSum = 1 or CheckSum = 0 and CheckDigit = 0 or CheckDigit = 11 - CheckSum and TextToInteger <> 0
+outVars.value.resultOut = (((((vars.value.checkSumVar === 1) || (vars.value.checkSumVar === 0)) && (vars.value.checkDigitVar === 0)) || (vars.value.checkDigitVar === (11 - vars.value.checkSumVar))) && ((OS.BuiltinFunctions.textToInteger(OS.BuiltinFunctions.substr(vars.value.nIFInLocal, 0, 1))) !== (0)));
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Validations.IsValid_NIF$vars", [{
+name: "NIF",
+attrName: "nIFInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "CheckSum",
+attrName: "checkSumVar",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}, {
+name: "CheckDigit",
+attrName: "checkDigitVar",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Validations.IsValid_NIF$outVars", [{
+name: "Result",
+attrName: "resultOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.isValid_NIF$Action = function (nIFIn) {
+nIFIn = (nIFIn === undefined) ? "" : nIFIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.isValid_NIF$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(nIFIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Result: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.resultOut, OS.Types.Boolean, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$MinDate", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.minDate$Action = function (date1In, date2In, allowNullDatesIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Date.MinDate$vars"))());
+vars.value.date1InLocal = date1In;
+vars.value.date2InLocal = date2In;
+vars.value.allowNullDatesInLocal = allowNullDatesIn;
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Date.MinDate$outVars"))());
+if((vars.value.allowNullDatesInLocal)) {
+// MinDate = If
+outVars.value.minDateOut = ((vars.value.date1InLocal.lt(vars.value.date2InLocal)) ? (vars.value.date1InLocal) : (vars.value.date2InLocal));
+} else {
+// MinDate = If
+outVars.value.minDateOut = ((vars.value.date1InLocal.equals(OS.BuiltinFunctions.nullDate())) ? (vars.value.date2InLocal) : (((vars.value.date2InLocal.equals(OS.BuiltinFunctions.nullDate())) ? (vars.value.date1InLocal) : (((vars.value.date1InLocal.lt(vars.value.date2InLocal)) ? (vars.value.date1InLocal) : (vars.value.date2InLocal))))));
+}
+
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Date.MinDate$vars", [{
+name: "Date1",
+attrName: "date1InLocal",
+mandatory: true,
+dataType: OS.Types.DateTime,
+defaultValue: function () {
+return OS.DataTypes.DateTime.defaultValue;
+}
+}, {
+name: "Date2",
+attrName: "date2InLocal",
+mandatory: true,
+dataType: OS.Types.DateTime,
+defaultValue: function () {
+return OS.DataTypes.DateTime.defaultValue;
+}
+}, {
+name: "AllowNullDates",
+attrName: "allowNullDatesInLocal",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Date.MinDate$outVars", [{
+name: "MinDate",
+attrName: "minDateOut",
+mandatory: false,
+dataType: OS.Types.DateTime,
+defaultValue: function () {
+return OS.DataTypes.DateTime.defaultValue;
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.minDate$Action = function (date1In, date2In, allowNullDatesIn) {
+date1In = (date1In === undefined) ? OS.DataTypes.DateTime.defaultValue : date1In;
+date2In = (date2In === undefined) ? OS.DataTypes.DateTime.defaultValue : date2In;
+allowNullDatesIn = (allowNullDatesIn === undefined) ? false : allowNullDatesIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.minDate$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(date1In, OS.Types.DateTime), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(date2In, OS.Types.DateTime), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(allowNullDatesIn, OS.Types.Boolean)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+MinDate: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.minDateOut, OS.Types.DateTime, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$RoundAwayFromZero", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "Essentials_MOB.controller$RoundAwayFromZero.Math_roundJS"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController, Essentials_MOB_controller_RoundAwayFromZero_Math_roundJS) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.roundAwayFromZero$Action = function (decimalNumberIn, decimalPlacesIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Math.RoundAwayFromZero$vars"))());
+vars.value.decimalNumberInLocal = decimalNumberIn;
+vars.value.decimalPlacesInLocal = decimalPlacesIn;
+var math_roundJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Math.RoundAwayFromZero$outVars"))());
+// DecimalSeparatorPos = Index
+vars.value.decimalSeparatorPosVar = OS.BuiltinFunctions.index(OS.BuiltinFunctions.decimalToText(vars.value.decimalNumberInLocal), ".", 0, false, false);
+if(((((vars.value.decimalSeparatorPosVar) !== (-1)) && (OS.BuiltinFunctions.length(OS.BuiltinFunctions.substr(OS.BuiltinFunctions.decimalToText(vars.value.decimalNumberInLocal), (vars.value.decimalSeparatorPosVar + 1), OS.BuiltinFunctions.length(OS.BuiltinFunctions.decimalToText(vars.value.decimalNumberInLocal)))) > 16)))) {
+// DecimalNumber = TextToDecimal
+vars.value.decimalNumberInLocal = OS.BuiltinFunctions.textToDecimal(OS.BuiltinFunctions.substr(OS.BuiltinFunctions.decimalToText(vars.value.decimalNumberInLocal), 0, ((vars.value.decimalSeparatorPosVar + 1) + 16)));
+}
+
+math_roundJSResult.value = controller.safeExecuteJSNode(Essentials_MOB_controller_RoundAwayFromZero_Math_roundJS, "Math_round", "RoundAwayFromZero", {
+DecimalNumber: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.decimalNumberInLocal, OS.Types.Decimal, true),
+DecimalPlaces: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.decimalPlacesInLocal, OS.Types.Integer, true),
+Result: OS.DataTypes.JSConversions.basicTypeToJS(OS.DataTypes.Decimal.defaultValue, OS.Types.Decimal, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("Essentials_MOB.Math.RoundAwayFromZero$math_roundJSResult"))();
+jsNodeResult.resultOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.Result, OS.Types.Decimal);
+return jsNodeResult;
+}, {}, {});
+// Result = Math_round.Result
+outVars.value.resultOut = math_roundJSResult.value.resultOut;
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Math.RoundAwayFromZero$vars", [{
+name: "DecimalNumber",
+attrName: "decimalNumberInLocal",
+mandatory: true,
+dataType: OS.Types.Decimal,
+defaultValue: function () {
+return OS.DataTypes.Decimal.defaultValue;
+}
+}, {
+name: "DecimalPlaces",
+attrName: "decimalPlacesInLocal",
+mandatory: true,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}, {
+name: "DecimalSeparatorPos",
+attrName: "decimalSeparatorPosVar",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Math.RoundAwayFromZero$math_roundJSResult", [{
+name: "Result",
+attrName: "resultOut",
+mandatory: true,
+dataType: OS.Types.Decimal,
+defaultValue: function () {
+return OS.DataTypes.Decimal.defaultValue;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Math.RoundAwayFromZero$outVars", [{
+name: "Result",
+attrName: "resultOut",
+mandatory: false,
+dataType: OS.Types.Decimal,
+defaultValue: function () {
+return OS.DataTypes.Decimal.defaultValue;
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.roundAwayFromZero$Action = function (decimalNumberIn, decimalPlacesIn) {
+decimalNumberIn = (decimalNumberIn === undefined) ? OS.DataTypes.Decimal.defaultValue : decimalNumberIn;
+decimalPlacesIn = (decimalPlacesIn === undefined) ? 0 : decimalPlacesIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.roundAwayFromZero$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(decimalNumberIn, OS.Types.Decimal), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(decimalPlacesIn, OS.Types.Integer)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Result: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.resultOut, OS.Types.Decimal, true)
+};
+});
+};
+});
+define("Essentials_MOB.controller$RoundAwayFromZero.Math_roundJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+$parameters.Result = Number(Math.round($parameters.DecimalNumber+'e'+$parameters.DecimalPlaces)+'e-'+$parameters.DecimalPlaces);
+};
+});
+
+define("Essentials_MOB.controller$String_Split", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "Essentials_MOB.controller$String_Split.JavaScript_SplitJS"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController, Essentials_MOB_controller_String_Split_JavaScript_SplitJS) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.string_Split$Action = function (textIn, delimitersIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.String_Split$vars"))());
+vars.value.textInLocal = textIn;
+vars.value.delimitersInLocal = delimitersIn;
+var javaScript_SplitJSResult = new OS.DataTypes.VariableHolder();
+var jSONDeserializeTextListVar = new OS.DataTypes.VariableHolder(new (OS.Controller.BaseController.getJSONDeserializeOutputType(OS.DataTypes.TextList))());
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.String_Split$outVars"))());
+javaScript_SplitJSResult.value = controller.safeExecuteJSNode(Essentials_MOB_controller_String_Split_JavaScript_SplitJS, "JavaScript_Split", "String_Split", {
+Text: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.textInLocal, OS.Types.Text, true),
+Delimiters: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.delimitersInLocal, OS.Types.Text, true),
+SplitedList: OS.DataTypes.JSConversions.basicTypeToJS("", OS.Types.Text, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.String_Split$javaScript_SplitJSResult"))();
+jsNodeResult.splitedListOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.SplitedList, OS.Types.Text);
+return jsNodeResult;
+}, {}, {});
+// JSON Deserialize: JSONDeserializeTextList
+jSONDeserializeTextListVar.value.dataOut = OS.JSONUtils.deserializeFromJSON(javaScript_SplitJSResult.value.splitedListOut, OS.DataTypes.TextList, false);
+// List = JSONDeserializeTextList.Data
+outVars.value.listOut = jSONDeserializeTextListVar.value.dataOut;
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.String_Split$vars", [{
+name: "Text",
+attrName: "textInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "Delimiters",
+attrName: "delimitersInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.String_Split$javaScript_SplitJSResult", [{
+name: "SplitedList",
+attrName: "splitedListOut",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.String_Split$outVars", [{
+name: "List",
+attrName: "listOut",
+mandatory: false,
+dataType: OS.Types.RecordList,
+defaultValue: function () {
+return new OS.DataTypes.TextList();
+},
+complexType: OS.DataTypes.TextList
+}]);
+Essentials_MOBController.default.clientActionProxies.string_Split$Action = function (textIn, delimitersIn) {
+textIn = (textIn === undefined) ? "" : textIn;
+delimitersIn = (delimitersIn === undefined) ? "" : delimitersIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.string_Split$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(textIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(delimitersIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+List: actionResults.listOut
+};
+});
+};
+});
+define("Essentials_MOB.controller$String_Split.JavaScript_SplitJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+$parameters.SplitedList = JSON.stringify($parameters.Text.split($parameters.Delimiters));
+};
+});
+
+define("Essentials_MOB.controller$Text_CountChar", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "Essentials_MOB.controller$String_Split"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.text_CountChar$Action = function (textIn, charIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.Text_CountChar$vars"))());
+vars.value.textInLocal = textIn;
+vars.value.charInLocal = charIn;
+var string_SplitVar = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.Text_CountChar$outVars"))());
+// Execute Action: String_Split
+string_SplitVar.value = Essentials_MOBController.default.string_Split$Action(vars.value.textInLocal, vars.value.charInLocal, callContext);
+
+// Count = Max
+outVars.value.countOut = OS.BuiltinFunctions.decimalToInteger(OS.BuiltinFunctions.trunc(OS.BuiltinFunctions.max(OS.BuiltinFunctions.integerToDecimal(0), OS.BuiltinFunctions.integerToDecimal((string_SplitVar.value.listOut.length - 1)))));
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.Text_CountChar$vars", [{
+name: "Text",
+attrName: "textInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "Char",
+attrName: "charInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.Text_CountChar$outVars", [{
+name: "Count",
+attrName: "countOut",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.text_CountChar$Action = function (textIn, charIn) {
+textIn = (textIn === undefined) ? "" : textIn;
+charIn = (charIn === undefined) ? "" : charIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.text_CountChar$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(textIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(charIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Count: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.countOut, OS.Types.Integer, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$Text_IsEqual", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.text_IsEqual$Action = function (text1In, text2In, isCaseSensitiveIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.Text_IsEqual$vars"))());
+vars.value.text1InLocal = text1In;
+vars.value.text2InLocal = text2In;
+vars.value.isCaseSensitiveInLocal = isCaseSensitiveIn;
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.Text_IsEqual$outVars"))());
+// IsEqual
+// Text1 = If
+vars.value.text1InLocal = ((vars.value.isCaseSensitiveInLocal) ? (vars.value.text1InLocal) : (OS.BuiltinFunctions.toUpper(vars.value.text1InLocal)));
+// Text2 = If
+vars.value.text2InLocal = ((vars.value.isCaseSensitiveInLocal) ? (vars.value.text2InLocal) : (OS.BuiltinFunctions.toUpper(vars.value.text2InLocal)));
+// IsEqual = Text1 = Text2
+outVars.value.isEqualOut = (vars.value.text1InLocal === vars.value.text2InLocal);
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.Text_IsEqual$vars", [{
+name: "Text1",
+attrName: "text1InLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "Text2",
+attrName: "text2InLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "IsCaseSensitive",
+attrName: "isCaseSensitiveInLocal",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.Text_IsEqual$outVars", [{
+name: "IsEqual",
+attrName: "isEqualOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.text_IsEqual$Action = function (text1In, text2In, isCaseSensitiveIn) {
+text1In = (text1In === undefined) ? "" : text1In;
+text2In = (text2In === undefined) ? "" : text2In;
+isCaseSensitiveIn = (isCaseSensitiveIn === undefined) ? false : isCaseSensitiveIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.text_IsEqual$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(text1In, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(text2In, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(isCaseSensitiveIn, OS.Types.Boolean)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+IsEqual: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.isEqualOut, OS.Types.Boolean, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$Text_IsTrue", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "Essentials_MOB.controller$Text_IsEqual"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.text_IsTrue$Action = function (textIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.Text_IsTrue$vars"))());
+vars.value.textInLocal = textIn;
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.Text_IsTrue$outVars"))());
+// IsTrue = Text_IsEqual(Text, "true", False)
+outVars.value.isTrueOut = Essentials_MOBController.default.text_IsEqual$Action(vars.value.textInLocal, "true", false, callContext.withoutIterationContext()).isEqualOut;
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.Text_IsTrue$vars", [{
+name: "Text",
+attrName: "textInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.Text_IsTrue$outVars", [{
+name: "IsTrue",
+attrName: "isTrueOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.text_IsTrue$Action = function (textIn) {
+textIn = (textIn === undefined) ? "" : textIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.text_IsTrue$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(textIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+IsTrue: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.isTrueOut, OS.Types.Boolean, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$Text_NotEmpty", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.text_NotEmpty$Action = function (mainTextIn, altTextIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.Text_NotEmpty$vars"))());
+vars.value.mainTextInLocal = mainTextIn;
+vars.value.altTextInLocal = altTextIn;
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.Text_NotEmpty$outVars"))());
+// Text = If
+outVars.value.textOut = ((((OS.BuiltinFunctions.trim(vars.value.mainTextInLocal)) !== (""))) ? (vars.value.mainTextInLocal) : (vars.value.altTextInLocal));
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.Text_NotEmpty$vars", [{
+name: "MainText",
+attrName: "mainTextInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "AltText",
+attrName: "altTextInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "-";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.Text_NotEmpty$outVars", [{
+name: "Text",
+attrName: "textOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.text_NotEmpty$Action = function (mainTextIn, altTextIn) {
+mainTextIn = (mainTextIn === undefined) ? "" : mainTextIn;
+altTextIn = (altTextIn === undefined) ? "-" : altTextIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.text_NotEmpty$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(mainTextIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(altTextIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Text: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.textOut, OS.Types.Text, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$Text_ReplaceChars", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.text_ReplaceChars$Action = function (originalTextIn, charsToFindIn, charsToReplaceIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.Text_ReplaceChars$vars"))());
+vars.value.originalTextInLocal = originalTextIn;
+vars.value.charsToFindInLocal = charsToFindIn;
+vars.value.charsToReplaceInLocal = charsToReplaceIn;
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.Text_ReplaceChars$outVars"))());
+// Text = OriginalText
+outVars.value.textOut = vars.value.originalTextInLocal;
+// CurrentIndex = 0
+vars.value.currentIndexVar = 0;
+while (((vars.value.currentIndexVar < OS.BuiltinFunctions.length(vars.value.charsToFindInLocal)))) {
+// Current Char
+// CharToFind = Substr
+vars.value.charToFindVar = OS.BuiltinFunctions.substr(vars.value.charsToFindInLocal, vars.value.currentIndexVar, 1);
+// CharToReplace = If
+vars.value.charToReplaceVar = (((vars.value.currentIndexVar < OS.BuiltinFunctions.length(vars.value.charsToReplaceInLocal))) ? (OS.BuiltinFunctions.substr(vars.value.charsToReplaceInLocal, vars.value.currentIndexVar, 1)) : (""));
+// Text Replace
+// Text = Replace
+outVars.value.textOut = OS.BuiltinFunctions.replace(outVars.value.textOut, vars.value.charToFindVar, vars.value.charToReplaceVar);
+// CurrentIndex+1
+// CurrentIndex = CurrentIndex + 1
+vars.value.currentIndexVar = (vars.value.currentIndexVar + 1);
+}
+
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.Text_ReplaceChars$vars", [{
+name: "OriginalText",
+attrName: "originalTextInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "CharsToFind",
+attrName: "charsToFindInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "CharsToReplace",
+attrName: "charsToReplaceInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "CurrentIndex",
+attrName: "currentIndexVar",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}, {
+name: "CharToFind",
+attrName: "charToFindVar",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "CharToReplace",
+attrName: "charToReplaceVar",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.Text_ReplaceChars$outVars", [{
+name: "Text",
+attrName: "textOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.text_ReplaceChars$Action = function (originalTextIn, charsToFindIn, charsToReplaceIn) {
+originalTextIn = (originalTextIn === undefined) ? "" : originalTextIn;
+charsToFindIn = (charsToFindIn === undefined) ? "" : charsToFindIn;
+charsToReplaceIn = (charsToReplaceIn === undefined) ? "" : charsToReplaceIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.text_ReplaceChars$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(originalTextIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(charsToFindIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(charsToReplaceIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Text: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.textOut, OS.Types.Text, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$Text_ReplaceSpecialChars", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "Essentials_MOB.controller$Text_ReplaceChars"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.text_ReplaceSpecialChars$Action = function (originalTextIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.Text_ReplaceSpecialChars$vars"))());
+vars.value.originalTextInLocal = originalTextIn;
+var text_ReplaceCharsVar = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.Text_ReplaceSpecialChars$outVars"))());
+// Execute Action: Text_ReplaceChars
+text_ReplaceCharsVar.value = Essentials_MOBController.default.text_ReplaceChars$Action(vars.value.originalTextInLocal, "ªºÄÃÀÁÂÕÓÖÒÔÈÉÊËÍÌÏÜÚÙÇÑäãàáâõóöòôèéêëíìïüúùçñ", "AOAAAAAOOOOOEEEEIIIUUUCNaaaaaoooooeeeeiiiuuucn", callContext);
+
+// Text = Text_ReplaceChars.Text
+outVars.value.textOut = text_ReplaceCharsVar.value.textOut;
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.Text_ReplaceSpecialChars$vars", [{
+name: "OriginalText",
+attrName: "originalTextInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.Text_ReplaceSpecialChars$outVars", [{
+name: "Text",
+attrName: "textOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.text_ReplaceSpecialChars$Action = function (originalTextIn) {
+originalTextIn = (originalTextIn === undefined) ? "" : originalTextIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.text_ReplaceSpecialChars$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(originalTextIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Text: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.textOut, OS.Types.Text, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$Text_ToCamelCase", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "Essentials_MOB.controller$String_Split"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.text_ToCamelCase$Action = function (originalTextIn, ignoreUpperWordsIn, lowerCaseWordsIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.Text_ToCamelCase$vars"))());
+vars.value.originalTextInLocal = originalTextIn;
+vars.value.ignoreUpperWordsInLocal = ignoreUpperWordsIn;
+vars.value.lowerCaseWordsInLocal = lowerCaseWordsIn;
+var string_SplitVar = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Text.Text_ToCamelCase$outVars"))());
+// Execute Action: String_Split
+string_SplitVar.value = Essentials_MOBController.default.string_Split$Action(vars.value.originalTextInLocal, " ", callContext);
+
+// LowerCaseWords = If
+vars.value.lowerCaseWordsInLocal = ((((vars.value.lowerCaseWordsInLocal) !== (""))) ? ((vars.value.lowerCaseWordsInLocal + ",")) : (""));
+// Foreach String_Split.List
+callContext.iterationContext.registerIterationStart(string_SplitVar.value.listOut);
+try {var listIterator = callContext.iterationContext.getIterator(string_SplitVar.value.listOut);
+var listIndex = 0;
+while (((listIndex < string_SplitVar.value.listOut.length))) {
+listIterator.currentRowNumber = listIndex;
+if(((vars.value.ignoreUpperWordsInLocal && (string_SplitVar.value.listOut.getItem(listIndex.valueOf()) === OS.BuiltinFunctions.toUpper(string_SplitVar.value.listOut.getItem(listIndex.valueOf())))))) {
+// Dont Change
+// Text = Text + If + String_Split.List.Current
+outVars.value.textOut = ((outVars.value.textOut + ((((outVars.value.textOut) !== (""))) ? (" ") : (""))) + string_SplitVar.value.listOut.getItem(listIndex.valueOf()));
+} else {
+if((((vars.value.lowerCaseWordsInLocal) !== ("")) && (OS.BuiltinFunctions.index(vars.value.lowerCaseWordsInLocal, (string_SplitVar.value.listOut.getItem(listIndex.valueOf()) + ","), 0, false, true) >= 0))) {
+// Lower Case
+// Text = Text + If + ToLower
+outVars.value.textOut = ((outVars.value.textOut + ((((outVars.value.textOut) !== (""))) ? (" ") : (""))) + OS.BuiltinFunctions.toLower(string_SplitVar.value.listOut.getItem(listIndex.valueOf())));
+} else {
+if((OS.BuiltinFunctions.length(string_SplitVar.value.listOut.getItem(listIndex.valueOf())) > 0)) {
+// Camel Case
+// Text = Text + If + ToUpper + ToLower
+outVars.value.textOut = (((outVars.value.textOut + ((((outVars.value.textOut) !== (""))) ? (" ") : (""))) + OS.BuiltinFunctions.toUpper(OS.BuiltinFunctions.substr(string_SplitVar.value.listOut.getItem(listIndex.valueOf()), 0, 1))) + OS.BuiltinFunctions.toLower(OS.BuiltinFunctions.substr(string_SplitVar.value.listOut.getItem(listIndex.valueOf()), 1, (OS.BuiltinFunctions.length(string_SplitVar.value.listOut.getItem(listIndex.valueOf())) - 1))));
+}
+
+}
+
+}
+
+listIndex++;
+}
+
+} finally {
+callContext.iterationContext.registerIterationEnd(string_SplitVar.value.listOut);
+}
+
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.Text_ToCamelCase$vars", [{
+name: "OriginalText",
+attrName: "originalTextInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "IgnoreUpperWords",
+attrName: "ignoreUpperWordsInLocal",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "LowerCaseWords",
+attrName: "lowerCaseWordsInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Text.Text_ToCamelCase$outVars", [{
+name: "Text",
+attrName: "textOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.text_ToCamelCase$Action = function (originalTextIn, ignoreUpperWordsIn, lowerCaseWordsIn) {
+originalTextIn = (originalTextIn === undefined) ? "" : originalTextIn;
+ignoreUpperWordsIn = (ignoreUpperWordsIn === undefined) ? false : ignoreUpperWordsIn;
+lowerCaseWordsIn = (lowerCaseWordsIn === undefined) ? "" : lowerCaseWordsIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.text_ToCamelCase$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(originalTextIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(ignoreUpperWordsIn, OS.Types.Boolean), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(lowerCaseWordsIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Text: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.textOut, OS.Types.Text, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$Time_ConvertToUTC", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller", "Essentials_MOB.controller$Time_ConvertToUTC.ConvertToUTCJS"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController, Essentials_MOB_controller_Time_ConvertToUTC_ConvertToUTCJS) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.time_ConvertToUTC$Action = function (dateTimeIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Time.Time_ConvertToUTC$vars"))());
+vars.value.dateTimeInLocal = dateTimeIn;
+var convertToUTCJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Time.Time_ConvertToUTC$outVars"))());
+convertToUTCJSResult.value = controller.safeExecuteJSNode(Essentials_MOB_controller_Time_ConvertToUTC_ConvertToUTCJS, "ConvertToUTC", "Time_ConvertToUTC", {
+DateTime: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.dateTimeInLocal, OS.Types.DateTime, true),
+Timestamp: OS.DataTypes.JSConversions.basicTypeToJS("", OS.Types.Text, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("Essentials_MOB.Time.Time_ConvertToUTC$convertToUTCJSResult"))();
+jsNodeResult.timestampOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.Timestamp, OS.Types.Text);
+return jsNodeResult;
+}, {}, {});
+// Timestamp = ConvertToUTC.Timestamp
+outVars.value.timestampOut = convertToUTCJSResult.value.timestampOut;
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Time.Time_ConvertToUTC$vars", [{
+name: "DateTime",
+attrName: "dateTimeInLocal",
+mandatory: true,
+dataType: OS.Types.DateTime,
+defaultValue: function () {
+return OS.DataTypes.DateTime.defaultValue;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Time.Time_ConvertToUTC$convertToUTCJSResult", [{
+name: "Timestamp",
+attrName: "timestampOut",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Time.Time_ConvertToUTC$outVars", [{
+name: "Timestamp",
+attrName: "timestampOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.time_ConvertToUTC$Action = function (dateTimeIn) {
+dateTimeIn = (dateTimeIn === undefined) ? OS.DataTypes.DateTime.defaultValue : dateTimeIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.time_ConvertToUTC$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(dateTimeIn, OS.Types.DateTime)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Timestamp: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.timestampOut, OS.Types.Text, true)
+};
+});
+};
+});
+define("Essentials_MOB.controller$Time_ConvertToUTC.ConvertToUTCJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+$parameters.Timestamp = parseInt((new Date($parameters.DateTime).getTime() / 1000).toFixed(0))
+};
+});
+
+define("Essentials_MOB.controller$Time_GetHours", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.time_GetHours$Action = function (startTimeIn, endTimeIn, intervalIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Time.Time_GetHours$vars"))());
+vars.value.startTimeInLocal = startTimeIn;
+vars.value.endTimeInLocal = endTimeIn;
+vars.value.intervalInLocal = intervalIn;
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Time.Time_GetHours$outVars"))());
+// Set start Time
+// CurrentTime = StartTime
+vars.value.currentTimeVar = vars.value.startTimeInLocal;
+// Execute Action: ListAppendStart
+OS.SystemActions.listAppend(outVars.value.timeListOut, vars.value.currentTimeVar, callContext);
+// Execute Action: ListAppendStartText
+OS.SystemActions.listAppend(outVars.value.timeListTextOut, OS.BuiltinFunctions.formatDateTime(vars.value.currentTimeVar, "H:mm"), callContext);
+while ((((OS.BuiltinFunctions.diffHours(vars.value.currentTimeVar, vars.value.endTimeInLocal)) !== (0)))) {
+// CurrentTime = AddHours
+vars.value.currentTimeVar = OS.BuiltinFunctions.dateTimeToTime(OS.BuiltinFunctions.addHours(vars.value.currentTimeVar, vars.value.intervalInLocal));
+// Execute Action: ListAppendTime
+OS.SystemActions.listAppend(outVars.value.timeListOut, vars.value.currentTimeVar, callContext);
+// Execute Action: ListAppendText
+OS.SystemActions.listAppend(outVars.value.timeListTextOut, OS.BuiltinFunctions.formatDateTime(vars.value.currentTimeVar, "H:mm"), callContext);
+}
+
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Time.Time_GetHours$vars", [{
+name: "StartTime",
+attrName: "startTimeInLocal",
+mandatory: true,
+dataType: OS.Types.Time,
+defaultValue: function () {
+return OS.DataTypes.DateTime.defaultValue;
+}
+}, {
+name: "EndTime",
+attrName: "endTimeInLocal",
+mandatory: true,
+dataType: OS.Types.Time,
+defaultValue: function () {
+return OS.DataTypes.DateTime.defaultValue;
+}
+}, {
+name: "Interval",
+attrName: "intervalInLocal",
+mandatory: true,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}, {
+name: "CurrentTime",
+attrName: "currentTimeVar",
+mandatory: false,
+dataType: OS.Types.Time,
+defaultValue: function () {
+return OS.DataTypes.DateTime.defaultValue;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Time.Time_GetHours$outVars", [{
+name: "TimeList",
+attrName: "timeListOut",
+mandatory: false,
+dataType: OS.Types.RecordList,
+defaultValue: function () {
+return new OS.DataTypes.TimeList();
+},
+complexType: OS.DataTypes.TimeList
+}, {
+name: "TimeListText",
+attrName: "timeListTextOut",
+mandatory: false,
+dataType: OS.Types.RecordList,
+defaultValue: function () {
+return new OS.DataTypes.TextList();
+},
+complexType: OS.DataTypes.TextList
+}]);
+Essentials_MOBController.default.clientActionProxies.time_GetHours$Action = function (startTimeIn, endTimeIn, intervalIn) {
+startTimeIn = (startTimeIn === undefined) ? OS.DataTypes.DateTime.defaultValue : startTimeIn;
+endTimeIn = (endTimeIn === undefined) ? OS.DataTypes.DateTime.defaultValue : endTimeIn;
+intervalIn = (intervalIn === undefined) ? 0 : intervalIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.time_GetHours$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(startTimeIn, OS.Types.Time), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(endTimeIn, OS.Types.Time), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(intervalIn, OS.Types.Integer)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+TimeList: actionResults.timeListOut,
+TimeListText: actionResults.timeListTextOut
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$Week_GetNextDay", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.week_GetNextDay$Action = function (dateIn, dayOfWeekIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Date.Week_GetNextDay$vars"))());
+vars.value.dateInLocal = dateIn;
+vars.value.dayOfWeekInLocal = dayOfWeekIn;
+var allExceptionsVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("Essentials_MOB.Date.Week_GetNextDay$outVars"))());
+try {// DaysToAdd = Mod + 1
+vars.value.daysToAddVar = OS.BuiltinFunctions.decimalToInteger(OS.BuiltinFunctions.trunc(OS.BuiltinFunctions.mod(OS.BuiltinFunctions.integerToDecimal(((vars.value.dayOfWeekInLocal - OS.BuiltinFunctions.dayOfWeek(vars.value.dateInLocal)) + 7)), OS.BuiltinFunctions.integerToDecimal(7)).plus(OS.BuiltinFunctions.integerToDecimal(1))));
+// NewDate = AddDays
+outVars.value.newDateOut = OS.BuiltinFunctions.addDays(vars.value.dateInLocal, vars.value.daysToAddVar);
+} catch (ex) {
+(function () {
+OS.Logger.trace("Date.Week_GetNextDay", OS.Exceptions.getMessage(ex), ex.name);
+// Handle Error: AllExceptions
+if(!(OS.Exceptions.isSystem(ex))) {
+OS.Logger.error(null, ex);
+allExceptionsVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+// NewDate = NullDate
+outVars.value.newDateOut = OS.BuiltinFunctions.nullDate();
+return outVars.value;
+
+}
+
+throw ex;
+})();
+}
+
+return outVars.value;
+};
+var controller = Essentials_MOBController.default;
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Date.Week_GetNextDay$vars", [{
+name: "Date",
+attrName: "dateInLocal",
+mandatory: true,
+dataType: OS.Types.DateTime,
+defaultValue: function () {
+return OS.DataTypes.DateTime.defaultValue;
+}
+}, {
+name: "DayOfWeek",
+attrName: "dayOfWeekInLocal",
+mandatory: true,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}, {
+name: "DaysToAdd",
+attrName: "daysToAddVar",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}]);
+Essentials_MOBController.default.constructor.registerVariableGroupType("Essentials_MOB.Date.Week_GetNextDay$outVars", [{
+name: "NewDate",
+attrName: "newDateOut",
+mandatory: false,
+dataType: OS.Types.DateTime,
+defaultValue: function () {
+return OS.DataTypes.DateTime.defaultValue;
+}
+}]);
+Essentials_MOBController.default.clientActionProxies.week_GetNextDay$Action = function (dateIn, dayOfWeekIn) {
+dateIn = (dateIn === undefined) ? OS.DataTypes.DateTime.defaultValue : dateIn;
+dayOfWeekIn = (dayOfWeekIn === undefined) ? 0 : dayOfWeekIn;
+return controller.executeActionInsideJSNode(Essentials_MOBController.default.week_GetNextDay$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(dateIn, OS.Types.DateTime), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(dayOfWeekIn, OS.Types.Integer)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+NewDate: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.newDateOut, OS.Types.DateTime, true)
+};
+});
+};
+});
+
+define("Essentials_MOB.controller$ServerAction.CheckServerStatus", ["exports", "OutSystems", "Essentials_MOB.model", "Essentials_MOB.controller"], function (exports, OutSystems, Essentials_MOBModel, Essentials_MOBController) {
+var OS = OutSystems.Internal;
+Essentials_MOBController.default.checkServerStatus$ServerAction = function (callContext) {
+var controller = this.controller;
+return controller.callServerAction("CheckServerStatus", "screenservices/Essentials_MOB/ActionCheckServerStatus", "mi7X6STgXG4HbaHPk8YmGA", {}, controller.callContext(callContext)).then(function (outputs) {
+});
+};
+});
+define("Essentials_MOB.controller", ["exports", "OutSystems", "Essentials_MOB.model"], function (exports, OutSystems, Essentials_MOBModel) {
+var OS = OutSystems.Internal;
+var Essentials_MOBController = exports;
+var Controller = (function (_super) {
+__extends(Controller, _super);
+function Controller() {
+_super.apply(this, arguments);
+}
+Controller.prototype.clientActionProxies = {};
+Controller.prototype.roles = {};
+Controller.prototype.defaultTimeout = 10;
+Controller.prototype.getDefaultTimeout = function () {
+return Essentials_MOBController.default.defaultTimeout;
+};
+return Controller;
+})(OS.Controller.BaseModuleController);
+Essentials_MOBController.default = new Controller();
+});

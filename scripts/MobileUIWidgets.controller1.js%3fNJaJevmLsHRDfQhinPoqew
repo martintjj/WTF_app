@@ -1,0 +1,952 @@
+﻿define("MobileUIWidgets.controller$CloseFeedbackMessage", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller", "MobileUIWidgets.controller$CloseFeedbackMessage.RemoveFeedbackMessageJS"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController, MobileUIWidgets_controller_CloseFeedbackMessage_RemoveFeedbackMessageJS) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.closeFeedbackMessage$Action = function (callContext) {
+callContext = controller.callContext(callContext);
+controller.safeExecuteJSNode(MobileUIWidgets_controller_CloseFeedbackMessage_RemoveFeedbackMessageJS, "RemoveFeedbackMessage", "CloseFeedbackMessage", null, function ($parameters) {
+}, {}, {});
+return ;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.clientActionProxies.closeFeedbackMessage$Action = function () {
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.closeFeedbackMessage$Action.bind(controller), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {};
+});
+};
+});
+define("MobileUIWidgets.controller$CloseFeedbackMessage.RemoveFeedbackMessageJS", [], function () {
+return function ($actions, $roles, $public) {
+var feedback = document.querySelector('.feedback-message');
+
+if(feedback) {
+    feedback.classList.add('-exit');
+    
+    setTimeout(function(){ 
+    $public.FeedbackMessage.closeFeedbackMessage(); }, 500);   
+}
+
+};
+});
+
+define("MobileUIWidgets.controller$CustomFeedbackMessage", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller", "MobileUIWidgets.controller$CustomFeedbackMessage.closeFeedbackMessageJS", "MobileUIWidgets.controller$CustomFeedbackMessage.showFeedbackMessageJS"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController, MobileUIWidgets_controller_CustomFeedbackMessage_closeFeedbackMessageJS, MobileUIWidgets_controller_CustomFeedbackMessage_showFeedbackMessageJS) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.customFeedbackMessage$Action = function (messageIn, messageTypeIn, encodeHTMLIn, extraCssClassesIn, closeOnClickIn, autoCloseErrorIn, autoCloseErrorTimeOutIn, iconClassIn, iconSizeIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.FeedbackMessage.CustomFeedbackMessage$vars"))());
+vars.value.messageInLocal = messageIn;
+vars.value.messageTypeInLocal = messageTypeIn;
+vars.value.encodeHTMLInLocal = encodeHTMLIn;
+vars.value.extraCssClassesInLocal = extraCssClassesIn;
+vars.value.closeOnClickInLocal = closeOnClickIn;
+vars.value.autoCloseErrorInLocal = autoCloseErrorIn;
+vars.value.autoCloseErrorTimeOutInLocal = autoCloseErrorTimeOutIn;
+vars.value.iconClassInLocal = iconClassIn;
+vars.value.iconSizeInLocal = iconSizeIn;
+// CssClasses = "a-icon " + IconClass + " " + "" + IconSize + " " + ExtraCssClasses
+vars.value.cssClassesVar = (((((("a-icon " + vars.value.iconClassInLocal) + " ") + "") + vars.value.iconSizeInLocal) + " ") + vars.value.extraCssClassesInLocal);
+controller.safeExecuteJSNode(MobileUIWidgets_controller_CustomFeedbackMessage_showFeedbackMessageJS, "showFeedbackMessage", "CustomFeedbackMessage", {
+MessageType: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.messageTypeInLocal, OS.Types.Integer, true),
+EncodeHTML: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.encodeHTMLInLocal, OS.Types.Boolean, true),
+ExtraCssClasses: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.cssClassesVar, OS.Types.Text, true),
+CloseOnClick: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.closeOnClickInLocal, OS.Types.Boolean, true),
+Message: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.messageInLocal, OS.Types.Text, true)
+}, function ($parameters) {
+}, {}, {});
+if((vars.value.autoCloseErrorInLocal)) {
+controller.safeExecuteJSNode(MobileUIWidgets_controller_CustomFeedbackMessage_closeFeedbackMessageJS, "closeFeedbackMessage", "CustomFeedbackMessage", {
+AutoCloseErrprTimeOut: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.autoCloseErrorTimeOutInLocal, OS.Types.Integer, true)
+}, function ($parameters) {
+}, {}, {});
+}
+
+return ;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.FeedbackMessage.CustomFeedbackMessage$vars", [{
+name: "Message",
+attrName: "messageInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "MessageType",
+attrName: "messageTypeInLocal",
+mandatory: true,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}, {
+name: "EncodeHTML",
+attrName: "encodeHTMLInLocal",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return true;
+}
+}, {
+name: "ExtraCssClasses",
+attrName: "extraCssClassesInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "CloseOnClick",
+attrName: "closeOnClickInLocal",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return true;
+}
+}, {
+name: "AutoCloseError",
+attrName: "autoCloseErrorInLocal",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return true;
+}
+}, {
+name: "AutoCloseErrorTimeOut",
+attrName: "autoCloseErrorTimeOutInLocal",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 3000;
+}
+}, {
+name: "IconClass",
+attrName: "iconClassInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "IconSize",
+attrName: "iconSizeInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "-large";
+}
+}, {
+name: "CssClasses",
+attrName: "cssClassesVar",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+MobileUIWidgetsController.default.clientActionProxies.customFeedbackMessage$Action = function (messageIn, messageTypeIn, encodeHTMLIn, extraCssClassesIn, closeOnClickIn, autoCloseErrorIn, autoCloseErrorTimeOutIn, iconClassIn, iconSizeIn) {
+messageIn = (messageIn === undefined) ? "" : messageIn;
+messageTypeIn = (messageTypeIn === undefined) ? 0 : messageTypeIn;
+encodeHTMLIn = (encodeHTMLIn === undefined) ? true : encodeHTMLIn;
+extraCssClassesIn = (extraCssClassesIn === undefined) ? "" : extraCssClassesIn;
+closeOnClickIn = (closeOnClickIn === undefined) ? true : closeOnClickIn;
+autoCloseErrorIn = (autoCloseErrorIn === undefined) ? true : autoCloseErrorIn;
+autoCloseErrorTimeOutIn = (autoCloseErrorTimeOutIn === undefined) ? 3000 : autoCloseErrorTimeOutIn;
+iconClassIn = (iconClassIn === undefined) ? "" : iconClassIn;
+iconSizeIn = (iconSizeIn === undefined) ? "-large" : iconSizeIn;
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.customFeedbackMessage$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(messageIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(messageTypeIn, OS.Types.Integer), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(encodeHTMLIn, OS.Types.Boolean), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(extraCssClassesIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(closeOnClickIn, OS.Types.Boolean), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(autoCloseErrorIn, OS.Types.Boolean), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(autoCloseErrorTimeOutIn, OS.Types.Integer), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(iconClassIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(iconSizeIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {};
+});
+};
+});
+define("MobileUIWidgets.controller$CustomFeedbackMessage.closeFeedbackMessageJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+setTimeout(function(){ 
+
+  $public.FeedbackMessage.closeFeedbackMessage(); }, 
+
+$parameters.AutoCloseErrprTimeOut);
+};
+});
+define("MobileUIWidgets.controller$CustomFeedbackMessage.showFeedbackMessageJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+$public.FeedbackMessage.showFeedbackMessage($parameters.Message, $parameters.MessageType, $parameters.EncodeHTML, $parameters.ExtraCssClasses, $parameters.CloseOnClick);
+
+/*If($parameters.CloseOnClick) {
+    var feedbackMsg = document.querySelector('.feedback-message');
+    
+    feedbackMsg.addEventListener('click', function() {
+    
+    });
+    
+    feedbackMsg.classList.add('.feedback-message-clickclose');
+}*/
+
+var bottom = document.querySelector('.bottom');
+var feedbackMessage = document.querySelector('.feedback-message');
+var loadingMessage = document.querySelector('.o-loadingMessage.-show');
+
+
+if(bottom) {
+    
+    //No caso dos ecrãs de nível 3, que não tenham conteúdo na bottom bar, a feedback message deve estar no fundo do ecrã.
+    if(!bottom.hasChildNodes()) {
+        feedbackMessage.style.bottom = "0px";
+    } else {
+        /*if(bottom.hasChildNodes() && loadingMessage !== null ){
+            feedbackMessage.style.bottom = bottom.clientHeight + loadingMessage.clientHeight + "px";
+        }*/
+        
+        //Contempla padding extra dado para pillsbar
+        var screen = document.querySelector('.screen');
+        var getPaddingBottom = window.getComputedStyle(screen, null).getPropertyValue('padding-bottom');
+        var extraPadding = Number(getPaddingBottom.replace(/(^\d+)(.+$)/i,'$1'));
+        
+        if(loadingMessage  !== null) {
+            feedbackMessage.style.bottom = bottom.clientHeight + loadingMessage.clientHeight + "px";
+        } else {
+            feedbackMessage.style.bottom = bottom.clientHeight + extraPadding + "px";
+        }
+        
+        
+        //console.log(bottom.clientHeight, extraPadding);
+        //feedbackMessage.style.bottom = bottom.clientHeight + loadingMessage.clientHeight + "px";
+        //feedbackMessage.style.bottom = bottom.clientHeight + extraPadding + "px";
+    }
+    
+} else {
+    feedbackMessage.style.bottom = "0px";
+}
+
+
+};
+});
+
+define("MobileUIWidgets.controller$Error", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller", "MobileUIWidgets.controller$CustomFeedbackMessage"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.error$Action = function (messageIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.FeedbackMessage.Error$vars"))());
+vars.value.messageInLocal = messageIn;
+// Execute Action: CustomFeedbackMessage
+MobileUIWidgetsController.default.customFeedbackMessage$Action(vars.value.messageInLocal, 3, true, "", false, false, 3000, "icon-error-rounded-v2-filled", "-large", callContext);
+return ;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.FeedbackMessage.Error$vars", [{
+name: "Message",
+attrName: "messageInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+MobileUIWidgetsController.default.clientActionProxies.error$Action = function (messageIn) {
+messageIn = (messageIn === undefined) ? "" : messageIn;
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.error$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(messageIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {};
+});
+};
+});
+
+define("MobileUIWidgets.controller$Error_V2", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller", "MobileUIWidgets.controller$CustomFeedbackMessage"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.error_V2$Action = function (messageIn, closeOnClickIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.FeedbackMessage.Error_V2$vars"))());
+vars.value.messageInLocal = messageIn;
+vars.value.closeOnClickInLocal = closeOnClickIn;
+// Execute Action: CustomFeedbackMessage
+MobileUIWidgetsController.default.customFeedbackMessage$Action(vars.value.messageInLocal, 3, true, "", vars.value.closeOnClickInLocal, false, 3000, "icon-error-rounded-v2-filled", "-large", callContext);
+return ;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.FeedbackMessage.Error_V2$vars", [{
+name: "Message",
+attrName: "messageInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "CloseOnClick",
+attrName: "closeOnClickInLocal",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+MobileUIWidgetsController.default.clientActionProxies.error_V2$Action = function (messageIn, closeOnClickIn) {
+messageIn = (messageIn === undefined) ? "" : messageIn;
+closeOnClickIn = (closeOnClickIn === undefined) ? false : closeOnClickIn;
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.error_V2$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(messageIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(closeOnClickIn, OS.Types.Boolean)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {};
+});
+};
+});
+
+define("MobileUIWidgets.controller$FormateWeekDay", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller", "MobileUIWidgets.controller$FormateWeekDay.GetWeekDayJS"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController, MobileUIWidgets_controller_FormateWeekDay_GetWeekDayJS) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.formateWeekDay$Action = function (dateIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.FormateWeekDay$vars"))());
+vars.value.dateInLocal = dateIn;
+var getWeekDayJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.FormateWeekDay$outVars"))());
+getWeekDayJSResult.value = controller.safeExecuteJSNode(MobileUIWidgets_controller_FormateWeekDay_GetWeekDayJS, "GetWeekDay", "FormateWeekDay", {
+Date: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.dateInLocal, OS.Types.Date, true),
+WeekDay: OS.DataTypes.JSConversions.basicTypeToJS("", OS.Types.Text, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("MobileUIWidgets.FormateWeekDay$getWeekDayJSResult"))();
+jsNodeResult.weekDayOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.WeekDay, OS.Types.Text);
+return jsNodeResult;
+}, {}, {});
+// WeekDay = GetWeekDay.WeekDay
+outVars.value.weekDayOut = getWeekDayJSResult.value.weekDayOut;
+return outVars.value;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.FormateWeekDay$vars", [{
+name: "Date",
+attrName: "dateInLocal",
+mandatory: true,
+dataType: OS.Types.Date,
+defaultValue: function () {
+return OS.DataTypes.DateTime.defaultValue;
+}
+}]);
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.FormateWeekDay$getWeekDayJSResult", [{
+name: "WeekDay",
+attrName: "weekDayOut",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.FormateWeekDay$outVars", [{
+name: "WeekDay",
+attrName: "weekDayOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+MobileUIWidgetsController.default.clientActionProxies.formateWeekDay$Action = function (dateIn) {
+dateIn = (dateIn === undefined) ? OS.DataTypes.DateTime.defaultValue : dateIn;
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.formateWeekDay$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(dateIn, OS.Types.Date)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+WeekDay: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.weekDayOut, OS.Types.Text, true)
+};
+});
+};
+});
+define("MobileUIWidgets.controller$FormateWeekDay.GetWeekDayJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+var formatter = new Intl.DateTimeFormat("pt-PT", { weekday: "long" });
+$parameters.WeekDay = formatter.format(new Date($parameters.Date));
+
+};
+});
+
+define("MobileUIWidgets.controller$GetDummyList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.getDummyList$Action = function (numRecordsIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.GetDummyList$vars"))());
+vars.value.numRecordsInLocal = numRecordsIn;
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.GetDummyList$outVars"))());
+while (((vars.value.currentRowNumberVar <= vars.value.numRecordsInLocal))) {
+// Execute Action: ListAppend
+OS.SystemActions.listAppend(outVars.value.listOut, (vars.value.currentRowNumberVar).toString(), callContext);
+// CurrentRowNumber = CurrentRowNumber + 1
+vars.value.currentRowNumberVar = (vars.value.currentRowNumberVar + 1);
+}
+
+return outVars.value;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.GetDummyList$vars", [{
+name: "NumRecords",
+attrName: "numRecordsInLocal",
+mandatory: true,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}, {
+name: "CurrentRowNumber",
+attrName: "currentRowNumberVar",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 1;
+}
+}]);
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.GetDummyList$outVars", [{
+name: "List",
+attrName: "listOut",
+mandatory: false,
+dataType: OS.Types.RecordList,
+defaultValue: function () {
+return new OS.DataTypes.TextList();
+},
+complexType: OS.DataTypes.TextList
+}]);
+MobileUIWidgetsController.default.clientActionProxies.getDummyList$Action = function (numRecordsIn) {
+numRecordsIn = (numRecordsIn === undefined) ? 0 : numRecordsIn;
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.getDummyList$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(numRecordsIn, OS.Types.Integer)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+List: actionResults.listOut
+};
+});
+};
+});
+
+define("MobileUIWidgets.controller$Info", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller", "MobileUIWidgets.controller$CustomFeedbackMessage"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.info$Action = function (messageIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.FeedbackMessage.Info$vars"))());
+vars.value.messageInLocal = messageIn;
+// Execute Action: CustomFeedbackMessage
+MobileUIWidgetsController.default.customFeedbackMessage$Action(vars.value.messageInLocal, 0, true, "-info", true, true, 10000, "icon-info-rounded", "-large", callContext);
+return ;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.FeedbackMessage.Info$vars", [{
+name: "Message",
+attrName: "messageInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+MobileUIWidgetsController.default.clientActionProxies.info$Action = function (messageIn) {
+messageIn = (messageIn === undefined) ? "" : messageIn;
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.info$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(messageIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {};
+});
+};
+});
+
+define("MobileUIWidgets.controller$MobilePatterns_Destroy", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller", "MobileUIWidgets.controller$MobilePatterns_Destroy.RemoveEventListenersJS"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController, MobileUIWidgets_controller_MobilePatterns_Destroy_RemoveEventListenersJS) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.mobilePatterns_Destroy$Action = function (hasShowHideHeaderIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.MobilePatterns_Destroy$vars"))());
+vars.value.hasShowHideHeaderInLocal = hasShowHideHeaderIn;
+if((vars.value.hasShowHideHeaderInLocal)) {
+controller.safeExecuteJSNode(MobileUIWidgets_controller_MobilePatterns_Destroy_RemoveEventListenersJS, "RemoveEventListeners", "MobilePatterns_Destroy", null, function ($parameters) {
+}, {}, {});
+}
+
+return ;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.MobilePatterns_Destroy$vars", [{
+name: "HasShowHideHeader",
+attrName: "hasShowHideHeaderInLocal",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return true;
+}
+}]);
+MobileUIWidgetsController.default.clientActionProxies.mobilePatterns_Destroy$Action = function (hasShowHideHeaderIn) {
+hasShowHideHeaderIn = (hasShowHideHeaderIn === undefined) ? true : hasShowHideHeaderIn;
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.mobilePatterns_Destroy$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(hasShowHideHeaderIn, OS.Types.Boolean)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {};
+});
+};
+});
+define("MobileUIWidgets.controller$MobilePatterns_Destroy.RemoveEventListenersJS", [], function () {
+return function ($actions, $roles, $public) {
+(function showHideHeaderRemove() {
+    
+    var offSet = '',
+    moving = '';
+
+    function hideHeader($header) {
+        $header.style.zIndex = "-1";
+
+        setTimeout(function(){ 
+            $header.style.top = "-72px";
+        }, 10);
+
+        setTimeout(function(){ 
+            $header.style.zIndex = "51";
+        }, 300);
+    }
+
+
+    document.querySelector('.content').removeEventListener("touchstart", function(e) {
+        offSet = e.changedTouches[0].clientY;
+
+        var $header = document.querySelector('.a-header-fixed');
+
+        if( this.scrollTop === 0) {
+            hideHeader($header);
+        }
+    });
+
+    document.querySelector('.content').removeEventListener("touchmove", function(e) {
+        var $header = document.querySelector('.a-header-fixed'),
+            headerPosition = document.querySelector('.a-header-fixed').getBoundingClientRect().top;
+
+        offSetMoving = e.changedTouches[0].clientY;
+
+        if(offSet > offSetMoving) {
+
+            diference = parseInt(offSet) - parseInt(offSetMoving);
+
+            if( headerPosition === 0 ) {
+                if( diference > 50 ) {
+                    $header.style.top = '-72px';
+                }
+            }
+        }
+        else {
+            diference = parseInt(offSetMoving) - parseInt(offSet);
+
+            if( this.scrollTop > 200 ) {
+                if( headerPosition < 0 ) {
+                    if( diference > 25 ) {
+                        $header.style.top = '0px';
+                    }
+                }
+            }
+
+            offSet = offSetMoving;
+        }
+
+    });
+
+    document.querySelector('.content').removeEventListener("touchend", function(e) {
+        var $header = document.querySelector('.a-header-fixed');
+
+        if( this.scrollTop === 0) {
+            hideHeader($header);
+        }
+
+    });   
+})();
+};
+});
+
+define("MobileUIWidgets.controller$MobilePatterns_Ready", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller", "MobileUIWidgets.controller$MobilePatterns_Ready.ShowHideHeaderJS"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController, MobileUIWidgets_controller_MobilePatterns_Ready_ShowHideHeaderJS) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.mobilePatterns_Ready$Action = function (hasShowHideHeaderIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.MobilePatterns_Ready$vars"))());
+vars.value.hasShowHideHeaderInLocal = hasShowHideHeaderIn;
+if((vars.value.hasShowHideHeaderInLocal)) {
+controller.safeExecuteJSNode(MobileUIWidgets_controller_MobilePatterns_Ready_ShowHideHeaderJS, "ShowHideHeader", "MobilePatterns_Ready", null, function ($parameters) {
+}, {}, {});
+}
+
+return ;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.MobilePatterns_Ready$vars", [{
+name: "HasShowHideHeader",
+attrName: "hasShowHideHeaderInLocal",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return true;
+}
+}]);
+MobileUIWidgetsController.default.clientActionProxies.mobilePatterns_Ready$Action = function (hasShowHideHeaderIn) {
+hasShowHideHeaderIn = (hasShowHideHeaderIn === undefined) ? true : hasShowHideHeaderIn;
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.mobilePatterns_Ready$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(hasShowHideHeaderIn, OS.Types.Boolean)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {};
+});
+};
+});
+define("MobileUIWidgets.controller$MobilePatterns_Ready.ShowHideHeaderJS", [], function () {
+return function ($actions, $roles, $public) {
+(function showHideHeader() {
+    
+    var offSet = '',
+    moving = '';
+
+    function hideHeader($header) {
+        $header.style.zIndex = "-1";
+
+        setTimeout(function(){ 
+            $header.style.top = "-72px";
+        }, 10);
+
+        setTimeout(function(){ 
+            $header.style.zIndex = "51";
+        }, 300);
+    }
+
+
+    document.querySelector('.content').addEventListener("touchstart", function(e) {
+        offSet = e.changedTouches[0].clientY;
+
+        var $header = document.querySelector('.a-header-fixed');
+
+        if( this.scrollTop === 0) {
+            hideHeader($header);
+        }
+    });
+
+    document.querySelector('.content').addEventListener("touchmove", function(e) {
+        var $header = document.querySelector('.a-header-fixed'),
+            headerPosition = document.querySelector('.a-header-fixed').getBoundingClientRect().top;
+
+        offSetMoving = e.changedTouches[0].clientY;
+
+        if(offSet > offSetMoving) {
+
+            diference = parseInt(offSet) - parseInt(offSetMoving);
+
+            if( headerPosition === 0 ) {
+                if( diference > 50 ) {
+                    $header.style.top = '-72px';
+                }
+            }
+        }
+        else {
+            diference = parseInt(offSetMoving) - parseInt(offSet);
+
+            if( this.scrollTop > 200 ) {
+                if( headerPosition < 0 ) {
+                    if( diference > 25 ) {
+                        $header.style.top = '0px';
+                    }
+                }
+            }
+
+            offSet = offSetMoving;
+        }
+
+    });
+
+    document.querySelector('.content').addEventListener("touchend", function(e) {
+        var $header = document.querySelector('.a-header-fixed');
+
+        if( this.scrollTop === 0) {
+            hideHeader($header);
+        }
+
+    });   
+})();
+};
+});
+
+define("MobileUIWidgets.controller$MoveElement", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller", "MobileUIWidgets.controller$MoveElement.MoveElementJS"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController, MobileUIWidgets_controller_MoveElement_MoveElementJS) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.moveElement$Action = function (elementIn, targetIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.MoveElement$vars"))());
+vars.value.elementInLocal = elementIn;
+vars.value.targetInLocal = targetIn;
+controller.safeExecuteJSNode(MobileUIWidgets_controller_MoveElement_MoveElementJS, "MoveElement", "MoveElement", {
+Target: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.targetInLocal, OS.Types.Object, true),
+Element: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.elementInLocal, OS.Types.Object, true)
+}, function ($parameters) {
+}, {}, {});
+return ;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.MoveElement$vars", [{
+name: "Element",
+attrName: "elementInLocal",
+mandatory: true,
+dataType: OS.Types.Object,
+defaultValue: function () {
+return null;
+}
+}, {
+name: "Target",
+attrName: "targetInLocal",
+mandatory: true,
+dataType: OS.Types.Object,
+defaultValue: function () {
+return null;
+}
+}]);
+MobileUIWidgetsController.default.clientActionProxies.moveElement$Action = function (elementIn, targetIn) {
+elementIn = (elementIn === undefined) ? null : elementIn;
+targetIn = (targetIn === undefined) ? null : targetIn;
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.moveElement$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(elementIn, OS.Types.Object), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(targetIn, OS.Types.Object)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {};
+});
+};
+});
+define("MobileUIWidgets.controller$MoveElement.MoveElementJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+if($parameters.Target && $parameters.Element) {
+    var screenEl = document.getElementById($parameters.Element);
+    var element = document.querySelector($parameters.Target);
+    
+    if(screenEl && element) {
+        element.appendChild(screenEl);
+    }
+}
+};
+});
+
+define("MobileUIWidgets.controller$OfflineDataSync", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller", "MobileUIWidgets.controller$ServerAction.ServerDataSync"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.offlineDataSync$Action = function (syncUnitIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.OfflineDataSync.OfflineDataSync$vars"))());
+vars.value.syncUnitInLocal = syncUnitIn;
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: ServerDataSync
+return controller.serverDataSync$ServerAction(vars.value.syncUnitInLocal, callContext);
+}).then(function () {
+return ;
+});
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.OfflineDataSync.OfflineDataSync$vars", [{
+name: "SyncUnit",
+attrName: "syncUnitInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+MobileUIWidgetsController.default.clientActionProxies.offlineDataSync$Action = function (syncUnitIn) {
+syncUnitIn = (syncUnitIn === undefined) ? "" : syncUnitIn;
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.offlineDataSync$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(syncUnitIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {};
+});
+};
+});
+
+define("MobileUIWidgets.controller$OfflineDataSyncConfiguration", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.offlineDataSyncConfiguration$Action = function (callContext) {
+callContext = controller.callContext(callContext);
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.OfflineDataSync.OfflineDataSyncConfiguration$outVars"))());
+// SyncOnOnline = False
+outVars.value.syncOnOnlineOut = false;
+// SyncOnLogin = False
+outVars.value.syncOnLoginOut = false;
+// SyncOnResume = False
+outVars.value.syncOnResumeOut = false;
+// RetryOnError = False
+outVars.value.retryOnErrorOut = false;
+// RetryIntervalInSeconds = 30
+outVars.value.retryIntervalInSecondsOut = 30;
+return outVars.value;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.OfflineDataSync.OfflineDataSyncConfiguration$outVars", [{
+name: "SyncOnOnline",
+attrName: "syncOnOnlineOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "SyncOnLogin",
+attrName: "syncOnLoginOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "SyncOnResume",
+attrName: "syncOnResumeOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "RetryOnError",
+attrName: "retryOnErrorOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "RetryIntervalInSeconds",
+attrName: "retryIntervalInSecondsOut",
+mandatory: false,
+dataType: OS.Types.Integer,
+defaultValue: function () {
+return 0;
+}
+}]);
+MobileUIWidgetsController.default.clientActionProxies.offlineDataSyncConfiguration$Action = function () {
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.offlineDataSyncConfiguration$Action.bind(controller), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+SyncOnOnline: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.syncOnOnlineOut, OS.Types.Boolean, true),
+SyncOnLogin: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.syncOnLoginOut, OS.Types.Boolean, true),
+SyncOnResume: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.syncOnResumeOut, OS.Types.Boolean, true),
+RetryOnError: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.retryOnErrorOut, OS.Types.Boolean, true),
+RetryIntervalInSeconds: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.retryIntervalInSecondsOut, OS.Types.Integer, true)
+};
+});
+};
+});
+
+define("MobileUIWidgets.controller$StatusBar_ChangeColor", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller", "CommonPlugin.model", "StatusBarPlugin.controller", "CommonPlugin.model$ErrorRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$CommonPlugin", "StatusBarPlugin.controller$StatusBar_BackgroundColorByHexString", "MobileUIWidgets.referencesHealth$StatusBarPlugin"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController, CommonPluginModel, StatusBarPluginController) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.statusBar_ChangeColor$Action = function (hexColorIdIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.StatusBarAction.StatusBar_ChangeColor$vars"))());
+vars.value.hexColorIdInLocal = hexColorIdIn;
+var statusBar_BackgroundColorByHexStringVar = new OS.DataTypes.VariableHolder();
+// Execute Action: StatusBar_BackgroundColorByHexString
+statusBar_BackgroundColorByHexStringVar.value = StatusBarPluginController.default.statusBar_BackgroundColorByHexString$Action(vars.value.hexColorIdInLocal, callContext);
+
+return ;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.StatusBarAction.StatusBar_ChangeColor$vars", [{
+name: "HexColorId",
+attrName: "hexColorIdInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+MobileUIWidgetsController.default.clientActionProxies.statusBar_ChangeColor$Action = function (hexColorIdIn) {
+hexColorIdIn = (hexColorIdIn === undefined) ? "" : hexColorIdIn;
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.statusBar_ChangeColor$Action.bind(controller, hexColorIdIn), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {};
+});
+};
+});
+
+define("MobileUIWidgets.controller$Success", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller", "MobileUIWidgets.controller$CustomFeedbackMessage"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.success$Action = function (messageIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.FeedbackMessage.Success$vars"))());
+vars.value.messageInLocal = messageIn;
+// Execute Action: CustomFeedbackMessage
+MobileUIWidgetsController.default.customFeedbackMessage$Action(vars.value.messageInLocal, 1, true, "", true, true, 3000, "icon-check-circle", "-large", callContext);
+return ;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.FeedbackMessage.Success$vars", [{
+name: "Message",
+attrName: "messageInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+MobileUIWidgetsController.default.clientActionProxies.success$Action = function (messageIn) {
+messageIn = (messageIn === undefined) ? "" : messageIn;
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.success$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(messageIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {};
+});
+};
+});
+
+define("MobileUIWidgets.controller$TriggerOfflineDataSync", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller", "MobilePatterns.controller", "MobilePatterns.controller$StartOfflineDataSync", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$MobilePatterns"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController, MobilePatternsController) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.triggerOfflineDataSync$Action = function (syncUnitIn, discardPendingSyncUnitsIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.OfflineDataSync.TriggerOfflineDataSync$vars"))());
+vars.value.syncUnitInLocal = syncUnitIn;
+vars.value.discardPendingSyncUnitsInLocal = discardPendingSyncUnitsIn;
+// Execute Action: StartOfflineDataSync
+MobilePatternsController.default.startOfflineDataSync$Action(vars.value.syncUnitInLocal, vars.value.discardPendingSyncUnitsInLocal, callContext);
+return ;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.OfflineDataSync.TriggerOfflineDataSync$vars", [{
+name: "SyncUnit",
+attrName: "syncUnitInLocal",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "DiscardPendingSyncUnits",
+attrName: "discardPendingSyncUnitsInLocal",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+MobileUIWidgetsController.default.clientActionProxies.triggerOfflineDataSync$Action = function (syncUnitIn, discardPendingSyncUnitsIn) {
+syncUnitIn = (syncUnitIn === undefined) ? "" : syncUnitIn;
+discardPendingSyncUnitsIn = (discardPendingSyncUnitsIn === undefined) ? false : discardPendingSyncUnitsIn;
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.triggerOfflineDataSync$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(syncUnitIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(discardPendingSyncUnitsIn, OS.Types.Boolean)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {};
+});
+};
+});
+
+define("MobileUIWidgets.controller$Warning", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller", "MobileUIWidgets.controller$CustomFeedbackMessage"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.warning$Action = function (messageIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("MobileUIWidgets.FeedbackMessage.Warning$vars"))());
+vars.value.messageInLocal = messageIn;
+// Execute Action: CustomFeedbackMessage
+MobileUIWidgetsController.default.customFeedbackMessage$Action(vars.value.messageInLocal, 2, true, "", true, false, 3000, "icon-alert-triangle-filled", "-large", callContext);
+return ;
+};
+var controller = MobileUIWidgetsController.default;
+MobileUIWidgetsController.default.constructor.registerVariableGroupType("MobileUIWidgets.FeedbackMessage.Warning$vars", [{
+name: "Message",
+attrName: "messageInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+MobileUIWidgetsController.default.clientActionProxies.warning$Action = function (messageIn) {
+messageIn = (messageIn === undefined) ? "" : messageIn;
+return controller.executeActionInsideJSNode(MobileUIWidgetsController.default.warning$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(messageIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {};
+});
+};
+});
+
+define("MobileUIWidgets.controller$ServerAction.ServerDataSync", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.controller"], function (exports, OutSystems, MobileUIWidgetsModel, MobileUIWidgetsController) {
+var OS = OutSystems.Internal;
+MobileUIWidgetsController.default.serverDataSync$ServerAction = function (syncUnitIn, callContext) {
+var controller = this.controller;
+var inputs = {
+SyncUnit: OS.DataTypes.JSConversions.basicTypeToJS(syncUnitIn, OS.Types.Text)
+};
+return controller.callServerAction("ServerDataSync", "screenservices/MobileUIWidgets/ActionServerDataSync", "xuSMtfzaA7RStqZZdu0hGw", inputs, controller.callContext(callContext)).then(function (outputs) {
+});
+};
+});
+define("MobileUIWidgets.controller", ["exports", "OutSystems", "MobileUIWidgets.model"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var MobileUIWidgetsController = exports;
+var Controller = (function (_super) {
+__extends(Controller, _super);
+function Controller() {
+_super.apply(this, arguments);
+}
+Controller.prototype.clientActionProxies = {};
+Controller.prototype.roles = {};
+Controller.prototype.defaultTimeout = 10;
+Controller.prototype.getDefaultTimeout = function () {
+return MobileUIWidgetsController.default.defaultTimeout;
+};
+return Controller;
+})(OS.Controller.BaseModuleController);
+MobileUIWidgetsController.default = new Controller();
+});

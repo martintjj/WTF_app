@@ -1,0 +1,1821 @@
+﻿define("CustomerNotifications_MBP.controller$CheckFirebasePlugin", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CommonPlugin.controller", "CustomerNotifications_MBP.controller$CheckFirebasePlugin.IsFirebaseAnalyticsDefinedJS", "CommonPlugin.controller$IsCordovaDefined", "CustomerNotifications_MBP.referencesHealth", "CustomerNotifications_MBP.referencesHealth$CommonPlugin"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CommonPluginController, CustomerNotifications_MBP_controller_CheckFirebasePlugin_IsFirebaseAnalyticsDefinedJS) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.checkFirebasePlugin$Action = function (callContext) {
+callContext = controller.callContext(callContext);
+var isCordovaDefinedVar = new OS.DataTypes.VariableHolder();
+var isFirebaseAnalyticsDefinedJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging.CheckFirebasePlugin$outVars"))());
+// Execute Action: IsCordovaDefined
+isCordovaDefinedVar.value = CommonPluginController.default.isCordovaDefined$Action(callContext);
+
+if((isCordovaDefinedVar.value.isLoadedOut)) {
+isFirebaseAnalyticsDefinedJSResult.value = controller.safeExecuteJSNode(CustomerNotifications_MBP_controller_CheckFirebasePlugin_IsFirebaseAnalyticsDefinedJS, "IsFirebaseAnalyticsDefined", "CheckFirebasePlugin", {
+IsAvailable: OS.DataTypes.JSConversions.basicTypeToJS(false, OS.Types.Boolean, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging.CheckFirebasePlugin$isFirebaseAnalyticsDefinedJSResult"))();
+jsNodeResult.isAvailableOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.IsAvailable, OS.Types.Boolean);
+return jsNodeResult;
+}, {}, {});
+if((isFirebaseAnalyticsDefinedJSResult.value.isAvailableOut)) {
+// IsAvailable = True
+outVars.value.isAvailableOut = true;
+} else {
+// Error = "Firebase Analytics Plugin is unavailable"
+outVars.value.errorOut = "Firebase Analytics Plugin is unavailable";
+}
+
+} else {
+// Error = "Cordova is not available"
+outVars.value.errorOut = "Cordova is not available";
+}
+
+return outVars.value;
+};
+var controller = CustomerNotifications_MBPController.default;
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging.CheckFirebasePlugin$isFirebaseAnalyticsDefinedJSResult", [{
+name: "IsAvailable",
+attrName: "isAvailableOut",
+mandatory: true,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging.CheckFirebasePlugin$outVars", [{
+name: "IsAvailable",
+attrName: "isAvailableOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "Error",
+attrName: "errorOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.clientActionProxies.checkFirebasePlugin$Action = function () {
+return controller.executeActionInsideJSNode(CustomerNotifications_MBPController.default.checkFirebasePlugin$Action.bind(controller), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+IsAvailable: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.isAvailableOut, OS.Types.Boolean, true),
+Error: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.errorOut, OS.Types.Text, true)
+};
+});
+};
+});
+define("CustomerNotifications_MBP.controller$CheckFirebasePlugin.IsFirebaseAnalyticsDefinedJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+$parameters.IsAvailable = !!window.fp;
+};
+});
+
+define("CustomerNotifications_MBP.controller$CheckNewFirebasePlugin", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CommonPlugin.controller", "CustomerNotifications_MBP.controller$CheckNewFirebasePlugin.FirebaseIsAvailableJS", "CommonPlugin.controller$IsCordovaDefined", "CustomerNotifications_MBP.referencesHealth", "CustomerNotifications_MBP.referencesHealth$CommonPlugin"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CommonPluginController, CustomerNotifications_MBP_controller_CheckNewFirebasePlugin_FirebaseIsAvailableJS) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.checkNewFirebasePlugin$Action = function (callContext) {
+callContext = controller.callContext(callContext);
+var isCordovaDefinedVar = new OS.DataTypes.VariableHolder();
+var firebaseIsAvailableJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.CheckNewFirebasePlugin$outVars"))());
+// Execute Action: IsCordovaDefined
+isCordovaDefinedVar.value = CommonPluginController.default.isCordovaDefined$Action(callContext);
+
+if((isCordovaDefinedVar.value.isLoadedOut)) {
+firebaseIsAvailableJSResult.value = controller.safeExecuteJSNode(CustomerNotifications_MBP_controller_CheckNewFirebasePlugin_FirebaseIsAvailableJS, "FirebaseIsAvailable", "CheckNewFirebasePlugin", {
+IsAvailable: OS.DataTypes.JSConversions.basicTypeToJS(false, OS.Types.Boolean, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.CheckNewFirebasePlugin$firebaseIsAvailableJSResult"))();
+jsNodeResult.isAvailableOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.IsAvailable, OS.Types.Boolean);
+return jsNodeResult;
+}, {}, {});
+if((firebaseIsAvailableJSResult.value.isAvailableOut)) {
+// Set Output
+// IsAvailable = True
+outVars.value.isAvailableOut = true;
+} else {
+// Set Output
+// ErrorMessage = "Plugin is not loaded."
+outVars.value.errorMessageOut = "Plugin is not loaded.";
+// IsAvailable = False
+outVars.value.isAvailableOut = false;
+}
+
+} else {
+// Error = "Cordova is not available"
+outVars.value.errorOut = "Cordova is not available";
+}
+
+return outVars.value;
+};
+var controller = CustomerNotifications_MBPController.default;
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.CheckNewFirebasePlugin$firebaseIsAvailableJSResult", [{
+name: "IsAvailable",
+attrName: "isAvailableOut",
+mandatory: true,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.CheckNewFirebasePlugin$outVars", [{
+name: "IsAvailable",
+attrName: "isAvailableOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "ErrorMessage",
+attrName: "errorMessageOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "Error",
+attrName: "errorOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.clientActionProxies.checkNewFirebasePlugin$Action = function () {
+return controller.executeActionInsideJSNode(CustomerNotifications_MBPController.default.checkNewFirebasePlugin$Action.bind(controller), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+IsAvailable: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.isAvailableOut, OS.Types.Boolean, true),
+ErrorMessage: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.errorMessageOut, OS.Types.Text, true),
+Error: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.errorOut, OS.Types.Text, true)
+};
+});
+};
+});
+define("CustomerNotifications_MBP.controller$CheckNewFirebasePlugin.FirebaseIsAvailableJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+$parameters.IsAvailable = !!Firebase;
+};
+});
+
+define("CustomerNotifications_MBP.controller$DateTime_PrettyFormat", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.dateTime_PrettyFormat$Action = function (dateTimeIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.Utilities.DateTime_PrettyFormat$vars"))());
+vars.value.dateTimeInLocal = dateTimeIn;
+var allExceptionsVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.Utilities.DateTime_PrettyFormat$outVars"))());
+try {// Not Null
+if((!(vars.value.dateTimeInLocal.equals(OS.BuiltinFunctions.nullDate())))) {
+// Set Formatted Text
+// FormattedText = If + " às " + FormatDateTime + "h"
+outVars.value.formattedTextOut = ((((((OS.BuiltinFunctions.diffHours(vars.value.dateTimeInLocal, OS.BuiltinFunctions.currDateTime()) === 24)) ? ("Ontem") : (((OS.BuiltinFunctions.dateTimeToDate(vars.value.dateTimeInLocal).equals(OS.BuiltinFunctions.dateTimeToDate(OS.BuiltinFunctions.currDateTime()))) ? ("Hoje") : (OS.BuiltinFunctions.formatDateTime(vars.value.dateTimeInLocal, "dd-MM-yyyy"))))) + " às ") + OS.BuiltinFunctions.formatDateTime(vars.value.dateTimeInLocal, "HH:mm")) + "h");
+}
+
+} catch (ex) {
+(function () {
+OS.Logger.trace("Utilities.DateTime_PrettyFormat", OS.Exceptions.getMessage(ex), ex.name);
+// Handle Error: AllExceptions
+if(!(OS.Exceptions.isSystem(ex))) {
+OS.Logger.error(null, ex);
+allExceptionsVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return outVars.value;
+
+}
+
+throw ex;
+})();
+}
+
+return outVars.value;
+};
+var controller = CustomerNotifications_MBPController.default;
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.Utilities.DateTime_PrettyFormat$vars", [{
+name: "DateTime",
+attrName: "dateTimeInLocal",
+mandatory: true,
+dataType: OS.Types.DateTime,
+defaultValue: function () {
+return OS.DataTypes.DateTime.defaultValue;
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.Utilities.DateTime_PrettyFormat$outVars", [{
+name: "FormattedText",
+attrName: "formattedTextOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.clientActionProxies.dateTime_PrettyFormat$Action = function (dateTimeIn) {
+dateTimeIn = (dateTimeIn === undefined) ? OS.DataTypes.DateTime.defaultValue : dateTimeIn;
+return controller.executeActionInsideJSNode(CustomerNotifications_MBPController.default.dateTime_PrettyFormat$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(dateTimeIn, OS.Types.DateTime)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+FormattedText: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.formattedTextOut, OS.Types.Text, true)
+};
+});
+};
+});
+
+define("CustomerNotifications_MBP.controller$FB_InitCloudMessaging", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CustomerNotifications_MBP.controller$GrantsPermission", "CustomerNotifications_MBP.controller$GrantsPermission_v2", "CustomerNotifications_MBP.controller$CheckFirebasePlugin", "CustomerNotifications_MBP.controller$CheckNewFirebasePlugin"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.fB_InitCloudMessaging$Action = function (callContext) {
+callContext = controller.callContext(callContext);
+var allExceptionsVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var grantsPermission_OldFirebaseVar = new OS.DataTypes.VariableHolder();
+var grantsPermission_v2Var = new OS.DataTypes.VariableHolder();
+var checkOldFirebasePluginVar = new OS.DataTypes.VariableHolder();
+var checkNewFirebasePluginVar = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.FB_InitCloudMessaging$outVars"))());
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: CheckOldFirebasePlugin
+checkOldFirebasePluginVar.value = CustomerNotifications_MBPController.default.checkFirebasePlugin$Action(callContext);
+
+return OS.Flow.executeSequence(function () {
+if((checkOldFirebasePluginVar.value.isAvailableOut)) {
+// Execute Action: GrantsPermission_OldFirebase
+return CustomerNotifications_MBPController.default.grantsPermission$Action(callContext).then(function (value) {
+grantsPermission_OldFirebaseVar.value = value;
+}).then(function () {
+// Execute Action: LogMessage7
+OS.SystemActions.logMessage(((grantsPermission_OldFirebaseVar.value.isSuccessOut) ? ("(OldFirebase) InitCloudMessaging Success!") : (("(OldFirebase) Error: " + grantsPermission_OldFirebaseVar.value.errorOut))), "FirebaseMobile", callContext);
+// Success = False
+outVars.value.successOut = false;
+});
+} else {
+// Execute Action: CheckNewFirebasePlugin
+checkNewFirebasePluginVar.value = CustomerNotifications_MBPController.default.checkNewFirebasePlugin$Action(callContext);
+
+return OS.Flow.executeSequence(function () {
+if((checkNewFirebasePluginVar.value.isAvailableOut)) {
+// Execute Action: GrantsPermission_v2
+return CustomerNotifications_MBPController.default.grantsPermission_v2$Action(callContext).then(function (value) {
+grantsPermission_v2Var.value = value;
+}).then(function () {
+if((grantsPermission_v2Var.value.successOut)) {
+// Execute Action: LogMessage5
+OS.SystemActions.logMessage("(NewFirebsase) InitCloudMessaging Success! ", "FirebaseMobile", callContext);
+// Success = GrantsPermission_v2.Success
+outVars.value.successOut = grantsPermission_v2Var.value.successOut;
+} else {
+// Execute Action: LogMessage6
+OS.SystemActions.logMessage(("(NewFirebase) Error: " + grantsPermission_v2Var.value.errorOut), "FirebaseMobile", callContext);
+// Success = GrantsPermission_v2.Success
+outVars.value.successOut = grantsPermission_v2Var.value.successOut;
+}
+
+});
+} else {
+// Execute Action: LogMessage4
+OS.SystemActions.logMessage("New_Firebase not defined", "FirebaseMobile", callContext);
+// Success = False
+outVars.value.successOut = false;
+}
+
+});
+}
+
+});
+}).catch(function (ex) {
+OS.Logger.trace("CloudMessaging_v2.FB_InitCloudMessaging", OS.Exceptions.getMessage(ex), ex.name);
+// Handle Error: AllExceptions
+if(!(OS.Exceptions.isSystem(ex))) {
+OS.Logger.error(null, ex);
+allExceptionsVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return OS.Flow.executeAsyncFlow(function () {
+// Success = False
+outVars.value.successOut = false;
+return OS.Flow.returnAsync(outVars.value);
+
+});
+}
+
+throw ex;
+}).then(function () {
+return outVars.value;
+});
+};
+var controller = CustomerNotifications_MBPController.default;
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.FB_InitCloudMessaging$outVars", [{
+name: "Success",
+attrName: "successOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return true;
+}
+}]);
+CustomerNotifications_MBPController.default.clientActionProxies.fB_InitCloudMessaging$Action = function () {
+return controller.executeActionInsideJSNode(CustomerNotifications_MBPController.default.fB_InitCloudMessaging$Action.bind(controller), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Success: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.successOut, OS.Types.Boolean, true)
+};
+});
+};
+});
+
+define("CustomerNotifications_MBP.controller$FunctionExists", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CustomerNotifications_MBP.controller$FunctionExists.FunctionExistsJSJS"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CustomerNotifications_MBP_controller_FunctionExists_FunctionExistsJSJS) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.functionExists$Action = function (functionIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.FunctionExists$vars"))());
+vars.value.functionInLocal = functionIn;
+var functionExistsJSJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.FunctionExists$outVars"))());
+functionExistsJSJSResult.value = controller.safeExecuteJSNode(CustomerNotifications_MBP_controller_FunctionExists_FunctionExistsJSJS, "FunctionExistsJS", "FunctionExists", {
+Function: OS.DataTypes.JSConversions.basicTypeToJS(vars.value.functionInLocal, OS.Types.Text, true),
+Exists: OS.DataTypes.JSConversions.basicTypeToJS(false, OS.Types.Boolean, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.FunctionExists$functionExistsJSJSResult"))();
+jsNodeResult.existsOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.Exists, OS.Types.Boolean);
+return jsNodeResult;
+}, {}, {});
+if((functionExistsJSJSResult.value.existsOut)) {
+// Success = True
+outVars.value.successOut = true;
+// ErrorMessage = ""
+outVars.value.errorMessageOut = "";
+// ErrorCode = 0
+outVars.value.errorCodeOut = "0";
+} else {
+// ErrorMessage = Function + "doesn't exist"
+outVars.value.errorMessageOut = (vars.value.functionInLocal + "doesn\'t exist");
+// ErrorCode = 2
+outVars.value.errorCodeOut = "2";
+// Success = False
+outVars.value.successOut = false;
+}
+
+return outVars.value;
+};
+var controller = CustomerNotifications_MBPController.default;
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.FunctionExists$vars", [{
+name: "Function",
+attrName: "functionInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.FunctionExists$functionExistsJSJSResult", [{
+name: "Exists",
+attrName: "existsOut",
+mandatory: true,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.FunctionExists$outVars", [{
+name: "Success",
+attrName: "successOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "ErrorMessage",
+attrName: "errorMessageOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "ErrorCode",
+attrName: "errorCodeOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.clientActionProxies.functionExists$Action = function (functionIn) {
+functionIn = (functionIn === undefined) ? "" : functionIn;
+return controller.executeActionInsideJSNode(CustomerNotifications_MBPController.default.functionExists$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(functionIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Success: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.successOut, OS.Types.Boolean, true),
+ErrorMessage: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.errorMessageOut, OS.Types.Text, true),
+ErrorCode: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.errorCodeOut, OS.Types.Text, true)
+};
+});
+};
+});
+define("CustomerNotifications_MBP.controller$FunctionExists.FunctionExistsJSJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+$parameters.Exists = !!$parameters.Function;
+
+console.log("Function", $parameters.Exists);
+};
+});
+
+define("CustomerNotifications_MBP.controller$GetToken_v2", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CustomerNotifications_MBP.controller$GetToken_v2.GetTokenJS", "CustomerNotifications_MBP.controller$FunctionExists"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CustomerNotifications_MBP_controller_GetToken_v2_GetTokenJS) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.getToken_v2$Action = function (callContext) {
+callContext = controller.callContext(callContext);
+var functionExistsVar = new OS.DataTypes.VariableHolder();
+var getTokenJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.GetToken_v2$outVars"))());
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: FunctionExists
+functionExistsVar.value = CustomerNotifications_MBPController.default.functionExists$Action("Firebase.getToken", callContext);
+
+return OS.Flow.executeSequence(function () {
+if((functionExistsVar.value.successOut)) {
+return controller.safeExecuteAsyncJSNode(CustomerNotifications_MBP_controller_GetToken_v2_GetTokenJS, "GetToken", "GetToken_v2", {
+Token: OS.DataTypes.JSConversions.basicTypeToJS("", OS.Types.Text, true),
+Success: OS.DataTypes.JSConversions.basicTypeToJS(false, OS.Types.Boolean, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.GetToken_v2$getTokenJSResult"))();
+jsNodeResult.tokenOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.Token, OS.Types.Text);
+jsNodeResult.successOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.Success, OS.Types.Boolean);
+return jsNodeResult;
+}, {}, {}).then(function (results) {
+getTokenJSResult.value = results;
+}).then(function () {
+if((getTokenJSResult.value.successOut)) {
+// Sucess = GetToken.Success
+outVars.value.sucessOut = getTokenJSResult.value.successOut;
+// Token = GetToken.Token
+outVars.value.tokenOut = getTokenJSResult.value.tokenOut;
+} else {
+// Sucess = False
+outVars.value.sucessOut = false;
+// ErrorMessage = "Error geting token"
+outVars.value.errorMessageOut = "Error geting token";
+// ErrorCode = 2
+outVars.value.errorCodeOut = "2";
+}
+
+});
+} else {
+// Sucess = False
+outVars.value.sucessOut = false;
+// ErrorMessage = FunctionExists.ErrorMessage
+outVars.value.errorMessageOut = functionExistsVar.value.errorMessageOut;
+// ErrorCode = 2
+outVars.value.errorCodeOut = "2";
+}
+
+});
+}).then(function () {
+return outVars.value;
+});
+};
+var controller = CustomerNotifications_MBPController.default;
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.GetToken_v2$getTokenJSResult", [{
+name: "Token",
+attrName: "tokenOut",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "Success",
+attrName: "successOut",
+mandatory: true,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.GetToken_v2$outVars", [{
+name: "Sucess",
+attrName: "sucessOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "ErrorMessage",
+attrName: "errorMessageOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "ErrorCode",
+attrName: "errorCodeOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "Token",
+attrName: "tokenOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.clientActionProxies.getToken_v2$Action = function () {
+return controller.executeActionInsideJSNode(CustomerNotifications_MBPController.default.getToken_v2$Action.bind(controller), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Sucess: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.sucessOut, OS.Types.Boolean, true),
+ErrorMessage: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.errorMessageOut, OS.Types.Text, true),
+ErrorCode: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.errorCodeOut, OS.Types.Text, true),
+Token: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.tokenOut, OS.Types.Text, true)
+};
+});
+};
+});
+define("CustomerNotifications_MBP.controller$GetToken_v2.GetTokenJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+return new Promise(function ($resolve, $reject) {
+Firebase.getToken(success, error);
+
+function success(token) {
+    $parameters.Token = token;
+    $parameters.Success = true;
+    $resolve();
+}
+
+function error() {
+    $parameters.Success = false;
+    $resolve();
+}
+});
+};
+});
+
+define("CustomerNotifications_MBP.controller$GrantsPermission", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CommonPlugin.controller", "CustomerNotifications_MBP.controller$GrantsPermission.GrantPermissionJS", "CustomerNotifications_MBP.controller$HasPermission", "CustomerNotifications_MBP.controller$CheckFirebasePlugin", "CommonPlugin.controller$GetPlatform", "CustomerNotifications_MBP.referencesHealth", "CustomerNotifications_MBP.referencesHealth$CommonPlugin"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CommonPluginController, CustomerNotifications_MBP_controller_GrantsPermission_GrantPermissionJS) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.grantsPermission$Action = function (callContext) {
+callContext = controller.callContext(callContext);
+var allExceptionsVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var hasPermissionVar = new OS.DataTypes.VariableHolder();
+var checkFirebasePluginVar = new OS.DataTypes.VariableHolder();
+var getPlatformVar = new OS.DataTypes.VariableHolder();
+var grantPermissionJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging.GrantsPermission$outVars"))());
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: CheckFirebasePlugin
+checkFirebasePluginVar.value = CustomerNotifications_MBPController.default.checkFirebasePlugin$Action(callContext);
+
+return OS.Flow.executeSequence(function () {
+if((checkFirebasePluginVar.value.isAvailableOut)) {
+// Execute Action: GetPlatform
+getPlatformVar.value = CommonPluginController.default.getPlatform$Action(callContext);
+
+// is iOS?
+return OS.Flow.executeSequence(function () {
+if(((OS.BuiltinFunctions.toLower("iOS") === OS.BuiltinFunctions.toLower(getPlatformVar.value.platformOut)))) {
+// Execute Action: HasPermission
+return CustomerNotifications_MBPController.default.hasPermission$Action(callContext).then(function (value) {
+hasPermissionVar.value = value;
+}).then(function () {
+// has permission?
+return OS.Flow.executeSequence(function () {
+if((hasPermissionVar.value.hasPermissionOut)) {
+// isSuccess = True
+outVars.value.isSuccessOut = true;
+} else {
+return controller.safeExecuteAsyncJSNode(CustomerNotifications_MBP_controller_GrantsPermission_GrantPermissionJS, "GrantPermission", "GrantsPermission", {
+IsSuccess: OS.DataTypes.JSConversions.basicTypeToJS(false, OS.Types.Boolean, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging.GrantsPermission$grantPermissionJSResult"))();
+jsNodeResult.isSuccessOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.IsSuccess, OS.Types.Boolean);
+return jsNodeResult;
+}, {}, {}).then(function (results) {
+grantPermissionJSResult.value = results;
+}).then(function () {
+// isSuccess = GrantPermission.IsSuccess
+outVars.value.isSuccessOut = grantPermissionJSResult.value.isSuccessOut;
+});
+}
+
+});
+});
+} else {
+// isSuccess = True
+outVars.value.isSuccessOut = true;
+}
+
+});
+} else {
+// isSuccess = CheckFirebasePlugin.IsAvailable
+outVars.value.isSuccessOut = checkFirebasePluginVar.value.isAvailableOut;
+// Error = CheckFirebasePlugin.Error
+outVars.value.errorOut = checkFirebasePluginVar.value.errorOut;
+}
+
+});
+}).catch(function (ex) {
+OS.Logger.trace("CloudMessaging.GrantsPermission", OS.Exceptions.getMessage(ex), ex.name);
+// Handle Error: AllExceptions
+if(!(OS.Exceptions.isSystem(ex))) {
+OS.Logger.error(null, ex);
+allExceptionsVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return OS.Flow.executeAsyncFlow(function () {
+// outputs
+// isSuccess = False
+outVars.value.isSuccessOut = false;
+// Error = AllExceptions.ExceptionMessage
+outVars.value.errorOut = allExceptionsVar.value.exceptionMessageAttr;
+return OS.Flow.returnAsync(outVars.value);
+
+});
+}
+
+throw ex;
+}).then(function () {
+return outVars.value;
+});
+};
+var controller = CustomerNotifications_MBPController.default;
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging.GrantsPermission$grantPermissionJSResult", [{
+name: "IsSuccess",
+attrName: "isSuccessOut",
+mandatory: true,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging.GrantsPermission$outVars", [{
+name: "isSuccess",
+attrName: "isSuccessOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "Error",
+attrName: "errorOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.clientActionProxies.grantsPermission$Action = function () {
+return controller.executeActionInsideJSNode(CustomerNotifications_MBPController.default.grantsPermission$Action.bind(controller), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+isSuccess: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.isSuccessOut, OS.Types.Boolean, true),
+Error: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.errorOut, OS.Types.Text, true)
+};
+});
+};
+});
+define("CustomerNotifications_MBP.controller$GrantsPermission.GrantPermissionJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+return new Promise(function ($resolve, $reject) {
+window.fp.grantPermission(success, error);
+
+function success() {
+    $parameters.IsSuccess = true;
+    $resolve();
+}
+
+function error() {
+    $parameters.IsSuccess = false;
+    $resolve();
+}
+});
+};
+});
+
+define("CustomerNotifications_MBP.controller$GrantsPermission_v2", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CommonPlugin.controller", "CustomerNotifications_MBP.controller$GrantsPermission_v2.GrantPermissionJSJS", "CustomerNotifications_MBP.controller$FunctionExists", "CustomerNotifications_MBP.controller$HasPermission_v2", "CommonPlugin.controller$GetPlatform", "CustomerNotifications_MBP.referencesHealth", "CustomerNotifications_MBP.referencesHealth$CommonPlugin", "CustomerNotifications_MBP.controller$CheckNewFirebasePlugin"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CommonPluginController, CustomerNotifications_MBP_controller_GrantsPermission_v2_GrantPermissionJSJS) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.grantsPermission_v2$Action = function (callContext) {
+callContext = controller.callContext(callContext);
+var functionExistsVar = new OS.DataTypes.VariableHolder();
+var hasPermission_v2Var = new OS.DataTypes.VariableHolder();
+var getPlatformVar = new OS.DataTypes.VariableHolder();
+var checkFirebase_PluginVar = new OS.DataTypes.VariableHolder();
+var grantPermissionJSJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.GrantsPermission_v2$outVars"))());
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: CheckFirebase_Plugin
+checkFirebase_PluginVar.value = CustomerNotifications_MBPController.default.checkNewFirebasePlugin$Action(callContext);
+
+return OS.Flow.executeSequence(function () {
+if((checkFirebase_PluginVar.value.isAvailableOut)) {
+// Execute Action: FunctionExists
+functionExistsVar.value = CustomerNotifications_MBPController.default.functionExists$Action("Firebase.grantPermission", callContext);
+
+// Function Exists?
+return OS.Flow.executeSequence(function () {
+if((functionExistsVar.value.successOut)) {
+// Execute Action: GetPlatform
+getPlatformVar.value = CommonPluginController.default.getPlatform$Action(callContext);
+
+// is iOS?
+return OS.Flow.executeSequence(function () {
+if(((OS.BuiltinFunctions.toLower("iOS") === OS.BuiltinFunctions.toLower(getPlatformVar.value.platformOut)))) {
+// Execute Action: HasPermission_v2
+return CustomerNotifications_MBPController.default.hasPermission_v2$Action(callContext).then(function (value) {
+hasPermission_v2Var.value = value;
+}).then(function () {
+return OS.Flow.executeSequence(function () {
+if((hasPermission_v2Var.value.hasPermissionOut)) {
+// Success = True
+outVars.value.successOut = true;
+} else {
+return controller.safeExecuteAsyncJSNode(CustomerNotifications_MBP_controller_GrantsPermission_v2_GrantPermissionJSJS, "GrantPermissionJS", "GrantsPermission_v2", {
+Success: OS.DataTypes.JSConversions.basicTypeToJS(false, OS.Types.Boolean, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.GrantsPermission_v2$grantPermissionJSJSResult"))();
+jsNodeResult.successOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.Success, OS.Types.Boolean);
+return jsNodeResult;
+}, {}, {}).then(function (results) {
+grantPermissionJSJSResult.value = results;
+}).then(function () {
+// Success = GrantPermissionJS.Success
+outVars.value.successOut = grantPermissionJSJSResult.value.successOut;
+});
+}
+
+});
+});
+} else {
+// Success = True
+outVars.value.successOut = true;
+// Error = ""
+outVars.value.errorOut = "";
+}
+
+});
+} else {
+// Error = FunctionExists.ErrorMessage
+outVars.value.errorOut = functionExistsVar.value.errorMessageOut;
+// Success = False
+outVars.value.successOut = false;
+}
+
+});
+} else {
+// Success = CheckFirebase_Plugin.IsAvailable
+outVars.value.successOut = checkFirebase_PluginVar.value.isAvailableOut;
+// Error = CheckFirebase_Plugin.ErrorMessage
+outVars.value.errorOut = checkFirebase_PluginVar.value.errorMessageOut;
+}
+
+});
+}).then(function () {
+return outVars.value;
+});
+};
+var controller = CustomerNotifications_MBPController.default;
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.GrantsPermission_v2$grantPermissionJSJSResult", [{
+name: "Success",
+attrName: "successOut",
+mandatory: true,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.GrantsPermission_v2$outVars", [{
+name: "Success",
+attrName: "successOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "Error",
+attrName: "errorOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.clientActionProxies.grantsPermission_v2$Action = function () {
+return controller.executeActionInsideJSNode(CustomerNotifications_MBPController.default.grantsPermission_v2$Action.bind(controller), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Success: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.successOut, OS.Types.Boolean, true),
+Error: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.errorOut, OS.Types.Text, true)
+};
+});
+};
+});
+define("CustomerNotifications_MBP.controller$GrantsPermission_v2.GrantPermissionJSJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+return new Promise(function ($resolve, $reject) {
+function success() {
+    $parameters.Success = true;
+    $resolve();
+}
+
+function error() {
+    $parameters.Success = false;
+    $resolve();
+}
+
+Firebase.grantPermission(success, error);
+
+});
+};
+});
+
+define("CustomerNotifications_MBP.controller$HasPermission", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CustomerNotifications_MBP.controller$HasPermission.ChecksPermissionJS"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CustomerNotifications_MBP_controller_HasPermission_ChecksPermissionJS) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.hasPermission$Action = function (callContext) {
+callContext = controller.callContext(callContext);
+var allExceptionsVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var checksPermissionJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging.HasPermission$outVars"))());
+return OS.Flow.executeAsyncFlow(function () {
+return controller.safeExecuteAsyncJSNode(CustomerNotifications_MBP_controller_HasPermission_ChecksPermissionJS, "ChecksPermission", "HasPermission", {
+hasPermission: OS.DataTypes.JSConversions.basicTypeToJS(false, OS.Types.Boolean, true),
+IsSuccess: OS.DataTypes.JSConversions.basicTypeToJS(false, OS.Types.Boolean, true),
+ErrorMessage: OS.DataTypes.JSConversions.basicTypeToJS("", OS.Types.Text, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging.HasPermission$checksPermissionJSResult"))();
+jsNodeResult.hasPermissionOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.hasPermission, OS.Types.Boolean);
+jsNodeResult.isSuccessOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.IsSuccess, OS.Types.Boolean);
+jsNodeResult.errorMessageOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.ErrorMessage, OS.Types.Text);
+return jsNodeResult;
+}, {}, {}).then(function (results) {
+checksPermissionJSResult.value = results;
+}).then(function () {
+// Outputs
+// hasPermission = ChecksPermission.hasPermission
+outVars.value.hasPermissionOut = checksPermissionJSResult.value.hasPermissionOut;
+// isSuccess = ChecksPermission.IsSuccess
+outVars.value.isSuccessOut = checksPermissionJSResult.value.isSuccessOut;
+// Error = ChecksPermission.ErrorMessage
+outVars.value.errorOut = checksPermissionJSResult.value.errorMessageOut;
+});
+}).catch(function (ex) {
+OS.Logger.trace("CloudMessaging.HasPermission", OS.Exceptions.getMessage(ex), ex.name);
+// Handle Error: AllExceptions
+if(!(OS.Exceptions.isSystem(ex))) {
+OS.Logger.error(null, ex);
+allExceptionsVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return OS.Flow.executeAsyncFlow(function () {
+// outputs
+// isSuccess = False
+outVars.value.isSuccessOut = false;
+// Error = AllExceptions.ExceptionMessage
+outVars.value.errorOut = allExceptionsVar.value.exceptionMessageAttr;
+return OS.Flow.returnAsync(outVars.value);
+
+});
+}
+
+throw ex;
+}).then(function () {
+return outVars.value;
+});
+};
+var controller = CustomerNotifications_MBPController.default;
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging.HasPermission$checksPermissionJSResult", [{
+name: "hasPermission",
+attrName: "hasPermissionOut",
+mandatory: true,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "IsSuccess",
+attrName: "isSuccessOut",
+mandatory: true,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "ErrorMessage",
+attrName: "errorMessageOut",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging.HasPermission$outVars", [{
+name: "hasPermission",
+attrName: "hasPermissionOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "isSuccess",
+attrName: "isSuccessOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "Error",
+attrName: "errorOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.clientActionProxies.hasPermission$Action = function () {
+return controller.executeActionInsideJSNode(CustomerNotifications_MBPController.default.hasPermission$Action.bind(controller), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+hasPermission: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.hasPermissionOut, OS.Types.Boolean, true),
+isSuccess: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.isSuccessOut, OS.Types.Boolean, true),
+Error: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.errorOut, OS.Types.Text, true)
+};
+});
+};
+});
+define("CustomerNotifications_MBP.controller$HasPermission.ChecksPermissionJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+return new Promise(function ($resolve, $reject) {
+window.fp.hasPermission(success, error);
+
+function success(data) {
+    $parameters.IsSuccess = true;
+    $parameters.hasPermission = data.isEnabled;
+    $resolve();
+}
+
+function error(err) {
+    $parameters.IsSuccess = false;
+    $parameters.ErrorMessage = err;
+    $resolve();
+}
+});
+};
+});
+
+define("CustomerNotifications_MBP.controller$HasPermission_v2", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CustomerNotifications_MBP.controller$HasPermission_v2.HasPermissionJSJS", "CustomerNotifications_MBP.controller$FunctionExists"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CustomerNotifications_MBP_controller_HasPermission_v2_HasPermissionJSJS) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.hasPermission_v2$Action = function (callContext) {
+callContext = controller.callContext(callContext);
+var functionExistsVar = new OS.DataTypes.VariableHolder();
+var hasPermissionJSJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.HasPermission_v2$outVars"))());
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: FunctionExists
+functionExistsVar.value = CustomerNotifications_MBPController.default.functionExists$Action("Firebase.hasPermission", callContext);
+
+// Function Exists?
+return OS.Flow.executeSequence(function () {
+if((functionExistsVar.value.successOut)) {
+return controller.safeExecuteAsyncJSNode(CustomerNotifications_MBP_controller_HasPermission_v2_HasPermissionJSJS, "HasPermissionJS", "HasPermission_v2", {
+HasPermission: OS.DataTypes.JSConversions.basicTypeToJS(false, OS.Types.Boolean, true),
+ErrorCode: OS.DataTypes.JSConversions.basicTypeToJS("", OS.Types.Text, true),
+ErrorMessage: OS.DataTypes.JSConversions.basicTypeToJS("", OS.Types.Text, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.HasPermission_v2$hasPermissionJSJSResult"))();
+jsNodeResult.hasPermissionOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.HasPermission, OS.Types.Boolean);
+jsNodeResult.errorCodeOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.ErrorCode, OS.Types.Text);
+jsNodeResult.errorMessageOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.ErrorMessage, OS.Types.Text);
+return jsNodeResult;
+}, {}, {}).then(function (results) {
+hasPermissionJSJSResult.value = results;
+}).then(function () {
+// HasPermission = HasPermissionJS.HasPermission
+outVars.value.hasPermissionOut = hasPermissionJSJSResult.value.hasPermissionOut;
+// ErrorCode = HasPermissionJS.ErrorCode
+outVars.value.errorCodeOut = hasPermissionJSJSResult.value.errorCodeOut;
+// ErrorMessage = HasPermissionJS.ErrorMessage
+outVars.value.errorMessageOut = hasPermissionJSJSResult.value.errorMessageOut;
+});
+} else {
+// ErrorMessage = FunctionExists.ErrorMessage
+outVars.value.errorMessageOut = functionExistsVar.value.errorMessageOut;
+// ErrorCode = 2
+outVars.value.errorCodeOut = "2";
+// HasPermission = False
+outVars.value.hasPermissionOut = false;
+}
+
+});
+}).then(function () {
+return outVars.value;
+});
+};
+var controller = CustomerNotifications_MBPController.default;
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.HasPermission_v2$hasPermissionJSJSResult", [{
+name: "HasPermission",
+attrName: "hasPermissionOut",
+mandatory: true,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "ErrorCode",
+attrName: "errorCodeOut",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "ErrorMessage",
+attrName: "errorMessageOut",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.HasPermission_v2$outVars", [{
+name: "ErrorMessage",
+attrName: "errorMessageOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "ErrorCode",
+attrName: "errorCodeOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "HasPermission",
+attrName: "hasPermissionOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+CustomerNotifications_MBPController.default.clientActionProxies.hasPermission_v2$Action = function () {
+return controller.executeActionInsideJSNode(CustomerNotifications_MBPController.default.hasPermission_v2$Action.bind(controller), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+ErrorMessage: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.errorMessageOut, OS.Types.Text, true),
+ErrorCode: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.errorCodeOut, OS.Types.Text, true),
+HasPermission: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.hasPermissionOut, OS.Types.Boolean, true)
+};
+});
+};
+});
+define("CustomerNotifications_MBP.controller$HasPermission_v2.HasPermissionJSJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+return new Promise(function ($resolve, $reject) {
+$parameters.ErrorMessage = "";
+$parameters.ErrorCode = 0;
+
+function success(data) {
+    $parameters.HasPermission = data.isEnabled;
+    $resolve();
+}
+
+function error(err) {
+    $parameters.HasPermission = false;
+    $parameters.ErrorCode = 2;
+    $parameters.ErrorMessage = err;
+    $resolve();
+}
+
+Firebase.hasPermission(success, error);
+
+});
+};
+});
+
+define("CustomerNotifications_MBP.controller$InboxNotificationsGetUnreadMessageCount", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CustomerNotifications_MBP.controller$ServerAction.InboxNotificationsGetUnreadMessageCount"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.inboxNotificationsGetUnreadMessageCount$Action = function (notificationChannelNameIn, nOSIdIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.InboxNotifications.InboxNotificationsGetUnreadMessageCount$vars"))());
+vars.value.notificationChannelNameInLocal = notificationChannelNameIn;
+vars.value.nOSIdInLocal = nOSIdIn;
+var allExceptionsVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var inboxNotificationsGetUnreadMessageCountVar = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.InboxNotifications.InboxNotificationsGetUnreadMessageCount$outVars"))());
+return OS.Flow.executeAsyncFlow(function () {
+return OS.Flow.executeSequence(function () {
+if((((vars.value.nOSIdInLocal) !== ("")))) {
+// Execute Action: InboxNotificationsGetUnreadMessageCount
+return controller.inboxNotificationsGetUnreadMessageCount$ServerAction(vars.value.notificationChannelNameInLocal, vars.value.nOSIdInLocal, callContext).then(function (value) {
+inboxNotificationsGetUnreadMessageCountVar.value = value;
+}).then(function () {
+// Count = InboxNotificationsGetUnreadMessageCount.Count
+outVars.value.countOut = inboxNotificationsGetUnreadMessageCountVar.value.countOut;
+});
+}
+
+});
+}).catch(function (ex) {
+OS.Logger.trace("InboxNotifications.InboxNotificationsGetUnreadMessageCount", OS.Exceptions.getMessage(ex), ex.name);
+// Handle Error: AllExceptions
+if(!(OS.Exceptions.isSystem(ex))) {
+OS.Logger.error(null, ex);
+allExceptionsVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return OS.Flow.executeAsyncFlow(function () {
+return OS.Flow.returnAsync(outVars.value);
+
+});
+}
+
+throw ex;
+}).then(function () {
+return outVars.value;
+});
+};
+var controller = CustomerNotifications_MBPController.default;
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.InboxNotifications.InboxNotificationsGetUnreadMessageCount$vars", [{
+name: "NotificationChannelName",
+attrName: "notificationChannelNameInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "NOSId",
+attrName: "nOSIdInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.InboxNotifications.InboxNotificationsGetUnreadMessageCount$outVars", [{
+name: "Count",
+attrName: "countOut",
+mandatory: false,
+dataType: OS.Types.LongInteger,
+defaultValue: function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}
+}]);
+CustomerNotifications_MBPController.default.clientActionProxies.inboxNotificationsGetUnreadMessageCount$Action = function (notificationChannelNameIn, nOSIdIn) {
+notificationChannelNameIn = (notificationChannelNameIn === undefined) ? "" : notificationChannelNameIn;
+nOSIdIn = (nOSIdIn === undefined) ? "" : nOSIdIn;
+return controller.executeActionInsideJSNode(CustomerNotifications_MBPController.default.inboxNotificationsGetUnreadMessageCount$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(notificationChannelNameIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(nOSIdIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Count: OS.DataTypes.JSConversions.basicTypeToJS(actionResults.countOut, OS.Types.LongInteger, true)
+};
+});
+};
+});
+
+define("CustomerNotifications_MBP.controller$RegisterDeviceInfo", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CustomerNotifications_BP.model", "CommonPlugin.controller", "CustomerNotifications_MBP.controller$RegisterDeviceInfo.GetTokenJS", "CustomerNotifications_BP.model$Error_StructureRec", "CustomerNotifications_MBP.referencesHealth", "CustomerNotifications_MBP.referencesHealth$CustomerNotifications_BP", "CustomerNotifications_MBP.controller$ServerAction.WS_RegisterDeviceInfo", "CommonPlugin.controller$GetPlatform", "CustomerNotifications_MBP.referencesHealth$CommonPlugin", "CustomerNotifications_MBP.controller$ServerAction.GetNotificationChannelIdByName", "CustomerNotifications_MBP.controller$HasPermission", "CommonPlugin.controller$IsCordovaDefined", "CommonPlugin.controller$GetDeviceID", "CustomerNotifications_MBP.model$RegisterDevice_ResponseRec"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CustomerNotifications_BPModel, CommonPluginController, CustomerNotifications_MBP_controller_RegisterDeviceInfo_GetTokenJS) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.registerDeviceInfo$Action = function (nOSIdIn, notificationChannelNameIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.RegisterDeviceInfo$vars"))());
+vars.value.nOSIdInLocal = nOSIdIn;
+vars.value.notificationChannelNameInLocal = notificationChannelNameIn;
+var allExceptionsVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var wS_RegisterDeviceInfoVar = new OS.DataTypes.VariableHolder();
+var getNotificationChannelIdByNameVar = new OS.DataTypes.VariableHolder();
+var getPlatformVar = new OS.DataTypes.VariableHolder();
+var hasPermissionVar = new OS.DataTypes.VariableHolder();
+var isCordovaDefinedVar = new OS.DataTypes.VariableHolder();
+var getDeviceIDVar = new OS.DataTypes.VariableHolder();
+var getTokenJSResult = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.RegisterDeviceInfo$outVars"))());
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: IsCordovaDefined
+isCordovaDefinedVar.value = CommonPluginController.default.isCordovaDefined$Action(callContext);
+
+return OS.Flow.executeSequence(function () {
+if((isCordovaDefinedVar.value.isLoadedOut)) {
+// Execute Action: GetPlatform
+getPlatformVar.value = CommonPluginController.default.getPlatform$Action(callContext);
+
+// Execute Action: GetDeviceID
+getDeviceIDVar.value = CommonPluginController.default.getDeviceID$Action(callContext);
+
+// Execute Action: HasPermission
+return CustomerNotifications_MBPController.default.hasPermission$Action(callContext).then(function (value) {
+hasPermissionVar.value = value;
+}).then(function () {
+// Execute Action: GetNotificationChannelIdByName
+return controller.getNotificationChannelIdByName$ServerAction(vars.value.notificationChannelNameInLocal, callContext).then(function (value) {
+getNotificationChannelIdByNameVar.value = value;
+});
+}).then(function () {
+return controller.safeExecuteAsyncJSNode(CustomerNotifications_MBP_controller_RegisterDeviceInfo_GetTokenJS, "GetToken", "RegisterDeviceInfo", {
+Token: OS.DataTypes.JSConversions.basicTypeToJS("", OS.Types.Text, true),
+IsSuccess: OS.DataTypes.JSConversions.basicTypeToJS(false, OS.Types.Boolean, true),
+ErrorMessage: OS.DataTypes.JSConversions.basicTypeToJS("", OS.Types.Text, true)
+}, function ($parameters) {
+var jsNodeResult = new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.RegisterDeviceInfo$getTokenJSResult"))();
+jsNodeResult.tokenOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.Token, OS.Types.Text);
+jsNodeResult.isSuccessOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.IsSuccess, OS.Types.Boolean);
+jsNodeResult.errorMessageOut = OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType($parameters.ErrorMessage, OS.Types.Text);
+return jsNodeResult;
+}, {}, {}).then(function (results) {
+getTokenJSResult.value = results;
+});
+}).then(function () {
+// outputs
+// Response.RegistrationId = GetToken.Token
+outVars.value.responseOut.registrationIdAttr = getTokenJSResult.value.tokenOut;
+// Response.DeviceHardwareId = GetDeviceID.DeviceHwId
+outVars.value.responseOut.deviceHardwareIdAttr = getDeviceIDVar.value.deviceHwIdOut;
+// Response.ApplicationId = NotificationChannelName
+outVars.value.responseOut.applicationIdAttr = vars.value.notificationChannelNameInLocal;
+}).then(function () {
+// get token is success?
+return OS.Flow.executeSequence(function () {
+if((getTokenJSResult.value.isSuccessOut)) {
+// Execute Action: WS_RegisterDeviceInfo
+return controller.wS_RegisterDeviceInfo$ServerAction(vars.value.nOSIdInLocal, outVars.value.responseOut.registrationIdAttr, vars.value.notificationChannelNameInLocal, (((OS.BuiltinFunctions.toUpper(getPlatformVar.value.platformOut) === OS.BuiltinFunctions.toUpper("ios"))) ? (CustomerNotifications_MBPModel.staticEntities.devicePlatform.iOS) : (CustomerNotifications_MBPModel.staticEntities.devicePlatform.android)), getDeviceIDVar.value.deviceHwIdOut, hasPermissionVar.value.hasPermissionOut, callContext).then(function (value) {
+wS_RegisterDeviceInfoVar.value = value;
+}).then(function () {
+// output
+// Response.General_Response.Success = WS_RegisterDeviceInfo.Success
+outVars.value.responseOut.general_ResponseAttr.successAttr = wS_RegisterDeviceInfoVar.value.successOut;
+// Response.General_Response.ErrorCode = WS_RegisterDeviceInfo.Error.ErrorCode
+outVars.value.responseOut.general_ResponseAttr.errorCodeAttr = wS_RegisterDeviceInfoVar.value.errorOut.errorCodeAttr;
+// Response.General_Response.ErrorMessage = WS_RegisterDeviceInfo.Error.ErrorMessage
+outVars.value.responseOut.general_ResponseAttr.errorMessageAttr = wS_RegisterDeviceInfoVar.value.errorOut.errorMessageAttr;
+});
+} else {
+// output
+// Response.General_Response.Success = GetToken.IsSuccess
+outVars.value.responseOut.general_ResponseAttr.successAttr = getTokenJSResult.value.isSuccessOut;
+// Response.General_Response.ErrorMessage = GetToken.ErrorMessage
+outVars.value.responseOut.general_ResponseAttr.errorMessageAttr = getTokenJSResult.value.errorMessageOut;
+}
+
+});
+});
+}
+
+});
+}).catch(function (ex) {
+OS.Logger.trace("RegisterDeviceInfo.RegisterDeviceInfo", OS.Exceptions.getMessage(ex), ex.name);
+// Handle Error: AllExceptions
+if(!(OS.Exceptions.isSystem(ex))) {
+OS.Logger.error(null, ex);
+allExceptionsVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return OS.Flow.executeAsyncFlow(function () {
+// Response.General_Response.Success = False
+outVars.value.responseOut.general_ResponseAttr.successAttr = false;
+return OS.Flow.returnAsync(outVars.value);
+
+});
+}
+
+throw ex;
+}).then(function () {
+return outVars.value;
+});
+};
+var controller = CustomerNotifications_MBPController.default;
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.RegisterDeviceInfo$vars", [{
+name: "NOSId",
+attrName: "nOSIdInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "NotificationChannelName",
+attrName: "notificationChannelNameInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.RegisterDeviceInfo$getTokenJSResult", [{
+name: "Token",
+attrName: "tokenOut",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "IsSuccess",
+attrName: "isSuccessOut",
+mandatory: true,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "ErrorMessage",
+attrName: "errorMessageOut",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.RegisterDeviceInfo$outVars", [{
+name: "Response",
+attrName: "responseOut",
+mandatory: false,
+dataType: OS.Types.Record,
+defaultValue: function () {
+return new CustomerNotifications_MBPModel.RegisterDevice_ResponseRec();
+},
+complexType: CustomerNotifications_MBPModel.RegisterDevice_ResponseRec
+}]);
+CustomerNotifications_MBPController.default.clientActionProxies.registerDeviceInfo$Action = function (nOSIdIn, notificationChannelNameIn) {
+nOSIdIn = (nOSIdIn === undefined) ? "" : nOSIdIn;
+notificationChannelNameIn = (notificationChannelNameIn === undefined) ? "" : notificationChannelNameIn;
+return controller.executeActionInsideJSNode(CustomerNotifications_MBPController.default.registerDeviceInfo$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(nOSIdIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(notificationChannelNameIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Response: actionResults.responseOut
+};
+});
+};
+});
+define("CustomerNotifications_MBP.controller$RegisterDeviceInfo.GetTokenJS", [], function () {
+return function ($parameters, $actions, $roles, $public) {
+return new Promise(function ($resolve, $reject) {
+setTimeout(window.fp.getToken(success, error), 1000);
+
+function success(token) {
+    if (token === null) {
+        setTimeout(window.fp.getToken(success, error), 1000);
+    } else {
+        $parameters.IsSuccess = true;
+        $parameters.Token = token;
+        $resolve();
+    }
+}
+
+function error(err) {
+    $parameters.IsSuccess = false;
+    $parameters.ErrorMessage = err;
+    $resolve();
+}
+});
+};
+});
+
+define("CustomerNotifications_MBP.controller$RegisterDeviceInfo_v2", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CommonPlugin.controller", "CustomerNotifications_BP.model", "CommonPlugin.controller$GetPlatform", "CustomerNotifications_MBP.referencesHealth", "CustomerNotifications_MBP.referencesHealth$CommonPlugin", "CustomerNotifications_MBP.controller$HasPermission_v2", "CustomerNotifications_MBP.controller$CheckFirebasePlugin", "CustomerNotifications_MBP.model$RegisterDevice_ResponseRec", "CustomerNotifications_MBP.controller$RegisterDeviceInfo", "CustomerNotifications_BP.model$Error_StructureRec", "CustomerNotifications_MBP.referencesHealth$CustomerNotifications_BP", "CustomerNotifications_MBP.controller$ServerAction.WS_RegisterDeviceInfo", "CustomerNotifications_MBP.controller$GetToken_v2", "CustomerNotifications_MBP.controller$CheckNewFirebasePlugin", "CustomerNotifications_MBP.controller$ServerAction.GetNotificationChannelIdByName", "CommonPlugin.controller$GetDeviceID"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CommonPluginController, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.registerDeviceInfo_v2$Action = function (nOSIdIn, notificationChannelNameIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.RegisterDeviceInfo_v2$vars"))());
+vars.value.nOSIdInLocal = nOSIdIn;
+vars.value.notificationChannelNameInLocal = notificationChannelNameIn;
+var allExceptionsVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var wS_RegisterDeviceInfoVar = new OS.DataTypes.VariableHolder();
+var getNotificationChannelIdByNameVar = new OS.DataTypes.VariableHolder();
+var getPlatformVar = new OS.DataTypes.VariableHolder();
+var hasPermission_v2Var = new OS.DataTypes.VariableHolder();
+var checkFirebasePluginVar = new OS.DataTypes.VariableHolder();
+var registerDeviceInfoVar = new OS.DataTypes.VariableHolder();
+var getToken_v2Var = new OS.DataTypes.VariableHolder();
+var checkNewFirebasePluginVar = new OS.DataTypes.VariableHolder();
+var getDeviceIDVar = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.RegisterDeviceInfo_v2$outVars"))());
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: CheckFirebasePlugin
+checkFirebasePluginVar.value = CustomerNotifications_MBPController.default.checkFirebasePlugin$Action(callContext);
+
+return OS.Flow.executeSequence(function () {
+if((checkFirebasePluginVar.value.isAvailableOut)) {
+// Execute Action: RegisterDeviceInfo
+return CustomerNotifications_MBPController.default.registerDeviceInfo$Action(vars.value.nOSIdInLocal, vars.value.notificationChannelNameInLocal, callContext).then(function (value) {
+registerDeviceInfoVar.value = value;
+});
+} else {
+// Execute Action: CheckNewFirebasePlugin
+checkNewFirebasePluginVar.value = CustomerNotifications_MBPController.default.checkNewFirebasePlugin$Action(callContext);
+
+return OS.Flow.executeSequence(function () {
+if((checkNewFirebasePluginVar.value.isAvailableOut)) {
+// Execute Action: GetPlatform
+getPlatformVar.value = CommonPluginController.default.getPlatform$Action(callContext);
+
+// Execute Action: GetDeviceID
+getDeviceIDVar.value = CommonPluginController.default.getDeviceID$Action(callContext);
+
+// Execute Action: HasPermission_v2
+return CustomerNotifications_MBPController.default.hasPermission_v2$Action(callContext).then(function (value) {
+hasPermission_v2Var.value = value;
+}).then(function () {
+// Execute Action: GetNotificationChannelIdByName
+return controller.getNotificationChannelIdByName$ServerAction(vars.value.notificationChannelNameInLocal, callContext).then(function (value) {
+getNotificationChannelIdByNameVar.value = value;
+});
+}).then(function () {
+// Execute Action: GetToken_v2
+return CustomerNotifications_MBPController.default.getToken_v2$Action(callContext).then(function (value) {
+getToken_v2Var.value = value;
+});
+}).then(function () {
+// outputs
+// Response.RegistrationId = GetToken_v2.Token
+outVars.value.responseOut.registrationIdAttr = getToken_v2Var.value.tokenOut;
+// Response.DeviceHardwareId = GetDeviceID.DeviceHwId
+outVars.value.responseOut.deviceHardwareIdAttr = getDeviceIDVar.value.deviceHwIdOut;
+// Response.ApplicationId = NotificationChannelName
+outVars.value.responseOut.applicationIdAttr = vars.value.notificationChannelNameInLocal;
+}).then(function () {
+return OS.Flow.executeSequence(function () {
+if((getToken_v2Var.value.sucessOut)) {
+// Execute Action: WS_RegisterDeviceInfo
+return controller.wS_RegisterDeviceInfo$ServerAction(vars.value.nOSIdInLocal, outVars.value.responseOut.registrationIdAttr, vars.value.notificationChannelNameInLocal, (((OS.BuiltinFunctions.toUpper(getPlatformVar.value.platformOut) === OS.BuiltinFunctions.toUpper("ios"))) ? (CustomerNotifications_MBPModel.staticEntities.devicePlatform.iOS) : (CustomerNotifications_MBPModel.staticEntities.devicePlatform.android)), getDeviceIDVar.value.deviceHwIdOut, hasPermission_v2Var.value.hasPermissionOut, callContext).then(function (value) {
+wS_RegisterDeviceInfoVar.value = value;
+}).then(function () {
+// output
+// Response.General_Response.Success = WS_RegisterDeviceInfo.Success
+outVars.value.responseOut.general_ResponseAttr.successAttr = wS_RegisterDeviceInfoVar.value.successOut;
+// Response.General_Response.ErrorCode = WS_RegisterDeviceInfo.Error.ErrorCode
+outVars.value.responseOut.general_ResponseAttr.errorCodeAttr = wS_RegisterDeviceInfoVar.value.errorOut.errorCodeAttr;
+// Response.General_Response.ErrorMessage = WS_RegisterDeviceInfo.Error.ErrorMessage
+outVars.value.responseOut.general_ResponseAttr.errorMessageAttr = wS_RegisterDeviceInfoVar.value.errorOut.errorMessageAttr;
+});
+} else {
+// output
+// Response.General_Response.Success = GetToken_v2.Sucess
+outVars.value.responseOut.general_ResponseAttr.successAttr = getToken_v2Var.value.sucessOut;
+// Response.General_Response.ErrorMessage = GetToken_v2.ErrorMessage
+outVars.value.responseOut.general_ResponseAttr.errorMessageAttr = getToken_v2Var.value.errorMessageOut;
+}
+
+});
+});
+}
+
+});
+}
+
+});
+}).catch(function (ex) {
+OS.Logger.trace("CloudMessaging_v2.RegisterDeviceInfo_v2", OS.Exceptions.getMessage(ex), ex.name);
+// Handle Error: AllExceptions
+if(!(OS.Exceptions.isSystem(ex))) {
+OS.Logger.error(null, ex);
+allExceptionsVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return OS.Flow.executeAsyncFlow(function () {
+// Response.General_Response.Success = False
+outVars.value.responseOut.general_ResponseAttr.successAttr = false;
+return OS.Flow.returnAsync(outVars.value);
+
+});
+}
+
+throw ex;
+}).then(function () {
+return outVars.value;
+});
+};
+var controller = CustomerNotifications_MBPController.default;
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.RegisterDeviceInfo_v2$vars", [{
+name: "NOSId",
+attrName: "nOSIdInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "NotificationChannelName",
+attrName: "notificationChannelNameInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.RegisterDeviceInfo_v2$outVars", [{
+name: "Response",
+attrName: "responseOut",
+mandatory: false,
+dataType: OS.Types.Record,
+defaultValue: function () {
+return new CustomerNotifications_MBPModel.RegisterDevice_ResponseRec();
+},
+complexType: CustomerNotifications_MBPModel.RegisterDevice_ResponseRec
+}]);
+CustomerNotifications_MBPController.default.clientActionProxies.registerDeviceInfo_v2$Action = function (nOSIdIn, notificationChannelNameIn) {
+nOSIdIn = (nOSIdIn === undefined) ? "" : nOSIdIn;
+notificationChannelNameIn = (notificationChannelNameIn === undefined) ? "" : notificationChannelNameIn;
+return controller.executeActionInsideJSNode(CustomerNotifications_MBPController.default.registerDeviceInfo_v2$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(nOSIdIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(notificationChannelNameIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Response: actionResults.responseOut
+};
+});
+};
+});
+
+define("CustomerNotifications_MBP.controller$RegisterDeviceInfo_v3", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CommonPlugin.controller", "CustomerNotifications_BP.model", "CustomerNotifications_MBP.model$RegisterDevice_ResponseRec", "CustomerNotifications_MBP.controller$RegisterDeviceInfo", "CommonPlugin.controller$GetDeviceID", "CustomerNotifications_MBP.referencesHealth", "CustomerNotifications_MBP.referencesHealth$CommonPlugin", "CustomerNotifications_MBP.controller$CheckFirebasePlugin", "CustomerNotifications_MBP.controller$ServerAction.GetNotificationChannelIdByName", "CustomerNotifications_MBP.controller$CheckNewFirebasePlugin", "CustomerNotifications_MBP.controller$HasPermission_v2", "CommonPlugin.controller$GetPlatform", "CustomerNotifications_MBP.controller$GetToken_v2", "CustomerNotifications_BP.model$Error_StructureRec", "CustomerNotifications_MBP.referencesHealth$CustomerNotifications_BP", "CustomerNotifications_MBP.controller$ServerAction.WS_RegisterDeviceInfoV2"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CommonPluginController, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.registerDeviceInfo_v3$Action = function (nOSIdIn, notificationChannelNameIn, callContext) {
+callContext = controller.callContext(callContext);
+var vars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.RegisterDeviceInfo_v3$vars"))());
+vars.value.nOSIdInLocal = nOSIdIn;
+vars.value.notificationChannelNameInLocal = notificationChannelNameIn;
+var allExceptionsVar = new OS.DataTypes.VariableHolder(new OS.DataTypes.ErrorHandlerOutputType());
+var getNotificationChannelIdByNameVar = new OS.DataTypes.VariableHolder();
+var wS_RegisterDeviceInfoV2Var = new OS.DataTypes.VariableHolder();
+var registerDeviceInfoVar = new OS.DataTypes.VariableHolder();
+var getDeviceIDVar = new OS.DataTypes.VariableHolder();
+var checkFirebasePluginVar = new OS.DataTypes.VariableHolder();
+var checkNewFirebasePluginVar = new OS.DataTypes.VariableHolder();
+var hasPermission_v2Var = new OS.DataTypes.VariableHolder();
+var getPlatformVar = new OS.DataTypes.VariableHolder();
+var getToken_v2Var = new OS.DataTypes.VariableHolder();
+var outVars = new OS.DataTypes.VariableHolder(new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.RegisterDeviceInfo_v3$outVars"))());
+return OS.Flow.executeAsyncFlow(function () {
+// Execute Action: CheckFirebasePlugin
+checkFirebasePluginVar.value = CustomerNotifications_MBPController.default.checkFirebasePlugin$Action(callContext);
+
+return OS.Flow.executeSequence(function () {
+if((checkFirebasePluginVar.value.isAvailableOut)) {
+// Execute Action: RegisterDeviceInfo
+return CustomerNotifications_MBPController.default.registerDeviceInfo$Action(vars.value.nOSIdInLocal, vars.value.notificationChannelNameInLocal, callContext).then(function (value) {
+registerDeviceInfoVar.value = value;
+});
+} else {
+// Execute Action: CheckNewFirebasePlugin
+checkNewFirebasePluginVar.value = CustomerNotifications_MBPController.default.checkNewFirebasePlugin$Action(callContext);
+
+return OS.Flow.executeSequence(function () {
+if((checkNewFirebasePluginVar.value.isAvailableOut)) {
+// Execute Action: GetPlatform
+getPlatformVar.value = CommonPluginController.default.getPlatform$Action(callContext);
+
+// Execute Action: GetDeviceID
+getDeviceIDVar.value = CommonPluginController.default.getDeviceID$Action(callContext);
+
+// Execute Action: HasPermission_v2
+return CustomerNotifications_MBPController.default.hasPermission_v2$Action(callContext).then(function (value) {
+hasPermission_v2Var.value = value;
+}).then(function () {
+// Execute Action: GetNotificationChannelIdByName
+return controller.getNotificationChannelIdByName$ServerAction(vars.value.notificationChannelNameInLocal, callContext).then(function (value) {
+getNotificationChannelIdByNameVar.value = value;
+});
+}).then(function () {
+// Execute Action: GetToken_v2
+return CustomerNotifications_MBPController.default.getToken_v2$Action(callContext).then(function (value) {
+getToken_v2Var.value = value;
+});
+}).then(function () {
+// outputs
+// Response.RegistrationId = GetToken_v2.Token
+outVars.value.responseOut.registrationIdAttr = getToken_v2Var.value.tokenOut;
+// Response.DeviceHardwareId = GetDeviceID.DeviceHwId
+outVars.value.responseOut.deviceHardwareIdAttr = getDeviceIDVar.value.deviceHwIdOut;
+// Response.ApplicationId = NotificationChannelName
+outVars.value.responseOut.applicationIdAttr = vars.value.notificationChannelNameInLocal;
+}).then(function () {
+return OS.Flow.executeSequence(function () {
+if((getToken_v2Var.value.sucessOut)) {
+// Execute Action: WS_RegisterDeviceInfoV2
+return controller.wS_RegisterDeviceInfoV2$ServerAction(vars.value.nOSIdInLocal, outVars.value.responseOut.registrationIdAttr, vars.value.notificationChannelNameInLocal, (((OS.BuiltinFunctions.toUpper(getPlatformVar.value.platformOut) === OS.BuiltinFunctions.toUpper("ios"))) ? (CustomerNotifications_MBPModel.staticEntities.devicePlatform.iOS) : (CustomerNotifications_MBPModel.staticEntities.devicePlatform.android)), getDeviceIDVar.value.deviceHwIdOut, hasPermission_v2Var.value.hasPermissionOut, callContext).then(function (value) {
+wS_RegisterDeviceInfoV2Var.value = value;
+}).then(function () {
+// output
+// Response.General_Response.Success = WS_RegisterDeviceInfoV2.Success
+outVars.value.responseOut.general_ResponseAttr.successAttr = wS_RegisterDeviceInfoV2Var.value.successOut;
+// Response.General_Response.ErrorCode = WS_RegisterDeviceInfoV2.Error.ErrorCode
+outVars.value.responseOut.general_ResponseAttr.errorCodeAttr = wS_RegisterDeviceInfoV2Var.value.errorOut.errorCodeAttr;
+// Response.General_Response.ErrorMessage = WS_RegisterDeviceInfoV2.Error.ErrorMessage
+outVars.value.responseOut.general_ResponseAttr.errorMessageAttr = wS_RegisterDeviceInfoV2Var.value.errorOut.errorMessageAttr;
+});
+} else {
+// output
+// Response.General_Response.Success = GetToken_v2.Sucess
+outVars.value.responseOut.general_ResponseAttr.successAttr = getToken_v2Var.value.sucessOut;
+// Response.General_Response.ErrorMessage = GetToken_v2.ErrorMessage
+outVars.value.responseOut.general_ResponseAttr.errorMessageAttr = getToken_v2Var.value.errorMessageOut;
+}
+
+});
+});
+}
+
+});
+}
+
+});
+}).catch(function (ex) {
+OS.Logger.trace("CloudMessaging_v2.RegisterDeviceInfo_v3", OS.Exceptions.getMessage(ex), ex.name);
+// Handle Error: AllExceptions
+if(!(OS.Exceptions.isSystem(ex))) {
+OS.Logger.error(null, ex);
+allExceptionsVar.value.exceptionMessageAttr = OS.Exceptions.getMessage(ex);
+return OS.Flow.executeAsyncFlow(function () {
+// Response.General_Response.Success = False
+outVars.value.responseOut.general_ResponseAttr.successAttr = false;
+return OS.Flow.returnAsync(outVars.value);
+
+});
+}
+
+throw ex;
+}).then(function () {
+return outVars.value;
+});
+};
+var controller = CustomerNotifications_MBPController.default;
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.RegisterDeviceInfo_v3$vars", [{
+name: "NOSId",
+attrName: "nOSIdInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "NotificationChannelName",
+attrName: "notificationChannelNameInLocal",
+mandatory: true,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}]);
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP.CloudMessaging_v2.RegisterDeviceInfo_v3$outVars", [{
+name: "Response",
+attrName: "responseOut",
+mandatory: false,
+dataType: OS.Types.Record,
+defaultValue: function () {
+return new CustomerNotifications_MBPModel.RegisterDevice_ResponseRec();
+},
+complexType: CustomerNotifications_MBPModel.RegisterDevice_ResponseRec
+}]);
+CustomerNotifications_MBPController.default.clientActionProxies.registerDeviceInfo_v3$Action = function (nOSIdIn, notificationChannelNameIn) {
+nOSIdIn = (nOSIdIn === undefined) ? "" : nOSIdIn;
+notificationChannelNameIn = (notificationChannelNameIn === undefined) ? "" : notificationChannelNameIn;
+return controller.executeActionInsideJSNode(CustomerNotifications_MBPController.default.registerDeviceInfo_v3$Action.bind(controller, OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(nOSIdIn, OS.Types.Text), OS.DataTypes.JSNodeConversions.jsNodeOutputToBasicType(notificationChannelNameIn, OS.Types.Text)), OS.Controller.BaseViewController.activeScreen ? OS.Controller.BaseViewController.activeScreen.callContext() : undefined, function (actionResults) {
+return {
+Response: actionResults.responseOut
+};
+});
+};
+});
+
+define("CustomerNotifications_MBP.controller$ServerAction.GetNotificationChannelIdByName", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.getNotificationChannelIdByName$ServerAction = function (notificationChannelNameIn, callContext) {
+var controller = this.controller;
+var inputs = {
+NotificationChannelName: OS.DataTypes.JSConversions.basicTypeToJS(notificationChannelNameIn, OS.Types.Text)
+};
+return controller.callServerAction("GetNotificationChannelIdByName", "screenservices/CustomerNotifications_MBP/ActionGetNotificationChannelIdByName", "RmY_ZSYl5jHASDDJhAfy0Q", inputs, controller.callContext(callContext)).then(function (outputs) {
+var executeServerActionResult = new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP$rssespacecustomernotifications_bp_ActionGetNotificationChannelIdByName"))();
+executeServerActionResult.hasErrorOut = OS.DataTypes.JSConversions.jsToBasicType(outputs.HasError, OS.Types.Boolean);
+executeServerActionResult.errorMessageOut = OS.DataTypes.JSConversions.jsToBasicType(outputs.ErrorMessage, OS.Types.Text);
+executeServerActionResult.notificationChannelIdOut = OS.DataTypes.JSConversions.jsToBasicType(outputs.NotificationChannelId, OS.Types.LongInteger);
+return executeServerActionResult;
+});
+};
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP$rssespacecustomernotifications_bp_ActionGetNotificationChannelIdByName", [{
+name: "HasError",
+attrName: "hasErrorOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}, {
+name: "ErrorMessage",
+attrName: "errorMessageOut",
+mandatory: false,
+dataType: OS.Types.Text,
+defaultValue: function () {
+return "";
+}
+}, {
+name: "NotificationChannelId",
+attrName: "notificationChannelIdOut",
+mandatory: false,
+dataType: OS.Types.LongInteger,
+defaultValue: function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}
+}]);
+});
+define("CustomerNotifications_MBP.controller$ServerAction.InboxNotificationsGetUnreadMessageCount", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.inboxNotificationsGetUnreadMessageCount$ServerAction = function (notificationChannelNameIn, nOSIdIn, callContext) {
+var controller = this.controller;
+var inputs = {
+NotificationChannelName: OS.DataTypes.JSConversions.basicTypeToJS(notificationChannelNameIn, OS.Types.Text),
+NOSId: OS.DataTypes.JSConversions.basicTypeToJS(nOSIdIn, OS.Types.Text)
+};
+return controller.callServerAction("InboxNotificationsGetUnreadMessageCount", "screenservices/CustomerNotifications_MBP/ActionInboxNotificationsGetUnreadMessageCount", "HPWrxykaVgcGaN6KJsLZkQ", inputs, controller.callContext(callContext)).then(function (outputs) {
+var executeServerActionResult = new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP$rssespacecustomernotifications_bp_ActionInboxNotificationsGetUnreadMessageCount"))();
+executeServerActionResult.countOut = OS.DataTypes.JSConversions.jsToBasicType(outputs.Count, OS.Types.LongInteger);
+return executeServerActionResult;
+});
+};
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP$rssespacecustomernotifications_bp_ActionInboxNotificationsGetUnreadMessageCount", [{
+name: "Count",
+attrName: "countOut",
+mandatory: false,
+dataType: OS.Types.LongInteger,
+defaultValue: function () {
+return OS.DataTypes.LongInteger.defaultValue;
+}
+}]);
+});
+define("CustomerNotifications_MBP.controller$ServerAction.WS_RegisterDeviceInfo", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CustomerNotifications_BP.model", "CustomerNotifications_BP.model$Error_StructureRec", "CustomerNotifications_MBP.referencesHealth", "CustomerNotifications_MBP.referencesHealth$CustomerNotifications_BP"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.wS_RegisterDeviceInfo$ServerAction = function (nOSIdIn, registrationTokenIn, notificationChannelNameIn, devicePlatformIdIn, deviceHardwareIdIn, hasPermissonNotificationIn, callContext) {
+var controller = this.controller;
+var inputs = {
+NOSId: OS.DataTypes.JSConversions.basicTypeToJS(nOSIdIn, OS.Types.Text),
+RegistrationToken: OS.DataTypes.JSConversions.basicTypeToJS(registrationTokenIn, OS.Types.Text),
+NotificationChannelName: OS.DataTypes.JSConversions.basicTypeToJS(notificationChannelNameIn, OS.Types.Text),
+DevicePlatformId: OS.DataTypes.JSConversions.basicTypeToJS(devicePlatformIdIn, OS.Types.Integer),
+DeviceHardwareId: OS.DataTypes.JSConversions.basicTypeToJS(deviceHardwareIdIn, OS.Types.Text),
+HasPermissonNotification: OS.DataTypes.JSConversions.basicTypeToJS(hasPermissonNotificationIn, OS.Types.Boolean)
+};
+return controller.callServerAction("WS_RegisterDeviceInfo", "screenservices/CustomerNotifications_MBP/ActionWS_RegisterDeviceInfo", "32qWBnzwlB1cZeDkG4CF6w", inputs, controller.callContext(callContext)).then(function (outputs) {
+var executeServerActionResult = new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP$rssespacecustomernotifications_bp_ActionWS_RegisterDeviceInfo"))();
+executeServerActionResult.errorOut = CustomerNotifications_BPModel.Error_StructureRec.fromJS(outputs.Error);
+executeServerActionResult.successOut = OS.DataTypes.JSConversions.jsToBasicType(outputs.Success, OS.Types.Boolean);
+return executeServerActionResult;
+});
+};
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP$rssespacecustomernotifications_bp_ActionWS_RegisterDeviceInfo", [{
+name: "Error",
+attrName: "errorOut",
+mandatory: false,
+dataType: OS.Types.Record,
+defaultValue: function () {
+return new CustomerNotifications_BPModel.Error_StructureRec();
+},
+complexType: CustomerNotifications_BPModel.Error_StructureRec
+}, {
+name: "Success",
+attrName: "successOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+});
+define("CustomerNotifications_MBP.controller$ServerAction.WS_RegisterDeviceInfoV2", ["exports", "OutSystems", "CustomerNotifications_MBP.model", "CustomerNotifications_MBP.controller", "CustomerNotifications_BP.model", "CustomerNotifications_BP.model$Error_StructureRec", "CustomerNotifications_MBP.referencesHealth", "CustomerNotifications_MBP.referencesHealth$CustomerNotifications_BP"], function (exports, OutSystems, CustomerNotifications_MBPModel, CustomerNotifications_MBPController, CustomerNotifications_BPModel) {
+var OS = OutSystems.Internal;
+CustomerNotifications_MBPController.default.wS_RegisterDeviceInfoV2$ServerAction = function (nOSIdIn, registrationTokenIn, notificationChannelNameIn, devicePlatformIdIn, deviceHardwareIdIn, hasPermissonNotificationIn, callContext) {
+var controller = this.controller;
+var inputs = {
+NOSId: OS.DataTypes.JSConversions.basicTypeToJS(nOSIdIn, OS.Types.Text),
+RegistrationToken: OS.DataTypes.JSConversions.basicTypeToJS(registrationTokenIn, OS.Types.Text),
+NotificationChannelName: OS.DataTypes.JSConversions.basicTypeToJS(notificationChannelNameIn, OS.Types.Text),
+DevicePlatformId: OS.DataTypes.JSConversions.basicTypeToJS(devicePlatformIdIn, OS.Types.Integer),
+DeviceHardwareId: OS.DataTypes.JSConversions.basicTypeToJS(deviceHardwareIdIn, OS.Types.Text),
+HasPermissonNotification: OS.DataTypes.JSConversions.basicTypeToJS(hasPermissonNotificationIn, OS.Types.Boolean)
+};
+return controller.callServerAction("WS_RegisterDeviceInfoV2", "screenservices/CustomerNotifications_MBP/ActionWS_RegisterDeviceInfoV2", "hcz6Wg1qeOSdY9SFeziodQ", inputs, controller.callContext(callContext)).then(function (outputs) {
+var executeServerActionResult = new (controller.constructor.getVariableGroupType("CustomerNotifications_MBP$rssespacecustomernotifications_bp_ActionWS_RegisterDeviceInfoV2"))();
+executeServerActionResult.errorOut = CustomerNotifications_BPModel.Error_StructureRec.fromJS(outputs.Error);
+executeServerActionResult.successOut = OS.DataTypes.JSConversions.jsToBasicType(outputs.Success, OS.Types.Boolean);
+return executeServerActionResult;
+});
+};
+CustomerNotifications_MBPController.default.constructor.registerVariableGroupType("CustomerNotifications_MBP$rssespacecustomernotifications_bp_ActionWS_RegisterDeviceInfoV2", [{
+name: "Error",
+attrName: "errorOut",
+mandatory: false,
+dataType: OS.Types.Record,
+defaultValue: function () {
+return new CustomerNotifications_BPModel.Error_StructureRec();
+},
+complexType: CustomerNotifications_BPModel.Error_StructureRec
+}, {
+name: "Success",
+attrName: "successOut",
+mandatory: false,
+dataType: OS.Types.Boolean,
+defaultValue: function () {
+return false;
+}
+}]);
+});
+define("CustomerNotifications_MBP.controller", ["exports", "OutSystems", "CustomerNotifications_MBP.model"], function (exports, OutSystems, CustomerNotifications_MBPModel) {
+var OS = OutSystems.Internal;
+var CustomerNotifications_MBPController = exports;
+var Controller = (function (_super) {
+__extends(Controller, _super);
+function Controller() {
+_super.apply(this, arguments);
+}
+Controller.prototype.clientActionProxies = {};
+Controller.prototype.roles = {};
+Controller.prototype.defaultTimeout = 10;
+Controller.prototype.getDefaultTimeout = function () {
+return CustomerNotifications_MBPController.default.defaultTimeout;
+};
+return Controller;
+})(OS.Controller.BaseModuleController);
+CustomerNotifications_MBPController.default = new Controller();
+});

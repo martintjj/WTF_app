@@ -1,0 +1,3733 @@
+﻿define("BALANCE_MBP.entities", ["OutSystems", "BALANCE_MBP.model", "BALANCE_MBP.model$Local_SYNC_BALANCE_CONFIGRecord", "BALANCE_MBP.model$Local_VOD_USAGE_DATESRecord", "BALANCE_MBP.model$Local_BALANCE_TAG_DATATYPERecord", "BALANCE_MBP.model$Local_BALANCE_CARD_TYPERecord", "BALANCE_MBP.model$Local_BALANCE_CONFIG_INFORecord", "BALANCE_MBP.model$Local_BALANCE_TAG_CODESRecord", "BALANCE_MBP.model$Local_BALANCE_GRAPH_TYPERecord", "BALANCE_MBP.model$Local_NET_DISTRIBUTIONRecord", "BALANCE_MBP.model$Local_BALANCE_LINESRecord", "BALANCE_MBP.model$Local_BALANCE_NEXT_CHARGE_DETAILRecord", "BALANCE_MBP.model$Local_BLM_BALANCERecord", "BALANCE_MBP.model$Local_PIPE_INFORMATIONRecord", "BALANCE_MBP.model$Local_VOD_USAGERecord", "BALANCE_MBP.model$Local_CACHE_CONTROL_SERVICESRecord", "BALANCE_MBP.model$Local_LAST_PAYMENT_PROCESSRecord", "BALANCE_MBP.model$Local_PAGERecord", "BALANCE_MBP.model$Local_COMMDETAILS_FILTERSRecord", "BALANCE_MBP.model$Local_BALANCE_CONFIG_ATTRIBUTESRecord", "BALANCE_MBP.model$Local_BALANCE_UNITSRecord", "BALANCE_MBP.model$Local_TOP_UP_SELECTIONRecord", "BALANCE_MBP.model$Local_BALANCE_CONFIG_INFO_GROUPRecord", "BALANCE_MBP.model$Local_BALANCE_CONFIGRecord"], function (OutSystems, BALANCE_MBPModel) {
+var OS = OutSystems.Internal;
+var infoLocal_SYNC_BALANCE_CONFIG = {
+key: "05aefd2f-7f77-4c2d-be10-064d568360f7",
+name: "Local_SYNC_BALANCE_CONFIG",
+tableName: "OSUSR_QSX_LOCAL_SYNC_BALANCE_CONFIG",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "UpdatedAt",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_SYNC_BALANCE_CONFIG\" ADD \"UpdatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "BalanceConfigSuccessfullyUpd",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_SYNC_BALANCE_CONFIG\" ADD \"BalanceConfigSuccessfullyUpd\" BOOLEAN DEFAULT 0"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "ebbd04e2-879c-ab82-1f54-a1b4b82c5040",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_SYNC_BALANCE_CONFIGRecord(BALANCE_MBPModel.Local_SYNC_BALANCE_CONFIGRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_SYNC_BALANCE_CONFIG\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"UpdatedAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"BalanceConfigSuccessfullyUpd\" BOOLEAN DEFAULT 0)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"UpdatedAt\" o1, \"BalanceConfigSuccessfullyUpd\" o2 FROM \"OSUSR_QSX_LOCAL_SYNC_BALANCE_CONFIG\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_SYNC_BALANCE_CONFIG\" (\"Id\", \"UpdatedAt\", \"BalanceConfigSuccessfullyUpd\") VALUES (?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_SYNC_BALANCE_CONFIGAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("BalanceConfigSuccessfullyUpd", /*BOOLEAN*/ 2, obj.balanceConfigSuccessfullyUpdAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_SYNC_BALANCE_CONFIG\" (\"Id\", \"UpdatedAt\", \"BalanceConfigSuccessfullyUpd\") VALUES (?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_SYNC_BALANCE_CONFIGAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("BalanceConfigSuccessfullyUpd", /*BOOLEAN*/ 2, obj.balanceConfigSuccessfullyUpdAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_SYNC_BALANCE_CONFIG\" SET \"UpdatedAt\" = ?, \"BalanceConfigSuccessfullyUpd\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_SYNC_BALANCE_CONFIGAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("BalanceConfigSuccessfullyUpd", /*BOOLEAN*/ 2, obj.balanceConfigSuccessfullyUpdAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_SYNC_BALANCE_CONFIG\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_SYNC_BALANCE_CONFIG\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_SYNC_BALANCE_CONFIGAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("UpdatedAt", /*DATE_TIME*/ 6, obj.updatedAtAttr);
+argsList.add("BalanceConfigSuccessfullyUpd", /*BOOLEAN*/ 2, obj.balanceConfigSuccessfullyUpdAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_SYNC_BALANCE_CONFIGAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_SYNC_BALANCE_CONFIGAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_VOD_USAGE_DATES = {
+key: "10f6fd97-d75e-4113-bcfc-44ec1d862b70",
+name: "Local_VOD_USAGE_DATES",
+tableName: "OSUSR_QSX_LOCAL_VOD_USAGE_DATES",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "AssociationId",
+type: /*LONGINTEGER*/ 4,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE_DATES\" ADD \"AssociationId\" BIGINT DEFAULT 0"
+}
+}, {
+name: "BillingAccountNumber",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE_DATES\" ADD \"BillingAccountNumber\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Month",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE_DATES\" ADD \"Month\" INTEGER DEFAULT 0"
+}
+}, {
+name: "Year",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE_DATES\" ADD \"Year\" INTEGER DEFAULT 0"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "50d3d86a-400f-8838-8544-305ac1c7fb47",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_VOD_USAGE_DATESRecord(BALANCE_MBPModel.Local_VOD_USAGE_DATESRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE_DATES\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"AssociationId\" BIGINT DEFAULT 0, \"BillingAccountNumber\" TEXT(50) DEFAULT \'\', \"Month\" INTEGER DEFAULT 0, \"Year\" INTEGER DEFAULT 0)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"AssociationId\" o1, \"BillingAccountNumber\" o2, \"Month\" o3, \"Year\" o4 FROM \"OSUSR_QSX_LOCAL_VOD_USAGE_DATES\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_VOD_USAGE_DATES\" (\"Id\", \"AssociationId\", \"BillingAccountNumber\", \"Month\", \"Year\") VALUES (?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_VOD_USAGE_DATESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("AssociationId", /*LONGINTEGER*/ 4, obj.associationIdAttr);
+argsList.add("BillingAccountNumber", /*TEXT*/ 0, obj.billingAccountNumberAttr);
+argsList.add("Month", /*INTEGER*/ 3, obj.monthAttr);
+argsList.add("Year", /*INTEGER*/ 3, obj.yearAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_VOD_USAGE_DATES\" (\"Id\", \"AssociationId\", \"BillingAccountNumber\", \"Month\", \"Year\") VALUES (?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_VOD_USAGE_DATESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("AssociationId", /*LONGINTEGER*/ 4, obj.associationIdAttr);
+argsList.add("BillingAccountNumber", /*TEXT*/ 0, obj.billingAccountNumberAttr);
+argsList.add("Month", /*INTEGER*/ 3, obj.monthAttr);
+argsList.add("Year", /*INTEGER*/ 3, obj.yearAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_VOD_USAGE_DATES\" SET \"AssociationId\" = ?, \"BillingAccountNumber\" = ?, \"Month\" = ?, \"Year\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_VOD_USAGE_DATESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("AssociationId", /*LONGINTEGER*/ 4, obj.associationIdAttr);
+argsList.add("BillingAccountNumber", /*TEXT*/ 0, obj.billingAccountNumberAttr);
+argsList.add("Month", /*INTEGER*/ 3, obj.monthAttr);
+argsList.add("Year", /*INTEGER*/ 3, obj.yearAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_VOD_USAGE_DATES\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_VOD_USAGE_DATES\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_VOD_USAGE_DATESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("AssociationId", /*LONGINTEGER*/ 4, obj.associationIdAttr);
+argsList.add("BillingAccountNumber", /*TEXT*/ 0, obj.billingAccountNumberAttr);
+argsList.add("Month", /*INTEGER*/ 3, obj.monthAttr);
+argsList.add("Year", /*INTEGER*/ 3, obj.yearAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_VOD_USAGE_DATESAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_VOD_USAGE_DATESAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_BALANCE_TAG_DATATYPE = {
+key: "276ec1ab-dde1-4ba8-80f9-e080d35289a5",
+name: "Local_BALANCE_TAG_DATATYPE",
+tableName: "OSUSR_QSX_LOCAL_BALANCE_TAG_DATATYPE",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Code",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_TAG_DATATYPE\" ADD \"Code\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "Format",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_TAG_DATATYPE\" ADD \"Format\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "FormatReceived",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_TAG_DATATYPE\" ADD \"FormatReceived\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "DateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_TAG_DATATYPE\" ADD \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "c1f0c9da-58be-15d5-ce20-658970e832e0",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_BALANCE_TAG_DATATYPERecord(BALANCE_MBPModel.Local_BALANCE_TAG_DATATYPERecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_TAG_DATATYPE\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Code\" TEXT(1000) DEFAULT \'\', \"Format\" TEXT(1000) DEFAULT \'\', \"FormatReceived\" TEXT(1000) DEFAULT \'\', \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Code\" o1, \"Format\" o2, \"FormatReceived\" o3, \"DateTime\" o4 FROM \"OSUSR_QSX_LOCAL_BALANCE_TAG_DATATYPE\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_BALANCE_TAG_DATATYPE\" (\"Id\", \"Code\", \"Format\", \"FormatReceived\", \"DateTime\") VALUES (?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_TAG_DATATYPEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("Format", /*TEXT*/ 0, obj.formatAttr);
+argsList.add("FormatReceived", /*TEXT*/ 0, obj.formatReceivedAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_BALANCE_TAG_DATATYPE\" (\"Id\", \"Code\", \"Format\", \"FormatReceived\", \"DateTime\") VALUES (?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_TAG_DATATYPEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("Format", /*TEXT*/ 0, obj.formatAttr);
+argsList.add("FormatReceived", /*TEXT*/ 0, obj.formatReceivedAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_BALANCE_TAG_DATATYPE\" SET \"Code\" = ?, \"Format\" = ?, \"FormatReceived\" = ?, \"DateTime\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_BALANCE_TAG_DATATYPEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("Format", /*TEXT*/ 0, obj.formatAttr);
+argsList.add("FormatReceived", /*TEXT*/ 0, obj.formatReceivedAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_TAG_DATATYPE\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_TAG_DATATYPE\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_BALANCE_TAG_DATATYPEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("Format", /*TEXT*/ 0, obj.formatAttr);
+argsList.add("FormatReceived", /*TEXT*/ 0, obj.formatReceivedAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_BALANCE_TAG_DATATYPEAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_BALANCE_TAG_DATATYPEAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_BALANCE_CARD_TYPE = {
+key: "2d545679-afdb-4d2d-b0f6-d3c9ba8484f6",
+name: "Local_BALANCE_CARD_TYPE",
+tableName: "OSUSR_QSX_LOCAL_BALANCE_CARD_TYPE",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Label",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CARD_TYPE\" ADD \"Label\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Code",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CARD_TYPE\" ADD \"Code\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "DateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CARD_TYPE\" ADD \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "b9634957-6a09-2252-ca2b-6e3acf5b2213",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_BALANCE_CARD_TYPERecord(BALANCE_MBPModel.Local_BALANCE_CARD_TYPERecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CARD_TYPE\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Label\" TEXT(50) DEFAULT \'\', \"Code\" TEXT(50) DEFAULT \'\', \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Label\" o1, \"Code\" o2, \"DateTime\" o3 FROM \"OSUSR_QSX_LOCAL_BALANCE_CARD_TYPE\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_BALANCE_CARD_TYPE\" (\"Id\", \"Label\", \"Code\", \"DateTime\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CARD_TYPEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_BALANCE_CARD_TYPE\" (\"Id\", \"Label\", \"Code\", \"DateTime\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CARD_TYPEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_BALANCE_CARD_TYPE\" SET \"Label\" = ?, \"Code\" = ?, \"DateTime\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CARD_TYPEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_CARD_TYPE\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_CARD_TYPE\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_BALANCE_CARD_TYPEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_BALANCE_CARD_TYPEAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_BALANCE_CARD_TYPEAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_BALANCE_CONFIG_INFO = {
+key: "352611bc-701c-4fdf-9ab2-9264fce7972d",
+name: "Local_BALANCE_CONFIG_INFO",
+tableName: "OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Value",
+type: /*TEXT*/ 0,
+length: 10000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO\" ADD \"Value\" TEXT(10000) DEFAULT \'\'"
+}
+}, {
+name: "DateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO\" ADD \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "BalanceConfigID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO\" ADD \"BalanceConfigID\" BIGINT DEFAULT NULL"
+}
+}, {
+name: "BalanceConfigAttributesID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO\" ADD \"BalanceConfigAttributesID\" BIGINT DEFAULT NULL"
+}
+}, {
+name: "BalanceConfigGroupID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO\" ADD \"BalanceConfigGroupID\" BIGINT DEFAULT NULL"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "bc8b123f-041d-09c7-de05-157d5d6e940b",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_BALANCE_CONFIG_INFORecord(BALANCE_MBPModel.Local_BALANCE_CONFIG_INFORecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Value\" TEXT(10000) DEFAULT \'\', \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"BalanceConfigID\" BIGINT DEFAULT NULL, \"BalanceConfigAttributesID\" BIGINT DEFAULT NULL, \"BalanceConfigGroupID\" BIGINT DEFAULT NULL)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Value\" o1, \"DateTime\" o2, \"BalanceConfigID\" o3, \"BalanceConfigAttributesID\" o4, \"BalanceConfigGroupID\" o5 FROM \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO\" (\"Id\", \"Value\", \"DateTime\", \"BalanceConfigID\", \"BalanceConfigAttributesID\", \"BalanceConfigGroupID\") VALUES (?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CONFIG_INFOAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("BalanceConfigID", /*LONGINTEGER*/ 4, obj.balanceConfigIDAttr, null, null, true);
+argsList.add("BalanceConfigAttributesID", /*LONGINTEGER*/ 4, obj.balanceConfigAttributesIDAttr, null, null, true);
+argsList.add("BalanceConfigGroupID", /*LONGINTEGER*/ 4, obj.balanceConfigGroupIDAttr, null, null, true);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO\" (\"Id\", \"Value\", \"DateTime\", \"BalanceConfigID\", \"BalanceConfigAttributesID\", \"BalanceConfigGroupID\") VALUES (?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CONFIG_INFOAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("BalanceConfigID", /*LONGINTEGER*/ 4, obj.balanceConfigIDAttr, null, null, true);
+argsList.add("BalanceConfigAttributesID", /*LONGINTEGER*/ 4, obj.balanceConfigAttributesIDAttr, null, null, true);
+argsList.add("BalanceConfigGroupID", /*LONGINTEGER*/ 4, obj.balanceConfigGroupIDAttr, null, null, true);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO\" SET \"Value\" = ?, \"DateTime\" = ?, \"BalanceConfigID\" = ?, \"BalanceConfigAttributesID\" = ?, \"BalanceConfigGroupID\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CONFIG_INFOAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("BalanceConfigID", /*LONGINTEGER*/ 4, obj.balanceConfigIDAttr, null, null, true);
+argsList.add("BalanceConfigAttributesID", /*LONGINTEGER*/ 4, obj.balanceConfigAttributesIDAttr, null, null, true);
+argsList.add("BalanceConfigGroupID", /*LONGINTEGER*/ 4, obj.balanceConfigGroupIDAttr, null, null, true);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_BALANCE_CONFIG_INFOAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("BalanceConfigID", /*LONGINTEGER*/ 4, obj.balanceConfigIDAttr, null, null, true);
+argsList.add("BalanceConfigAttributesID", /*LONGINTEGER*/ 4, obj.balanceConfigAttributesIDAttr, null, null, true);
+argsList.add("BalanceConfigGroupID", /*LONGINTEGER*/ 4, obj.balanceConfigGroupIDAttr, null, null, true);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_BALANCE_CONFIG_INFOAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_BALANCE_CONFIG_INFOAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_BALANCE_TAG_CODES = {
+key: "5373e03f-e1f9-458c-8346-d01c75e30cad",
+name: "Local_BALANCE_TAG_CODES",
+tableName: "OSUSR_QSX_LOCAL_BALANCE_TAG_CODES",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Code",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_TAG_CODES\" ADD \"Code\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "IsPositionConfiguration",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_TAG_CODES\" ADD \"IsPositionConfiguration\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "DateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_TAG_CODES\" ADD \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "6648046b-d648-bca6-8e6e-2256553525c7",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_BALANCE_TAG_CODESRecord(BALANCE_MBPModel.Local_BALANCE_TAG_CODESRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_TAG_CODES\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Code\" TEXT(1000) DEFAULT \'\', \"IsPositionConfiguration\" BOOLEAN DEFAULT 0, \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Code\" o1, \"IsPositionConfiguration\" o2, \"DateTime\" o3 FROM \"OSUSR_QSX_LOCAL_BALANCE_TAG_CODES\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_BALANCE_TAG_CODES\" (\"Id\", \"Code\", \"IsPositionConfiguration\", \"DateTime\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_TAG_CODESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("IsPositionConfiguration", /*BOOLEAN*/ 2, obj.isPositionConfigurationAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_BALANCE_TAG_CODES\" (\"Id\", \"Code\", \"IsPositionConfiguration\", \"DateTime\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_TAG_CODESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("IsPositionConfiguration", /*BOOLEAN*/ 2, obj.isPositionConfigurationAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_BALANCE_TAG_CODES\" SET \"Code\" = ?, \"IsPositionConfiguration\" = ?, \"DateTime\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_BALANCE_TAG_CODESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("IsPositionConfiguration", /*BOOLEAN*/ 2, obj.isPositionConfigurationAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_TAG_CODES\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_TAG_CODES\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_BALANCE_TAG_CODESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("IsPositionConfiguration", /*BOOLEAN*/ 2, obj.isPositionConfigurationAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_BALANCE_TAG_CODESAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_BALANCE_TAG_CODESAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_BALANCE_GRAPH_TYPE = {
+key: "56e3624c-b835-412e-bc98-c53a32f4c3ca",
+name: "Local_BALANCE_GRAPH_TYPE",
+tableName: "OSUSR_QSX_LOCAL_BALANCE_GRAPH_TYPE",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Label",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_GRAPH_TYPE\" ADD \"Label\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "IsLimitedGraph",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_GRAPH_TYPE\" ADD \"IsLimitedGraph\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "IsUnlimitedGraph",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_GRAPH_TYPE\" ADD \"IsUnlimitedGraph\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "DateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_GRAPH_TYPE\" ADD \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "9b37c19d-7da0-c84a-4e03-f53edd748b52",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_BALANCE_GRAPH_TYPERecord(BALANCE_MBPModel.Local_BALANCE_GRAPH_TYPERecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_GRAPH_TYPE\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Label\" TEXT(50) DEFAULT \'\', \"IsLimitedGraph\" BOOLEAN DEFAULT 0, \"IsUnlimitedGraph\" BOOLEAN DEFAULT 0, \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Label\" o1, \"IsLimitedGraph\" o2, \"IsUnlimitedGraph\" o3, \"DateTime\" o4 FROM \"OSUSR_QSX_LOCAL_BALANCE_GRAPH_TYPE\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_BALANCE_GRAPH_TYPE\" (\"Id\", \"Label\", \"IsLimitedGraph\", \"IsUnlimitedGraph\", \"DateTime\") VALUES (?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_GRAPH_TYPEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("IsLimitedGraph", /*BOOLEAN*/ 2, obj.isLimitedGraphAttr);
+argsList.add("IsUnlimitedGraph", /*BOOLEAN*/ 2, obj.isUnlimitedGraphAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_BALANCE_GRAPH_TYPE\" (\"Id\", \"Label\", \"IsLimitedGraph\", \"IsUnlimitedGraph\", \"DateTime\") VALUES (?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_GRAPH_TYPEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("IsLimitedGraph", /*BOOLEAN*/ 2, obj.isLimitedGraphAttr);
+argsList.add("IsUnlimitedGraph", /*BOOLEAN*/ 2, obj.isUnlimitedGraphAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_BALANCE_GRAPH_TYPE\" SET \"Label\" = ?, \"IsLimitedGraph\" = ?, \"IsUnlimitedGraph\" = ?, \"DateTime\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_BALANCE_GRAPH_TYPEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("IsLimitedGraph", /*BOOLEAN*/ 2, obj.isLimitedGraphAttr);
+argsList.add("IsUnlimitedGraph", /*BOOLEAN*/ 2, obj.isUnlimitedGraphAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_GRAPH_TYPE\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_GRAPH_TYPE\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_BALANCE_GRAPH_TYPEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("IsLimitedGraph", /*BOOLEAN*/ 2, obj.isLimitedGraphAttr);
+argsList.add("IsUnlimitedGraph", /*BOOLEAN*/ 2, obj.isUnlimitedGraphAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_BALANCE_GRAPH_TYPEAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_BALANCE_GRAPH_TYPEAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_NET_DISTRIBUTION = {
+key: "670bdd0e-2cbb-4e00-9f91-a2725d3d2502",
+name: "Local_NET_DISTRIBUTION",
+tableName: "OSUSR_QSX_LOCAL_NET_DISTRIBUTION",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "AssociationId",
+type: /*LONGINTEGER*/ 4,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" ADD \"AssociationId\" BIGINT DEFAULT 0"
+}
+}, {
+name: "MSISDN",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" ADD \"MSISDN\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Previous_Base",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" ADD \"Previous_Base\" INTEGER DEFAULT 0"
+}
+}, {
+name: "Previous_Extra",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" ADD \"Previous_Extra\" INTEGER DEFAULT 0"
+}
+}, {
+name: "Previous_Complement",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" ADD \"Previous_Complement\" INTEGER DEFAULT 0"
+}
+}, {
+name: "Next_Base",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" ADD \"Next_Base\" INTEGER DEFAULT 0"
+}
+}, {
+name: "Next_Extra",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" ADD \"Next_Extra\" INTEGER DEFAULT 0"
+}
+}, {
+name: "Next_Complement",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" ADD \"Next_Complement\" INTEGER DEFAULT 0"
+}
+}, {
+name: "Min_Extra",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" ADD \"Min_Extra\" INTEGER DEFAULT 0"
+}
+}, {
+name: "Renew_Date",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" ADD \"Renew_Date\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "CacheExpirationDate",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" ADD \"CacheExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "9ff74f7f-58c9-2f10-ba76-df036b95c6cf",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_NET_DISTRIBUTIONRecord(BALANCE_MBPModel.Local_NET_DISTRIBUTIONRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"AssociationId\" BIGINT DEFAULT 0, \"MSISDN\" TEXT(50) DEFAULT \'\', \"Previous_Base\" INTEGER DEFAULT 0, \"Previous_Extra\" INTEGER DEFAULT 0, \"Previous_Complement\" INTEGER DEFAULT 0, \"Next_Base\" INTEGER DEFAULT 0, \"Next_Extra\" INTEGER DEFAULT 0, \"Next_Complement\" INTEGER DEFAULT 0, \"Min_Extra\" INTEGER DEFAULT 0, \"Renew_Date\" TEXT(50) DEFAULT \'\', \"CacheExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"AssociationId\" o1, \"MSISDN\" o2, \"Previous_Base\" o3, \"Previous_Extra\" o4, \"Previous_Complement\" o5, \"Next_Base\" o6, \"Next_Extra\" o7, \"Next_Complement\" o8, \"Min_Extra\" o9, \"Renew_Date\" o10, \"CacheExpirationDate\" o11 FROM \"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" (\"Id\", \"AssociationId\", \"MSISDN\", \"Previous_Base\", \"Previous_Extra\", \"Previous_Complement\", \"Next_Base\", \"Next_Extra\", \"Next_Complement\", \"Min_Extra\", \"Renew_Date\", \"CacheExpirationDate\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_NET_DISTRIBUTIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("AssociationId", /*LONGINTEGER*/ 4, obj.associationIdAttr);
+argsList.add("MSISDN", /*TEXT*/ 0, obj.mSISDNAttr);
+argsList.add("Previous_Base", /*INTEGER*/ 3, obj.previous_BaseAttr);
+argsList.add("Previous_Extra", /*INTEGER*/ 3, obj.previous_ExtraAttr);
+argsList.add("Previous_Complement", /*INTEGER*/ 3, obj.previous_ComplementAttr);
+argsList.add("Next_Base", /*INTEGER*/ 3, obj.next_BaseAttr);
+argsList.add("Next_Extra", /*INTEGER*/ 3, obj.next_ExtraAttr);
+argsList.add("Next_Complement", /*INTEGER*/ 3, obj.next_ComplementAttr);
+argsList.add("Min_Extra", /*INTEGER*/ 3, obj.min_ExtraAttr);
+argsList.add("Renew_Date", /*TEXT*/ 0, obj.renew_DateAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" (\"Id\", \"AssociationId\", \"MSISDN\", \"Previous_Base\", \"Previous_Extra\", \"Previous_Complement\", \"Next_Base\", \"Next_Extra\", \"Next_Complement\", \"Min_Extra\", \"Renew_Date\", \"CacheExpirationDate\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_NET_DISTRIBUTIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("AssociationId", /*LONGINTEGER*/ 4, obj.associationIdAttr);
+argsList.add("MSISDN", /*TEXT*/ 0, obj.mSISDNAttr);
+argsList.add("Previous_Base", /*INTEGER*/ 3, obj.previous_BaseAttr);
+argsList.add("Previous_Extra", /*INTEGER*/ 3, obj.previous_ExtraAttr);
+argsList.add("Previous_Complement", /*INTEGER*/ 3, obj.previous_ComplementAttr);
+argsList.add("Next_Base", /*INTEGER*/ 3, obj.next_BaseAttr);
+argsList.add("Next_Extra", /*INTEGER*/ 3, obj.next_ExtraAttr);
+argsList.add("Next_Complement", /*INTEGER*/ 3, obj.next_ComplementAttr);
+argsList.add("Min_Extra", /*INTEGER*/ 3, obj.min_ExtraAttr);
+argsList.add("Renew_Date", /*TEXT*/ 0, obj.renew_DateAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" SET \"AssociationId\" = ?, \"MSISDN\" = ?, \"Previous_Base\" = ?, \"Previous_Extra\" = ?, \"Previous_Complement\" = ?, \"Next_Base\" = ?, \"Next_Extra\" = ?, \"Next_Complement\" = ?, \"Min_Extra\" = ?, \"Renew_Date\" = ?, \"CacheExpirationDate\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_NET_DISTRIBUTIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("AssociationId", /*LONGINTEGER*/ 4, obj.associationIdAttr);
+argsList.add("MSISDN", /*TEXT*/ 0, obj.mSISDNAttr);
+argsList.add("Previous_Base", /*INTEGER*/ 3, obj.previous_BaseAttr);
+argsList.add("Previous_Extra", /*INTEGER*/ 3, obj.previous_ExtraAttr);
+argsList.add("Previous_Complement", /*INTEGER*/ 3, obj.previous_ComplementAttr);
+argsList.add("Next_Base", /*INTEGER*/ 3, obj.next_BaseAttr);
+argsList.add("Next_Extra", /*INTEGER*/ 3, obj.next_ExtraAttr);
+argsList.add("Next_Complement", /*INTEGER*/ 3, obj.next_ComplementAttr);
+argsList.add("Min_Extra", /*INTEGER*/ 3, obj.min_ExtraAttr);
+argsList.add("Renew_Date", /*TEXT*/ 0, obj.renew_DateAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_NET_DISTRIBUTION\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_NET_DISTRIBUTIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("AssociationId", /*LONGINTEGER*/ 4, obj.associationIdAttr);
+argsList.add("MSISDN", /*TEXT*/ 0, obj.mSISDNAttr);
+argsList.add("Previous_Base", /*INTEGER*/ 3, obj.previous_BaseAttr);
+argsList.add("Previous_Extra", /*INTEGER*/ 3, obj.previous_ExtraAttr);
+argsList.add("Previous_Complement", /*INTEGER*/ 3, obj.previous_ComplementAttr);
+argsList.add("Next_Base", /*INTEGER*/ 3, obj.next_BaseAttr);
+argsList.add("Next_Extra", /*INTEGER*/ 3, obj.next_ExtraAttr);
+argsList.add("Next_Complement", /*INTEGER*/ 3, obj.next_ComplementAttr);
+argsList.add("Min_Extra", /*INTEGER*/ 3, obj.min_ExtraAttr);
+argsList.add("Renew_Date", /*TEXT*/ 0, obj.renew_DateAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_NET_DISTRIBUTIONAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_NET_DISTRIBUTIONAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_BALANCE_LINES = {
+key: "6861453b-3823-409a-a307-8fbbb748dfa9",
+name: "Local_BALANCE_LINES",
+tableName: "OSUSR_QSX_LOCAL_BALANCE_LINES",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "BalanceGroupDescription",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"BalanceGroupDescription\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "AvailableAmount",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"AvailableAmount\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "AvailableAmountUnit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"AvailableAmountUnit\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "CellPhoneNumber",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"CellPhoneNumber\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "ConsumedAmount",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"ConsumedAmount\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "ConsumedAmountUnit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"ConsumedAmountUnit\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "TotalAmount",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"TotalAmount\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "TotalAmountUnit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"TotalAmountUnit\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Order",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"Order\" INTEGER DEFAULT 0"
+}
+}, {
+name: "DateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "PackageNumber",
+type: /*INTEGER*/ 3,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"PackageNumber\" INTEGER DEFAULT 0"
+}
+}, {
+name: "IsCredit",
+type: /*BOOLEAN*/ 2,
+default: false,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"IsCredit\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "CreditDescription",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"CreditDescription\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "TagCode",
+type: /*TEXT*/ 0,
+length: 250,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"TagCode\" TEXT(250) DEFAULT \'\'"
+}
+}, {
+name: "PageCode",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"PageCode\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "AvailableAmountFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"AvailableAmountFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "AvailableAmountUnitFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"AvailableAmountUnitFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "ConsumedAmountFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"ConsumedAmountFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "ConsumedAmountUnitFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"ConsumedAmountUnitFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "TotalAmountFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"TotalAmountFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "TotalAmountUnitFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"TotalAmountUnitFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "CacheExpirationDate",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"CacheExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "ExpiryDate",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" ADD \"ExpiryDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "6bfc303b-facf-d26a-2b9c-fc8f4c8ceb06",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_BALANCE_LINESRecord(BALANCE_MBPModel.Local_BALANCE_LINESRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_LINES\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"BalanceGroupDescription\" TEXT(1000) DEFAULT \'\', \"AvailableAmount\" TEXT(50) DEFAULT \'\', \"AvailableAmountUnit\" TEXT(50) DEFAULT \'\', \"CellPhoneNumber\" TEXT(50) DEFAULT \'\', \"ConsumedAmount\" TEXT(50) DEFAULT \'\', \"ConsumedAmountUnit\" TEXT(50) DEFAULT \'\', \"TotalAmount\" TEXT(50) DEFAULT \'\', \"TotalAmountUnit\" TEXT(50) DEFAULT \'\', \"Order\" INTEGER DEFAULT 0, \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"PackageNumber\" INTEGER DEFAULT 0, \"IsCredit\" BOOLEAN DEFAULT 0, \"CreditDescription\" TEXT(1000) DEFAULT \'\', \"TagCode\" TEXT(250) DEFAULT \'\', \"PageCode\" TEXT(50) DEFAULT \'\', \"AvailableAmountFmt\" TEXT(50) DEFAULT \'\', \"AvailableAmountUnitFmt\" TEXT(50) DEFAULT \'\', \"ConsumedAmountFmt\" TEXT(50) DEFAULT \'\', \"ConsumedAmountUnitFmt\" TEXT(50) DEFAULT \'\', \"TotalAmountFmt\" TEXT(50) DEFAULT \'\', \"TotalAmountUnitFmt\" TEXT(50) DEFAULT \'\', \"CacheExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"ExpiryDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"BalanceGroupDescription\" o1, \"AvailableAmount\" o2, \"AvailableAmountUnit\" o3, \"CellPhoneNumber\" o4, \"ConsumedAmount\" o5, \"ConsumedAmountUnit\" o6, \"TotalAmount\" o7, \"TotalAmountUnit\" o8, \"Order\" o9, \"DateTime\" o10, \"PackageNumber\" o11, \"IsCredit\" o12, \"CreditDescription\" o13, \"TagCode\" o14, \"PageCode\" o15, \"AvailableAmountFmt\" o16, \"AvailableAmountUnitFmt\" o17, \"ConsumedAmountFmt\" o18, \"ConsumedAmountUnitFmt\" o19, \"TotalAmountFmt\" o20, \"TotalAmountUnitFmt\" o21, \"CacheExpirationDate\" o22, \"ExpiryDate\" o23 FROM \"OSUSR_QSX_LOCAL_BALANCE_LINES\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_BALANCE_LINES\" (\"Id\", \"BalanceGroupDescription\", \"AvailableAmount\", \"AvailableAmountUnit\", \"CellPhoneNumber\", \"ConsumedAmount\", \"ConsumedAmountUnit\", \"TotalAmount\", \"TotalAmountUnit\", \"Order\", \"DateTime\", \"PackageNumber\", \"IsCredit\", \"CreditDescription\", \"TagCode\", \"PageCode\", \"AvailableAmountFmt\", \"AvailableAmountUnitFmt\", \"ConsumedAmountFmt\", \"ConsumedAmountUnitFmt\", \"TotalAmountFmt\", \"TotalAmountUnitFmt\", \"CacheExpirationDate\", \"ExpiryDate\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_LINESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("BalanceGroupDescription", /*TEXT*/ 0, obj.balanceGroupDescriptionAttr);
+argsList.add("AvailableAmount", /*TEXT*/ 0, obj.availableAmountAttr);
+argsList.add("AvailableAmountUnit", /*TEXT*/ 0, obj.availableAmountUnitAttr);
+argsList.add("CellPhoneNumber", /*TEXT*/ 0, obj.cellPhoneNumberAttr);
+argsList.add("ConsumedAmount", /*TEXT*/ 0, obj.consumedAmountAttr);
+argsList.add("ConsumedAmountUnit", /*TEXT*/ 0, obj.consumedAmountUnitAttr);
+argsList.add("TotalAmount", /*TEXT*/ 0, obj.totalAmountAttr);
+argsList.add("TotalAmountUnit", /*TEXT*/ 0, obj.totalAmountUnitAttr);
+argsList.add("Order", /*INTEGER*/ 3, obj.orderAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("PackageNumber", /*INTEGER*/ 3, obj.packageNumberAttr);
+argsList.add("IsCredit", /*BOOLEAN*/ 2, obj.isCreditAttr);
+argsList.add("CreditDescription", /*TEXT*/ 0, obj.creditDescriptionAttr);
+argsList.add("TagCode", /*TEXT*/ 0, obj.tagCodeAttr);
+argsList.add("PageCode", /*TEXT*/ 0, obj.pageCodeAttr);
+argsList.add("AvailableAmountFmt", /*TEXT*/ 0, obj.availableAmountFmtAttr);
+argsList.add("AvailableAmountUnitFmt", /*TEXT*/ 0, obj.availableAmountUnitFmtAttr);
+argsList.add("ConsumedAmountFmt", /*TEXT*/ 0, obj.consumedAmountFmtAttr);
+argsList.add("ConsumedAmountUnitFmt", /*TEXT*/ 0, obj.consumedAmountUnitFmtAttr);
+argsList.add("TotalAmountFmt", /*TEXT*/ 0, obj.totalAmountFmtAttr);
+argsList.add("TotalAmountUnitFmt", /*TEXT*/ 0, obj.totalAmountUnitFmtAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+argsList.add("ExpiryDate", /*DATE_TIME*/ 6, obj.expiryDateAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_BALANCE_LINES\" (\"Id\", \"BalanceGroupDescription\", \"AvailableAmount\", \"AvailableAmountUnit\", \"CellPhoneNumber\", \"ConsumedAmount\", \"ConsumedAmountUnit\", \"TotalAmount\", \"TotalAmountUnit\", \"Order\", \"DateTime\", \"PackageNumber\", \"IsCredit\", \"CreditDescription\", \"TagCode\", \"PageCode\", \"AvailableAmountFmt\", \"AvailableAmountUnitFmt\", \"ConsumedAmountFmt\", \"ConsumedAmountUnitFmt\", \"TotalAmountFmt\", \"TotalAmountUnitFmt\", \"CacheExpirationDate\", \"ExpiryDate\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_LINESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("BalanceGroupDescription", /*TEXT*/ 0, obj.balanceGroupDescriptionAttr);
+argsList.add("AvailableAmount", /*TEXT*/ 0, obj.availableAmountAttr);
+argsList.add("AvailableAmountUnit", /*TEXT*/ 0, obj.availableAmountUnitAttr);
+argsList.add("CellPhoneNumber", /*TEXT*/ 0, obj.cellPhoneNumberAttr);
+argsList.add("ConsumedAmount", /*TEXT*/ 0, obj.consumedAmountAttr);
+argsList.add("ConsumedAmountUnit", /*TEXT*/ 0, obj.consumedAmountUnitAttr);
+argsList.add("TotalAmount", /*TEXT*/ 0, obj.totalAmountAttr);
+argsList.add("TotalAmountUnit", /*TEXT*/ 0, obj.totalAmountUnitAttr);
+argsList.add("Order", /*INTEGER*/ 3, obj.orderAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("PackageNumber", /*INTEGER*/ 3, obj.packageNumberAttr);
+argsList.add("IsCredit", /*BOOLEAN*/ 2, obj.isCreditAttr);
+argsList.add("CreditDescription", /*TEXT*/ 0, obj.creditDescriptionAttr);
+argsList.add("TagCode", /*TEXT*/ 0, obj.tagCodeAttr);
+argsList.add("PageCode", /*TEXT*/ 0, obj.pageCodeAttr);
+argsList.add("AvailableAmountFmt", /*TEXT*/ 0, obj.availableAmountFmtAttr);
+argsList.add("AvailableAmountUnitFmt", /*TEXT*/ 0, obj.availableAmountUnitFmtAttr);
+argsList.add("ConsumedAmountFmt", /*TEXT*/ 0, obj.consumedAmountFmtAttr);
+argsList.add("ConsumedAmountUnitFmt", /*TEXT*/ 0, obj.consumedAmountUnitFmtAttr);
+argsList.add("TotalAmountFmt", /*TEXT*/ 0, obj.totalAmountFmtAttr);
+argsList.add("TotalAmountUnitFmt", /*TEXT*/ 0, obj.totalAmountUnitFmtAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+argsList.add("ExpiryDate", /*DATE_TIME*/ 6, obj.expiryDateAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_BALANCE_LINES\" SET \"BalanceGroupDescription\" = ?, \"AvailableAmount\" = ?, \"AvailableAmountUnit\" = ?, \"CellPhoneNumber\" = ?, \"ConsumedAmount\" = ?, \"ConsumedAmountUnit\" = ?, \"TotalAmount\" = ?, \"TotalAmountUnit\" = ?, \"Order\" = ?, \"DateTime\" = ?, \"PackageNumber\" = ?, \"IsCredit\" = ?, \"CreditDescription\" = ?, \"TagCode\" = ?, \"PageCode\" = ?, \"AvailableAmountFmt\" = ?, \"AvailableAmountUnitFmt\" = ?, \"ConsumedAmountFmt\" = ?, \"ConsumedAmountUnitFmt\" = ?, \"TotalAmountFmt\" = ?, \"TotalAmountUnitFmt\" = ?, \"CacheExpirationDate\" = ?, \"ExpiryDate\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_BALANCE_LINESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("BalanceGroupDescription", /*TEXT*/ 0, obj.balanceGroupDescriptionAttr);
+argsList.add("AvailableAmount", /*TEXT*/ 0, obj.availableAmountAttr);
+argsList.add("AvailableAmountUnit", /*TEXT*/ 0, obj.availableAmountUnitAttr);
+argsList.add("CellPhoneNumber", /*TEXT*/ 0, obj.cellPhoneNumberAttr);
+argsList.add("ConsumedAmount", /*TEXT*/ 0, obj.consumedAmountAttr);
+argsList.add("ConsumedAmountUnit", /*TEXT*/ 0, obj.consumedAmountUnitAttr);
+argsList.add("TotalAmount", /*TEXT*/ 0, obj.totalAmountAttr);
+argsList.add("TotalAmountUnit", /*TEXT*/ 0, obj.totalAmountUnitAttr);
+argsList.add("Order", /*INTEGER*/ 3, obj.orderAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("PackageNumber", /*INTEGER*/ 3, obj.packageNumberAttr);
+argsList.add("IsCredit", /*BOOLEAN*/ 2, obj.isCreditAttr);
+argsList.add("CreditDescription", /*TEXT*/ 0, obj.creditDescriptionAttr);
+argsList.add("TagCode", /*TEXT*/ 0, obj.tagCodeAttr);
+argsList.add("PageCode", /*TEXT*/ 0, obj.pageCodeAttr);
+argsList.add("AvailableAmountFmt", /*TEXT*/ 0, obj.availableAmountFmtAttr);
+argsList.add("AvailableAmountUnitFmt", /*TEXT*/ 0, obj.availableAmountUnitFmtAttr);
+argsList.add("ConsumedAmountFmt", /*TEXT*/ 0, obj.consumedAmountFmtAttr);
+argsList.add("ConsumedAmountUnitFmt", /*TEXT*/ 0, obj.consumedAmountUnitFmtAttr);
+argsList.add("TotalAmountFmt", /*TEXT*/ 0, obj.totalAmountFmtAttr);
+argsList.add("TotalAmountUnitFmt", /*TEXT*/ 0, obj.totalAmountUnitFmtAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+argsList.add("ExpiryDate", /*DATE_TIME*/ 6, obj.expiryDateAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_LINES\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_LINES\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_BALANCE_LINESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("BalanceGroupDescription", /*TEXT*/ 0, obj.balanceGroupDescriptionAttr);
+argsList.add("AvailableAmount", /*TEXT*/ 0, obj.availableAmountAttr);
+argsList.add("AvailableAmountUnit", /*TEXT*/ 0, obj.availableAmountUnitAttr);
+argsList.add("CellPhoneNumber", /*TEXT*/ 0, obj.cellPhoneNumberAttr);
+argsList.add("ConsumedAmount", /*TEXT*/ 0, obj.consumedAmountAttr);
+argsList.add("ConsumedAmountUnit", /*TEXT*/ 0, obj.consumedAmountUnitAttr);
+argsList.add("TotalAmount", /*TEXT*/ 0, obj.totalAmountAttr);
+argsList.add("TotalAmountUnit", /*TEXT*/ 0, obj.totalAmountUnitAttr);
+argsList.add("Order", /*INTEGER*/ 3, obj.orderAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("PackageNumber", /*INTEGER*/ 3, obj.packageNumberAttr);
+argsList.add("IsCredit", /*BOOLEAN*/ 2, obj.isCreditAttr);
+argsList.add("CreditDescription", /*TEXT*/ 0, obj.creditDescriptionAttr);
+argsList.add("TagCode", /*TEXT*/ 0, obj.tagCodeAttr);
+argsList.add("PageCode", /*TEXT*/ 0, obj.pageCodeAttr);
+argsList.add("AvailableAmountFmt", /*TEXT*/ 0, obj.availableAmountFmtAttr);
+argsList.add("AvailableAmountUnitFmt", /*TEXT*/ 0, obj.availableAmountUnitFmtAttr);
+argsList.add("ConsumedAmountFmt", /*TEXT*/ 0, obj.consumedAmountFmtAttr);
+argsList.add("ConsumedAmountUnitFmt", /*TEXT*/ 0, obj.consumedAmountUnitFmtAttr);
+argsList.add("TotalAmountFmt", /*TEXT*/ 0, obj.totalAmountFmtAttr);
+argsList.add("TotalAmountUnitFmt", /*TEXT*/ 0, obj.totalAmountUnitFmtAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+argsList.add("ExpiryDate", /*DATE_TIME*/ 6, obj.expiryDateAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_BALANCE_LINESAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_BALANCE_LINESAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_BALANCE_NEXT_CHARGE_DETAIL = {
+key: "85fd3d18-758b-4e41-9441-03dc6babeb42",
+name: "Local_BALANCE_NEXT_CHARGE_DETAIL",
+tableName: "OSUSR_QSX_LOCAL_BALANCE_NEXT_CHARGE_DETAIL",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Amount",
+type: /*DECIMAL*/ 5,
+length: 15,
+decimals: 5,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_NEXT_CHARGE_DETAIL\" ADD \"Amount\" REAL(37,8) DEFAULT 0"
+}
+}, {
+name: "Date",
+type: /*DATE*/ 7,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_NEXT_CHARGE_DETAIL\" ADD \"Date\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "dd8d5603-54ab-ecfe-15e5-5b460c0f2d98",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_BALANCE_NEXT_CHARGE_DETAILRecord(BALANCE_MBPModel.Local_BALANCE_NEXT_CHARGE_DETAILRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_NEXT_CHARGE_DETAIL\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Amount\" REAL(37,8) DEFAULT 0, \"Date\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Amount\" o1, \"Date\" o2 FROM \"OSUSR_QSX_LOCAL_BALANCE_NEXT_CHARGE_DETAIL\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_BALANCE_NEXT_CHARGE_DETAIL\" (\"Id\", \"Amount\", \"Date\") VALUES (?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_NEXT_CHARGE_DETAILAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("Date", /*DATE*/ 7, obj.dateAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_BALANCE_NEXT_CHARGE_DETAIL\" (\"Id\", \"Amount\", \"Date\") VALUES (?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_NEXT_CHARGE_DETAILAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("Date", /*DATE*/ 7, obj.dateAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_BALANCE_NEXT_CHARGE_DETAIL\" SET \"Amount\" = ?, \"Date\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_BALANCE_NEXT_CHARGE_DETAILAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("Date", /*DATE*/ 7, obj.dateAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_NEXT_CHARGE_DETAIL\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_NEXT_CHARGE_DETAIL\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_BALANCE_NEXT_CHARGE_DETAILAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("Date", /*DATE*/ 7, obj.dateAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_BALANCE_NEXT_CHARGE_DETAILAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_BALANCE_NEXT_CHARGE_DETAILAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_BLM_BALANCE = {
+key: "8720bcce-3289-45c3-b6c4-aa2969309038",
+name: "Local_BLM_BALANCE",
+tableName: "OSUSR_QSX_LOCAL_BLM_BALANCE",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "ServiceId",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"ServiceId\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "IsUnlimited",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"IsUnlimited\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "AvailableValueNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"AvailableValueNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "AvailableValueUnit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"AvailableValueUnit\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "SpentValueNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"SpentValueNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "SpentValueUnit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"SpentValueUnit\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "TotalValueNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"TotalValueNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "TotalValueUnit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"TotalValueUnit\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "ShowPlafondExtra",
+type: /*BOOLEAN*/ 2,
+default: false,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"ShowPlafondExtra\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "PlafondExtraNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"PlafondExtraNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "PlafondExtraUnit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"PlafondExtraUnit\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "ShowMaxValueToRestablish",
+type: /*BOOLEAN*/ 2,
+default: false,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"ShowMaxValueToRestablish\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "MaxValueToRestablishNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"MaxValueToRestablishNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "MaxValueToRestablishUnit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"MaxValueToRestablishUnit\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "ShowUETraffic",
+type: /*BOOLEAN*/ 2,
+default: false,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"ShowUETraffic\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "UETrafficAmountNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"UETrafficAmountNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "UETrafficAmountUnit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"UETrafficAmountUnit\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "UERoamingExpireDate",
+type: /*DATE*/ 7,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"UERoamingExpireDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "ShowRMTraffic",
+type: /*BOOLEAN*/ 2,
+default: false,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"ShowRMTraffic\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "RMTrafficAmountNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RMTrafficAmountNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RMTrafficAmountUnit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RMTrafficAmountUnit\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RMRoamingExpireDate",
+type: /*DATE*/ 7,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RMRoamingExpireDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "ShowHappyHour",
+type: /*BOOLEAN*/ 2,
+default: false,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"ShowHappyHour\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "HappyHourValueNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"HappyHourValueNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "HappyHourValueUnit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"HappyHourValueUnit\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "MaxValueToRestablishFmtNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"MaxValueToRestablishFmtNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "MaxValueToRestablishUnitFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"MaxValueToRestablishUnitFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "PlafondExtraFmtNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"PlafondExtraFmtNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "PlafondExtraUnitFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"PlafondExtraUnitFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "AvailableValueFmtNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"AvailableValueFmtNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "AvailableValueUnitFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"AvailableValueUnitFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "SpentValueFmtNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"SpentValueFmtNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "SpentValueUnitFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"SpentValueUnitFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "TotalValueFmtNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"TotalValueFmtNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "TotalValueUnitFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"TotalValueUnitFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "UETrafficAmountFmtNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"UETrafficAmountFmtNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "UETrafficAmountUnitFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"UETrafficAmountUnitFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RMTrafficAmountFmtNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RMTrafficAmountFmtNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RMTrafficAmountUnitFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RMTrafficAmountUnitFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "HappyHourValueFmtNEW",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"HappyHourValueFmtNEW\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "HappyHourValueUnitFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"HappyHourValueUnitFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "CacheExpirationDate",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"CacheExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "ShowRecurrPack",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"ShowRecurrPack\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "RecurrPackAmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RecurrPackAmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RecurrPackAmtUnit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RecurrPackAmtUnit\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RecurrPackInitialAmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RecurrPackInitialAmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RecurrPackInitialAmtUnit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RecurrPackInitialAmtUnit\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RecurrPackAvailableAmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RecurrPackAvailableAmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RecurrPackAvailableAmtUnit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RecurrPackAvailableAmtUnit\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RecurrPackAmountFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RecurrPackAmountFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RecurrPackAmountUnitFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RecurrPackAmountUnitFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RecurrPackInitialAmtFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RecurrPackInitialAmtFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RecurrPackInitialAmtUnitFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RecurrPackInitialAmtUnitFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RecurrPackAvailableAmtFmt",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RecurrPackAvailableAmtFmt\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "RecurrPackAvailableAmtUnitFm",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" ADD \"RecurrPackAvailableAmtUnitFm\" TEXT(50) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "0487365e-feca-9250-5faa-61f79dcc5bfb",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_BLM_BALANCERecord(BALANCE_MBPModel.Local_BLM_BALANCERecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BLM_BALANCE\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"ServiceId\" TEXT(50) DEFAULT \'\', \"IsUnlimited\" BOOLEAN DEFAULT 0, \"AvailableValueNEW\" TEXT(50) DEFAULT \'\', \"AvailableValueUnit\" TEXT(50) DEFAULT \'\', \"SpentValueNEW\" TEXT(50) DEFAULT \'\', \"SpentValueUnit\" TEXT(50) DEFAULT \'\', \"TotalValueNEW\" TEXT(50) DEFAULT \'\', \"TotalValueUnit\" TEXT(50) DEFAULT \'\', \"ShowPlafondExtra\" BOOLEAN DEFAULT 0, \"PlafondExtraNEW\" TEXT(50) DEFAULT \'\', \"PlafondExtraUnit\" TEXT(50) DEFAULT \'\', \"ShowMaxValueToRestablish\" BOOLEAN DEFAULT 0, \"MaxValueToRestablishNEW\" TEXT(50) DEFAULT \'\', \"MaxValueToRestablishUnit\" TEXT(50) DEFAULT \'\', \"ShowUETraffic\" BOOLEAN DEFAULT 0, \"UETrafficAmountNEW\" TEXT(50) DEFAULT \'\', \"UETrafficAmountUnit\" TEXT(50) DEFAULT \'\', \"UERoamingExpireDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"ShowRMTraffic\" BOOLEAN DEFAULT 0, \"RMTrafficAmountNEW\" TEXT(50) DEFAULT \'\', \"RMTrafficAmountUnit\" TEXT(50) DEFAULT \'\', \"RMRoamingExpireDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"ShowHappyHour\" BOOLEAN DEFAULT 0, \"HappyHourValueNEW\" TEXT(50) DEFAULT \'\', \"HappyHourValueUnit\" TEXT(50) DEFAULT \'\', \"MaxValueToRestablishFmtNEW\" TEXT(50) DEFAULT \'\', \"MaxValueToRestablishUnitFmt\" TEXT(50) DEFAULT \'\', \"PlafondExtraFmtNEW\" TEXT(50) DEFAULT \'\', \"PlafondExtraUnitFmt\" TEXT(50) DEFAULT \'\', \"AvailableValueFmtNEW\" TEXT(50) DEFAULT \'\', \"AvailableValueUnitFmt\" TEXT(50) DEFAULT \'\', \"SpentValueFmtNEW\" TEXT(50) DEFAULT \'\', \"SpentValueUnitFmt\" TEXT(50) DEFAULT \'\', \"TotalValueFmtNEW\" TEXT(50) DEFAULT \'\', \"TotalValueUnitFmt\" TEXT(50) DEFAULT \'\', \"UETrafficAmountFmtNEW\" TEXT(50) DEFAULT \'\', \"UETrafficAmountUnitFmt\" TEXT(50) DEFAULT \'\', \"RMTrafficAmountFmtNEW\" TEXT(50) DEFAULT \'\', \"RMTrafficAmountUnitFmt\" TEXT(50) DEFAULT \'\', \"HappyHourValueFmtNEW\" TEXT(50) DEFAULT \'\', \"HappyHourValueUnitFmt\" TEXT(50) DEFAULT \'\', \"CacheExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"ShowRecurrPack\" BOOLEAN DEFAULT 0, \"RecurrPackAmt\" TEXT(50) DEFAULT \'\', \"RecurrPackAmtUnit\" TEXT(50) DEFAULT \'\', \"RecurrPackInitialAmt\" TEXT(50) DEFAULT \'\', \"RecurrPackInitialAmtUnit\" TEXT(50) DEFAULT \'\', \"RecurrPackAvailableAmt\" TEXT(50) DEFAULT \'\', \"RecurrPackAvailableAmtUnit\" TEXT(50) DEFAULT \'\', \"RecurrPackAmountFmt\" TEXT(50) DEFAULT \'\', \"RecurrPackAmountUnitFmt\" TEXT(50) DEFAULT \'\', \"RecurrPackInitialAmtFmt\" TEXT(50) DEFAULT \'\', \"RecurrPackInitialAmtUnitFmt\" TEXT(50) DEFAULT \'\', \"RecurrPackAvailableAmtFmt\" TEXT(50) DEFAULT \'\', \"RecurrPackAvailableAmtUnitFm\" TEXT(50) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"ServiceId\" o1, \"IsUnlimited\" o2, \"AvailableValueNEW\" o3, \"AvailableValueUnit\" o4, \"SpentValueNEW\" o5, \"SpentValueUnit\" o6, \"TotalValueNEW\" o7, \"TotalValueUnit\" o8, \"ShowPlafondExtra\" o9, \"PlafondExtraNEW\" o10, \"PlafondExtraUnit\" o11, \"ShowMaxValueToRestablish\" o12, \"MaxValueToRestablishNEW\" o13, \"MaxValueToRestablishUnit\" o14, \"ShowUETraffic\" o15, \"UETrafficAmountNEW\" o16, \"UETrafficAmountUnit\" o17, \"UERoamingExpireDate\" o18, \"ShowRMTraffic\" o19, \"RMTrafficAmountNEW\" o20, \"RMTrafficAmountUnit\" o21, \"RMRoamingExpireDate\" o22, \"ShowHappyHour\" o23, \"HappyHourValueNEW\" o24, \"HappyHourValueUnit\" o25, \"MaxValueToRestablishFmtNEW\" o26, \"MaxValueToRestablishUnitFmt\" o27, \"PlafondExtraFmtNEW\" o28, \"PlafondExtraUnitFmt\" o29, \"AvailableValueFmtNEW\" o30, \"AvailableValueUnitFmt\" o31, \"SpentValueFmtNEW\" o32, \"SpentValueUnitFmt\" o33, \"TotalValueFmtNEW\" o34, \"TotalValueUnitFmt\" o35, \"UETrafficAmountFmtNEW\" o36, \"UETrafficAmountUnitFmt\" o37, \"RMTrafficAmountFmtNEW\" o38, \"RMTrafficAmountUnitFmt\" o39, \"HappyHourValueFmtNEW\" o40, \"HappyHourValueUnitFmt\" o41, \"CacheExpirationDate\" o42, \"ShowRecurrPack\" o43, \"RecurrPackAmt\" o44, \"RecurrPackAmtUnit\" o45, \"RecurrPackInitialAmt\" o46, \"RecurrPackInitialAmtUnit\" o47, \"RecurrPackAvailableAmt\" o48, \"RecurrPackAvailableAmtUnit\" o49, \"RecurrPackAmountFmt\" o50, \"RecurrPackAmountUnitFmt\" o51, \"RecurrPackInitialAmtFmt\" o52, \"RecurrPackInitialAmtUnitFmt\" o53, \"RecurrPackAvailableAmtFmt\" o54, \"RecurrPackAvailableAmtUnitFm\" o55 FROM \"OSUSR_QSX_LOCAL_BLM_BALANCE\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_BLM_BALANCE\" (\"Id\", \"ServiceId\", \"IsUnlimited\", \"AvailableValueNEW\", \"AvailableValueUnit\", \"SpentValueNEW\", \"SpentValueUnit\", \"TotalValueNEW\", \"TotalValueUnit\", \"ShowPlafondExtra\", \"PlafondExtraNEW\", \"PlafondExtraUnit\", \"ShowMaxValueToRestablish\", \"MaxValueToRestablishNEW\", \"MaxValueToRestablishUnit\", \"ShowUETraffic\", \"UETrafficAmountNEW\", \"UETrafficAmountUnit\", \"UERoamingExpireDate\", \"ShowRMTraffic\", \"RMTrafficAmountNEW\", \"RMTrafficAmountUnit\", \"RMRoamingExpireDate\", \"ShowHappyHour\", \"HappyHourValueNEW\", \"HappyHourValueUnit\", \"MaxValueToRestablishFmtNEW\", \"MaxValueToRestablishUnitFmt\", \"PlafondExtraFmtNEW\", \"PlafondExtraUnitFmt\", \"AvailableValueFmtNEW\", \"AvailableValueUnitFmt\", \"SpentValueFmtNEW\", \"SpentValueUnitFmt\", \"TotalValueFmtNEW\", \"TotalValueUnitFmt\", \"UETrafficAmountFmtNEW\", \"UETrafficAmountUnitFmt\", \"RMTrafficAmountFmtNEW\", \"RMTrafficAmountUnitFmt\", \"HappyHourValueFmtNEW\", \"HappyHourValueUnitFmt\", \"CacheExpirationDate\", \"ShowRecurrPack\", \"RecurrPackAmt\", \"RecurrPackAmtUnit\", \"RecurrPackInitialAmt\", \"RecurrPackInitialAmtUnit\", \"RecurrPackAvailableAmt\", \"RecurrPackAvailableAmtUnit\", \"RecurrPackAmountFmt\", \"RecurrPackAmountUnitFmt\", \"RecurrPackInitialAmtFmt\", \"RecurrPackInitialAmtUnitFmt\", \"RecurrPackAvailableAmtFmt\", \"RecurrPackAvailableAmtUnitFm\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BLM_BALANCEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("ServiceId", /*TEXT*/ 0, obj.serviceIdAttr);
+argsList.add("IsUnlimited", /*BOOLEAN*/ 2, obj.isUnlimitedAttr);
+argsList.add("AvailableValueNEW", /*TEXT*/ 0, obj.availableValueNEWAttr);
+argsList.add("AvailableValueUnit", /*TEXT*/ 0, obj.availableValueUnitAttr);
+argsList.add("SpentValueNEW", /*TEXT*/ 0, obj.spentValueNEWAttr);
+argsList.add("SpentValueUnit", /*TEXT*/ 0, obj.spentValueUnitAttr);
+argsList.add("TotalValueNEW", /*TEXT*/ 0, obj.totalValueNEWAttr);
+argsList.add("TotalValueUnit", /*TEXT*/ 0, obj.totalValueUnitAttr);
+argsList.add("ShowPlafondExtra", /*BOOLEAN*/ 2, obj.showPlafondExtraAttr);
+argsList.add("PlafondExtraNEW", /*TEXT*/ 0, obj.plafondExtraNEWAttr);
+argsList.add("PlafondExtraUnit", /*TEXT*/ 0, obj.plafondExtraUnitAttr);
+argsList.add("ShowMaxValueToRestablish", /*BOOLEAN*/ 2, obj.showMaxValueToRestablishAttr);
+argsList.add("MaxValueToRestablishNEW", /*TEXT*/ 0, obj.maxValueToRestablishNEWAttr);
+argsList.add("MaxValueToRestablishUnit", /*TEXT*/ 0, obj.maxValueToRestablishUnitAttr);
+argsList.add("ShowUETraffic", /*BOOLEAN*/ 2, obj.showUETrafficAttr);
+argsList.add("UETrafficAmountNEW", /*TEXT*/ 0, obj.uETrafficAmountNEWAttr);
+argsList.add("UETrafficAmountUnit", /*TEXT*/ 0, obj.uETrafficAmountUnitAttr);
+argsList.add("UERoamingExpireDate", /*DATE*/ 7, obj.uERoamingExpireDateAttr);
+argsList.add("ShowRMTraffic", /*BOOLEAN*/ 2, obj.showRMTrafficAttr);
+argsList.add("RMTrafficAmountNEW", /*TEXT*/ 0, obj.rMTrafficAmountNEWAttr);
+argsList.add("RMTrafficAmountUnit", /*TEXT*/ 0, obj.rMTrafficAmountUnitAttr);
+argsList.add("RMRoamingExpireDate", /*DATE*/ 7, obj.rMRoamingExpireDateAttr);
+argsList.add("ShowHappyHour", /*BOOLEAN*/ 2, obj.showHappyHourAttr);
+argsList.add("HappyHourValueNEW", /*TEXT*/ 0, obj.happyHourValueNEWAttr);
+argsList.add("HappyHourValueUnit", /*TEXT*/ 0, obj.happyHourValueUnitAttr);
+argsList.add("MaxValueToRestablishFmtNEW", /*TEXT*/ 0, obj.maxValueToRestablishFmtNEWAttr);
+argsList.add("MaxValueToRestablishUnitFmt", /*TEXT*/ 0, obj.maxValueToRestablishUnitFmtAttr);
+argsList.add("PlafondExtraFmtNEW", /*TEXT*/ 0, obj.plafondExtraFmtNEWAttr);
+argsList.add("PlafondExtraUnitFmt", /*TEXT*/ 0, obj.plafondExtraUnitFmtAttr);
+argsList.add("AvailableValueFmtNEW", /*TEXT*/ 0, obj.availableValueFmtNEWAttr);
+argsList.add("AvailableValueUnitFmt", /*TEXT*/ 0, obj.availableValueUnitFmtAttr);
+argsList.add("SpentValueFmtNEW", /*TEXT*/ 0, obj.spentValueFmtNEWAttr);
+argsList.add("SpentValueUnitFmt", /*TEXT*/ 0, obj.spentValueUnitFmtAttr);
+argsList.add("TotalValueFmtNEW", /*TEXT*/ 0, obj.totalValueFmtNEWAttr);
+argsList.add("TotalValueUnitFmt", /*TEXT*/ 0, obj.totalValueUnitFmtAttr);
+argsList.add("UETrafficAmountFmtNEW", /*TEXT*/ 0, obj.uETrafficAmountFmtNEWAttr);
+argsList.add("UETrafficAmountUnitFmt", /*TEXT*/ 0, obj.uETrafficAmountUnitFmtAttr);
+argsList.add("RMTrafficAmountFmtNEW", /*TEXT*/ 0, obj.rMTrafficAmountFmtNEWAttr);
+argsList.add("RMTrafficAmountUnitFmt", /*TEXT*/ 0, obj.rMTrafficAmountUnitFmtAttr);
+argsList.add("HappyHourValueFmtNEW", /*TEXT*/ 0, obj.happyHourValueFmtNEWAttr);
+argsList.add("HappyHourValueUnitFmt", /*TEXT*/ 0, obj.happyHourValueUnitFmtAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+argsList.add("ShowRecurrPack", /*BOOLEAN*/ 2, obj.showRecurrPackAttr);
+argsList.add("RecurrPackAmt", /*TEXT*/ 0, obj.recurrPackAmtAttr);
+argsList.add("RecurrPackAmtUnit", /*TEXT*/ 0, obj.recurrPackAmtUnitAttr);
+argsList.add("RecurrPackInitialAmt", /*TEXT*/ 0, obj.recurrPackInitialAmtAttr);
+argsList.add("RecurrPackInitialAmtUnit", /*TEXT*/ 0, obj.recurrPackInitialAmtUnitAttr);
+argsList.add("RecurrPackAvailableAmt", /*TEXT*/ 0, obj.recurrPackAvailableAmtAttr);
+argsList.add("RecurrPackAvailableAmtUnit", /*TEXT*/ 0, obj.recurrPackAvailableAmtUnitAttr);
+argsList.add("RecurrPackAmountFmt", /*TEXT*/ 0, obj.recurrPackAmountFmtAttr);
+argsList.add("RecurrPackAmountUnitFmt", /*TEXT*/ 0, obj.recurrPackAmountUnitFmtAttr);
+argsList.add("RecurrPackInitialAmtFmt", /*TEXT*/ 0, obj.recurrPackInitialAmtFmtAttr);
+argsList.add("RecurrPackInitialAmtUnitFmt", /*TEXT*/ 0, obj.recurrPackInitialAmtUnitFmtAttr);
+argsList.add("RecurrPackAvailableAmtFmt", /*TEXT*/ 0, obj.recurrPackAvailableAmtFmtAttr);
+argsList.add("RecurrPackAvailableAmtUnitFm", /*TEXT*/ 0, obj.recurrPackAvailableAmtUnitFmAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_BLM_BALANCE\" (\"Id\", \"ServiceId\", \"IsUnlimited\", \"AvailableValueNEW\", \"AvailableValueUnit\", \"SpentValueNEW\", \"SpentValueUnit\", \"TotalValueNEW\", \"TotalValueUnit\", \"ShowPlafondExtra\", \"PlafondExtraNEW\", \"PlafondExtraUnit\", \"ShowMaxValueToRestablish\", \"MaxValueToRestablishNEW\", \"MaxValueToRestablishUnit\", \"ShowUETraffic\", \"UETrafficAmountNEW\", \"UETrafficAmountUnit\", \"UERoamingExpireDate\", \"ShowRMTraffic\", \"RMTrafficAmountNEW\", \"RMTrafficAmountUnit\", \"RMRoamingExpireDate\", \"ShowHappyHour\", \"HappyHourValueNEW\", \"HappyHourValueUnit\", \"MaxValueToRestablishFmtNEW\", \"MaxValueToRestablishUnitFmt\", \"PlafondExtraFmtNEW\", \"PlafondExtraUnitFmt\", \"AvailableValueFmtNEW\", \"AvailableValueUnitFmt\", \"SpentValueFmtNEW\", \"SpentValueUnitFmt\", \"TotalValueFmtNEW\", \"TotalValueUnitFmt\", \"UETrafficAmountFmtNEW\", \"UETrafficAmountUnitFmt\", \"RMTrafficAmountFmtNEW\", \"RMTrafficAmountUnitFmt\", \"HappyHourValueFmtNEW\", \"HappyHourValueUnitFmt\", \"CacheExpirationDate\", \"ShowRecurrPack\", \"RecurrPackAmt\", \"RecurrPackAmtUnit\", \"RecurrPackInitialAmt\", \"RecurrPackInitialAmtUnit\", \"RecurrPackAvailableAmt\", \"RecurrPackAvailableAmtUnit\", \"RecurrPackAmountFmt\", \"RecurrPackAmountUnitFmt\", \"RecurrPackInitialAmtFmt\", \"RecurrPackInitialAmtUnitFmt\", \"RecurrPackAvailableAmtFmt\", \"RecurrPackAvailableAmtUnitFm\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BLM_BALANCEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("ServiceId", /*TEXT*/ 0, obj.serviceIdAttr);
+argsList.add("IsUnlimited", /*BOOLEAN*/ 2, obj.isUnlimitedAttr);
+argsList.add("AvailableValueNEW", /*TEXT*/ 0, obj.availableValueNEWAttr);
+argsList.add("AvailableValueUnit", /*TEXT*/ 0, obj.availableValueUnitAttr);
+argsList.add("SpentValueNEW", /*TEXT*/ 0, obj.spentValueNEWAttr);
+argsList.add("SpentValueUnit", /*TEXT*/ 0, obj.spentValueUnitAttr);
+argsList.add("TotalValueNEW", /*TEXT*/ 0, obj.totalValueNEWAttr);
+argsList.add("TotalValueUnit", /*TEXT*/ 0, obj.totalValueUnitAttr);
+argsList.add("ShowPlafondExtra", /*BOOLEAN*/ 2, obj.showPlafondExtraAttr);
+argsList.add("PlafondExtraNEW", /*TEXT*/ 0, obj.plafondExtraNEWAttr);
+argsList.add("PlafondExtraUnit", /*TEXT*/ 0, obj.plafondExtraUnitAttr);
+argsList.add("ShowMaxValueToRestablish", /*BOOLEAN*/ 2, obj.showMaxValueToRestablishAttr);
+argsList.add("MaxValueToRestablishNEW", /*TEXT*/ 0, obj.maxValueToRestablishNEWAttr);
+argsList.add("MaxValueToRestablishUnit", /*TEXT*/ 0, obj.maxValueToRestablishUnitAttr);
+argsList.add("ShowUETraffic", /*BOOLEAN*/ 2, obj.showUETrafficAttr);
+argsList.add("UETrafficAmountNEW", /*TEXT*/ 0, obj.uETrafficAmountNEWAttr);
+argsList.add("UETrafficAmountUnit", /*TEXT*/ 0, obj.uETrafficAmountUnitAttr);
+argsList.add("UERoamingExpireDate", /*DATE*/ 7, obj.uERoamingExpireDateAttr);
+argsList.add("ShowRMTraffic", /*BOOLEAN*/ 2, obj.showRMTrafficAttr);
+argsList.add("RMTrafficAmountNEW", /*TEXT*/ 0, obj.rMTrafficAmountNEWAttr);
+argsList.add("RMTrafficAmountUnit", /*TEXT*/ 0, obj.rMTrafficAmountUnitAttr);
+argsList.add("RMRoamingExpireDate", /*DATE*/ 7, obj.rMRoamingExpireDateAttr);
+argsList.add("ShowHappyHour", /*BOOLEAN*/ 2, obj.showHappyHourAttr);
+argsList.add("HappyHourValueNEW", /*TEXT*/ 0, obj.happyHourValueNEWAttr);
+argsList.add("HappyHourValueUnit", /*TEXT*/ 0, obj.happyHourValueUnitAttr);
+argsList.add("MaxValueToRestablishFmtNEW", /*TEXT*/ 0, obj.maxValueToRestablishFmtNEWAttr);
+argsList.add("MaxValueToRestablishUnitFmt", /*TEXT*/ 0, obj.maxValueToRestablishUnitFmtAttr);
+argsList.add("PlafondExtraFmtNEW", /*TEXT*/ 0, obj.plafondExtraFmtNEWAttr);
+argsList.add("PlafondExtraUnitFmt", /*TEXT*/ 0, obj.plafondExtraUnitFmtAttr);
+argsList.add("AvailableValueFmtNEW", /*TEXT*/ 0, obj.availableValueFmtNEWAttr);
+argsList.add("AvailableValueUnitFmt", /*TEXT*/ 0, obj.availableValueUnitFmtAttr);
+argsList.add("SpentValueFmtNEW", /*TEXT*/ 0, obj.spentValueFmtNEWAttr);
+argsList.add("SpentValueUnitFmt", /*TEXT*/ 0, obj.spentValueUnitFmtAttr);
+argsList.add("TotalValueFmtNEW", /*TEXT*/ 0, obj.totalValueFmtNEWAttr);
+argsList.add("TotalValueUnitFmt", /*TEXT*/ 0, obj.totalValueUnitFmtAttr);
+argsList.add("UETrafficAmountFmtNEW", /*TEXT*/ 0, obj.uETrafficAmountFmtNEWAttr);
+argsList.add("UETrafficAmountUnitFmt", /*TEXT*/ 0, obj.uETrafficAmountUnitFmtAttr);
+argsList.add("RMTrafficAmountFmtNEW", /*TEXT*/ 0, obj.rMTrafficAmountFmtNEWAttr);
+argsList.add("RMTrafficAmountUnitFmt", /*TEXT*/ 0, obj.rMTrafficAmountUnitFmtAttr);
+argsList.add("HappyHourValueFmtNEW", /*TEXT*/ 0, obj.happyHourValueFmtNEWAttr);
+argsList.add("HappyHourValueUnitFmt", /*TEXT*/ 0, obj.happyHourValueUnitFmtAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+argsList.add("ShowRecurrPack", /*BOOLEAN*/ 2, obj.showRecurrPackAttr);
+argsList.add("RecurrPackAmt", /*TEXT*/ 0, obj.recurrPackAmtAttr);
+argsList.add("RecurrPackAmtUnit", /*TEXT*/ 0, obj.recurrPackAmtUnitAttr);
+argsList.add("RecurrPackInitialAmt", /*TEXT*/ 0, obj.recurrPackInitialAmtAttr);
+argsList.add("RecurrPackInitialAmtUnit", /*TEXT*/ 0, obj.recurrPackInitialAmtUnitAttr);
+argsList.add("RecurrPackAvailableAmt", /*TEXT*/ 0, obj.recurrPackAvailableAmtAttr);
+argsList.add("RecurrPackAvailableAmtUnit", /*TEXT*/ 0, obj.recurrPackAvailableAmtUnitAttr);
+argsList.add("RecurrPackAmountFmt", /*TEXT*/ 0, obj.recurrPackAmountFmtAttr);
+argsList.add("RecurrPackAmountUnitFmt", /*TEXT*/ 0, obj.recurrPackAmountUnitFmtAttr);
+argsList.add("RecurrPackInitialAmtFmt", /*TEXT*/ 0, obj.recurrPackInitialAmtFmtAttr);
+argsList.add("RecurrPackInitialAmtUnitFmt", /*TEXT*/ 0, obj.recurrPackInitialAmtUnitFmtAttr);
+argsList.add("RecurrPackAvailableAmtFmt", /*TEXT*/ 0, obj.recurrPackAvailableAmtFmtAttr);
+argsList.add("RecurrPackAvailableAmtUnitFm", /*TEXT*/ 0, obj.recurrPackAvailableAmtUnitFmAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_BLM_BALANCE\" SET \"ServiceId\" = ?, \"IsUnlimited\" = ?, \"AvailableValueNEW\" = ?, \"AvailableValueUnit\" = ?, \"SpentValueNEW\" = ?, \"SpentValueUnit\" = ?, \"TotalValueNEW\" = ?, \"TotalValueUnit\" = ?, \"ShowPlafondExtra\" = ?, \"PlafondExtraNEW\" = ?, \"PlafondExtraUnit\" = ?, \"ShowMaxValueToRestablish\" = ?, \"MaxValueToRestablishNEW\" = ?, \"MaxValueToRestablishUnit\" = ?, \"ShowUETraffic\" = ?, \"UETrafficAmountNEW\" = ?, \"UETrafficAmountUnit\" = ?, \"UERoamingExpireDate\" = ?, \"ShowRMTraffic\" = ?, \"RMTrafficAmountNEW\" = ?, \"RMTrafficAmountUnit\" = ?, \"RMRoamingExpireDate\" = ?, \"ShowHappyHour\" = ?, \"HappyHourValueNEW\" = ?, \"HappyHourValueUnit\" = ?, \"MaxValueToRestablishFmtNEW\" = ?, \"MaxValueToRestablishUnitFmt\" = ?, \"PlafondExtraFmtNEW\" = ?, \"PlafondExtraUnitFmt\" = ?, \"AvailableValueFmtNEW\" = ?, \"AvailableValueUnitFmt\" = ?, \"SpentValueFmtNEW\" = ?, \"SpentValueUnitFmt\" = ?, \"TotalValueFmtNEW\" = ?, \"TotalValueUnitFmt\" = ?, \"UETrafficAmountFmtNEW\" = ?, \"UETrafficAmountUnitFmt\" = ?, \"RMTrafficAmountFmtNEW\" = ?, \"RMTrafficAmountUnitFmt\" = ?, \"HappyHourValueFmtNEW\" = ?, \"HappyHourValueUnitFmt\" = ?, \"CacheExpirationDate\" = ?, \"ShowRecurrPack\" = ?, \"RecurrPackAmt\" = ?, \"RecurrPackAmtUnit\" = ?, \"RecurrPackInitialAmt\" = ?, \"RecurrPackInitialAmtUnit\" = ?, \"RecurrPackAvailableAmt\" = ?, \"RecurrPackAvailableAmtUnit\" = ?, \"RecurrPackAmountFmt\" = ?, \"RecurrPackAmountUnitFmt\" = ?, \"RecurrPackInitialAmtFmt\" = ?, \"RecurrPackInitialAmtUnitFmt\" = ?, \"RecurrPackAvailableAmtFmt\" = ?, \"RecurrPackAvailableAmtUnitFm\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_BLM_BALANCEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("ServiceId", /*TEXT*/ 0, obj.serviceIdAttr);
+argsList.add("IsUnlimited", /*BOOLEAN*/ 2, obj.isUnlimitedAttr);
+argsList.add("AvailableValueNEW", /*TEXT*/ 0, obj.availableValueNEWAttr);
+argsList.add("AvailableValueUnit", /*TEXT*/ 0, obj.availableValueUnitAttr);
+argsList.add("SpentValueNEW", /*TEXT*/ 0, obj.spentValueNEWAttr);
+argsList.add("SpentValueUnit", /*TEXT*/ 0, obj.spentValueUnitAttr);
+argsList.add("TotalValueNEW", /*TEXT*/ 0, obj.totalValueNEWAttr);
+argsList.add("TotalValueUnit", /*TEXT*/ 0, obj.totalValueUnitAttr);
+argsList.add("ShowPlafondExtra", /*BOOLEAN*/ 2, obj.showPlafondExtraAttr);
+argsList.add("PlafondExtraNEW", /*TEXT*/ 0, obj.plafondExtraNEWAttr);
+argsList.add("PlafondExtraUnit", /*TEXT*/ 0, obj.plafondExtraUnitAttr);
+argsList.add("ShowMaxValueToRestablish", /*BOOLEAN*/ 2, obj.showMaxValueToRestablishAttr);
+argsList.add("MaxValueToRestablishNEW", /*TEXT*/ 0, obj.maxValueToRestablishNEWAttr);
+argsList.add("MaxValueToRestablishUnit", /*TEXT*/ 0, obj.maxValueToRestablishUnitAttr);
+argsList.add("ShowUETraffic", /*BOOLEAN*/ 2, obj.showUETrafficAttr);
+argsList.add("UETrafficAmountNEW", /*TEXT*/ 0, obj.uETrafficAmountNEWAttr);
+argsList.add("UETrafficAmountUnit", /*TEXT*/ 0, obj.uETrafficAmountUnitAttr);
+argsList.add("UERoamingExpireDate", /*DATE*/ 7, obj.uERoamingExpireDateAttr);
+argsList.add("ShowRMTraffic", /*BOOLEAN*/ 2, obj.showRMTrafficAttr);
+argsList.add("RMTrafficAmountNEW", /*TEXT*/ 0, obj.rMTrafficAmountNEWAttr);
+argsList.add("RMTrafficAmountUnit", /*TEXT*/ 0, obj.rMTrafficAmountUnitAttr);
+argsList.add("RMRoamingExpireDate", /*DATE*/ 7, obj.rMRoamingExpireDateAttr);
+argsList.add("ShowHappyHour", /*BOOLEAN*/ 2, obj.showHappyHourAttr);
+argsList.add("HappyHourValueNEW", /*TEXT*/ 0, obj.happyHourValueNEWAttr);
+argsList.add("HappyHourValueUnit", /*TEXT*/ 0, obj.happyHourValueUnitAttr);
+argsList.add("MaxValueToRestablishFmtNEW", /*TEXT*/ 0, obj.maxValueToRestablishFmtNEWAttr);
+argsList.add("MaxValueToRestablishUnitFmt", /*TEXT*/ 0, obj.maxValueToRestablishUnitFmtAttr);
+argsList.add("PlafondExtraFmtNEW", /*TEXT*/ 0, obj.plafondExtraFmtNEWAttr);
+argsList.add("PlafondExtraUnitFmt", /*TEXT*/ 0, obj.plafondExtraUnitFmtAttr);
+argsList.add("AvailableValueFmtNEW", /*TEXT*/ 0, obj.availableValueFmtNEWAttr);
+argsList.add("AvailableValueUnitFmt", /*TEXT*/ 0, obj.availableValueUnitFmtAttr);
+argsList.add("SpentValueFmtNEW", /*TEXT*/ 0, obj.spentValueFmtNEWAttr);
+argsList.add("SpentValueUnitFmt", /*TEXT*/ 0, obj.spentValueUnitFmtAttr);
+argsList.add("TotalValueFmtNEW", /*TEXT*/ 0, obj.totalValueFmtNEWAttr);
+argsList.add("TotalValueUnitFmt", /*TEXT*/ 0, obj.totalValueUnitFmtAttr);
+argsList.add("UETrafficAmountFmtNEW", /*TEXT*/ 0, obj.uETrafficAmountFmtNEWAttr);
+argsList.add("UETrafficAmountUnitFmt", /*TEXT*/ 0, obj.uETrafficAmountUnitFmtAttr);
+argsList.add("RMTrafficAmountFmtNEW", /*TEXT*/ 0, obj.rMTrafficAmountFmtNEWAttr);
+argsList.add("RMTrafficAmountUnitFmt", /*TEXT*/ 0, obj.rMTrafficAmountUnitFmtAttr);
+argsList.add("HappyHourValueFmtNEW", /*TEXT*/ 0, obj.happyHourValueFmtNEWAttr);
+argsList.add("HappyHourValueUnitFmt", /*TEXT*/ 0, obj.happyHourValueUnitFmtAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+argsList.add("ShowRecurrPack", /*BOOLEAN*/ 2, obj.showRecurrPackAttr);
+argsList.add("RecurrPackAmt", /*TEXT*/ 0, obj.recurrPackAmtAttr);
+argsList.add("RecurrPackAmtUnit", /*TEXT*/ 0, obj.recurrPackAmtUnitAttr);
+argsList.add("RecurrPackInitialAmt", /*TEXT*/ 0, obj.recurrPackInitialAmtAttr);
+argsList.add("RecurrPackInitialAmtUnit", /*TEXT*/ 0, obj.recurrPackInitialAmtUnitAttr);
+argsList.add("RecurrPackAvailableAmt", /*TEXT*/ 0, obj.recurrPackAvailableAmtAttr);
+argsList.add("RecurrPackAvailableAmtUnit", /*TEXT*/ 0, obj.recurrPackAvailableAmtUnitAttr);
+argsList.add("RecurrPackAmountFmt", /*TEXT*/ 0, obj.recurrPackAmountFmtAttr);
+argsList.add("RecurrPackAmountUnitFmt", /*TEXT*/ 0, obj.recurrPackAmountUnitFmtAttr);
+argsList.add("RecurrPackInitialAmtFmt", /*TEXT*/ 0, obj.recurrPackInitialAmtFmtAttr);
+argsList.add("RecurrPackInitialAmtUnitFmt", /*TEXT*/ 0, obj.recurrPackInitialAmtUnitFmtAttr);
+argsList.add("RecurrPackAvailableAmtFmt", /*TEXT*/ 0, obj.recurrPackAvailableAmtFmtAttr);
+argsList.add("RecurrPackAvailableAmtUnitFm", /*TEXT*/ 0, obj.recurrPackAvailableAmtUnitFmAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BLM_BALANCE\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BLM_BALANCE\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_BLM_BALANCEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("ServiceId", /*TEXT*/ 0, obj.serviceIdAttr);
+argsList.add("IsUnlimited", /*BOOLEAN*/ 2, obj.isUnlimitedAttr);
+argsList.add("AvailableValueNEW", /*TEXT*/ 0, obj.availableValueNEWAttr);
+argsList.add("AvailableValueUnit", /*TEXT*/ 0, obj.availableValueUnitAttr);
+argsList.add("SpentValueNEW", /*TEXT*/ 0, obj.spentValueNEWAttr);
+argsList.add("SpentValueUnit", /*TEXT*/ 0, obj.spentValueUnitAttr);
+argsList.add("TotalValueNEW", /*TEXT*/ 0, obj.totalValueNEWAttr);
+argsList.add("TotalValueUnit", /*TEXT*/ 0, obj.totalValueUnitAttr);
+argsList.add("ShowPlafondExtra", /*BOOLEAN*/ 2, obj.showPlafondExtraAttr);
+argsList.add("PlafondExtraNEW", /*TEXT*/ 0, obj.plafondExtraNEWAttr);
+argsList.add("PlafondExtraUnit", /*TEXT*/ 0, obj.plafondExtraUnitAttr);
+argsList.add("ShowMaxValueToRestablish", /*BOOLEAN*/ 2, obj.showMaxValueToRestablishAttr);
+argsList.add("MaxValueToRestablishNEW", /*TEXT*/ 0, obj.maxValueToRestablishNEWAttr);
+argsList.add("MaxValueToRestablishUnit", /*TEXT*/ 0, obj.maxValueToRestablishUnitAttr);
+argsList.add("ShowUETraffic", /*BOOLEAN*/ 2, obj.showUETrafficAttr);
+argsList.add("UETrafficAmountNEW", /*TEXT*/ 0, obj.uETrafficAmountNEWAttr);
+argsList.add("UETrafficAmountUnit", /*TEXT*/ 0, obj.uETrafficAmountUnitAttr);
+argsList.add("UERoamingExpireDate", /*DATE*/ 7, obj.uERoamingExpireDateAttr);
+argsList.add("ShowRMTraffic", /*BOOLEAN*/ 2, obj.showRMTrafficAttr);
+argsList.add("RMTrafficAmountNEW", /*TEXT*/ 0, obj.rMTrafficAmountNEWAttr);
+argsList.add("RMTrafficAmountUnit", /*TEXT*/ 0, obj.rMTrafficAmountUnitAttr);
+argsList.add("RMRoamingExpireDate", /*DATE*/ 7, obj.rMRoamingExpireDateAttr);
+argsList.add("ShowHappyHour", /*BOOLEAN*/ 2, obj.showHappyHourAttr);
+argsList.add("HappyHourValueNEW", /*TEXT*/ 0, obj.happyHourValueNEWAttr);
+argsList.add("HappyHourValueUnit", /*TEXT*/ 0, obj.happyHourValueUnitAttr);
+argsList.add("MaxValueToRestablishFmtNEW", /*TEXT*/ 0, obj.maxValueToRestablishFmtNEWAttr);
+argsList.add("MaxValueToRestablishUnitFmt", /*TEXT*/ 0, obj.maxValueToRestablishUnitFmtAttr);
+argsList.add("PlafondExtraFmtNEW", /*TEXT*/ 0, obj.plafondExtraFmtNEWAttr);
+argsList.add("PlafondExtraUnitFmt", /*TEXT*/ 0, obj.plafondExtraUnitFmtAttr);
+argsList.add("AvailableValueFmtNEW", /*TEXT*/ 0, obj.availableValueFmtNEWAttr);
+argsList.add("AvailableValueUnitFmt", /*TEXT*/ 0, obj.availableValueUnitFmtAttr);
+argsList.add("SpentValueFmtNEW", /*TEXT*/ 0, obj.spentValueFmtNEWAttr);
+argsList.add("SpentValueUnitFmt", /*TEXT*/ 0, obj.spentValueUnitFmtAttr);
+argsList.add("TotalValueFmtNEW", /*TEXT*/ 0, obj.totalValueFmtNEWAttr);
+argsList.add("TotalValueUnitFmt", /*TEXT*/ 0, obj.totalValueUnitFmtAttr);
+argsList.add("UETrafficAmountFmtNEW", /*TEXT*/ 0, obj.uETrafficAmountFmtNEWAttr);
+argsList.add("UETrafficAmountUnitFmt", /*TEXT*/ 0, obj.uETrafficAmountUnitFmtAttr);
+argsList.add("RMTrafficAmountFmtNEW", /*TEXT*/ 0, obj.rMTrafficAmountFmtNEWAttr);
+argsList.add("RMTrafficAmountUnitFmt", /*TEXT*/ 0, obj.rMTrafficAmountUnitFmtAttr);
+argsList.add("HappyHourValueFmtNEW", /*TEXT*/ 0, obj.happyHourValueFmtNEWAttr);
+argsList.add("HappyHourValueUnitFmt", /*TEXT*/ 0, obj.happyHourValueUnitFmtAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+argsList.add("ShowRecurrPack", /*BOOLEAN*/ 2, obj.showRecurrPackAttr);
+argsList.add("RecurrPackAmt", /*TEXT*/ 0, obj.recurrPackAmtAttr);
+argsList.add("RecurrPackAmtUnit", /*TEXT*/ 0, obj.recurrPackAmtUnitAttr);
+argsList.add("RecurrPackInitialAmt", /*TEXT*/ 0, obj.recurrPackInitialAmtAttr);
+argsList.add("RecurrPackInitialAmtUnit", /*TEXT*/ 0, obj.recurrPackInitialAmtUnitAttr);
+argsList.add("RecurrPackAvailableAmt", /*TEXT*/ 0, obj.recurrPackAvailableAmtAttr);
+argsList.add("RecurrPackAvailableAmtUnit", /*TEXT*/ 0, obj.recurrPackAvailableAmtUnitAttr);
+argsList.add("RecurrPackAmountFmt", /*TEXT*/ 0, obj.recurrPackAmountFmtAttr);
+argsList.add("RecurrPackAmountUnitFmt", /*TEXT*/ 0, obj.recurrPackAmountUnitFmtAttr);
+argsList.add("RecurrPackInitialAmtFmt", /*TEXT*/ 0, obj.recurrPackInitialAmtFmtAttr);
+argsList.add("RecurrPackInitialAmtUnitFmt", /*TEXT*/ 0, obj.recurrPackInitialAmtUnitFmtAttr);
+argsList.add("RecurrPackAvailableAmtFmt", /*TEXT*/ 0, obj.recurrPackAvailableAmtFmtAttr);
+argsList.add("RecurrPackAvailableAmtUnitFm", /*TEXT*/ 0, obj.recurrPackAvailableAmtUnitFmAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_BLM_BALANCEAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_BLM_BALANCEAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_PIPE_INFORMATION = {
+key: "9053d63e-1be6-47bf-9a32-e9a3d6ba864f",
+name: "Local_PIPE_INFORMATION",
+tableName: "OSUSR_QSX_LOCAL_PIPE_INFORMATION",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Tag",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_PIPE_INFORMATION\" ADD \"Tag\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "Value",
+type: /*TEXT*/ 0,
+length: 1000,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_PIPE_INFORMATION\" ADD \"Value\" TEXT(1000) DEFAULT \'\'"
+}
+}, {
+name: "DataTypeID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_PIPE_INFORMATION\" ADD \"DataTypeID\" BIGINT DEFAULT NULL"
+}
+}, {
+name: "BalanceLineID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_PIPE_INFORMATION\" ADD \"BalanceLineID\" BIGINT DEFAULT NULL"
+}
+}, {
+name: "BalanceConfigID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_PIPE_INFORMATION\" ADD \"BalanceConfigID\" BIGINT DEFAULT NULL"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "9b4694f0-c77c-4f7f-98aa-e58ea07af2a7",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_PIPE_INFORMATIONRecord(BALANCE_MBPModel.Local_PIPE_INFORMATIONRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_PIPE_INFORMATION\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Tag\" TEXT(1000) DEFAULT \'\', \"Value\" TEXT(1000) DEFAULT \'\', \"DataTypeID\" BIGINT DEFAULT NULL, \"BalanceLineID\" BIGINT DEFAULT NULL, \"BalanceConfigID\" BIGINT DEFAULT NULL)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Tag\" o1, \"Value\" o2, \"DataTypeID\" o3, \"BalanceLineID\" o4, \"BalanceConfigID\" o5 FROM \"OSUSR_QSX_LOCAL_PIPE_INFORMATION\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_PIPE_INFORMATION\" (\"Id\", \"Tag\", \"Value\", \"DataTypeID\", \"BalanceLineID\", \"BalanceConfigID\") VALUES (?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_PIPE_INFORMATIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Tag", /*TEXT*/ 0, obj.tagAttr);
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+argsList.add("DataTypeID", /*LONGINTEGER*/ 4, obj.dataTypeIDAttr, null, null, true);
+argsList.add("BalanceLineID", /*LONGINTEGER*/ 4, obj.balanceLineIDAttr, null, null, true);
+argsList.add("BalanceConfigID", /*LONGINTEGER*/ 4, obj.balanceConfigIDAttr, null, null, true);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_PIPE_INFORMATION\" (\"Id\", \"Tag\", \"Value\", \"DataTypeID\", \"BalanceLineID\", \"BalanceConfigID\") VALUES (?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_PIPE_INFORMATIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Tag", /*TEXT*/ 0, obj.tagAttr);
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+argsList.add("DataTypeID", /*LONGINTEGER*/ 4, obj.dataTypeIDAttr, null, null, true);
+argsList.add("BalanceLineID", /*LONGINTEGER*/ 4, obj.balanceLineIDAttr, null, null, true);
+argsList.add("BalanceConfigID", /*LONGINTEGER*/ 4, obj.balanceConfigIDAttr, null, null, true);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_PIPE_INFORMATION\" SET \"Tag\" = ?, \"Value\" = ?, \"DataTypeID\" = ?, \"BalanceLineID\" = ?, \"BalanceConfigID\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_PIPE_INFORMATIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Tag", /*TEXT*/ 0, obj.tagAttr);
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+argsList.add("DataTypeID", /*LONGINTEGER*/ 4, obj.dataTypeIDAttr, null, null, true);
+argsList.add("BalanceLineID", /*LONGINTEGER*/ 4, obj.balanceLineIDAttr, null, null, true);
+argsList.add("BalanceConfigID", /*LONGINTEGER*/ 4, obj.balanceConfigIDAttr, null, null, true);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_PIPE_INFORMATION\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_PIPE_INFORMATION\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_PIPE_INFORMATIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Tag", /*TEXT*/ 0, obj.tagAttr);
+argsList.add("Value", /*TEXT*/ 0, obj.valueAttr);
+argsList.add("DataTypeID", /*LONGINTEGER*/ 4, obj.dataTypeIDAttr, null, null, true);
+argsList.add("BalanceLineID", /*LONGINTEGER*/ 4, obj.balanceLineIDAttr, null, null, true);
+argsList.add("BalanceConfigID", /*LONGINTEGER*/ 4, obj.balanceConfigIDAttr, null, null, true);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_PIPE_INFORMATIONAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_PIPE_INFORMATIONAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_VOD_USAGE = {
+key: "9dec2127-8c51-4540-9688-0cb72d63ded9",
+name: "Local_VOD_USAGE",
+tableName: "OSUSR_QSX_LOCAL_VOD_USAGE",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "AssociationId",
+type: /*LONGINTEGER*/ 4,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE\" ADD \"AssociationId\" BIGINT DEFAULT 0"
+}
+}, {
+name: "BillingAccountNumber",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE\" ADD \"BillingAccountNumber\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Datetime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE\" ADD \"Datetime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "Title",
+type: /*TEXT*/ 0,
+length: 250,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE\" ADD \"Title\" TEXT(250) DEFAULT \'\'"
+}
+}, {
+name: "Price",
+type: /*DECIMAL*/ 5,
+length: 15,
+decimals: 5,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE\" ADD \"Price\" REAL(15,5) DEFAULT 0"
+}
+}, {
+name: "EventType",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE\" ADD \"EventType\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "ClassColor",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE\" ADD \"ClassColor\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Category",
+type: /*TEXT*/ 0,
+length: 100,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE\" ADD \"Category\" TEXT(100) DEFAULT \'\'"
+}
+}, {
+name: "CacheExpirationDate",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE\" ADD \"CacheExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "cf26172d-fac6-03e8-87d0-97c6b5ade95f",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_VOD_USAGERecord(BALANCE_MBPModel.Local_VOD_USAGERecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_VOD_USAGE\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"AssociationId\" BIGINT DEFAULT 0, \"BillingAccountNumber\" TEXT(50) DEFAULT \'\', \"Datetime\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"Title\" TEXT(250) DEFAULT \'\', \"Price\" REAL(15,5) DEFAULT 0, \"EventType\" TEXT(50) DEFAULT \'\', \"ClassColor\" TEXT(50) DEFAULT \'\', \"Category\" TEXT(100) DEFAULT \'\', \"CacheExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"AssociationId\" o1, \"BillingAccountNumber\" o2, \"Datetime\" o3, \"Title\" o4, \"Price\" o5, \"EventType\" o6, \"ClassColor\" o7, \"Category\" o8, \"CacheExpirationDate\" o9 FROM \"OSUSR_QSX_LOCAL_VOD_USAGE\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_VOD_USAGE\" (\"Id\", \"AssociationId\", \"BillingAccountNumber\", \"Datetime\", \"Title\", \"Price\", \"EventType\", \"ClassColor\", \"Category\", \"CacheExpirationDate\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_VOD_USAGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("AssociationId", /*LONGINTEGER*/ 4, obj.associationIdAttr);
+argsList.add("BillingAccountNumber", /*TEXT*/ 0, obj.billingAccountNumberAttr);
+argsList.add("Datetime", /*DATE_TIME*/ 6, obj.datetimeAttr);
+argsList.add("Title", /*TEXT*/ 0, obj.titleAttr);
+argsList.add("Price", /*DECIMAL*/ 5, obj.priceAttr, 15, 5);
+argsList.add("EventType", /*TEXT*/ 0, obj.eventTypeAttr);
+argsList.add("ClassColor", /*TEXT*/ 0, obj.classColorAttr);
+argsList.add("Category", /*TEXT*/ 0, obj.categoryAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_VOD_USAGE\" (\"Id\", \"AssociationId\", \"BillingAccountNumber\", \"Datetime\", \"Title\", \"Price\", \"EventType\", \"ClassColor\", \"Category\", \"CacheExpirationDate\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_VOD_USAGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("AssociationId", /*LONGINTEGER*/ 4, obj.associationIdAttr);
+argsList.add("BillingAccountNumber", /*TEXT*/ 0, obj.billingAccountNumberAttr);
+argsList.add("Datetime", /*DATE_TIME*/ 6, obj.datetimeAttr);
+argsList.add("Title", /*TEXT*/ 0, obj.titleAttr);
+argsList.add("Price", /*DECIMAL*/ 5, obj.priceAttr, 15, 5);
+argsList.add("EventType", /*TEXT*/ 0, obj.eventTypeAttr);
+argsList.add("ClassColor", /*TEXT*/ 0, obj.classColorAttr);
+argsList.add("Category", /*TEXT*/ 0, obj.categoryAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_VOD_USAGE\" SET \"AssociationId\" = ?, \"BillingAccountNumber\" = ?, \"Datetime\" = ?, \"Title\" = ?, \"Price\" = ?, \"EventType\" = ?, \"ClassColor\" = ?, \"Category\" = ?, \"CacheExpirationDate\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_VOD_USAGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("AssociationId", /*LONGINTEGER*/ 4, obj.associationIdAttr);
+argsList.add("BillingAccountNumber", /*TEXT*/ 0, obj.billingAccountNumberAttr);
+argsList.add("Datetime", /*DATE_TIME*/ 6, obj.datetimeAttr);
+argsList.add("Title", /*TEXT*/ 0, obj.titleAttr);
+argsList.add("Price", /*DECIMAL*/ 5, obj.priceAttr, 15, 5);
+argsList.add("EventType", /*TEXT*/ 0, obj.eventTypeAttr);
+argsList.add("ClassColor", /*TEXT*/ 0, obj.classColorAttr);
+argsList.add("Category", /*TEXT*/ 0, obj.categoryAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_VOD_USAGE\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_VOD_USAGE\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_VOD_USAGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("AssociationId", /*LONGINTEGER*/ 4, obj.associationIdAttr);
+argsList.add("BillingAccountNumber", /*TEXT*/ 0, obj.billingAccountNumberAttr);
+argsList.add("Datetime", /*DATE_TIME*/ 6, obj.datetimeAttr);
+argsList.add("Title", /*TEXT*/ 0, obj.titleAttr);
+argsList.add("Price", /*DECIMAL*/ 5, obj.priceAttr, 15, 5);
+argsList.add("EventType", /*TEXT*/ 0, obj.eventTypeAttr);
+argsList.add("ClassColor", /*TEXT*/ 0, obj.classColorAttr);
+argsList.add("Category", /*TEXT*/ 0, obj.categoryAttr);
+argsList.add("CacheExpirationDate", /*DATE_TIME*/ 6, obj.cacheExpirationDateAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_VOD_USAGEAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_VOD_USAGEAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_CACHE_CONTROL_SERVICES = {
+key: "a13a2b20-8ff6-4f1c-b287-0a169cffd0a9",
+name: "Local_CACHE_CONTROL_SERVICES",
+tableName: "OSUSR_QSX_LOCAL_CACHE_CONTROL_SERVICES",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "CacheServiceId",
+type: /*TEXT*/ 0,
+length: 250,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_CACHE_CONTROL_SERVICES\" ADD \"CacheServiceId\" TEXT(250) DEFAULT \'\'"
+}
+}, {
+name: "CacheControlId",
+type: /*LONGINTEGER*/ 4,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_CACHE_CONTROL_SERVICES\" ADD \"CacheControlId\" BIGINT DEFAULT 0"
+}
+}, {
+name: "LastUpdateAt",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_CACHE_CONTROL_SERVICES\" ADD \"LastUpdateAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "ExpirationDate",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_CACHE_CONTROL_SERVICES\" ADD \"ExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "LastCacheCheck",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_CACHE_CONTROL_SERVICES\" ADD \"LastCacheCheck\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "429568e8-faa0-2c59-2b97-916b6f7aeb17",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_CACHE_CONTROL_SERVICESRecord(BALANCE_MBPModel.Local_CACHE_CONTROL_SERVICESRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_CACHE_CONTROL_SERVICES\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"CacheServiceId\" TEXT(250) DEFAULT \'\', \"CacheControlId\" BIGINT DEFAULT 0, \"LastUpdateAt\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"ExpirationDate\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"LastCacheCheck\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"CacheServiceId\" o1, \"CacheControlId\" o2, \"LastUpdateAt\" o3, \"ExpirationDate\" o4, \"LastCacheCheck\" o5 FROM \"OSUSR_QSX_LOCAL_CACHE_CONTROL_SERVICES\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_CACHE_CONTROL_SERVICES\" (\"Id\", \"CacheServiceId\", \"CacheControlId\", \"LastUpdateAt\", \"ExpirationDate\", \"LastCacheCheck\") VALUES (?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_CACHE_CONTROL_SERVICESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("CacheServiceId", /*TEXT*/ 0, obj.cacheServiceIdAttr);
+argsList.add("CacheControlId", /*LONGINTEGER*/ 4, obj.cacheControlIdAttr);
+argsList.add("LastUpdateAt", /*DATE_TIME*/ 6, obj.lastUpdateAtAttr);
+argsList.add("ExpirationDate", /*DATE_TIME*/ 6, obj.expirationDateAttr);
+argsList.add("LastCacheCheck", /*DATE_TIME*/ 6, obj.lastCacheCheckAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_CACHE_CONTROL_SERVICES\" (\"Id\", \"CacheServiceId\", \"CacheControlId\", \"LastUpdateAt\", \"ExpirationDate\", \"LastCacheCheck\") VALUES (?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_CACHE_CONTROL_SERVICESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("CacheServiceId", /*TEXT*/ 0, obj.cacheServiceIdAttr);
+argsList.add("CacheControlId", /*LONGINTEGER*/ 4, obj.cacheControlIdAttr);
+argsList.add("LastUpdateAt", /*DATE_TIME*/ 6, obj.lastUpdateAtAttr);
+argsList.add("ExpirationDate", /*DATE_TIME*/ 6, obj.expirationDateAttr);
+argsList.add("LastCacheCheck", /*DATE_TIME*/ 6, obj.lastCacheCheckAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_CACHE_CONTROL_SERVICES\" SET \"CacheServiceId\" = ?, \"CacheControlId\" = ?, \"LastUpdateAt\" = ?, \"ExpirationDate\" = ?, \"LastCacheCheck\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_CACHE_CONTROL_SERVICESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("CacheServiceId", /*TEXT*/ 0, obj.cacheServiceIdAttr);
+argsList.add("CacheControlId", /*LONGINTEGER*/ 4, obj.cacheControlIdAttr);
+argsList.add("LastUpdateAt", /*DATE_TIME*/ 6, obj.lastUpdateAtAttr);
+argsList.add("ExpirationDate", /*DATE_TIME*/ 6, obj.expirationDateAttr);
+argsList.add("LastCacheCheck", /*DATE_TIME*/ 6, obj.lastCacheCheckAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_CACHE_CONTROL_SERVICES\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_CACHE_CONTROL_SERVICES\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_CACHE_CONTROL_SERVICESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("CacheServiceId", /*TEXT*/ 0, obj.cacheServiceIdAttr);
+argsList.add("CacheControlId", /*LONGINTEGER*/ 4, obj.cacheControlIdAttr);
+argsList.add("LastUpdateAt", /*DATE_TIME*/ 6, obj.lastUpdateAtAttr);
+argsList.add("ExpirationDate", /*DATE_TIME*/ 6, obj.expirationDateAttr);
+argsList.add("LastCacheCheck", /*DATE_TIME*/ 6, obj.lastCacheCheckAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_CACHE_CONTROL_SERVICESAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_CACHE_CONTROL_SERVICESAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_LAST_PAYMENT_PROCESS = {
+key: "abadfc51-d5cc-4ac9-b9c9-e42c064475a6",
+name: "Local_LAST_PAYMENT_PROCESS",
+tableName: "OSUSR_QSX_LOCAL_LAST_PAYMENT_PROCESS",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "PaymentProcess",
+type: /*TEXT*/ 0,
+length: 10,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_LAST_PAYMENT_PROCESS\" ADD \"PaymentProcess\" TEXT(10) DEFAULT \'\'"
+}
+}, {
+name: "IsPartial",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_LAST_PAYMENT_PROCESS\" ADD \"IsPartial\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "PaymentRef",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_LAST_PAYMENT_PROCESS\" ADD \"PaymentRef\" TEXT(50) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "c07e73bd-7938-f1aa-86f8-2cb1245c37f2",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_LAST_PAYMENT_PROCESSRecord(BALANCE_MBPModel.Local_LAST_PAYMENT_PROCESSRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_LAST_PAYMENT_PROCESS\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"PaymentProcess\" TEXT(10) DEFAULT \'\', \"IsPartial\" BOOLEAN DEFAULT 0, \"PaymentRef\" TEXT(50) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"PaymentProcess\" o1, \"IsPartial\" o2, \"PaymentRef\" o3 FROM \"OSUSR_QSX_LOCAL_LAST_PAYMENT_PROCESS\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_LAST_PAYMENT_PROCESS\" (\"Id\", \"PaymentProcess\", \"IsPartial\", \"PaymentRef\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_LAST_PAYMENT_PROCESSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("PaymentProcess", /*TEXT*/ 0, obj.paymentProcessAttr);
+argsList.add("IsPartial", /*BOOLEAN*/ 2, obj.isPartialAttr);
+argsList.add("PaymentRef", /*TEXT*/ 0, obj.paymentRefAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_LAST_PAYMENT_PROCESS\" (\"Id\", \"PaymentProcess\", \"IsPartial\", \"PaymentRef\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_LAST_PAYMENT_PROCESSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("PaymentProcess", /*TEXT*/ 0, obj.paymentProcessAttr);
+argsList.add("IsPartial", /*BOOLEAN*/ 2, obj.isPartialAttr);
+argsList.add("PaymentRef", /*TEXT*/ 0, obj.paymentRefAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_LAST_PAYMENT_PROCESS\" SET \"PaymentProcess\" = ?, \"IsPartial\" = ?, \"PaymentRef\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_LAST_PAYMENT_PROCESSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("PaymentProcess", /*TEXT*/ 0, obj.paymentProcessAttr);
+argsList.add("IsPartial", /*BOOLEAN*/ 2, obj.isPartialAttr);
+argsList.add("PaymentRef", /*TEXT*/ 0, obj.paymentRefAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_LAST_PAYMENT_PROCESS\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_LAST_PAYMENT_PROCESS\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_LAST_PAYMENT_PROCESSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("PaymentProcess", /*TEXT*/ 0, obj.paymentProcessAttr);
+argsList.add("IsPartial", /*BOOLEAN*/ 2, obj.isPartialAttr);
+argsList.add("PaymentRef", /*TEXT*/ 0, obj.paymentRefAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_LAST_PAYMENT_PROCESSAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_LAST_PAYMENT_PROCESSAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_PAGE = {
+key: "b5b35128-6be7-4776-a685-2da5afdba3b1",
+name: "Local_PAGE",
+tableName: "OSUSR_QSX_LOCAL_PAGE",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Label",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_PAGE\" ADD \"Label\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Code",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_PAGE\" ADD \"Code\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "DateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_PAGE\" ADD \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "9d7e9a89-cdce-90da-3a16-7733cdf1d6a8",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_PAGERecord(BALANCE_MBPModel.Local_PAGERecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_PAGE\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Label\" TEXT(50) DEFAULT \'\', \"Code\" TEXT(50) DEFAULT \'\', \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Label\" o1, \"Code\" o2, \"DateTime\" o3 FROM \"OSUSR_QSX_LOCAL_PAGE\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_PAGE\" (\"Id\", \"Label\", \"Code\", \"DateTime\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_PAGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_PAGE\" (\"Id\", \"Label\", \"Code\", \"DateTime\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_PAGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_PAGE\" SET \"Label\" = ?, \"Code\" = ?, \"DateTime\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_PAGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_PAGE\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_PAGE\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_PAGEAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Label", /*TEXT*/ 0, obj.labelAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_PAGEAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_PAGEAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_COMMDETAILS_FILTERS = {
+key: "ba97f8d9-ab3c-4748-a350-532f13e9bf24",
+name: "Local_COMMDETAILS_FILTERS",
+tableName: "OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "IntervalDaysMin",
+type: /*DATE*/ 7,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"IntervalDaysMin\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "IntervalDaysMax",
+type: /*DATE*/ 7,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"IntervalDaysMax\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "IntervalHoursMin",
+type: /*TIME*/ 8,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"IntervalHoursMin\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "IntervalHoursMax",
+type: /*TIME*/ 8,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"IntervalHoursMax\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "CommunicationCostMin",
+type: /*DECIMAL*/ 5,
+length: 15,
+decimals: 5,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"CommunicationCostMin\" REAL(15,5) DEFAULT 0"
+}
+}, {
+name: "CommunicationCostMax",
+type: /*DECIMAL*/ 5,
+length: 15,
+decimals: 5,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"CommunicationCostMax\" REAL(15,5) DEFAULT 0"
+}
+}, {
+name: "CallDurationMin",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"CallDurationMin\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "CallDurationMax",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"CallDurationMax\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Checked_SMS",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"Checked_SMS\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "Checked_MMS",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"Checked_MMS\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "Checked_VozMovel",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"Checked_VozMovel\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "Checked_MovelNacional",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"Checked_MovelNacional\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "Checked_FixaNacional",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"Checked_FixaNacional\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "Checked_RoamingEuropa",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"Checked_RoamingEuropa\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "Checked_RoamingInternational",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"Checked_RoamingInternational\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "Checked_ValorAcrescentado",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"Checked_ValorAcrescentado\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "QuickFilter_Checked_Pago",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"QuickFilter_Checked_Pago\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "QuickFilter_Checked_SemCusto",
+type: /*BOOLEAN*/ 2,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" ADD \"QuickFilter_Checked_SemCusto\" BOOLEAN DEFAULT 0"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "5be27cf9-0499-130b-a1a4-47527d4d203c",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_COMMDETAILS_FILTERSRecord(BALANCE_MBPModel.Local_COMMDETAILS_FILTERSRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"IntervalDaysMin\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"IntervalDaysMax\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"IntervalHoursMin\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"IntervalHoursMax\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"CommunicationCostMin\" REAL(15,5) DEFAULT 0, \"CommunicationCostMax\" REAL(15,5) DEFAULT 0, \"CallDurationMin\" TEXT(50) DEFAULT \'\', \"CallDurationMax\" TEXT(50) DEFAULT \'\', \"Checked_SMS\" BOOLEAN DEFAULT 0, \"Checked_MMS\" BOOLEAN DEFAULT 0, \"Checked_VozMovel\" BOOLEAN DEFAULT 0, \"Checked_MovelNacional\" BOOLEAN DEFAULT 0, \"Checked_FixaNacional\" BOOLEAN DEFAULT 0, \"Checked_RoamingEuropa\" BOOLEAN DEFAULT 0, \"Checked_RoamingInternational\" BOOLEAN DEFAULT 0, \"Checked_ValorAcrescentado\" BOOLEAN DEFAULT 0, \"QuickFilter_Checked_Pago\" BOOLEAN DEFAULT 0, \"QuickFilter_Checked_SemCusto\" BOOLEAN DEFAULT 0)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"IntervalDaysMin\" o1, \"IntervalDaysMax\" o2, \"IntervalHoursMin\" o3, \"IntervalHoursMax\" o4, \"CommunicationCostMin\" o5, \"CommunicationCostMax\" o6, \"CallDurationMin\" o7, \"CallDurationMax\" o8, \"Checked_SMS\" o9, \"Checked_MMS\" o10, \"Checked_VozMovel\" o11, \"Checked_MovelNacional\" o12, \"Checked_FixaNacional\" o13, \"Checked_RoamingEuropa\" o14, \"Checked_RoamingInternational\" o15, \"Checked_ValorAcrescentado\" o16, \"QuickFilter_Checked_Pago\" o17, \"QuickFilter_Checked_SemCusto\" o18 FROM \"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" (\"Id\", \"IntervalDaysMin\", \"IntervalDaysMax\", \"IntervalHoursMin\", \"IntervalHoursMax\", \"CommunicationCostMin\", \"CommunicationCostMax\", \"CallDurationMin\", \"CallDurationMax\", \"Checked_SMS\", \"Checked_MMS\", \"Checked_VozMovel\", \"Checked_MovelNacional\", \"Checked_FixaNacional\", \"Checked_RoamingEuropa\", \"Checked_RoamingInternational\", \"Checked_ValorAcrescentado\", \"QuickFilter_Checked_Pago\", \"QuickFilter_Checked_SemCusto\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_COMMDETAILS_FILTERSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("IntervalDaysMin", /*DATE*/ 7, obj.intervalDaysMinAttr);
+argsList.add("IntervalDaysMax", /*DATE*/ 7, obj.intervalDaysMaxAttr);
+argsList.add("IntervalHoursMin", /*TIME*/ 8, obj.intervalHoursMinAttr);
+argsList.add("IntervalHoursMax", /*TIME*/ 8, obj.intervalHoursMaxAttr);
+argsList.add("CommunicationCostMin", /*DECIMAL*/ 5, obj.communicationCostMinAttr, 15, 5);
+argsList.add("CommunicationCostMax", /*DECIMAL*/ 5, obj.communicationCostMaxAttr, 15, 5);
+argsList.add("CallDurationMin", /*TEXT*/ 0, obj.callDurationMinAttr);
+argsList.add("CallDurationMax", /*TEXT*/ 0, obj.callDurationMaxAttr);
+argsList.add("Checked_SMS", /*BOOLEAN*/ 2, obj.checked_SMSAttr);
+argsList.add("Checked_MMS", /*BOOLEAN*/ 2, obj.checked_MMSAttr);
+argsList.add("Checked_VozMovel", /*BOOLEAN*/ 2, obj.checked_VozMovelAttr);
+argsList.add("Checked_MovelNacional", /*BOOLEAN*/ 2, obj.checked_MovelNacionalAttr);
+argsList.add("Checked_FixaNacional", /*BOOLEAN*/ 2, obj.checked_FixaNacionalAttr);
+argsList.add("Checked_RoamingEuropa", /*BOOLEAN*/ 2, obj.checked_RoamingEuropaAttr);
+argsList.add("Checked_RoamingInternational", /*BOOLEAN*/ 2, obj.checked_RoamingInternationalAttr);
+argsList.add("Checked_ValorAcrescentado", /*BOOLEAN*/ 2, obj.checked_ValorAcrescentadoAttr);
+argsList.add("QuickFilter_Checked_Pago", /*BOOLEAN*/ 2, obj.quickFilter_Checked_PagoAttr);
+argsList.add("QuickFilter_Checked_SemCusto", /*BOOLEAN*/ 2, obj.quickFilter_Checked_SemCustoAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" (\"Id\", \"IntervalDaysMin\", \"IntervalDaysMax\", \"IntervalHoursMin\", \"IntervalHoursMax\", \"CommunicationCostMin\", \"CommunicationCostMax\", \"CallDurationMin\", \"CallDurationMax\", \"Checked_SMS\", \"Checked_MMS\", \"Checked_VozMovel\", \"Checked_MovelNacional\", \"Checked_FixaNacional\", \"Checked_RoamingEuropa\", \"Checked_RoamingInternational\", \"Checked_ValorAcrescentado\", \"QuickFilter_Checked_Pago\", \"QuickFilter_Checked_SemCusto\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_COMMDETAILS_FILTERSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("IntervalDaysMin", /*DATE*/ 7, obj.intervalDaysMinAttr);
+argsList.add("IntervalDaysMax", /*DATE*/ 7, obj.intervalDaysMaxAttr);
+argsList.add("IntervalHoursMin", /*TIME*/ 8, obj.intervalHoursMinAttr);
+argsList.add("IntervalHoursMax", /*TIME*/ 8, obj.intervalHoursMaxAttr);
+argsList.add("CommunicationCostMin", /*DECIMAL*/ 5, obj.communicationCostMinAttr, 15, 5);
+argsList.add("CommunicationCostMax", /*DECIMAL*/ 5, obj.communicationCostMaxAttr, 15, 5);
+argsList.add("CallDurationMin", /*TEXT*/ 0, obj.callDurationMinAttr);
+argsList.add("CallDurationMax", /*TEXT*/ 0, obj.callDurationMaxAttr);
+argsList.add("Checked_SMS", /*BOOLEAN*/ 2, obj.checked_SMSAttr);
+argsList.add("Checked_MMS", /*BOOLEAN*/ 2, obj.checked_MMSAttr);
+argsList.add("Checked_VozMovel", /*BOOLEAN*/ 2, obj.checked_VozMovelAttr);
+argsList.add("Checked_MovelNacional", /*BOOLEAN*/ 2, obj.checked_MovelNacionalAttr);
+argsList.add("Checked_FixaNacional", /*BOOLEAN*/ 2, obj.checked_FixaNacionalAttr);
+argsList.add("Checked_RoamingEuropa", /*BOOLEAN*/ 2, obj.checked_RoamingEuropaAttr);
+argsList.add("Checked_RoamingInternational", /*BOOLEAN*/ 2, obj.checked_RoamingInternationalAttr);
+argsList.add("Checked_ValorAcrescentado", /*BOOLEAN*/ 2, obj.checked_ValorAcrescentadoAttr);
+argsList.add("QuickFilter_Checked_Pago", /*BOOLEAN*/ 2, obj.quickFilter_Checked_PagoAttr);
+argsList.add("QuickFilter_Checked_SemCusto", /*BOOLEAN*/ 2, obj.quickFilter_Checked_SemCustoAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" SET \"IntervalDaysMin\" = ?, \"IntervalDaysMax\" = ?, \"IntervalHoursMin\" = ?, \"IntervalHoursMax\" = ?, \"CommunicationCostMin\" = ?, \"CommunicationCostMax\" = ?, \"CallDurationMin\" = ?, \"CallDurationMax\" = ?, \"Checked_SMS\" = ?, \"Checked_MMS\" = ?, \"Checked_VozMovel\" = ?, \"Checked_MovelNacional\" = ?, \"Checked_FixaNacional\" = ?, \"Checked_RoamingEuropa\" = ?, \"Checked_RoamingInternational\" = ?, \"Checked_ValorAcrescentado\" = ?, \"QuickFilter_Checked_Pago\" = ?, \"QuickFilter_Checked_SemCusto\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_COMMDETAILS_FILTERSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("IntervalDaysMin", /*DATE*/ 7, obj.intervalDaysMinAttr);
+argsList.add("IntervalDaysMax", /*DATE*/ 7, obj.intervalDaysMaxAttr);
+argsList.add("IntervalHoursMin", /*TIME*/ 8, obj.intervalHoursMinAttr);
+argsList.add("IntervalHoursMax", /*TIME*/ 8, obj.intervalHoursMaxAttr);
+argsList.add("CommunicationCostMin", /*DECIMAL*/ 5, obj.communicationCostMinAttr, 15, 5);
+argsList.add("CommunicationCostMax", /*DECIMAL*/ 5, obj.communicationCostMaxAttr, 15, 5);
+argsList.add("CallDurationMin", /*TEXT*/ 0, obj.callDurationMinAttr);
+argsList.add("CallDurationMax", /*TEXT*/ 0, obj.callDurationMaxAttr);
+argsList.add("Checked_SMS", /*BOOLEAN*/ 2, obj.checked_SMSAttr);
+argsList.add("Checked_MMS", /*BOOLEAN*/ 2, obj.checked_MMSAttr);
+argsList.add("Checked_VozMovel", /*BOOLEAN*/ 2, obj.checked_VozMovelAttr);
+argsList.add("Checked_MovelNacional", /*BOOLEAN*/ 2, obj.checked_MovelNacionalAttr);
+argsList.add("Checked_FixaNacional", /*BOOLEAN*/ 2, obj.checked_FixaNacionalAttr);
+argsList.add("Checked_RoamingEuropa", /*BOOLEAN*/ 2, obj.checked_RoamingEuropaAttr);
+argsList.add("Checked_RoamingInternational", /*BOOLEAN*/ 2, obj.checked_RoamingInternationalAttr);
+argsList.add("Checked_ValorAcrescentado", /*BOOLEAN*/ 2, obj.checked_ValorAcrescentadoAttr);
+argsList.add("QuickFilter_Checked_Pago", /*BOOLEAN*/ 2, obj.quickFilter_Checked_PagoAttr);
+argsList.add("QuickFilter_Checked_SemCusto", /*BOOLEAN*/ 2, obj.quickFilter_Checked_SemCustoAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_COMMDETAILS_FILTERS\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_COMMDETAILS_FILTERSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("IntervalDaysMin", /*DATE*/ 7, obj.intervalDaysMinAttr);
+argsList.add("IntervalDaysMax", /*DATE*/ 7, obj.intervalDaysMaxAttr);
+argsList.add("IntervalHoursMin", /*TIME*/ 8, obj.intervalHoursMinAttr);
+argsList.add("IntervalHoursMax", /*TIME*/ 8, obj.intervalHoursMaxAttr);
+argsList.add("CommunicationCostMin", /*DECIMAL*/ 5, obj.communicationCostMinAttr, 15, 5);
+argsList.add("CommunicationCostMax", /*DECIMAL*/ 5, obj.communicationCostMaxAttr, 15, 5);
+argsList.add("CallDurationMin", /*TEXT*/ 0, obj.callDurationMinAttr);
+argsList.add("CallDurationMax", /*TEXT*/ 0, obj.callDurationMaxAttr);
+argsList.add("Checked_SMS", /*BOOLEAN*/ 2, obj.checked_SMSAttr);
+argsList.add("Checked_MMS", /*BOOLEAN*/ 2, obj.checked_MMSAttr);
+argsList.add("Checked_VozMovel", /*BOOLEAN*/ 2, obj.checked_VozMovelAttr);
+argsList.add("Checked_MovelNacional", /*BOOLEAN*/ 2, obj.checked_MovelNacionalAttr);
+argsList.add("Checked_FixaNacional", /*BOOLEAN*/ 2, obj.checked_FixaNacionalAttr);
+argsList.add("Checked_RoamingEuropa", /*BOOLEAN*/ 2, obj.checked_RoamingEuropaAttr);
+argsList.add("Checked_RoamingInternational", /*BOOLEAN*/ 2, obj.checked_RoamingInternationalAttr);
+argsList.add("Checked_ValorAcrescentado", /*BOOLEAN*/ 2, obj.checked_ValorAcrescentadoAttr);
+argsList.add("QuickFilter_Checked_Pago", /*BOOLEAN*/ 2, obj.quickFilter_Checked_PagoAttr);
+argsList.add("QuickFilter_Checked_SemCusto", /*BOOLEAN*/ 2, obj.quickFilter_Checked_SemCustoAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_COMMDETAILS_FILTERSAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_COMMDETAILS_FILTERSAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_BALANCE_CONFIG_ATTRIBUTES = {
+key: "c5c3f07d-8d31-4ac3-86ab-990c19644222",
+name: "Local_BALANCE_CONFIG_ATTRIBUTES",
+tableName: "OSUSR_QSX_LOCAL_BALANCE_CONFIG_ATTRIBUTES",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Code",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG_ATTRIBUTES\" ADD \"Code\" TEXT(50) DEFAULT \'\'"
+}
+}, {
+name: "Name",
+type: /*TEXT*/ 0,
+length: 250,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG_ATTRIBUTES\" ADD \"Name\" TEXT(250) DEFAULT \'\'"
+}
+}, {
+name: "DateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG_ATTRIBUTES\" ADD \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "d89c8ab1-3e33-a062-4843-2602b01f4abc",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_BALANCE_CONFIG_ATTRIBUTESRecord(BALANCE_MBPModel.Local_BALANCE_CONFIG_ATTRIBUTESRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG_ATTRIBUTES\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Code\" TEXT(50) DEFAULT \'\', \"Name\" TEXT(250) DEFAULT \'\', \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Code\" o1, \"Name\" o2, \"DateTime\" o3 FROM \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_ATTRIBUTES\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_ATTRIBUTES\" (\"Id\", \"Code\", \"Name\", \"DateTime\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CONFIG_ATTRIBUTESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_ATTRIBUTES\" (\"Id\", \"Code\", \"Name\", \"DateTime\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CONFIG_ATTRIBUTESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_ATTRIBUTES\" SET \"Code\" = ?, \"Name\" = ?, \"DateTime\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CONFIG_ATTRIBUTESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_ATTRIBUTES\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_ATTRIBUTES\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_BALANCE_CONFIG_ATTRIBUTESAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Code", /*TEXT*/ 0, obj.codeAttr);
+argsList.add("Name", /*TEXT*/ 0, obj.nameAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_BALANCE_CONFIG_ATTRIBUTESAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_BALANCE_CONFIG_ATTRIBUTESAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_BALANCE_UNITS = {
+key: "de237e5d-ef4e-4911-bf1e-068cb32c6433",
+name: "Local_BALANCE_UNITS",
+tableName: "OSUSR_QSX_LOCAL_BALANCE_UNITS",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Unit",
+type: /*TEXT*/ 0,
+length: 50,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_UNITS\" ADD \"Unit\" TEXT(50) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "aeb48244-3a1d-f297-420b-ad79478b88c8",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_BALANCE_UNITSRecord(BALANCE_MBPModel.Local_BALANCE_UNITSRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_UNITS\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Unit\" TEXT(50) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Unit\" o1 FROM \"OSUSR_QSX_LOCAL_BALANCE_UNITS\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_BALANCE_UNITS\" (\"Id\", \"Unit\") VALUES (?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_UNITSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Unit", /*TEXT*/ 0, obj.unitAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_BALANCE_UNITS\" (\"Id\", \"Unit\") VALUES (?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_UNITSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Unit", /*TEXT*/ 0, obj.unitAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_BALANCE_UNITS\" SET \"Unit\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_BALANCE_UNITSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Unit", /*TEXT*/ 0, obj.unitAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_UNITS\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_UNITS\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_BALANCE_UNITSAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Unit", /*TEXT*/ 0, obj.unitAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_BALANCE_UNITSAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_BALANCE_UNITSAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_TOP_UP_SELECTION = {
+key: "e41659d5-f6a4-4050-a5f9-2375187968dc",
+name: "Local_TOP_UP_SELECTION",
+tableName: "OSUSR_QSX_LOCAL_TOP_UP_SELECTION",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "MSISDN",
+type: /*TEXT*/ 0,
+length: 20,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_TOP_UP_SELECTION\" ADD \"MSISDN\" TEXT(20) DEFAULT \'\'"
+}
+}, {
+name: "Instant",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_TOP_UP_SELECTION\" ADD \"Instant\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "Amount",
+type: /*DECIMAL*/ 5,
+length: 15,
+decimals: 5,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_TOP_UP_SELECTION\" ADD \"Amount\" REAL(15,5) DEFAULT 0"
+}
+}, {
+name: "Message",
+type: /*TEXT*/ 0,
+length: 300,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_TOP_UP_SELECTION\" ADD \"Message\" TEXT(300) DEFAULT \'\'"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "326f6598-a2cd-bec5-9c56-5a5b2c0a0a39",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_TOP_UP_SELECTIONRecord(BALANCE_MBPModel.Local_TOP_UP_SELECTIONRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_TOP_UP_SELECTION\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"MSISDN\" TEXT(20) DEFAULT \'\', \"Instant\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"Amount\" REAL(15,5) DEFAULT 0, \"Message\" TEXT(300) DEFAULT \'\')"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"MSISDN\" o1, \"Instant\" o2, \"Amount\" o3, \"Message\" o4 FROM \"OSUSR_QSX_LOCAL_TOP_UP_SELECTION\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_TOP_UP_SELECTION\" (\"Id\", \"MSISDN\", \"Instant\", \"Amount\", \"Message\") VALUES (?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_TOP_UP_SELECTIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("MSISDN", /*TEXT*/ 0, obj.mSISDNAttr);
+argsList.add("Instant", /*DATE_TIME*/ 6, obj.instantAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("Message", /*TEXT*/ 0, obj.messageAttr);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_TOP_UP_SELECTION\" (\"Id\", \"MSISDN\", \"Instant\", \"Amount\", \"Message\") VALUES (?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_TOP_UP_SELECTIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("MSISDN", /*TEXT*/ 0, obj.mSISDNAttr);
+argsList.add("Instant", /*DATE_TIME*/ 6, obj.instantAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("Message", /*TEXT*/ 0, obj.messageAttr);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_TOP_UP_SELECTION\" SET \"MSISDN\" = ?, \"Instant\" = ?, \"Amount\" = ?, \"Message\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_TOP_UP_SELECTIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("MSISDN", /*TEXT*/ 0, obj.mSISDNAttr);
+argsList.add("Instant", /*DATE_TIME*/ 6, obj.instantAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("Message", /*TEXT*/ 0, obj.messageAttr);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_TOP_UP_SELECTION\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_TOP_UP_SELECTION\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_TOP_UP_SELECTIONAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("MSISDN", /*TEXT*/ 0, obj.mSISDNAttr);
+argsList.add("Instant", /*DATE_TIME*/ 6, obj.instantAttr);
+argsList.add("Amount", /*DECIMAL*/ 5, obj.amountAttr, 15, 5);
+argsList.add("Message", /*TEXT*/ 0, obj.messageAttr);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_TOP_UP_SELECTIONAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_TOP_UP_SELECTIONAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_BALANCE_CONFIG_INFO_GROUP = {
+key: "eb972ecf-9e50-4a6d-b2a3-884b6cb7be1f",
+name: "Local_BALANCE_CONFIG_INFO_GROUP",
+tableName: "OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO_GROUP",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "BalanceUnitID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO_GROUP\" ADD \"BalanceUnitID\" BIGINT DEFAULT NULL"
+}
+}, {
+name: "CardTypeID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO_GROUP\" ADD \"CardTypeID\" BIGINT DEFAULT NULL"
+}
+}, {
+name: "GraphTypeID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO_GROUP\" ADD \"GraphTypeID\" BIGINT DEFAULT NULL"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "c8b662ea-7099-0e2e-46b3-e340964c94d4",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_BALANCE_CONFIG_INFO_GROUPRecord(BALANCE_MBPModel.Local_BALANCE_CONFIG_INFO_GROUPRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO_GROUP\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"BalanceUnitID\" BIGINT DEFAULT NULL, \"CardTypeID\" BIGINT DEFAULT NULL, \"GraphTypeID\" BIGINT DEFAULT NULL)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"BalanceUnitID\" o1, \"CardTypeID\" o2, \"GraphTypeID\" o3 FROM \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO_GROUP\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO_GROUP\" (\"Id\", \"BalanceUnitID\", \"CardTypeID\", \"GraphTypeID\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CONFIG_INFO_GROUPAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("BalanceUnitID", /*LONGINTEGER*/ 4, obj.balanceUnitIDAttr, null, null, true);
+argsList.add("CardTypeID", /*LONGINTEGER*/ 4, obj.cardTypeIDAttr, null, null, true);
+argsList.add("GraphTypeID", /*LONGINTEGER*/ 4, obj.graphTypeIDAttr, null, null, true);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO_GROUP\" (\"Id\", \"BalanceUnitID\", \"CardTypeID\", \"GraphTypeID\") VALUES (?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CONFIG_INFO_GROUPAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("BalanceUnitID", /*LONGINTEGER*/ 4, obj.balanceUnitIDAttr, null, null, true);
+argsList.add("CardTypeID", /*LONGINTEGER*/ 4, obj.cardTypeIDAttr, null, null, true);
+argsList.add("GraphTypeID", /*LONGINTEGER*/ 4, obj.graphTypeIDAttr, null, null, true);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO_GROUP\" SET \"BalanceUnitID\" = ?, \"CardTypeID\" = ?, \"GraphTypeID\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CONFIG_INFO_GROUPAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("BalanceUnitID", /*LONGINTEGER*/ 4, obj.balanceUnitIDAttr, null, null, true);
+argsList.add("CardTypeID", /*LONGINTEGER*/ 4, obj.cardTypeIDAttr, null, null, true);
+argsList.add("GraphTypeID", /*LONGINTEGER*/ 4, obj.graphTypeIDAttr, null, null, true);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO_GROUP\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_CONFIG_INFO_GROUP\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_BALANCE_CONFIG_INFO_GROUPAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("BalanceUnitID", /*LONGINTEGER*/ 4, obj.balanceUnitIDAttr, null, null, true);
+argsList.add("CardTypeID", /*LONGINTEGER*/ 4, obj.cardTypeIDAttr, null, null, true);
+argsList.add("GraphTypeID", /*LONGINTEGER*/ 4, obj.graphTypeIDAttr, null, null, true);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_BALANCE_CONFIG_INFO_GROUPAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_BALANCE_CONFIG_INFO_GROUPAttr;
+return obj.idAttr;
+
+}
+};
+var infoLocal_BALANCE_CONFIG = {
+key: "ef72a6ff-df64-46ab-a712-b2827169371c",
+name: "Local_BALANCE_CONFIG",
+tableName: "OSUSR_QSX_LOCAL_BALANCE_CONFIG",
+attributes: [{
+name: "Id",
+type: /*LONGINTEGER*/ 4,
+isPrimaryKey: true
+}, {
+name: "Tag",
+type: /*TEXT*/ 0,
+length: 255,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG\" ADD \"Tag\" TEXT(255) DEFAULT \'\'"
+}
+}, {
+name: "BalanceName",
+type: /*TEXT*/ 0,
+length: 255,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG\" ADD \"BalanceName\" TEXT(255) DEFAULT \'\'"
+}
+}, {
+name: "DateTime",
+type: /*DATE_TIME*/ 6,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG\" ADD \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\'"
+}
+}, {
+name: "HideWhenBalanceIsZero",
+type: /*BOOLEAN*/ 2,
+default: false,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG\" ADD \"HideWhenBalanceIsZero\" BOOLEAN DEFAULT 0"
+}
+}, {
+name: "CardTypeID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG\" ADD \"CardTypeID\" BIGINT DEFAULT NULL"
+}
+}, {
+name: "GraphTypeID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG\" ADD \"GraphTypeID\" BIGINT DEFAULT NULL"
+}
+}, {
+name: "PageID",
+type: /*LONGINTEGER*/ 4,
+isEntityReference: true,
+addColumn: {
+sql: "ALTER TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG\" ADD \"PageID\" BIGINT DEFAULT NULL"
+}
+}],
+idIsAutoNumber: /*YesIfEmpty*/ 2,
+getIdAttribute: function () {
+return this.attributes[0];
+},
+hash: "b0b3fd0b-8289-fe39-dbbe-3b9f71255165",
+dbRecordToRecord: function (dbRecord) {
+return new BALANCE_MBPModel.Local_BALANCE_CONFIGRecord(BALANCE_MBPModel.Local_BALANCE_CONFIGRecord.fromLocalStorage(dbRecord, {
+value: 0
+}));
+},
+createTable: {
+sql: "CREATE TABLE \"MAIN\".\"OSUSR_QSX_LOCAL_BALANCE_CONFIG\" (\"Id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \"Tag\" TEXT(255) DEFAULT \'\', \"BalanceName\" TEXT(255) DEFAULT \'\', \"DateTime\" DATETIME DEFAULT \'1900-01-01 00:00:00\', \"HideWhenBalanceIsZero\" BOOLEAN DEFAULT 0, \"CardTypeID\" BIGINT DEFAULT NULL, \"GraphTypeID\" BIGINT DEFAULT NULL, \"PageID\" BIGINT DEFAULT NULL)"
+},
+select: {
+sql: "SELECT \"Id\" o0, \"Tag\" o1, \"BalanceName\" o2, \"DateTime\" o3, \"HideWhenBalanceIsZero\" o4, \"CardTypeID\" o5, \"GraphTypeID\" o6, \"PageID\" o7 FROM \"OSUSR_QSX_LOCAL_BALANCE_CONFIG\" WHERE \"Id\" = ?"
+},
+insert: {
+sql: "INSERT INTO \"OSUSR_QSX_LOCAL_BALANCE_CONFIG\" (\"Id\", \"Tag\", \"BalanceName\", \"DateTime\", \"HideWhenBalanceIsZero\", \"CardTypeID\", \"GraphTypeID\", \"PageID\") VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CONFIGAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Tag", /*TEXT*/ 0, obj.tagAttr);
+argsList.add("BalanceName", /*TEXT*/ 0, obj.balanceNameAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("HideWhenBalanceIsZero", /*BOOLEAN*/ 2, obj.hideWhenBalanceIsZeroAttr);
+argsList.add("CardTypeID", /*LONGINTEGER*/ 4, obj.cardTypeIDAttr, null, null, true);
+argsList.add("GraphTypeID", /*LONGINTEGER*/ 4, obj.graphTypeIDAttr, null, null, true);
+argsList.add("PageID", /*LONGINTEGER*/ 4, obj.pageIDAttr, null, null, true);
+
+return argsList;
+}
+},
+upsert: {
+sql: "INSERT OR REPLACE INTO \"OSUSR_QSX_LOCAL_BALANCE_CONFIG\" (\"Id\", \"Tag\", \"BalanceName\", \"DateTime\", \"HideWhenBalanceIsZero\", \"CardTypeID\", \"GraphTypeID\", \"PageID\") VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CONFIGAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue) ? null : obj.idAttr);
+argsList.add("Tag", /*TEXT*/ 0, obj.tagAttr);
+argsList.add("BalanceName", /*TEXT*/ 0, obj.balanceNameAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("HideWhenBalanceIsZero", /*BOOLEAN*/ 2, obj.hideWhenBalanceIsZeroAttr);
+argsList.add("CardTypeID", /*LONGINTEGER*/ 4, obj.cardTypeIDAttr, null, null, true);
+argsList.add("GraphTypeID", /*LONGINTEGER*/ 4, obj.graphTypeIDAttr, null, null, true);
+argsList.add("PageID", /*LONGINTEGER*/ 4, obj.pageIDAttr, null, null, true);
+
+return argsList;
+},
+getBulkSql: function (recordCount) {
+return OS.ObjectExtensions.concatenateMultipleTimes(this.sql, ",(?,?,?,?,?,?,?,?)", (recordCount - 1));
+}
+},
+update: {
+sql: "UPDATE \"OSUSR_QSX_LOCAL_BALANCE_CONFIG\" SET \"Tag\" = ?, \"BalanceName\" = ?, \"DateTime\" = ?, \"HideWhenBalanceIsZero\" = ?, \"CardTypeID\" = ?, \"GraphTypeID\" = ?, \"PageID\" = ? WHERE \"Id\" = ?",
+getArguments: function (record) {
+var obj = record.local_BALANCE_CONFIGAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Tag", /*TEXT*/ 0, obj.tagAttr);
+argsList.add("BalanceName", /*TEXT*/ 0, obj.balanceNameAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("HideWhenBalanceIsZero", /*BOOLEAN*/ 2, obj.hideWhenBalanceIsZeroAttr);
+argsList.add("CardTypeID", /*LONGINTEGER*/ 4, obj.cardTypeIDAttr, null, null, true);
+argsList.add("GraphTypeID", /*LONGINTEGER*/ 4, obj.graphTypeIDAttr, null, null, true);
+argsList.add("PageID", /*LONGINTEGER*/ 4, obj.pageIDAttr, null, null, true);
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+
+return argsList;
+}
+},
+delete: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_CONFIG\" WHERE \"Id\" = ?"
+},
+deleteAll: {
+sql: "DELETE FROM \"OSUSR_QSX_LOCAL_BALANCE_CONFIG\""
+},
+getAllAttributesFromRecord: function (record) {
+var obj = record.local_BALANCE_CONFIGAttr;
+var argsList = new OS.Entities.QueryArgumentsList();
+argsList.add("Id", /*LONGINTEGER*/ 4, obj.idAttr);
+argsList.add("Tag", /*TEXT*/ 0, obj.tagAttr);
+argsList.add("BalanceName", /*TEXT*/ 0, obj.balanceNameAttr);
+argsList.add("DateTime", /*DATE_TIME*/ 6, obj.dateTimeAttr);
+argsList.add("HideWhenBalanceIsZero", /*BOOLEAN*/ 2, obj.hideWhenBalanceIsZeroAttr);
+argsList.add("CardTypeID", /*LONGINTEGER*/ 4, obj.cardTypeIDAttr, null, null, true);
+argsList.add("GraphTypeID", /*LONGINTEGER*/ 4, obj.graphTypeIDAttr, null, null, true);
+argsList.add("PageID", /*LONGINTEGER*/ 4, obj.pageIDAttr, null, null, true);
+
+return argsList;
+},
+hasNullId: function (record) {
+var obj = record.local_BALANCE_CONFIGAttr;
+return obj.idAttr.equals(OS.DataTypes.LongInteger.defaultValue);
+
+},
+getIdFromRecord: function (record) {
+var obj = record.local_BALANCE_CONFIGAttr;
+return obj.idAttr;
+
+}
+};
+var moduleKey = "f6333425-1385-404a-8f25-0ca219dc1e72";
+BALANCE_MBPModel.entities = {
+Local_SYNC_BALANCE_CONFIG: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_SYNC_BALANCE_CONFIG, moduleKey),
+Local_VOD_USAGE_DATES: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_VOD_USAGE_DATES, moduleKey),
+Local_BALANCE_TAG_DATATYPE: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_BALANCE_TAG_DATATYPE, moduleKey),
+Local_BALANCE_CARD_TYPE: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_BALANCE_CARD_TYPE, moduleKey),
+Local_BALANCE_CONFIG_INFO: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_BALANCE_CONFIG_INFO, moduleKey),
+Local_BALANCE_TAG_CODES: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_BALANCE_TAG_CODES, moduleKey),
+Local_BALANCE_GRAPH_TYPE: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_BALANCE_GRAPH_TYPE, moduleKey),
+Local_NET_DISTRIBUTION: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_NET_DISTRIBUTION, moduleKey),
+Local_BALANCE_LINES: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_BALANCE_LINES, moduleKey),
+Local_BALANCE_NEXT_CHARGE_DETAIL: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_BALANCE_NEXT_CHARGE_DETAIL, moduleKey),
+Local_BLM_BALANCE: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_BLM_BALANCE, moduleKey),
+Local_PIPE_INFORMATION: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_PIPE_INFORMATION, moduleKey),
+Local_VOD_USAGE: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_VOD_USAGE, moduleKey),
+Local_CACHE_CONTROL_SERVICES: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_CACHE_CONTROL_SERVICES, moduleKey),
+Local_LAST_PAYMENT_PROCESS: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_LAST_PAYMENT_PROCESS, moduleKey),
+Local_PAGE: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_PAGE, moduleKey),
+Local_COMMDETAILS_FILTERS: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_COMMDETAILS_FILTERS, moduleKey),
+Local_BALANCE_CONFIG_ATTRIBUTES: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_BALANCE_CONFIG_ATTRIBUTES, moduleKey),
+Local_BALANCE_UNITS: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_BALANCE_UNITS, moduleKey),
+Local_TOP_UP_SELECTION: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_TOP_UP_SELECTION, moduleKey),
+Local_BALANCE_CONFIG_INFO_GROUP: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_BALANCE_CONFIG_INFO_GROUP, moduleKey),
+Local_BALANCE_CONFIG: new OS.Entities.Entity(OS.Entities.webSQLStorageInstance, infoLocal_BALANCE_CONFIG, moduleKey)
+};
+return {
+init: function (runner) {
+return OS.Entities.webSQLStorageInstance.initModule([infoLocal_SYNC_BALANCE_CONFIG, infoLocal_VOD_USAGE_DATES, infoLocal_BALANCE_TAG_DATATYPE, infoLocal_BALANCE_CARD_TYPE, infoLocal_BALANCE_CONFIG_INFO, infoLocal_BALANCE_TAG_CODES, infoLocal_BALANCE_GRAPH_TYPE, infoLocal_NET_DISTRIBUTION, infoLocal_BALANCE_LINES, infoLocal_BALANCE_NEXT_CHARGE_DETAIL, infoLocal_BLM_BALANCE, infoLocal_PIPE_INFORMATION, infoLocal_VOD_USAGE, infoLocal_CACHE_CONTROL_SERVICES, infoLocal_LAST_PAYMENT_PROCESS, infoLocal_PAGE, infoLocal_COMMDETAILS_FILTERS, infoLocal_BALANCE_CONFIG_ATTRIBUTES, infoLocal_BALANCE_UNITS, infoLocal_TOP_UP_SELECTION, infoLocal_BALANCE_CONFIG_INFO_GROUP, infoLocal_BALANCE_CONFIG], runner, moduleKey);
+},
+switch: function (runner) {
+return OS.Entities.webSQLStorageInstance.switchModule(runner, moduleKey);
+}
+};
+});

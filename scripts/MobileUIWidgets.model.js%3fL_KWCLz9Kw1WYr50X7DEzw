@@ -1,0 +1,3074 @@
+﻿define("MobileUIWidgets.model$ICON_CLASSRec", ["exports", "OutSystems", "MobileUIWidgets.model"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ICON_CLASSRec = (function (_super) {
+__extends(ICON_CLASSRec, _super);
+function ICON_CLASSRec(defaults) {
+_super.apply(this, arguments);
+}
+ICON_CLASSRec.attributesToDeclare = function () {
+return [
+this.attr("Class", "classAttr", "Class", true, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+ICON_CLASSRec.fromStructure = function (str) {
+return new ICON_CLASSRec(new ICON_CLASSRec.RecordClass({
+classAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+ICON_CLASSRec.generateFromLocalStorage = function () {
+return false;
+};
+ICON_CLASSRec.init();
+return ICON_CLASSRec;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.ICON_CLASSRec = ICON_CLASSRec;
+
+});
+define("MobileUIWidgets.model$ICON_CLASSRecord", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$ICON_CLASSRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ICON_CLASSRecord = (function (_super) {
+__extends(ICON_CLASSRecord, _super);
+function ICON_CLASSRecord(defaults) {
+_super.apply(this, arguments);
+}
+ICON_CLASSRecord.attributesToDeclare = function () {
+return [
+this.attr("ICON_CLASS", "iCON_CLASSAttr", "ICON_CLASS", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobileUIWidgetsModel.ICON_CLASSRec());
+}, MobileUIWidgetsModel.ICON_CLASSRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+ICON_CLASSRecord.fromStructure = function (str) {
+return new ICON_CLASSRecord(new ICON_CLASSRecord.RecordClass({
+iCON_CLASSAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+ICON_CLASSRecord.IsAnonymousRecord = true;
+ICON_CLASSRecord.UniqueId = "23a73a44-82ba-068c-0bd7-39ce6861e6e4";
+ICON_CLASSRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+ICON_CLASSRecord.init();
+return ICON_CLASSRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.ICON_CLASSRecord = ICON_CLASSRecord;
+
+});
+define("MobileUIWidgets.model$ICON_CLASSRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$ICON_CLASSRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ICON_CLASSRecordList = (function (_super) {
+__extends(ICON_CLASSRecordList, _super);
+function ICON_CLASSRecordList(defaults) {
+_super.apply(this, arguments);
+}
+ICON_CLASSRecordList.RecordType = MobileUIWidgetsModel.ICON_CLASSRecord;
+return ICON_CLASSRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.ICON_CLASSRecordList = ICON_CLASSRecordList;
+
+});
+define("MobileUIWidgets.model$StepsRecord", ["exports", "OutSystems", "MobilePatterns.model", "MobileUIWidgets.model", "MobilePatterns.model$StepsRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$MobilePatterns"], function (exports, OutSystems, MobilePatternsModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var StepsRecord = (function (_super) {
+__extends(StepsRecord, _super);
+function StepsRecord(defaults) {
+_super.apply(this, arguments);
+}
+StepsRecord.attributesToDeclare = function () {
+return [
+this.attr("Steps", "stepsAttr", "Steps", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobilePatternsModel.StepsRec());
+}, MobilePatternsModel.StepsRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+StepsRecord.fromStructure = function (str) {
+return new StepsRecord(new StepsRecord.RecordClass({
+stepsAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+StepsRecord.IsAnonymousRecord = true;
+StepsRecord.UniqueId = "0d776a4e-191f-af32-1030-d5ce57aa4167";
+StepsRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+StepsRecord.init();
+return StepsRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.StepsRecord = StepsRecord;
+
+});
+define("MobileUIWidgets.model$AutoplayRecord", ["exports", "OutSystems", "MobilePatterns.model", "MobileUIWidgets.model", "MobilePatterns.model$AutoplayRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$MobilePatterns"], function (exports, OutSystems, MobilePatternsModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var AutoplayRecord = (function (_super) {
+__extends(AutoplayRecord, _super);
+function AutoplayRecord(defaults) {
+_super.apply(this, arguments);
+}
+AutoplayRecord.attributesToDeclare = function () {
+return [
+this.attr("Autoplay", "autoplayAttr", "Autoplay", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobilePatternsModel.AutoplayRec());
+}, MobilePatternsModel.AutoplayRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+AutoplayRecord.fromStructure = function (str) {
+return new AutoplayRecord(new AutoplayRecord.RecordClass({
+autoplayAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+AutoplayRecord.IsAnonymousRecord = true;
+AutoplayRecord.UniqueId = "c6831d06-e579-de4e-dbcf-59e128b60b13";
+AutoplayRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+AutoplayRecord.init();
+return AutoplayRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.AutoplayRecord = AutoplayRecord;
+
+});
+define("MobileUIWidgets.model$AutoplayRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$AutoplayRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var AutoplayRecordList = (function (_super) {
+__extends(AutoplayRecordList, _super);
+function AutoplayRecordList(defaults) {
+_super.apply(this, arguments);
+}
+AutoplayRecordList.RecordType = MobileUIWidgetsModel.AutoplayRecord;
+return AutoplayRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.AutoplayRecordList = AutoplayRecordList;
+
+});
+define("MobileUIWidgets.model$ICON_SIZERec", ["exports", "OutSystems", "MobileUIWidgets.model"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ICON_SIZERec = (function (_super) {
+__extends(ICON_SIZERec, _super);
+function ICON_SIZERec(defaults) {
+_super.apply(this, arguments);
+}
+ICON_SIZERec.attributesToDeclare = function () {
+return [
+this.attr("Size", "sizeAttr", "Size", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Label", "labelAttr", "Label", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+ICON_SIZERec.generateFromLocalStorage = function () {
+return false;
+};
+ICON_SIZERec.init();
+return ICON_SIZERec;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.ICON_SIZERec = ICON_SIZERec;
+
+});
+define("MobileUIWidgets.model$ICON_SIZEList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$ICON_SIZERec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ICON_SIZEList = (function (_super) {
+__extends(ICON_SIZEList, _super);
+function ICON_SIZEList(defaults) {
+_super.apply(this, arguments);
+}
+ICON_SIZEList.RecordType = MobileUIWidgetsModel.ICON_SIZERec;
+return ICON_SIZEList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.ICON_SIZEList = ICON_SIZEList;
+
+});
+define("MobileUIWidgets.model$SolidSubTitleRec", ["exports", "OutSystems", "MobileUIWidgets.model"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var SolidSubTitleRec = (function (_super) {
+__extends(SolidSubTitleRec, _super);
+function SolidSubTitleRec(defaults) {
+_super.apply(this, arguments);
+}
+SolidSubTitleRec.attributesToDeclare = function () {
+return [
+this.attr("SubTitle", "subTitleAttr", "SubTitle", false, OS.Types.Text, function () {
+return "Sub Title";
+}), 
+this.attr("SubTitleColor", "subTitleColorAttr", "SubTitleColor", false, OS.Types.Text, function () {
+return "#35363E";
+}), 
+this.attr("SubTitleFontSize", "subTitleFontSizeAttr", "SubTitleFontSize", false, OS.Types.Integer, function () {
+return 12;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+SolidSubTitleRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+SolidSubTitleRec.init();
+return SolidSubTitleRec;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.SolidSubTitleRec = SolidSubTitleRec;
+
+});
+define("MobileUIWidgets.model$SolidSubTitleList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$SolidSubTitleRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var SolidSubTitleList = (function (_super) {
+__extends(SolidSubTitleList, _super);
+function SolidSubTitleList(defaults) {
+_super.apply(this, arguments);
+}
+SolidSubTitleList.RecordType = MobileUIWidgetsModel.SolidSubTitleRec;
+return SolidSubTitleList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.SolidSubTitleList = SolidSubTitleList;
+
+});
+define("MobileUIWidgets.model$ChartFormatRecord", ["exports", "OutSystems", "ChartsMobile.model", "MobileUIWidgets.model", "ChartsMobile.model$ChartFormatRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$ChartsMobile"], function (exports, OutSystems, ChartsMobileModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ChartFormatRecord = (function (_super) {
+__extends(ChartFormatRecord, _super);
+function ChartFormatRecord(defaults) {
+_super.apply(this, arguments);
+}
+ChartFormatRecord.attributesToDeclare = function () {
+return [
+this.attr("ChartFormat", "chartFormatAttr", "ChartFormat", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new ChartsMobileModel.ChartFormatRec());
+}, ChartsMobileModel.ChartFormatRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+ChartFormatRecord.fromStructure = function (str) {
+return new ChartFormatRecord(new ChartFormatRecord.RecordClass({
+chartFormatAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+ChartFormatRecord.IsAnonymousRecord = true;
+ChartFormatRecord.UniqueId = "2b9e4142-8d5c-5ca3-b04a-80be4ce98f53";
+ChartFormatRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+ChartFormatRecord.init();
+return ChartFormatRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.ChartFormatRecord = ChartFormatRecord;
+
+});
+define("MobileUIWidgets.model$MenuActionRecord", ["exports", "OutSystems", "MobilePatterns.model", "MobileUIWidgets.model", "MobilePatterns.model$MenuActionRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$MobilePatterns"], function (exports, OutSystems, MobilePatternsModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var MenuActionRecord = (function (_super) {
+__extends(MenuActionRecord, _super);
+function MenuActionRecord(defaults) {
+_super.apply(this, arguments);
+}
+MenuActionRecord.attributesToDeclare = function () {
+return [
+this.attr("MenuAction", "menuActionAttr", "MenuAction", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobilePatternsModel.MenuActionRec());
+}, MobilePatternsModel.MenuActionRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+MenuActionRecord.fromStructure = function (str) {
+return new MenuActionRecord(new MenuActionRecord.RecordClass({
+menuActionAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+MenuActionRecord.IsAnonymousRecord = true;
+MenuActionRecord.UniqueId = "954cd123-1210-e70f-33f1-84017bf580ac";
+MenuActionRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+MenuActionRecord.init();
+return MenuActionRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.MenuActionRecord = MenuActionRecord;
+
+});
+define("MobileUIWidgets.model$MenuActionRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$MenuActionRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var MenuActionRecordList = (function (_super) {
+__extends(MenuActionRecordList, _super);
+function MenuActionRecordList(defaults) {
+_super.apply(this, arguments);
+}
+MenuActionRecordList.RecordType = MobileUIWidgetsModel.MenuActionRecord;
+return MenuActionRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.MenuActionRecordList = MenuActionRecordList;
+
+});
+define("MobileUIWidgets.model$SolidChartTitleRec", ["exports", "OutSystems", "MobileUIWidgets.model"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var SolidChartTitleRec = (function (_super) {
+__extends(SolidChartTitleRec, _super);
+function SolidChartTitleRec(defaults) {
+_super.apply(this, arguments);
+}
+SolidChartTitleRec.attributesToDeclare = function () {
+return [
+this.attr("ChartTitle", "chartTitleAttr", "ChartTitle", false, OS.Types.Text, function () {
+return "teste";
+}), 
+this.attr("ChartTitleFontSize", "chartTitleFontSizeAttr", "ChartTitleFontSize", false, OS.Types.Integer, function () {
+return 25;
+}), 
+this.attr("ChartTitleColor", "chartTitleColorAttr", "ChartTitleColor", false, OS.Types.Text, function () {
+return "#35363E";
+}), 
+this.attr("ChartTitlePosition", "chartTitlePositionAttr", "ChartTitlePosition", false, OS.Types.Integer, function () {
+return -90;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+SolidChartTitleRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+SolidChartTitleRec.init();
+return SolidChartTitleRec;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.SolidChartTitleRec = SolidChartTitleRec;
+
+});
+define("MobileUIWidgets.model$TicksRec", ["exports", "OutSystems", "MobileUIWidgets.model"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var TicksRec = (function (_super) {
+__extends(TicksRec, _super);
+function TicksRec(defaults) {
+_super.apply(this, arguments);
+}
+TicksRec.attributesToDeclare = function () {
+return [
+this.attr("tickInterval", "tickIntervalAttr", "tickInterval", false, OS.Types.Integer, function () {
+return 20;
+}), 
+this.attr("tickColor", "tickColorAttr", "tickColor", false, OS.Types.Text, function () {
+return "#CCD6EB";
+}), 
+this.attr("tickLength", "tickLengthAttr", "tickLength", false, OS.Types.Integer, function () {
+return 10;
+}), 
+this.attr("tickWidth", "tickWidthAttr", "tickWidth", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("minorTickInterval", "minorTickIntervalAttr", "minorTickInterval", false, OS.Types.Integer, function () {
+return 500;
+}), 
+this.attr("minorTickColor", "minorTickColorAttr", "minorTickColor", false, OS.Types.Text, function () {
+return "#94959d";
+}), 
+this.attr("minorTickLength", "minorTickLengthAttr", "minorTickLength", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("minorTickWidth", "minorTickWidthAttr", "minorTickWidth", false, OS.Types.Integer, function () {
+return 0;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+TicksRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+TicksRec.init();
+return TicksRec;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.TicksRec = TicksRec;
+
+});
+define("MobileUIWidgets.model$SolidGaugeEasyFormatRec", ["exports", "OutSystems", "MobileUIWidgets.model", "GaugeChartsMobile.model", "MobileUIWidgets.model$SolidChartTitleRec", "MobileUIWidgets.model$SolidSubTitleRec", "GaugeChartsMobile.model$LabelsRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$GaugeChartsMobile", "MobileUIWidgets.model$TicksRec"], function (exports, OutSystems, MobileUIWidgetsModel, GaugeChartsMobileModel) {
+var OS = OutSystems.Internal;
+var SolidGaugeEasyFormatRec = (function (_super) {
+__extends(SolidGaugeEasyFormatRec, _super);
+function SolidGaugeEasyFormatRec(defaults) {
+_super.apply(this, arguments);
+}
+SolidGaugeEasyFormatRec.attributesToDeclare = function () {
+return [
+this.attr("MinValue", "minValueAttr", "MinValue", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("MaxValue", "maxValueAttr", "MaxValue", false, OS.Types.Integer, function () {
+return 30;
+}), 
+this.attr("StartAngle", "startAngleAttr", "StartAngle", false, OS.Types.Integer, function () {
+return -130;
+}), 
+this.attr("EndAngle", "endAngleAttr", "EndAngle", false, OS.Types.Integer, function () {
+return 130;
+}), 
+this.attr("AnimationDuration", "animationDurationAttr", "AnimationDuration", false, OS.Types.Integer, function () {
+return 550;
+}), 
+this.attr("AnimationDelay", "animationDelayAttr", "AnimationDelay", false, OS.Types.Integer, function () {
+return 200;
+}), 
+this.attr("ChartBackgroundColor", "chartBackgroundColorAttr", "ChartBackgroundColor", false, OS.Types.Text, function () {
+return "transparent";
+}), 
+this.attr("GaugeColor", "gaugeColorAttr", "GaugeColor", false, OS.Types.Text, function () {
+return "rgba(124, 181, 236, 0.8)";
+}), 
+this.attr("innerRadius", "innerRadiusAttr", "innerRadius", false, OS.Types.Integer, function () {
+return 90;
+}), 
+this.attr("outerRadius", "outerRadiusAttr", "outerRadius", false, OS.Types.Integer, function () {
+return 90;
+}), 
+this.attr("ValueColor", "valueColorAttr", "ValueColor", false, OS.Types.Text, function () {
+return "#35363E";
+}), 
+this.attr("ValueFontSize", "valueFontSizeAttr", "ValueFontSize", false, OS.Types.Integer, function () {
+return 25;
+}), 
+this.attr("ValueSimbol", "valueSimbolAttr", "ValueSimbol", false, OS.Types.Text, function () {
+return "%";
+}), 
+this.attr("ValueTextPosition", "valueTextPositionAttr", "ValueTextPosition", false, OS.Types.Integer, function () {
+return 5;
+}), 
+this.attr("BackgroundColorPane", "backgroundColorPaneAttr", "BackgroundColorPane", false, OS.Types.Text, function () {
+return "#6ea514";
+}), 
+this.attr("BorderMarkerBackgroundColor", "borderMarkerBackgroundColorAttr", "BorderMarkerBackgroundColor", false, OS.Types.Text, function () {
+return "#efeff1";
+}), 
+this.attr("MarkerTriangleColor", "markerTriangleColorAttr", "MarkerTriangleColor", false, OS.Types.Text, function () {
+return "#efeff1";
+}), 
+this.attr("ChartTitle", "chartTitleAttr", "ChartTitle", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobileUIWidgetsModel.SolidChartTitleRec());
+}, MobileUIWidgetsModel.SolidChartTitleRec), 
+this.attr("SubTitle", "subTitleAttr", "SubTitle", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobileUIWidgetsModel.SolidSubTitleRec());
+}, MobileUIWidgetsModel.SolidSubTitleRec), 
+this.attr("Labels", "labelsAttr", "Labels", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new GaugeChartsMobileModel.LabelsRec());
+}, GaugeChartsMobileModel.LabelsRec), 
+this.attr("Ticks", "ticksAttr", "Ticks", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobileUIWidgetsModel.TicksRec());
+}, MobileUIWidgetsModel.TicksRec), 
+this.attr("ClassName", "classNameAttr", "ClassName", false, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("ChartHeight", "chartHeightAttr", "ChartHeight", false, OS.Types.Integer, function () {
+return 120;
+}), 
+this.attr("ChartWidth", "chartWidthAttr", "ChartWidth", false, OS.Types.Integer, function () {
+return 192;
+}), 
+this.attr("Format", "formatAttr", "Format", false, OS.Types.Text, function () {
+return "<div><span>{y} MB</span><span>de 1GB</span><span></span></div>";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+SolidGaugeEasyFormatRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+SolidGaugeEasyFormatRec.init();
+return SolidGaugeEasyFormatRec;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.SolidGaugeEasyFormatRec = SolidGaugeEasyFormatRec;
+
+});
+define("MobileUIWidgets.model$SolidGaugeEasyFormatRecord", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$SolidGaugeEasyFormatRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var SolidGaugeEasyFormatRecord = (function (_super) {
+__extends(SolidGaugeEasyFormatRecord, _super);
+function SolidGaugeEasyFormatRecord(defaults) {
+_super.apply(this, arguments);
+}
+SolidGaugeEasyFormatRecord.attributesToDeclare = function () {
+return [
+this.attr("SolidGaugeEasyFormat", "solidGaugeEasyFormatAttr", "SolidGaugeEasyFormat", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobileUIWidgetsModel.SolidGaugeEasyFormatRec());
+}, MobileUIWidgetsModel.SolidGaugeEasyFormatRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+SolidGaugeEasyFormatRecord.fromStructure = function (str) {
+return new SolidGaugeEasyFormatRecord(new SolidGaugeEasyFormatRecord.RecordClass({
+solidGaugeEasyFormatAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+SolidGaugeEasyFormatRecord.IsAnonymousRecord = true;
+SolidGaugeEasyFormatRecord.UniqueId = "2d1cf3da-1eb9-6247-d025-d016792d5b76";
+SolidGaugeEasyFormatRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+SolidGaugeEasyFormatRecord.init();
+return SolidGaugeEasyFormatRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.SolidGaugeEasyFormatRecord = SolidGaugeEasyFormatRecord;
+
+});
+define("MobileUIWidgets.model$ICON_SIZERecord", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$ICON_SIZERec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ICON_SIZERecord = (function (_super) {
+__extends(ICON_SIZERecord, _super);
+function ICON_SIZERecord(defaults) {
+_super.apply(this, arguments);
+}
+ICON_SIZERecord.attributesToDeclare = function () {
+return [
+this.attr("ICON_SIZE", "iCON_SIZEAttr", "ICON_SIZE", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobileUIWidgetsModel.ICON_SIZERec());
+}, MobileUIWidgetsModel.ICON_SIZERec)
+].concat(_super.attributesToDeclare.call(this));
+};
+ICON_SIZERecord.fromStructure = function (str) {
+return new ICON_SIZERecord(new ICON_SIZERecord.RecordClass({
+iCON_SIZEAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+ICON_SIZERecord.IsAnonymousRecord = true;
+ICON_SIZERecord.UniqueId = "96e2dead-976a-b4a9-57f5-f6d2f7ab94d5";
+ICON_SIZERecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+ICON_SIZERecord.init();
+return ICON_SIZERecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.ICON_SIZERecord = ICON_SIZERecord;
+
+});
+define("MobileUIWidgets.model$ICON_SIZERecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$ICON_SIZERecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ICON_SIZERecordList = (function (_super) {
+__extends(ICON_SIZERecordList, _super);
+function ICON_SIZERecordList(defaults) {
+_super.apply(this, arguments);
+}
+ICON_SIZERecordList.RecordType = MobileUIWidgetsModel.ICON_SIZERecord;
+return ICON_SIZERecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.ICON_SIZERecordList = ICON_SIZERecordList;
+
+});
+define("MobileUIWidgets.model$SolidChartTitleList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$SolidChartTitleRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var SolidChartTitleList = (function (_super) {
+__extends(SolidChartTitleList, _super);
+function SolidChartTitleList(defaults) {
+_super.apply(this, arguments);
+}
+SolidChartTitleList.RecordType = MobileUIWidgetsModel.SolidChartTitleRec;
+return SolidChartTitleList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.SolidChartTitleList = SolidChartTitleList;
+
+});
+define("MobileUIWidgets.model$HEX_COLORSRec", ["exports", "OutSystems", "MobileUIWidgets.model"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var HEX_COLORSRec = (function (_super) {
+__extends(HEX_COLORSRec, _super);
+function HEX_COLORSRec(defaults) {
+_super.apply(this, arguments);
+}
+HEX_COLORSRec.attributesToDeclare = function () {
+return [
+this.attr("HexCode", "hexCodeAttr", "HexCode", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+HEX_COLORSRec.generateFromLocalStorage = function () {
+return false;
+};
+HEX_COLORSRec.init();
+return HEX_COLORSRec;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.HEX_COLORSRec = HEX_COLORSRec;
+
+});
+define("MobileUIWidgets.model$HEX_COLORSRecord", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$HEX_COLORSRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var HEX_COLORSRecord = (function (_super) {
+__extends(HEX_COLORSRecord, _super);
+function HEX_COLORSRecord(defaults) {
+_super.apply(this, arguments);
+}
+HEX_COLORSRecord.attributesToDeclare = function () {
+return [
+this.attr("HEX_COLORS", "hEX_COLORSAttr", "HEX_COLORS", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobileUIWidgetsModel.HEX_COLORSRec());
+}, MobileUIWidgetsModel.HEX_COLORSRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+HEX_COLORSRecord.fromStructure = function (str) {
+return new HEX_COLORSRecord(new HEX_COLORSRecord.RecordClass({
+hEX_COLORSAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+HEX_COLORSRecord.IsAnonymousRecord = true;
+HEX_COLORSRecord.UniqueId = "345d2d8d-db6b-b1fc-ece3-be3f310d3984";
+HEX_COLORSRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+HEX_COLORSRecord.init();
+return HEX_COLORSRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.HEX_COLORSRecord = HEX_COLORSRecord;
+
+});
+define("MobileUIWidgets.model$ErrorList", ["exports", "OutSystems", "CommonPlugin.model", "MobileUIWidgets.model", "CommonPlugin.model$ErrorRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$CommonPlugin"], function (exports, OutSystems, CommonPluginModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ErrorList = (function (_super) {
+__extends(ErrorList, _super);
+function ErrorList(defaults) {
+_super.apply(this, arguments);
+}
+ErrorList.RecordType = CommonPluginModel.ErrorRec;
+return ErrorList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.ErrorList = ErrorList;
+
+});
+define("MobileUIWidgets.model$SolidGaugeEasyFormatList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$SolidGaugeEasyFormatRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var SolidGaugeEasyFormatList = (function (_super) {
+__extends(SolidGaugeEasyFormatList, _super);
+function SolidGaugeEasyFormatList(defaults) {
+_super.apply(this, arguments);
+}
+SolidGaugeEasyFormatList.RecordType = MobileUIWidgetsModel.SolidGaugeEasyFormatRec;
+return SolidGaugeEasyFormatList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.SolidGaugeEasyFormatList = SolidGaugeEasyFormatList;
+
+});
+define("MobileUIWidgets.model$SolidChartTitleRecord", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$SolidChartTitleRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var SolidChartTitleRecord = (function (_super) {
+__extends(SolidChartTitleRecord, _super);
+function SolidChartTitleRecord(defaults) {
+_super.apply(this, arguments);
+}
+SolidChartTitleRecord.attributesToDeclare = function () {
+return [
+this.attr("SolidChartTitle", "solidChartTitleAttr", "SolidChartTitle", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobileUIWidgetsModel.SolidChartTitleRec());
+}, MobileUIWidgetsModel.SolidChartTitleRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+SolidChartTitleRecord.fromStructure = function (str) {
+return new SolidChartTitleRecord(new SolidChartTitleRecord.RecordClass({
+solidChartTitleAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+SolidChartTitleRecord.IsAnonymousRecord = true;
+SolidChartTitleRecord.UniqueId = "94f2ed30-1c60-d1f2-c8c1-cd7748a72f5f";
+SolidChartTitleRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+SolidChartTitleRecord.init();
+return SolidChartTitleRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.SolidChartTitleRecord = SolidChartTitleRecord;
+
+});
+define("MobileUIWidgets.model$SolidChartTitleRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$SolidChartTitleRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var SolidChartTitleRecordList = (function (_super) {
+__extends(SolidChartTitleRecordList, _super);
+function SolidChartTitleRecordList(defaults) {
+_super.apply(this, arguments);
+}
+SolidChartTitleRecordList.RecordType = MobileUIWidgetsModel.SolidChartTitleRecord;
+return SolidChartTitleRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.SolidChartTitleRecordList = SolidChartTitleRecordList;
+
+});
+define("MobileUIWidgets.model$ICON_CLASSList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$ICON_CLASSRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ICON_CLASSList = (function (_super) {
+__extends(ICON_CLASSList, _super);
+function ICON_CLASSList(defaults) {
+_super.apply(this, arguments);
+}
+ICON_CLASSList.RecordType = MobileUIWidgetsModel.ICON_CLASSRec;
+return ICON_CLASSList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.ICON_CLASSList = ICON_CLASSList;
+
+});
+define("MobileUIWidgets.model$MASTER_COLORRec", ["exports", "OutSystems", "MobileUIWidgets.model"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var MASTER_COLORRec = (function (_super) {
+__extends(MASTER_COLORRec, _super);
+function MASTER_COLORRec(defaults) {
+_super.apply(this, arguments);
+}
+MASTER_COLORRec.attributesToDeclare = function () {
+return [
+this.attr("Color", "colorAttr", "Color", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Label", "labelAttr", "Label", true, OS.Types.Text, function () {
+return "";
+}), 
+this.attr("Order", "orderAttr", "Order", true, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Is_Active", "is_ActiveAttr", "Is_Active", true, OS.Types.Boolean, function () {
+return false;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+MASTER_COLORRec.generateFromLocalStorage = function () {
+return false;
+};
+MASTER_COLORRec.init();
+return MASTER_COLORRec;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.MASTER_COLORRec = MASTER_COLORRec;
+
+});
+define("MobileUIWidgets.model$MASTER_COLORRecord", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$MASTER_COLORRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var MASTER_COLORRecord = (function (_super) {
+__extends(MASTER_COLORRecord, _super);
+function MASTER_COLORRecord(defaults) {
+_super.apply(this, arguments);
+}
+MASTER_COLORRecord.attributesToDeclare = function () {
+return [
+this.attr("MASTER_COLOR", "mASTER_COLORAttr", "MASTER_COLOR", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobileUIWidgetsModel.MASTER_COLORRec());
+}, MobileUIWidgetsModel.MASTER_COLORRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+MASTER_COLORRecord.fromStructure = function (str) {
+return new MASTER_COLORRecord(new MASTER_COLORRecord.RecordClass({
+mASTER_COLORAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+MASTER_COLORRecord.IsAnonymousRecord = true;
+MASTER_COLORRecord.UniqueId = "4719c9f9-8871-bf0f-408b-6e3f0e65d3af";
+MASTER_COLORRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+MASTER_COLORRecord.init();
+return MASTER_COLORRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.MASTER_COLORRecord = MASTER_COLORRecord;
+
+});
+define("MobileUIWidgets.model$MenuActionList", ["exports", "OutSystems", "MobilePatterns.model", "MobileUIWidgets.model", "MobilePatterns.model$MenuActionRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$MobilePatterns"], function (exports, OutSystems, MobilePatternsModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var MenuActionList = (function (_super) {
+__extends(MenuActionList, _super);
+function MenuActionList(defaults) {
+_super.apply(this, arguments);
+}
+MenuActionList.RecordType = MobilePatternsModel.MenuActionRec;
+return MenuActionList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.MenuActionList = MenuActionList;
+
+});
+define("MobileUIWidgets.model$MASTER_COLORList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$MASTER_COLORRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var MASTER_COLORList = (function (_super) {
+__extends(MASTER_COLORList, _super);
+function MASTER_COLORList(defaults) {
+_super.apply(this, arguments);
+}
+MASTER_COLORList.RecordType = MobileUIWidgetsModel.MASTER_COLORRec;
+return MASTER_COLORList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.MASTER_COLORList = MASTER_COLORList;
+
+});
+define("MobileUIWidgets.model$DataPointList", ["exports", "OutSystems", "ChartsMobile.model", "MobileUIWidgets.model", "ChartsMobile.model$DataPointRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$ChartsMobile"], function (exports, OutSystems, ChartsMobileModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var DataPointList = (function (_super) {
+__extends(DataPointList, _super);
+function DataPointList(defaults) {
+_super.apply(this, arguments);
+}
+DataPointList.RecordType = ChartsMobileModel.DataPointRec;
+return DataPointList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.DataPointList = DataPointList;
+
+});
+define("MobileUIWidgets.model$AdvancedDataSeriesFormatRecord", ["exports", "OutSystems", "ChartsMobile.model", "MobileUIWidgets.model", "ChartsMobile.model$AdvancedDataSeriesFormatRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$ChartsMobile"], function (exports, OutSystems, ChartsMobileModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var AdvancedDataSeriesFormatRecord = (function (_super) {
+__extends(AdvancedDataSeriesFormatRecord, _super);
+function AdvancedDataSeriesFormatRecord(defaults) {
+_super.apply(this, arguments);
+}
+AdvancedDataSeriesFormatRecord.attributesToDeclare = function () {
+return [
+this.attr("AdvancedDataSeriesFormat", "advancedDataSeriesFormatAttr", "AdvancedDataSeriesFormat", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new ChartsMobileModel.AdvancedDataSeriesFormatRec());
+}, ChartsMobileModel.AdvancedDataSeriesFormatRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+AdvancedDataSeriesFormatRecord.fromStructure = function (str) {
+return new AdvancedDataSeriesFormatRecord(new AdvancedDataSeriesFormatRecord.RecordClass({
+advancedDataSeriesFormatAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+AdvancedDataSeriesFormatRecord.IsAnonymousRecord = true;
+AdvancedDataSeriesFormatRecord.UniqueId = "e3eb1896-9a1d-0856-d6aa-6db7946dac4d";
+AdvancedDataSeriesFormatRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+AdvancedDataSeriesFormatRecord.init();
+return AdvancedDataSeriesFormatRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.AdvancedDataSeriesFormatRecord = AdvancedDataSeriesFormatRecord;
+
+});
+define("MobileUIWidgets.model$AdvancedDataSeriesFormatRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$AdvancedDataSeriesFormatRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var AdvancedDataSeriesFormatRecordList = (function (_super) {
+__extends(AdvancedDataSeriesFormatRecordList, _super);
+function AdvancedDataSeriesFormatRecordList(defaults) {
+_super.apply(this, arguments);
+}
+AdvancedDataSeriesFormatRecordList.RecordType = MobileUIWidgetsModel.AdvancedDataSeriesFormatRecord;
+return AdvancedDataSeriesFormatRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.AdvancedDataSeriesFormatRecordList = AdvancedDataSeriesFormatRecordList;
+
+});
+define("MobileUIWidgets.model$ErrorRecord", ["exports", "OutSystems", "CommonPlugin.model", "MobileUIWidgets.model", "CommonPlugin.model$ErrorRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$CommonPlugin"], function (exports, OutSystems, CommonPluginModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ErrorRecord = (function (_super) {
+__extends(ErrorRecord, _super);
+function ErrorRecord(defaults) {
+_super.apply(this, arguments);
+}
+ErrorRecord.attributesToDeclare = function () {
+return [
+this.attr("Error", "errorAttr", "Error", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new CommonPluginModel.ErrorRec());
+}, CommonPluginModel.ErrorRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+ErrorRecord.fromStructure = function (str) {
+return new ErrorRecord(new ErrorRecord.RecordClass({
+errorAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+ErrorRecord.IsAnonymousRecord = true;
+ErrorRecord.UniqueId = "cbbd7d57-66e1-86ff-28ab-3b75adf75b93";
+ErrorRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+ErrorRecord.init();
+return ErrorRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.ErrorRecord = ErrorRecord;
+
+});
+define("MobileUIWidgets.model$ErrorRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$ErrorRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ErrorRecordList = (function (_super) {
+__extends(ErrorRecordList, _super);
+function ErrorRecordList(defaults) {
+_super.apply(this, arguments);
+}
+ErrorRecordList.RecordType = MobileUIWidgetsModel.ErrorRecord;
+return ErrorRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.ErrorRecordList = ErrorRecordList;
+
+});
+define("MobileUIWidgets.model$DataPointRecord", ["exports", "OutSystems", "ChartsMobile.model", "MobileUIWidgets.model", "ChartsMobile.model$DataPointRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$ChartsMobile"], function (exports, OutSystems, ChartsMobileModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var DataPointRecord = (function (_super) {
+__extends(DataPointRecord, _super);
+function DataPointRecord(defaults) {
+_super.apply(this, arguments);
+}
+DataPointRecord.attributesToDeclare = function () {
+return [
+this.attr("DataPoint", "dataPointAttr", "DataPoint", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new ChartsMobileModel.DataPointRec());
+}, ChartsMobileModel.DataPointRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+DataPointRecord.fromStructure = function (str) {
+return new DataPointRecord(new DataPointRecord.RecordClass({
+dataPointAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+DataPointRecord.IsAnonymousRecord = true;
+DataPointRecord.UniqueId = "6ceb0a54-ddbc-9244-6ab6-6e8c847870c1";
+DataPointRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+DataPointRecord.init();
+return DataPointRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.DataPointRecord = DataPointRecord;
+
+});
+define("MobileUIWidgets.model$Wizard_Ext_StepRec", ["exports", "OutSystems", "MobileUIWidgets.model"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var Wizard_Ext_StepRec = (function (_super) {
+__extends(Wizard_Ext_StepRec, _super);
+function Wizard_Ext_StepRec(defaults) {
+_super.apply(this, arguments);
+}
+Wizard_Ext_StepRec.attributesToDeclare = function () {
+return [
+this.attr("CurrentStatus", "currentStatusAttr", "CurrentStatus", false, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+Wizard_Ext_StepRec.fromStructure = function (str) {
+return new Wizard_Ext_StepRec(new Wizard_Ext_StepRec.RecordClass({
+currentStatusAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+Wizard_Ext_StepRec.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.attributeReaderImplementation, attributeOrder);
+};
+Wizard_Ext_StepRec.init();
+return Wizard_Ext_StepRec;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.Wizard_Ext_StepRec = Wizard_Ext_StepRec;
+
+});
+define("MobileUIWidgets.model$ALERT_TYPERec", ["exports", "OutSystems", "MobileUIWidgets.model"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ALERT_TYPERec = (function (_super) {
+__extends(ALERT_TYPERec, _super);
+function ALERT_TYPERec(defaults) {
+_super.apply(this, arguments);
+}
+ALERT_TYPERec.attributesToDeclare = function () {
+return [
+this.attr("Class", "classAttr", "Class", true, OS.Types.Text, function () {
+return "";
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+ALERT_TYPERec.fromStructure = function (str) {
+return new ALERT_TYPERec(new ALERT_TYPERec.RecordClass({
+classAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+ALERT_TYPERec.generateFromLocalStorage = function () {
+return false;
+};
+ALERT_TYPERec.init();
+return ALERT_TYPERec;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.ALERT_TYPERec = ALERT_TYPERec;
+
+});
+define("MobileUIWidgets.model$ALERT_TYPEList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$ALERT_TYPERec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ALERT_TYPEList = (function (_super) {
+__extends(ALERT_TYPEList, _super);
+function ALERT_TYPEList(defaults) {
+_super.apply(this, arguments);
+}
+ALERT_TYPEList.RecordType = MobileUIWidgetsModel.ALERT_TYPERec;
+return ALERT_TYPEList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.ALERT_TYPEList = ALERT_TYPEList;
+
+});
+define("MobileUIWidgets.model$DataPointRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$DataPointRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var DataPointRecordList = (function (_super) {
+__extends(DataPointRecordList, _super);
+function DataPointRecordList(defaults) {
+_super.apply(this, arguments);
+}
+DataPointRecordList.RecordType = MobileUIWidgetsModel.DataPointRecord;
+return DataPointRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.DataPointRecordList = DataPointRecordList;
+
+});
+define("MobileUIWidgets.model$BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecord", ["exports", "OutSystems", "MobileUIWidgets.model"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecord = (function (_super) {
+__extends(BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecord, _super);
+function BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecord(defaults) {
+_super.apply(this, arguments);
+}
+BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecord.attributesToDeclare = function () {
+return [
+this.attr("ChangeEventDuringSlide", "changeEventDuringSlideAttr", "ChangeEventDuringSlide", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("ShowPips", "showPipsAttr", "ShowPips", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("InitialIntervalEnd", "initialIntervalEndAttr", "InitialIntervalEnd", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("InitialIntervalStart", "initialIntervalStartAttr", "InitialIntervalStart", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("MaxValue", "maxValueAttr", "MaxValue", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("MinValue", "minValueAttr", "MinValue", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("PipsStep", "pipsStepAttr", "PipsStep", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Step", "stepAttr", "Step", false, OS.Types.Integer, function () {
+return 0;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecord.IsAnonymousRecord = true;
+BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecord.UniqueId = "845b5f28-a6e4-8277-561b-d4b51c5e965a";
+BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecord.init();
+return BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecord = BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecord;
+
+});
+define("MobileUIWidgets.model$BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecordList = (function (_super) {
+__extends(BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecordList, _super);
+function BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecordList(defaults) {
+_super.apply(this, arguments);
+}
+BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecordList.RecordType = MobileUIWidgetsModel.BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecord;
+return BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecordList = BooleanBooleanIntegerIntegerIntegerIntegerIntegerIntegerRecordList;
+
+});
+define("MobileUIWidgets.model$AdvancedDataPointFormatList", ["exports", "OutSystems", "ChartsMobile.model", "MobileUIWidgets.model", "ChartsMobile.model$AdvancedDataPointFormatRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$ChartsMobile"], function (exports, OutSystems, ChartsMobileModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var AdvancedDataPointFormatList = (function (_super) {
+__extends(AdvancedDataPointFormatList, _super);
+function AdvancedDataPointFormatList(defaults) {
+_super.apply(this, arguments);
+}
+AdvancedDataPointFormatList.RecordType = ChartsMobileModel.AdvancedDataPointFormatRec;
+return AdvancedDataPointFormatList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.AdvancedDataPointFormatList = AdvancedDataPointFormatList;
+
+});
+define("MobileUIWidgets.model$TicksList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$TicksRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var TicksList = (function (_super) {
+__extends(TicksList, _super);
+function TicksList(defaults) {
+_super.apply(this, arguments);
+}
+TicksList.RecordType = MobileUIWidgetsModel.TicksRec;
+return TicksList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.TicksList = TicksList;
+
+});
+define("MobileUIWidgets.model$Wizard_Ext_StepRecord", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$Wizard_Ext_StepRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var Wizard_Ext_StepRecord = (function (_super) {
+__extends(Wizard_Ext_StepRecord, _super);
+function Wizard_Ext_StepRecord(defaults) {
+_super.apply(this, arguments);
+}
+Wizard_Ext_StepRecord.attributesToDeclare = function () {
+return [
+this.attr("Wizard_Ext_Step", "wizard_Ext_StepAttr", "Wizard_Ext_Step", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobileUIWidgetsModel.Wizard_Ext_StepRec());
+}, MobileUIWidgetsModel.Wizard_Ext_StepRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+Wizard_Ext_StepRecord.fromStructure = function (str) {
+return new Wizard_Ext_StepRecord(new Wizard_Ext_StepRecord.RecordClass({
+wizard_Ext_StepAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+Wizard_Ext_StepRecord.IsAnonymousRecord = true;
+Wizard_Ext_StepRecord.UniqueId = "cc29e01c-425b-7908-b6d2-f167cd0f5b9b";
+Wizard_Ext_StepRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+Wizard_Ext_StepRecord.init();
+return Wizard_Ext_StepRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.Wizard_Ext_StepRecord = Wizard_Ext_StepRecord;
+
+});
+define("MobileUIWidgets.model$Wizard_Ext_StepRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$Wizard_Ext_StepRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var Wizard_Ext_StepRecordList = (function (_super) {
+__extends(Wizard_Ext_StepRecordList, _super);
+function Wizard_Ext_StepRecordList(defaults) {
+_super.apply(this, arguments);
+}
+Wizard_Ext_StepRecordList.RecordType = MobileUIWidgetsModel.Wizard_Ext_StepRecord;
+return Wizard_Ext_StepRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.Wizard_Ext_StepRecordList = Wizard_Ext_StepRecordList;
+
+});
+define("MobileUIWidgets.model$TicksRecord", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$TicksRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var TicksRecord = (function (_super) {
+__extends(TicksRecord, _super);
+function TicksRecord(defaults) {
+_super.apply(this, arguments);
+}
+TicksRecord.attributesToDeclare = function () {
+return [
+this.attr("Ticks", "ticksAttr", "Ticks", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobileUIWidgetsModel.TicksRec());
+}, MobileUIWidgetsModel.TicksRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+TicksRecord.fromStructure = function (str) {
+return new TicksRecord(new TicksRecord.RecordClass({
+ticksAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+TicksRecord.IsAnonymousRecord = true;
+TicksRecord.UniqueId = "80c44581-05d0-eed8-ca53-c1964b732776";
+TicksRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+TicksRecord.init();
+return TicksRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.TicksRecord = TicksRecord;
+
+});
+define("MobileUIWidgets.model$AdvancedDataPointFormatRecord", ["exports", "OutSystems", "ChartsMobile.model", "MobileUIWidgets.model", "ChartsMobile.model$AdvancedDataPointFormatRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$ChartsMobile"], function (exports, OutSystems, ChartsMobileModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var AdvancedDataPointFormatRecord = (function (_super) {
+__extends(AdvancedDataPointFormatRecord, _super);
+function AdvancedDataPointFormatRecord(defaults) {
+_super.apply(this, arguments);
+}
+AdvancedDataPointFormatRecord.attributesToDeclare = function () {
+return [
+this.attr("AdvancedDataPointFormat", "advancedDataPointFormatAttr", "AdvancedDataPointFormat", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new ChartsMobileModel.AdvancedDataPointFormatRec());
+}, ChartsMobileModel.AdvancedDataPointFormatRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+AdvancedDataPointFormatRecord.fromStructure = function (str) {
+return new AdvancedDataPointFormatRecord(new AdvancedDataPointFormatRecord.RecordClass({
+advancedDataPointFormatAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+AdvancedDataPointFormatRecord.IsAnonymousRecord = true;
+AdvancedDataPointFormatRecord.UniqueId = "860a186f-93e9-fe7f-e0d4-2f4282c2ec00";
+AdvancedDataPointFormatRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+AdvancedDataPointFormatRecord.init();
+return AdvancedDataPointFormatRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.AdvancedDataPointFormatRecord = AdvancedDataPointFormatRecord;
+
+});
+define("MobileUIWidgets.model$AdvancedDataSeriesFormatList", ["exports", "OutSystems", "ChartsMobile.model", "MobileUIWidgets.model", "ChartsMobile.model$AdvancedDataSeriesFormatRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$ChartsMobile"], function (exports, OutSystems, ChartsMobileModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var AdvancedDataSeriesFormatList = (function (_super) {
+__extends(AdvancedDataSeriesFormatList, _super);
+function AdvancedDataSeriesFormatList(defaults) {
+_super.apply(this, arguments);
+}
+AdvancedDataSeriesFormatList.RecordType = ChartsMobileModel.AdvancedDataSeriesFormatRec;
+return AdvancedDataSeriesFormatList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.AdvancedDataSeriesFormatList = AdvancedDataSeriesFormatList;
+
+});
+define("MobileUIWidgets.model$AdvancedFormatRecord", ["exports", "OutSystems", "ChartsMobile.model", "MobileUIWidgets.model", "ChartsMobile.model$AdvancedFormatRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$ChartsMobile"], function (exports, OutSystems, ChartsMobileModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var AdvancedFormatRecord = (function (_super) {
+__extends(AdvancedFormatRecord, _super);
+function AdvancedFormatRecord(defaults) {
+_super.apply(this, arguments);
+}
+AdvancedFormatRecord.attributesToDeclare = function () {
+return [
+this.attr("AdvancedFormat", "advancedFormatAttr", "AdvancedFormat", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new ChartsMobileModel.AdvancedFormatRec());
+}, ChartsMobileModel.AdvancedFormatRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+AdvancedFormatRecord.fromStructure = function (str) {
+return new AdvancedFormatRecord(new AdvancedFormatRecord.RecordClass({
+advancedFormatAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+AdvancedFormatRecord.IsAnonymousRecord = true;
+AdvancedFormatRecord.UniqueId = "8bd0ab07-a3f3-c2d2-a572-a84134c564bd";
+AdvancedFormatRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+AdvancedFormatRecord.init();
+return AdvancedFormatRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.AdvancedFormatRecord = AdvancedFormatRecord;
+
+});
+define("MobileUIWidgets.model$ChartFormatList", ["exports", "OutSystems", "ChartsMobile.model", "MobileUIWidgets.model", "ChartsMobile.model$ChartFormatRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$ChartsMobile"], function (exports, OutSystems, ChartsMobileModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ChartFormatList = (function (_super) {
+__extends(ChartFormatList, _super);
+function ChartFormatList(defaults) {
+_super.apply(this, arguments);
+}
+ChartFormatList.RecordType = ChartsMobileModel.ChartFormatRec;
+return ChartFormatList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.ChartFormatList = ChartFormatList;
+
+});
+define("MobileUIWidgets.model$ChartFormatRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$ChartFormatRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ChartFormatRecordList = (function (_super) {
+__extends(ChartFormatRecordList, _super);
+function ChartFormatRecordList(defaults) {
+_super.apply(this, arguments);
+}
+ChartFormatRecordList.RecordType = MobileUIWidgetsModel.ChartFormatRecord;
+return ChartFormatRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.ChartFormatRecordList = ChartFormatRecordList;
+
+});
+define("MobileUIWidgets.model$AdvancedFormatList", ["exports", "OutSystems", "ChartsMobile.model", "MobileUIWidgets.model", "ChartsMobile.model$AdvancedFormatRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$ChartsMobile"], function (exports, OutSystems, ChartsMobileModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var AdvancedFormatList = (function (_super) {
+__extends(AdvancedFormatList, _super);
+function AdvancedFormatList(defaults) {
+_super.apply(this, arguments);
+}
+AdvancedFormatList.RecordType = ChartsMobileModel.AdvancedFormatRec;
+return AdvancedFormatList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.AdvancedFormatList = AdvancedFormatList;
+
+});
+define("MobileUIWidgets.model$LabelsList", ["exports", "OutSystems", "GaugeChartsMobile.model", "MobileUIWidgets.model", "GaugeChartsMobile.model$LabelsRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$GaugeChartsMobile"], function (exports, OutSystems, GaugeChartsMobileModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var LabelsList = (function (_super) {
+__extends(LabelsList, _super);
+function LabelsList(defaults) {
+_super.apply(this, arguments);
+}
+LabelsList.RecordType = GaugeChartsMobileModel.LabelsRec;
+return LabelsList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.LabelsList = LabelsList;
+
+});
+define("MobileUIWidgets.model$LabelsRecord", ["exports", "OutSystems", "GaugeChartsMobile.model", "MobileUIWidgets.model", "GaugeChartsMobile.model$LabelsRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$GaugeChartsMobile"], function (exports, OutSystems, GaugeChartsMobileModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var LabelsRecord = (function (_super) {
+__extends(LabelsRecord, _super);
+function LabelsRecord(defaults) {
+_super.apply(this, arguments);
+}
+LabelsRecord.attributesToDeclare = function () {
+return [
+this.attr("Labels", "labelsAttr", "Labels", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new GaugeChartsMobileModel.LabelsRec());
+}, GaugeChartsMobileModel.LabelsRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+LabelsRecord.fromStructure = function (str) {
+return new LabelsRecord(new LabelsRecord.RecordClass({
+labelsAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+LabelsRecord.IsAnonymousRecord = true;
+LabelsRecord.UniqueId = "bbabb94a-e69a-ddae-c427-76266f09d83d";
+LabelsRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+LabelsRecord.init();
+return LabelsRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.LabelsRecord = LabelsRecord;
+
+});
+define("MobileUIWidgets.model$LabelsRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$LabelsRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var LabelsRecordList = (function (_super) {
+__extends(LabelsRecordList, _super);
+function LabelsRecordList(defaults) {
+_super.apply(this, arguments);
+}
+LabelsRecordList.RecordType = MobileUIWidgetsModel.LabelsRecord;
+return LabelsRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.LabelsRecordList = LabelsRecordList;
+
+});
+define("MobileUIWidgets.model$HEX_COLORSRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$HEX_COLORSRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var HEX_COLORSRecordList = (function (_super) {
+__extends(HEX_COLORSRecordList, _super);
+function HEX_COLORSRecordList(defaults) {
+_super.apply(this, arguments);
+}
+HEX_COLORSRecordList.RecordType = MobileUIWidgetsModel.HEX_COLORSRecord;
+return HEX_COLORSRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.HEX_COLORSRecordList = HEX_COLORSRecordList;
+
+});
+define("MobileUIWidgets.model$AdvancedDataPointFormatRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$AdvancedDataPointFormatRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var AdvancedDataPointFormatRecordList = (function (_super) {
+__extends(AdvancedDataPointFormatRecordList, _super);
+function AdvancedDataPointFormatRecordList(defaults) {
+_super.apply(this, arguments);
+}
+AdvancedDataPointFormatRecordList.RecordType = MobileUIWidgetsModel.AdvancedDataPointFormatRecord;
+return AdvancedDataPointFormatRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.AdvancedDataPointFormatRecordList = AdvancedDataPointFormatRecordList;
+
+});
+define("MobileUIWidgets.model$MASTER_COLORRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$MASTER_COLORRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var MASTER_COLORRecordList = (function (_super) {
+__extends(MASTER_COLORRecordList, _super);
+function MASTER_COLORRecordList(defaults) {
+_super.apply(this, arguments);
+}
+MASTER_COLORRecordList.RecordType = MobileUIWidgetsModel.MASTER_COLORRecord;
+return MASTER_COLORRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.MASTER_COLORRecordList = MASTER_COLORRecordList;
+
+});
+define("MobileUIWidgets.model$SolidGaugeEasyFormatRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$SolidGaugeEasyFormatRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var SolidGaugeEasyFormatRecordList = (function (_super) {
+__extends(SolidGaugeEasyFormatRecordList, _super);
+function SolidGaugeEasyFormatRecordList(defaults) {
+_super.apply(this, arguments);
+}
+SolidGaugeEasyFormatRecordList.RecordType = MobileUIWidgetsModel.SolidGaugeEasyFormatRecord;
+return SolidGaugeEasyFormatRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.SolidGaugeEasyFormatRecordList = SolidGaugeEasyFormatRecordList;
+
+});
+define("MobileUIWidgets.model$StepsList", ["exports", "OutSystems", "MobilePatterns.model", "MobileUIWidgets.model", "MobilePatterns.model$StepsRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$MobilePatterns"], function (exports, OutSystems, MobilePatternsModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var StepsList = (function (_super) {
+__extends(StepsList, _super);
+function StepsList(defaults) {
+_super.apply(this, arguments);
+}
+StepsList.RecordType = MobilePatternsModel.StepsRec;
+return StepsList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.StepsList = StepsList;
+
+});
+define("MobileUIWidgets.model$ALERT_TYPERecord", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$ALERT_TYPERec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ALERT_TYPERecord = (function (_super) {
+__extends(ALERT_TYPERecord, _super);
+function ALERT_TYPERecord(defaults) {
+_super.apply(this, arguments);
+}
+ALERT_TYPERecord.attributesToDeclare = function () {
+return [
+this.attr("ALERT_TYPE", "aLERT_TYPEAttr", "ALERT_TYPE", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobileUIWidgetsModel.ALERT_TYPERec());
+}, MobileUIWidgetsModel.ALERT_TYPERec)
+].concat(_super.attributesToDeclare.call(this));
+};
+ALERT_TYPERecord.fromStructure = function (str) {
+return new ALERT_TYPERecord(new ALERT_TYPERecord.RecordClass({
+aLERT_TYPEAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+ALERT_TYPERecord.IsAnonymousRecord = true;
+ALERT_TYPERecord.UniqueId = "cc91b747-96cb-d577-658d-770f9a9dae3d";
+ALERT_TYPERecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+ALERT_TYPERecord.init();
+return ALERT_TYPERecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.ALERT_TYPERecord = ALERT_TYPERecord;
+
+});
+define("MobileUIWidgets.model$AdvancedFormatRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$AdvancedFormatRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var AdvancedFormatRecordList = (function (_super) {
+__extends(AdvancedFormatRecordList, _super);
+function AdvancedFormatRecordList(defaults) {
+_super.apply(this, arguments);
+}
+AdvancedFormatRecordList.RecordType = MobileUIWidgetsModel.AdvancedFormatRecord;
+return AdvancedFormatRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.AdvancedFormatRecordList = AdvancedFormatRecordList;
+
+});
+define("MobileUIWidgets.model$AutoplayList", ["exports", "OutSystems", "MobilePatterns.model", "MobileUIWidgets.model", "MobilePatterns.model$AutoplayRec", "MobileUIWidgets.referencesHealth", "MobileUIWidgets.referencesHealth$MobilePatterns"], function (exports, OutSystems, MobilePatternsModel, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var AutoplayList = (function (_super) {
+__extends(AutoplayList, _super);
+function AutoplayList(defaults) {
+_super.apply(this, arguments);
+}
+AutoplayList.RecordType = MobilePatternsModel.AutoplayRec;
+return AutoplayList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.AutoplayList = AutoplayList;
+
+});
+define("MobileUIWidgets.model$TicksRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$TicksRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var TicksRecordList = (function (_super) {
+__extends(TicksRecordList, _super);
+function TicksRecordList(defaults) {
+_super.apply(this, arguments);
+}
+TicksRecordList.RecordType = MobileUIWidgetsModel.TicksRecord;
+return TicksRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.TicksRecordList = TicksRecordList;
+
+});
+define("MobileUIWidgets.model$BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecord", ["exports", "OutSystems", "MobileUIWidgets.model"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecord = (function (_super) {
+__extends(BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecord, _super);
+function BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecord(defaults) {
+_super.apply(this, arguments);
+}
+BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecord.attributesToDeclare = function () {
+return [
+this.attr("ChangeEventDuringSlide", "changeEventDuringSlideAttr", "ChangeEventDuringSlide", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("ShowPips", "showPipsAttr", "ShowPips", false, OS.Types.Boolean, function () {
+return false;
+}), 
+this.attr("InitialValue", "initialValueAttr", "InitialValue", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("MaxValue", "maxValueAttr", "MaxValue", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("MinValue", "minValueAttr", "MinValue", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("PipsStep", "pipsStepAttr", "PipsStep", false, OS.Types.Integer, function () {
+return 0;
+}), 
+this.attr("Step", "stepAttr", "Step", false, OS.Types.Integer, function () {
+return 0;
+})
+].concat(_super.attributesToDeclare.call(this));
+};
+BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecord.IsAnonymousRecord = true;
+BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecord.UniqueId = "e57d7c30-9592-d9b0-9e76-04ad507fe534";
+BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecord.init();
+return BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecord = BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecord;
+
+});
+define("MobileUIWidgets.model$ALERT_TYPERecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$ALERT_TYPERecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var ALERT_TYPERecordList = (function (_super) {
+__extends(ALERT_TYPERecordList, _super);
+function ALERT_TYPERecordList(defaults) {
+_super.apply(this, arguments);
+}
+ALERT_TYPERecordList.RecordType = MobileUIWidgetsModel.ALERT_TYPERecord;
+return ALERT_TYPERecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.ALERT_TYPERecordList = ALERT_TYPERecordList;
+
+});
+define("MobileUIWidgets.model$StepsRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$StepsRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var StepsRecordList = (function (_super) {
+__extends(StepsRecordList, _super);
+function StepsRecordList(defaults) {
+_super.apply(this, arguments);
+}
+StepsRecordList.RecordType = MobileUIWidgetsModel.StepsRecord;
+return StepsRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.StepsRecordList = StepsRecordList;
+
+});
+define("MobileUIWidgets.model$BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecordList = (function (_super) {
+__extends(BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecordList, _super);
+function BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecordList(defaults) {
+_super.apply(this, arguments);
+}
+BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecordList.RecordType = MobileUIWidgetsModel.BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecord;
+return BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecordList = BooleanBooleanIntegerIntegerIntegerIntegerIntegerRecordList;
+
+});
+define("MobileUIWidgets.model$SolidSubTitleRecord", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$SolidSubTitleRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var SolidSubTitleRecord = (function (_super) {
+__extends(SolidSubTitleRecord, _super);
+function SolidSubTitleRecord(defaults) {
+_super.apply(this, arguments);
+}
+SolidSubTitleRecord.attributesToDeclare = function () {
+return [
+this.attr("SolidSubTitle", "solidSubTitleAttr", "SolidSubTitle", false, OS.Types.Record, function () {
+return OS.DataTypes.ImmutableBase.getData(new MobileUIWidgetsModel.SolidSubTitleRec());
+}, MobileUIWidgetsModel.SolidSubTitleRec)
+].concat(_super.attributesToDeclare.call(this));
+};
+SolidSubTitleRecord.fromStructure = function (str) {
+return new SolidSubTitleRecord(new SolidSubTitleRecord.RecordClass({
+solidSubTitleAttr: OS.DataTypes.ImmutableBase.getData(str)
+}));
+};
+SolidSubTitleRecord.IsAnonymousRecord = true;
+SolidSubTitleRecord.UniqueId = "f649351c-6295-9b22-d478-a0385fd1053f";
+SolidSubTitleRecord.fromLocalStorage = function (row, indexRef, attributeOrder) {
+return this.fromLocalStorageImplementation(row, indexRef, OS.Entities.namedAttributeReaderImplementation, attributeOrder);
+};
+SolidSubTitleRecord.init();
+return SolidSubTitleRecord;
+})(OS.DataTypes.GenericRecord);
+MobileUIWidgetsModel.SolidSubTitleRecord = SolidSubTitleRecord;
+
+});
+define("MobileUIWidgets.model$SolidSubTitleRecordList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$SolidSubTitleRecord"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var SolidSubTitleRecordList = (function (_super) {
+__extends(SolidSubTitleRecordList, _super);
+function SolidSubTitleRecordList(defaults) {
+_super.apply(this, arguments);
+}
+SolidSubTitleRecordList.RecordType = MobileUIWidgetsModel.SolidSubTitleRecord;
+return SolidSubTitleRecordList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.SolidSubTitleRecordList = SolidSubTitleRecordList;
+
+});
+define("MobileUIWidgets.model$Wizard_Ext_StepList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$Wizard_Ext_StepRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var Wizard_Ext_StepList = (function (_super) {
+__extends(Wizard_Ext_StepList, _super);
+function Wizard_Ext_StepList(defaults) {
+_super.apply(this, arguments);
+}
+Wizard_Ext_StepList.RecordType = MobileUIWidgetsModel.Wizard_Ext_StepRec;
+return Wizard_Ext_StepList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.Wizard_Ext_StepList = Wizard_Ext_StepList;
+
+});
+define("MobileUIWidgets.model$HEX_COLORSList", ["exports", "OutSystems", "MobileUIWidgets.model", "MobileUIWidgets.model$HEX_COLORSRec"], function (exports, OutSystems, MobileUIWidgetsModel) {
+var OS = OutSystems.Internal;
+var HEX_COLORSList = (function (_super) {
+__extends(HEX_COLORSList, _super);
+function HEX_COLORSList(defaults) {
+_super.apply(this, arguments);
+}
+HEX_COLORSList.RecordType = MobileUIWidgetsModel.HEX_COLORSRec;
+return HEX_COLORSList;
+})(OS.DataTypes.GenericRecordList);
+MobileUIWidgetsModel.HEX_COLORSList = HEX_COLORSList;
+
+});
+define("MobileUIWidgets.model", ["exports", "OutSystems"], function (exports, OutSystems) {
+var OS = OutSystems.Internal;
+var MobileUIWidgetsModel = exports;
+Object.defineProperty(MobileUIWidgetsModel, "module", {
+get: function () {
+return OS.ApplicationInfo.getModules()["9bedb487-ca1c-4124-a989-9d7f5ac0dad1"];
+}
+});
+
+MobileUIWidgetsModel.staticEntities = {};
+MobileUIWidgetsModel.staticEntities.mASTER_COLOR = {};
+var getMASTER_COLORRecord = function (record) {
+return MobileUIWidgetsModel.module.staticEntities["99aacf28-137c-4dc2-ab78-841bebc88438"][record];
+};
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.mASTER_COLOR, "greenLight", {
+get: function () {
+return getMASTER_COLORRecord("0c17f169-216e-4612-91cf-7a01191affe1");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.mASTER_COLOR, "red", {
+get: function () {
+return getMASTER_COLORRecord("3ac0f98b-da33-4c50-91fe-b5b621b169b1");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.mASTER_COLOR, "blueLight", {
+get: function () {
+return getMASTER_COLORRecord("7f0b7102-431e-4cb6-8f2f-d88df16ceafc");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.mASTER_COLOR, "pink", {
+get: function () {
+return getMASTER_COLORRecord("93d17e69-361f-4894-9882-9faa5e4568d9");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.mASTER_COLOR, "yellow", {
+get: function () {
+return getMASTER_COLORRecord("97c1016b-290b-4a67-9f77-e06f3e44c368");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.mASTER_COLOR, "blueDark", {
+get: function () {
+return getMASTER_COLORRecord("9d64e5ac-23a3-414b-9a3a-d99f067fa90c");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.mASTER_COLOR, "greenDark", {
+get: function () {
+return getMASTER_COLORRecord("b8f7c155-4c74-4caf-9fab-c1f4dfbc6ea2");
+}
+});
+
+MobileUIWidgetsModel.staticEntities.iCON_SIZE = {};
+var getICON_SIZERecord = function (record) {
+return MobileUIWidgetsModel.module.staticEntities["b60cb512-9fee-4638-ac38-ced6b6d81a86"][record];
+};
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_SIZE, "xSmall", {
+get: function () {
+return getICON_SIZERecord("22883d0d-95e6-4a32-8126-12f1839ac2d2");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_SIZE, "xLarge", {
+get: function () {
+return getICON_SIZERecord("3a1cde3c-a513-4514-b687-8ff0ada45a36");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_SIZE, "small", {
+get: function () {
+return getICON_SIZERecord("5f77c5ff-0d3d-4372-8b4e-614de51c3692");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_SIZE, "large", {
+get: function () {
+return getICON_SIZERecord("ca7f18e8-1f3b-4d8c-b3f5-40cc9898aaf4");
+}
+});
+
+MobileUIWidgetsModel.staticEntities.aLERT_TYPE = {};
+var getALERT_TYPERecord = function (record) {
+return MobileUIWidgetsModel.module.staticEntities["cf318a7c-9364-47e8-985b-68850947bacc"][record];
+};
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.aLERT_TYPE, "error", {
+get: function () {
+return getALERT_TYPERecord("390c0a73-dcd5-4eb0-9d5f-1b0066e31971");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.aLERT_TYPE, "info", {
+get: function () {
+return getALERT_TYPERecord("b48179e6-4f06-4a97-be6c-53d0f59a4757");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.aLERT_TYPE, "warning", {
+get: function () {
+return getALERT_TYPERecord("f5a1637f-c92a-4b4b-a0bf-69a4240a6143");
+}
+});
+
+MobileUIWidgetsModel.staticEntities.iCON_CLASS = {};
+var getICON_CLASSRecord = function (record) {
+return MobileUIWidgetsModel.module.staticEntities["d68ff46d-b9b2-4c6c-bd04-e5036faf1127"][record];
+};
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconEditar", {
+get: function () {
+return getICON_CLASSRecord("01b8d616-ff1d-4e29-b940-20ba8465e363");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMagnifyingGlass", {
+get: function () {
+return getICON_CLASSRecord("032ae929-7f5d-4489-8b0a-55af8b12c3d9");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconServicosFilled", {
+get: function () {
+return getICON_CLASSRecord("038452a6-2759-497b-a77f-20eb45826fdd");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconLeftArrow", {
+get: function () {
+return getICON_CLASSRecord("0409be96-f7ee-4d5c-a028-ac78484c3bbe");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconArrowRightWTF", {
+get: function () {
+return getICON_CLASSRecord("04bfe465-5af3-44e1-b82c-c46f4a3cf55d");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTabAjudaFilled", {
+get: function () {
+return getICON_CLASSRecord("05ae3224-6bce-4456-92bc-482986a0a48b");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconWalletNatalFilled", {
+get: function () {
+return getICON_CLASSRecord("05d8fc66-bc9a-47d8-b8aa-bcad6a780bb8");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconGear", {
+get: function () {
+return getICON_CLASSRecord("0640e0ba-34b8-4f18-8f00-1c9e8d50fa89");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconLojasNos", {
+get: function () {
+return getICON_CLASSRecord("08bbd6db-9ba1-4cc3-85d7-02c5d5aab166");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMiscsetaDropRightCheia", {
+get: function () {
+return getICON_CLASSRecord("08d9b49d-3aeb-45e0-8566-21115fac7d1c");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconRefresh", {
+get: function () {
+return getICON_CLASSRecord("0b6eabc3-eb2c-4cb7-ac02-2cfd3d3fd6b7");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSeat", {
+get: function () {
+return getICON_CLASSRecord("0c442ec8-f11d-4560-91bd-e35fe582f1d6");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconDebitDirect", {
+get: function () {
+return getICON_CLASSRecord("0cb27d76-c1ee-473b-9d45-19c6ab7fca58");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconColapsar", {
+get: function () {
+return getICON_CLASSRecord("0f09179e-1f92-49b3-b9d5-b1aa8f4bd00a");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconConsulta", {
+get: function () {
+return getICON_CLASSRecord("0f9bb09d-be4f-4606-8237-cf03fdcbaaf9");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMiscsetaDropUpCheia", {
+get: function () {
+return getICON_CLASSRecord("15b10abc-f76d-4653-aa25-9e51c9fb6909");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconPopcornMenu", {
+get: function () {
+return getICON_CLASSRecord("16dd9fb6-02bc-47f2-bb05-c3646f537ab0");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconInicioFilled", {
+get: function () {
+return getICON_CLASSRecord("17af2fa8-31e0-46d1-9183-993328cfa197");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSoundcloud", {
+get: function () {
+return getICON_CLASSRecord("19f057d0-b1b3-4e52-97b2-06ab27b7924f");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconEye", {
+get: function () {
+return getICON_CLASSRecord("1a14d6e2-19dd-49f7-8e9b-a1d5a9d660e0");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTickets", {
+get: function () {
+return getICON_CLASSRecord("1ea79111-2bf7-48d0-bcfd-439b0be289e8");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconFavoriteFilled", {
+get: function () {
+return getICON_CLASSRecord("21c595f7-41b4-42b4-b92d-1feb327f77e9");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconWallet", {
+get: function () {
+return getICON_CLASSRecord("21fbf0cb-5d18-41d1-bb06-badbdbb8d31d");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTwitter", {
+get: function () {
+return getICON_CLASSRecord("227e5db3-1b86-473a-becf-461589681205");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconAlertTriangle", {
+get: function () {
+return getICON_CLASSRecord("2994f6fa-43f1-429c-a6c7-e8dafcd8e7d7");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconServicos", {
+get: function () {
+return getICON_CLASSRecord("2bcb5e0a-e178-4919-8a21-5aa172de0f29");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSmsFilled", {
+get: function () {
+return getICON_CLASSRecord("2c35b671-4271-411f-bd19-b860652a2f94");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconFiltros", {
+get: function () {
+return getICON_CLASSRecord("2ea87344-d9dc-4623-bf8e-a53742bfa968");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconLike", {
+get: function () {
+return getICON_CLASSRecord("2eb4d1f1-127b-4bff-ab3f-1b3d40b63a4f");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconScratchFilled", {
+get: function () {
+return getICON_CLASSRecord("33ce4a85-b9c0-41cc-8cd7-c0f4f96b43d8");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconBookmarked", {
+get: function () {
+return getICON_CLASSRecord("34c9bdb1-85ab-4e3e-aab8-6de2c51e88f9");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconNetflix", {
+get: function () {
+return getICON_CLASSRecord("34fadac0-fe8c-45b8-b907-c0bf368b3825");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconBus", {
+get: function () {
+return getICON_CLASSRecord("358de172-7980-4357-ac8b-3e31184038b8");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMiscsetaDropDownCheia", {
+get: function () {
+return getICON_CLASSRecord("368fcad0-53ed-48e5-bac2-a31d905bc6cf");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconZonaNatal", {
+get: function () {
+return getICON_CLASSRecord("3824c108-7674-4276-b9dd-a1e79a28e2a2");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSaucyNatal", {
+get: function () {
+return getICON_CLASSRecord("384bf376-3bfc-4080-89b3-8171614b4266");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconPencil", {
+get: function () {
+return getICON_CLASSRecord("3965762b-39d7-462d-ba0e-143a9ad07ddb");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconShareAndroid", {
+get: function () {
+return getICON_CLASSRecord("39e27a3d-2e63-4263-ab0b-a6cc7753f0ab");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconCardSuccess0102", {
+get: function () {
+return getICON_CLASSRecord("3b7b8961-ed4c-4301-9562-411a84dda131");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconInfoRounded", {
+get: function () {
+return getICON_CLASSRecord("3bbfd8ac-5b41-4c64-bc0b-cc81ddc5c832");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconCheckBoxOn", {
+get: function () {
+return getICON_CLASSRecord("3c4f6dbb-d6dc-472b-8355-42b876f3169d");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconVerMais", {
+get: function () {
+return getICON_CLASSRecord("3dc47c2d-28d4-4f6c-86d5-202aa7355d4c");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconLinkedIn", {
+get: function () {
+return getICON_CLASSRecord("3de989ad-406e-42b1-9c1d-ed6f8a89e392");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMessageInsuccessWTF", {
+get: function () {
+return getICON_CLASSRecord("3eed6eba-c22a-45a7-ae61-7d920223fd05");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconConta", {
+get: function () {
+return getICON_CLASSRecord("407a7026-c85d-4faf-8248-fa987edc6aea");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconInfoRoundedFilled", {
+get: function () {
+return getICON_CLASSRecord("41fb7aad-e455-4dc0-8a24-40b661eabdb7");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconCartaoNosV2", {
+get: function () {
+return getICON_CLASSRecord("42781948-5e52-4d30-969f-ff8377ca2364");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconArrowRight", {
+get: function () {
+return getICON_CLASSRecord("434f85a5-2762-4d26-9f43-8329430c30ce");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconPopcornMenuV2", {
+get: function () {
+return getICON_CLASSRecord("4385f301-fce4-4da3-bbb3-964b16571194");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconWirelessDisable", {
+get: function () {
+return getICON_CLASSRecord("44155b78-929d-411e-9920-82b8b25e7828");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconPlus", {
+get: function () {
+return getICON_CLASSRecord("454b040a-1099-46da-b5d2-fbdd4f3f9bed");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconAppsNosV2", {
+get: function () {
+return getICON_CLASSRecord("4766006c-dc30-4237-a099-00e9cb197b63");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSkype", {
+get: function () {
+return getICON_CLASSRecord("488d131e-fcc9-4de5-81fb-d38d5d6e2267");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconNotificacoesOn", {
+get: function () {
+return getICON_CLASSRecord("4c2671d9-65d7-468e-8105-0ce41d867eb3");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconFacebookLight", {
+get: function () {
+return getICON_CLASSRecord("4e49a907-6642-48ac-b7fb-ba6098616ba1");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconPopCorn", {
+get: function () {
+return getICON_CLASSRecord("4ebdf68a-3a7a-4e79-af32-8d1e5223d02f");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconVimeo", {
+get: function () {
+return getICON_CLASSRecord("4ee8f792-b0ee-4129-9063-bb3f32773fb6");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconLess", {
+get: function () {
+return getICON_CLASSRecord("4f26250b-ef0d-438d-bb3c-99d0bd867bbb");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconHistory", {
+get: function () {
+return getICON_CLASSRecord("55e53638-fe04-4f40-afef-b80dd2de48ee");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconRecycleBinEmptyFilled", {
+get: function () {
+return getICON_CLASSRecord("5b71ccd7-2caa-4160-8b39-95c221b02853");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconsSeatxl", {
+get: function () {
+return getICON_CLASSRecord("5ceb2c1b-c693-41e4-98cf-342538744b20");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSnapchat", {
+get: function () {
+return getICON_CLASSRecord("5d5f49b9-44fe-4e36-a130-dbb9678a6559");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconAppsNos", {
+get: function () {
+return getICON_CLASSRecord("5d8408e1-b496-41d2-8658-344129e8a3b9");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconEyeHide", {
+get: function () {
+return getICON_CLASSRecord("5fe83dd4-fa34-4f40-965f-ad5bec5d3215");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconAtalhosFilled", {
+get: function () {
+return getICON_CLASSRecord("609ff505-1065-43fc-96f1-3720d145ea0d");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTelefone", {
+get: function () {
+return getICON_CLASSRecord("60d626d3-433d-408f-b44a-1b8e694efdd9");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTumblr", {
+get: function () {
+return getICON_CLASSRecord("611c7d6a-9a1c-4abf-91d1-f8dd0c14713d");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconParking", {
+get: function () {
+return getICON_CLASSRecord("61b30cd0-6653-439b-8dd2-369fca293ad3");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTvCellPhonePlus", {
+get: function () {
+return getICON_CLASSRecord("62bc61ca-d82c-42e4-8b67-473fd819dc8a");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTopics", {
+get: function () {
+return getICON_CLASSRecord("63c445a9-e00b-439e-894a-f654a9e05e10");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSms", {
+get: function () {
+return getICON_CLASSRecord("645894eb-6a2a-4f3d-9f5a-d1d00890a56a");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconFaq", {
+get: function () {
+return getICON_CLASSRecord("64cf46ef-ea9f-4660-a177-f48f2a579d58");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconEncomenda", {
+get: function () {
+return getICON_CLASSRecord("6589fd14-7c33-4a72-9064-20efefe6cbac");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconInstagram", {
+get: function () {
+return getICON_CLASSRecord("674b7527-e077-4ad3-8c2c-9b9342171cd8");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMiscsetaDropLeftCheia", {
+get: function () {
+return getICON_CLASSRecord("694e5a50-3cb8-4ebc-af08-5af555c7b215");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMore", {
+get: function () {
+return getICON_CLASSRecord("6a520bf2-b475-4adf-ae64-9415882ff1d9");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconCurrentLocation", {
+get: function () {
+return getICON_CLASSRecord("6a5a33b0-0175-4b2d-804a-4db38c9db0d2");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconItunes", {
+get: function () {
+return getICON_CLASSRecord("6bae4222-38f7-49ff-8e78-5fd2596b4121");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconCartaz", {
+get: function () {
+return getICON_CLASSRecord("6cdd0308-8940-4740-bcff-c48a34bb1ea9");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconFavorite", {
+get: function () {
+return getICON_CLASSRecord("6eb70ef0-4a5b-4687-b631-ab7eaa03f246");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconPrime", {
+get: function () {
+return getICON_CLASSRecord("7132c09e-9e19-43dc-a715-65b4f4000cf6");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMessenger", {
+get: function () {
+return getICON_CLASSRecord("714140ea-e4f1-46ac-931d-ce197005d7fa");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconUserPlus", {
+get: function () {
+return getICON_CLASSRecord("71a80589-7bf8-42dc-ba08-9e46b561029a");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconCheckCircleLine", {
+get: function () {
+return getICON_CLASSRecord("723da398-6895-4db2-bffe-981d3fffffe3");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconHbo", {
+get: function () {
+return getICON_CLASSRecord("725dab7a-d101-4027-bd37-9f4d3eec70d6");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconHome", {
+get: function () {
+return getICON_CLASSRecord("72c1ea44-44c8-4aa8-8731-55fe90fa8ca0");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconContacto", {
+get: function () {
+return getICON_CLASSRecord("73d73c7c-1d7c-4129-a999-1202918387b4");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTabAjuda", {
+get: function () {
+return getICON_CLASSRecord("79a52476-1ce5-4901-84d8-9d88cd81cab9");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconClose", {
+get: function () {
+return getICON_CLASSRecord("7b8503c7-a296-4714-aaa5-54727448226f");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMetro", {
+get: function () {
+return getICON_CLASSRecord("7b96765a-c5b2-4d6a-825a-d15504573de3");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconScratchNatalFilled", {
+get: function () {
+return getICON_CLASSRecord("7c6f3a2d-00f0-478e-a3f0-167cd3227894");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconErrorRoundedV2", {
+get: function () {
+return getICON_CLASSRecord("7d4b0b9d-921d-475e-a367-ea09342d84c8");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconWalletNatal", {
+get: function () {
+return getICON_CLASSRecord("7e077556-3472-468e-be3b-cecfd17fccf9");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconGoogle", {
+get: function () {
+return getICON_CLASSRecord("7f74c380-9afe-4511-b05e-0bb4102416d4");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSearch", {
+get: function () {
+return getICON_CLASSRecord("7fa60abf-fd65-4c02-90f3-f13cb3e9e460");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconVip", {
+get: function () {
+return getICON_CLASSRecord("80b8643f-4ea9-4e56-b005-b8d3b8fc69e2");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconCalendar", {
+get: function () {
+return getICON_CLASSRecord("811f7369-61f8-44fe-bf88-dfb1e863ea62");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMagnifyingGlassMin", {
+get: function () {
+return getICON_CLASSRecord("81f62088-b850-40a9-9d24-c4b912e38789");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSaucy", {
+get: function () {
+return getICON_CLASSRecord("8278feb3-bf45-4eba-9983-ae16cc6251fd");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconErrorNovo", {
+get: function () {
+return getICON_CLASSRecord("832b127c-7e55-4bb1-8ed5-bf207ae07a50");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconHeart", {
+get: function () {
+return getICON_CLASSRecord("8419ef28-e5f9-4a79-af67-2916b230164d");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconExternalLink", {
+get: function () {
+return getICON_CLASSRecord("853d8d6a-35e8-4bcf-9c7c-9723234b539a");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconCartaoNos", {
+get: function () {
+return getICON_CLASSRecord("85799301-4686-4962-9dc6-48fd5ed86b8c");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconZonaFilled", {
+get: function () {
+return getICON_CLASSRecord("85ba2fcb-3c07-4418-91c5-f106423e0541");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMovie", {
+get: function () {
+return getICON_CLASSRecord("867b3a21-d19a-4ffd-bb6d-b4562489b82c");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconChat", {
+get: function () {
+return getICON_CLASSRecord("890f1121-90c8-4658-a79f-6bd652a5c992");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "icontTvPlus", {
+get: function () {
+return getICON_CLASSRecord("8a7394d7-fb7b-4bae-9850-360c288b79ab");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconAjudaNos", {
+get: function () {
+return getICON_CLASSRecord("8a7dacd9-d79a-4bb5-b351-f2f9ea45f6ff");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconCheckAll", {
+get: function () {
+return getICON_CLASSRecord("8ab6722f-0b42-49ce-a149-89befe5a4bb6");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTabBarAtalhos", {
+get: function () {
+return getICON_CLASSRecord("8e45834b-ca5f-4045-984f-bbccada61826");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconCardError01", {
+get: function () {
+return getICON_CLASSRecord("8f29ee51-b0b3-4626-b9e7-d9422168dd96");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconPremium", {
+get: function () {
+return getICON_CLASSRecord("8f7497d3-400d-4bb6-9d01-340372cccd39");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconScratchNatal", {
+get: function () {
+return getICON_CLASSRecord("9071e854-ba1a-43cd-a665-dd2f5d56920c");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconRadioButtonOff", {
+get: function () {
+return getICON_CLASSRecord("9157d001-7087-4463-b9f1-0314dca5f528");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconIMessage", {
+get: function () {
+return getICON_CLASSRecord("9400960f-16b2-4b1b-bb95-b5fe828dc3d1");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTeather", {
+get: function () {
+return getICON_CLASSRecord("95bea852-0c3e-48b1-86de-38b38c36303e");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconGesturesWipeHorizontal", {
+get: function () {
+return getICON_CLASSRecord("9656dca4-51a4-437f-ab5c-e283659834de");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconYoutube", {
+get: function () {
+return getICON_CLASSRecord("96c0d608-9194-4170-a8f0-03c6f7aceb37");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSlidersEqual", {
+get: function () {
+return getICON_CLASSRecord("9744a38b-e2d6-4edd-a0d5-566f4ceec129");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTwitch", {
+get: function () {
+return getICON_CLASSRecord("98031b00-d686-4694-b56f-2ea1b1ff45a1");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconPinterest", {
+get: function () {
+return getICON_CLASSRecord("9b54ebaa-f706-4e53-8b3e-cc577eabb5d8");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMuda", {
+get: function () {
+return getICON_CLASSRecord("9c68a1ef-6782-430e-bcf5-8e601310e53d");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconArrowUp", {
+get: function () {
+return getICON_CLASSRecord("9d00a261-df34-4bbb-ac68-bd957888b3d9");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconCheck", {
+get: function () {
+return getICON_CLASSRecord("9f85dd1a-28d8-4a3e-a9b0-09f88ecb093e");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSeatsXl", {
+get: function () {
+return getICON_CLASSRecord("a074b85b-9a45-429e-9d5c-c940de46ce47");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconPcSmartphone", {
+get: function () {
+return getICON_CLASSRecord("a2f0c7b1-d94c-423a-8dd3-561e1e3e3f77");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTicket", {
+get: function () {
+return getICON_CLASSRecord("a4bc95b7-ce62-4da5-afe8-4895ed545b73");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconAlterarContexto", {
+get: function () {
+return getICON_CLASSRecord("a57ff59c-5608-4c3c-b300-413aa3b6fb47");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTv", {
+get: function () {
+return getICON_CLASSRecord("a5b64568-2c3b-4569-9452-8fb56f199718");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconEletronicInvoice", {
+get: function () {
+return getICON_CLASSRecord("a77500a0-d6ef-4152-9ac3-5e3bd7b250fd");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSimCard", {
+get: function () {
+return getICON_CLASSRecord("a84626a8-2967-4578-953a-a8939787af79");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconZona", {
+get: function () {
+return getICON_CLASSRecord("a8f22183-52f4-4341-9bc4-3bc8cd0ff992");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconBookmark", {
+get: function () {
+return getICON_CLASSRecord("aa47b522-2816-4858-bf9d-c83880b2fe6e");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconPlayCircle", {
+get: function () {
+return getICON_CLASSRecord("aa8d6c1c-b6e7-44bb-a116-f67b8c669cbe");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconLocation", {
+get: function () {
+return getICON_CLASSRecord("ab8e19b4-fa25-4fa4-bcbe-8ef79807cf0c");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTicketsFilled", {
+get: function () {
+return getICON_CLASSRecord("acf32c21-52de-4e7d-91e8-f08fd460c192");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTvHD", {
+get: function () {
+return getICON_CLASSRecord("b0769287-51cb-47f3-9473-a6445af70fa3");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTelemovel", {
+get: function () {
+return getICON_CLASSRecord("b1f13a43-5240-410f-a1c7-74aed8c2c0d3");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconErrorRounded", {
+get: function () {
+return getICON_CLASSRecord("b33adfc1-7559-4bae-9170-5019ca3ce1df");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconBill", {
+get: function () {
+return getICON_CLASSRecord("b635c5d1-d875-4eb4-9140-b854d84506d6");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconListInverted", {
+get: function () {
+return getICON_CLASSRecord("b6649ac2-4b33-4d07-85c3-9392355136ca");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconPopCornNew", {
+get: function () {
+return getICON_CLASSRecord("b68cfa8f-1566-400a-88e2-169e166679c2");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconCopiar", {
+get: function () {
+return getICON_CLASSRecord("b6bab7da-9419-40da-bb39-a42e83720f0a");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSeatColor", {
+get: function () {
+return getICON_CLASSRecord("b7e797f4-b455-443a-8fb7-8c082dd9b67a");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconScratch", {
+get: function () {
+return getICON_CLASSRecord("b7f71ed8-f49a-470e-aa4c-c3d1bb791b38");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMaisNatalWTF", {
+get: function () {
+return getICON_CLASSRecord("b8d6b224-7c36-4a09-8be5-ee29f47cd115");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconFilterFilled", {
+get: function () {
+return getICON_CLASSRecord("b9aa8387-f155-4bb8-b920-fa5d3b08c947");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconCheckBoxOff", {
+get: function () {
+return getICON_CLASSRecord("ba5e3751-896e-4615-8386-e08039f43e0f");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconNotificacoes", {
+get: function () {
+return getICON_CLASSRecord("bb610fbf-72c5-49c0-9806-e9a630529824");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMessageSuccessWTF", {
+get: function () {
+return getICON_CLASSRecord("bbfd4eac-b4c8-424f-9522-f3c8256ccde1");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconPremiumSeatXL", {
+get: function () {
+return getICON_CLASSRecord("bdfeb64e-3109-4f84-808f-a09d59d8d5b7");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconAppleMusic", {
+get: function () {
+return getICON_CLASSRecord("be911cac-a3df-4adf-a602-0bffaed86100");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconRouter", {
+get: function () {
+return getICON_CLASSRecord("bea8023a-f5ec-4cef-abab-c208537890eb");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconEnvelopOpen", {
+get: function () {
+return getICON_CLASSRecord("bef95d1d-3e00-4187-a067-7900d1b5c95c");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconInternet", {
+get: function () {
+return getICON_CLASSRecord("bfd476fc-ac45-4a38-bff1-524d65e24334");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconGoogleMusic", {
+get: function () {
+return getICON_CLASSRecord("c06618eb-7595-4a21-8d26-876bd7ff2a38");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMaisWTF", {
+get: function () {
+return getICON_CLASSRecord("c0c1b4d3-435f-49b1-af20-2bea36276a50");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconAlertRounded", {
+get: function () {
+return getICON_CLASSRecord("c10f6c06-a595-4f1c-af4b-7a0a819878f8");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconTicketFilled", {
+get: function () {
+return getICON_CLASSRecord("c1cb057f-5ffd-437b-bb74-eecedd69667a");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconUser", {
+get: function () {
+return getICON_CLASSRecord("c2921be5-b316-42e3-aa26-d7d590c127c4");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconZonaNatalFilled", {
+get: function () {
+return getICON_CLASSRecord("c49fa011-b4c1-4d3d-87e2-b7e624b821e3");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconDotsHorizontal", {
+get: function () {
+return getICON_CLASSRecord("c588a0d6-c262-4f33-84f9-2b25aa343dd6");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconBack", {
+get: function () {
+return getICON_CLASSRecord("c605ef4d-f8e5-4d9c-8d32-96de02fec138");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconArrowLeft", {
+get: function () {
+return getICON_CLASSRecord("c6839bc2-52e1-49f9-9a33-0f2c61befe82");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconDotsVertical", {
+get: function () {
+return getICON_CLASSRecord("cb7aa433-4cd2-4a59-a08c-d95c4bf1941d");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconForumNos", {
+get: function () {
+return getICON_CLASSRecord("cd6557a8-a44d-417b-93c4-336b6df9e444");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconEletronicInvoiceNew", {
+get: function () {
+return getICON_CLASSRecord("cf2cc7cb-eafa-453c-b310-352580360073");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconErrorRoundedFilledV2", {
+get: function () {
+return getICON_CLASSRecord("d0be93fe-114a-42ea-b172-38376cbc1b04");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconBellCheck", {
+get: function () {
+return getICON_CLASSRecord("d0d2579c-59fb-4e16-a871-1a71d193332a");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconNetMovel", {
+get: function () {
+return getICON_CLASSRecord("d1f7d660-8a76-4250-9782-82f8e244c719");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSaucyNatalFilled", {
+get: function () {
+return getICON_CLASSRecord("d22d0b57-de00-4f93-8eb0-80c400ec90b0");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconArrowDown", {
+get: function () {
+return getICON_CLASSRecord("d2cd9ec7-9b69-468b-8b1c-2a34ba3b9da3");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconGestureDoubleTap", {
+get: function () {
+return getICON_CLASSRecord("d4b4e0d3-94dc-4bf7-9cad-5eb9aa00e2ca");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconWindows", {
+get: function () {
+return getICON_CLASSRecord("d6455aba-7cef-4a48-8d1e-5799c53dbf1a");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconAlertTriangleFilled", {
+get: function () {
+return getICON_CLASSRecord("d8a3f9d2-0f15-4667-a6ae-91cf9ec34d99");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconFacebook", {
+get: function () {
+return getICON_CLASSRecord("da91f8cd-c1a2-4e79-a3b2-6f358bfa43ba");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconDislike", {
+get: function () {
+return getICON_CLASSRecord("dba88543-c98a-434b-8ab7-b3bad26038b3");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconFaceTime", {
+get: function () {
+return getICON_CLASSRecord("df92fd71-9b56-41cb-85c2-665f9e5fc1fe");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSpotify", {
+get: function () {
+return getICON_CLASSRecord("e1d2fd99-388f-4312-82b2-07d85e0319b7");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconSaucyFilled", {
+get: function () {
+return getICON_CLASSRecord("e2d0c688-8770-4a9e-a3b9-0635dcee6b62");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconInternetData", {
+get: function () {
+return getICON_CLASSRecord("e5030fb0-23c7-4754-8a94-ba385f85988a");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconRadioButtonOn", {
+get: function () {
+return getICON_CLASSRecord("e63cf556-7f97-4a41-9f86-7d2498336765");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconCheckCircle", {
+get: function () {
+return getICON_CLASSRecord("e67bde37-6a83-4a29-8ccb-c3dcaa996eae");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconRecycleBinEmpty", {
+get: function () {
+return getICON_CLASSRecord("e722390d-6826-4c00-809b-421808b2edb0");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconEnvelopeClosed", {
+get: function () {
+return getICON_CLASSRecord("e889b360-6d3d-4db6-913e-801ad74ad638");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconMobilidade", {
+get: function () {
+return getICON_CLASSRecord("ec3ba0bc-94ba-4c3e-a224-5b7ebae2bfd1");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconEdit", {
+get: function () {
+return getICON_CLASSRecord("ecf06917-d913-4a0b-95ef-dc1571fa875c");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconAdmin", {
+get: function () {
+return getICON_CLASSRecord("f0614f61-661d-4c96-a384-42eb2363ab5f");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconAmazon", {
+get: function () {
+return getICON_CLASSRecord("f1121331-7df3-44a2-926a-9b162df5fed9");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconWhatsapp", {
+get: function () {
+return getICON_CLASSRecord("f1b721a3-dfdb-47f4-9b3f-f9a60dfc5311");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconShare", {
+get: function () {
+return getICON_CLASSRecord("f576738a-b1f7-47f0-891d-5d2e97c1f525");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconWalletFilled", {
+get: function () {
+return getICON_CLASSRecord("fa0cf488-587a-4b71-a3ff-ff24002f169f");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconViber", {
+get: function () {
+return getICON_CLASSRecord("fac3d751-fe8e-4590-a202-813145d1c877");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.iCON_CLASS, "iconHeartFilled", {
+get: function () {
+return getICON_CLASSRecord("fcc8dde8-3d2f-4589-9f97-9ee7a5e9b90c");
+}
+});
+
+MobileUIWidgetsModel.staticEntities.hEX_COLORS = {};
+var getHEX_COLORSRecord = function (record) {
+return MobileUIWidgetsModel.module.staticEntities["e1084c14-e3e9-4e06-a9e0-d048f01b9abf"][record];
+};
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "blueLight", {
+get: function () {
+return getHEX_COLORSRecord("19b8ee1a-f758-4da5-8915-28a65ed9ec86");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "gray4", {
+get: function () {
+return getHEX_COLORSRecord("1a09078f-ea91-4ff3-8c23-4a7236a9e056");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "grayDark", {
+get: function () {
+return getHEX_COLORSRecord("33bf8c9f-339e-4810-a10c-a67b4873c525");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "blackOverlay", {
+get: function () {
+return getHEX_COLORSRecord("68efbe84-55c6-4e53-885f-b8cf2a6f2f94");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "greenLight", {
+get: function () {
+return getHEX_COLORSRecord("69b8ae12-3587-42f3-b8f2-67b6455862bf");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "gray3", {
+get: function () {
+return getHEX_COLORSRecord("7bf5e40c-2267-4de3-a8b2-8764f2302acf");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "grayLight", {
+get: function () {
+return getHEX_COLORSRecord("80fdf149-394c-462f-9ce6-9e80631f3056");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "greenDark", {
+get: function () {
+return getHEX_COLORSRecord("90c1f091-efcc-4709-b96b-7561ae8fada2");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "red", {
+get: function () {
+return getHEX_COLORSRecord("bc8c522c-4a9d-48b7-ba75-8de4d9bf16d6");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "strongPink_WTF", {
+get: function () {
+return getHEX_COLORSRecord("ca9dba13-1caf-49c2-aa8c-c9bd78e4a825");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "black", {
+get: function () {
+return getHEX_COLORSRecord("cc6e9de2-b25c-43d0-a0ab-9c833b5a3121");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "yellow", {
+get: function () {
+return getHEX_COLORSRecord("cd7e3483-942b-48b9-9924-16707965bd7d");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "white", {
+get: function () {
+return getHEX_COLORSRecord("d58bfed0-3616-4217-a249-55d6b18b1635");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "pureWhite", {
+get: function () {
+return getHEX_COLORSRecord("dce2b52b-478d-427a-8a24-57f095a9ea3f");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "pink", {
+get: function () {
+return getHEX_COLORSRecord("e24feb3d-ab50-4e00-b479-f07d1601bf59");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "pureBlack", {
+get: function () {
+return getHEX_COLORSRecord("e51f004f-8561-4f82-a31a-bd1c7c31fbbb");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "gray8", {
+get: function () {
+return getHEX_COLORSRecord("e6a4395e-1cbb-4e50-beaf-869b478f26e5");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.hEX_COLORS, "blueDark", {
+get: function () {
+return getHEX_COLORSRecord("ebb9ee56-8dbe-4f8f-b169-d9ddf226b6db");
+}
+});
+
+MobileUIWidgetsModel.staticEntities.autoplay = {};
+var getAutoplayRecord = function (record) {
+return OS.ApplicationInfo.getModules()["8be17f2a-431c-4958-b894-c77b988a7271"].staticEntities["82aa58b4-8bbb-4d19-92b6-2944affad02c"][record];
+};
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.autoplay, "disabled", {
+get: function () {
+return getAutoplayRecord("1ffcca5d-17d0-492e-9e9e-b8addde7fd80");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.autoplay, "slow", {
+get: function () {
+return getAutoplayRecord("4167f601-5731-452d-9653-1be7f25199f1");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.autoplay, "fast", {
+get: function () {
+return getAutoplayRecord("41b9ec04-2023-4f87-b953-0c01713d1992");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.autoplay, "normal", {
+get: function () {
+return getAutoplayRecord("e3033046-77ba-49cd-928a-5d831105f349");
+}
+});
+
+MobileUIWidgetsModel.staticEntities.menuAction = {};
+var getMenuActionRecord = function (record) {
+return OS.ApplicationInfo.getModules()["8be17f2a-431c-4958-b894-c77b988a7271"].staticEntities["9cc12883-06ab-4cf0-9997-ede7c6c02d67"][record];
+};
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.menuAction, "menu", {
+get: function () {
+return getMenuActionRecord("55ba18a9-cd6b-45dd-99ce-9081ee1387ea");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.menuAction, "auto", {
+get: function () {
+return getMenuActionRecord("6c0c753a-86f4-4e76-9781-6e821c850c72");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.menuAction, "hidden", {
+get: function () {
+return getMenuActionRecord("86c9d356-be64-46a1-b027-843ab93b4aea");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.menuAction, "back", {
+get: function () {
+return getMenuActionRecord("f2db3c50-4c38-4ee7-a770-aa9476cb0d68");
+}
+});
+
+MobileUIWidgetsModel.staticEntities.steps = {};
+var getStepsRecord = function (record) {
+return OS.ApplicationInfo.getModules()["8be17f2a-431c-4958-b894-c77b988a7271"].staticEntities["e4dd8e9f-a620-4df5-b619-9b8a771be5a3"][record];
+};
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.steps, "next", {
+get: function () {
+return getStepsRecord("03e9ec31-9b26-4304-b532-29aa077d99ea");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.steps, "past", {
+get: function () {
+return getStepsRecord("5452e8a1-02ca-4ff2-8d74-bff1512fc4a3");
+}
+});
+
+Object.defineProperty(MobileUIWidgetsModel.staticEntities.steps, "active", {
+get: function () {
+return getStepsRecord("dbde9903-8367-49e7-8302-f6758c190844");
+}
+});
+
+});
