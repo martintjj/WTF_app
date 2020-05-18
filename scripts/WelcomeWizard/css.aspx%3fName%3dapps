@@ -1,0 +1,13 @@
+#xpto-apps .header{ top: 0.17em; height: 8.5em;}
+#xpto-apps .header .shadow{ position:absolute; top: 0.06em;left: 0.53em; font-size: 7em; line-height: 1.2em; color:#f7d5e3; z-index:1;}
+#xpto-apps .header .content{ position:absolute; left: 0.56em; font-size: 7em; line-height: 1.2em; color:#f9398b; z-index:2;}
+#xpto-apps .title .content{ font-size:1.5em; line-height: 1.15em; margin-left: 2.8em; color:#3a71b2; }
+#xpto-apps .title .content .not{ vertical-align: top; display: inline-block; line-height: 1em; }
+#xpto-apps .title .content .text{ padding-left:0.1em; }
+#xpto-apps .apps .apps-container .app{width: 100%;height: 4.2em;position: relative;border-bottom: 1px solid #cfcfcf;}
+#xpto-apps .apps .apps-container .app .icon{border: none;position: absolute;top: 0.5em;left: 0.7em;width: 3.3em;}
+#xpto-apps .apps .apps-container .app .name{position: absolute;color: #3a71b2;font-family: FSSinclairMedium, Arial, Helvetica, sans-serif;font-size: 1.3em;left: 3.9em;top: 0.4em;}
+#xpto-apps .apps .apps-container .app .label{position: absolute;color: #b1b1b1;font-family: FSSinclairMedium, Arial, Helvetica, sans-serif;font-size: 1.3em;left: 3.9em;top: 1.6em;}
+#xpto-apps .apps .apps-container .app .download{position: absolute;border: none;top: 0.5em;left: 14em;width: 3.3em;height: 3.3em;background-size: 100% 100%;background-image: url('images/icons/download.png');}
+#xpto-apps .instructions .label{ margin-top: 0.8em;margin-left: 4.3em;margin-right: 0.7em;display: inline-block;font-size: 1.1em;line-height: 1.15em;color: #3a71b2; }
+#xpto-apps .instructions .info-button{display:inline-block;position: relative;}

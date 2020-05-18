@@ -1,0 +1,13 @@
+#xpto-success .header{ top: 0.17em; height: 8.5em;}
+#xpto-success .header .shadow{ position:absolute; top: 0.06em;left: 0.53em; font-size: 7em; line-height: 1.2em; color:#001f3d; z-index:1;}
+#xpto-success .header .content{ position:absolute; left: 0.56em; font-size: 7em; line-height: 1.2em; color:#f9398b; z-index:2;}
+#xpto-success .title{ top: 8.6em; height: 4em; }
+#xpto-success .title2 { display:none; }
+#xpto-success .title .content{ font-size:1.8em; line-height: 1.15em; margin-left: 2.3em; color:#f9398b; }
+#xpto-success .title .content .not{ vertical-align: top; display: inline-block; line-height: 1em; }
+#xpto-success .title .content .text{ padding-left:0.1em; }
+#xpto-success .instructions{ top: 13em; height:7.5em; }
+#xpto-success .instructions .content{ margin-left: 3.7em;font-size: 1.5em;line-height: 1.15em;color: #fff; }
+#xpto-success .instructions2 { top: 8.6em; height:11.9em; }
+#xpto-success .instructions2 .content{ margin-left: 3.7em;font-size: 1.5em;line-height: 1.15em;color: #fff; }
+#xpto-success .button-container #load-apps-button{float:right; width:9.6em;}

@@ -1,0 +1,11 @@
+#xpto-welcome .header{ top: 0.17em; height: 8.5em;}
+#xpto-welcome .header .content{ margin-left: 0.56em; font-size: 7em; line-height: 1.2em; color:#fff; }
+#xpto-welcome .title .content{ font-size:1.8em; line-height: 1.15em; margin-left: 2.3em; color:#000; }
+#xpto-welcome .title .content .not{ vertical-align: top; display: inline-block; line-height: 1em; }
+#xpto-welcome .title .content .text{ padding-left:0.1em; display:inline-block; }
+#xpto-welcome .video-arrow .content{ float:right; width:22.6em; height:2em; background-size:100% 100%; background-repeat:no-repeat;background-image:url('images/video_arrow.png');}
+#xpto-welcome .video-container .content{width: 22.8em; height: 15.1em;float:right; background-size:100% 100%; background-repeat:no-repeat;background-image:url('images/video_frame.png'); background-repeat:no-repeat;}
+#xpto-welcome .video-container .content .video{margin-left:0.5em;margin-top:0.5em; width:22.3em;height:14.1em;}
+#xpto-welcome .next-label .not, #xpto-welcome .next-label .text{display:inline-block;}
+#xpto-welcome .next-label .dots{	position:absolute;	width:100%;	height:auto;}
+#xpto-welcome  #next-button{	top: 0.8em;	width:3.5em;}

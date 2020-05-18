@@ -1,0 +1,25 @@
+#xpto-rateplan .header{ top: 0.17em; height: 8.5em;}
+#xpto-rateplan .header .content{ margin-left: 0.56em; font-size: 7em; line-height: 1.4em; color:#fff; }
+#xpto-rateplan .title .content, #xpto-rateplan .subTitleMonthly .content, #xpto-rateplan .subTitleWeekly .content{font-size: 1.5em;line-height: 1.1em;margin-left: 2.3em;color:#fff;}
+#xpto-rateplan .subTitleMonthly .content, #xpto-rateplan .subTitleWeekly .content{font-family:FSSinclairMedium, Arial, Helvetica, sans-serif;color:#fff;}
+#xpto-rateplan .title .content .not{ vertical-align: top;display: inline-block;line-height: 1.1em; }
+#xpto-rateplan .title .content .text{ padding-left:0.1em; }
+#xpto-rateplan .instructions .label{width: 11em;font-family: FSSinclairMedium, Arial, Helvetica, sans-serif;font-weight: bold; margin-right: 4.5em;margin-left:5.5em; display:inline-block; color:#f9398b;font-size:1em;}
+#xpto-rateplan .instructions .label .text{position: absolute; top: 0.3em;width:15em;right: 0;}
+#xpto-rateplan .instructions .info-button{position:relative;display:inline-block;float:right;}
+#xpto-rateplan .rateplan-container{ height:5em; }
+#xpto-rateplan .rateplan{position:relative;width: 26em;height: 4.9em;float:right;background-image:url('images/plan-bg.png');}
+#xpto-rateplan .rateplan .name{font-family: FSSinclairBold, Arial, Helvetica, sans-serif;position: absolute;top: 0.32em;left: 0.4em;color: #3a71b2; font-size: 1.5em;}
+#xpto-rateplan .rateplan .dots{position: absolute;width: 11.5em;height: 0.2em;left: 0.7em;top: 2.2em;background-image:url('images/plan_dots.png');}
+#xpto-rateplan .rateplan .icon{position: absolute;width: 1.8em;height: auto;left: 12.8em;top: 1.8em;}
+#xpto-rateplan .rateplan .info{position: absolute;color: #444;font-size: 1.15em;font-weight: bold;left: 0.7em;top: 2.6em;}
+#xpto-rateplan .rateplan .info span{font-size: 0.5em;vertical-align: middle;}
+#xpto-rateplan .rateplan .price-container{position:absolute;top:0.7em;left:16.5em;color:#3a71b2;font-family: FSSinclairMedium, Arial, Helvetica, sans-serif;text-shadow: 2px 2px #fff;}
+#xpto-rateplan .rateplan .price-container .euro{font-size:2.25em;display:inline-block;}
+#xpto-rateplan .rateplan .price-container .price{margin-left: -0.1em;letter-spacing:-4px;font-size:3.1em;display:inline-block;}
+#xpto-rateplan .rateplan .price-container .cents{font-size: 1.7em;display: inline-block;vertical-align: top;padding-top: 0.3em;margin-left: 0.1em;}
+#xpto-rateplan .rateplan .arrow{position: absolute;top: 1.5em;right: 0.1em;width: 1.3em;height: auto;}
+@media screen and (max-width: 240px) and (max-height: 320px) {
+.info-button {width: 3em;}
+	#xpto-rateplan .rateplan .price-container .price{font-size:3.7em;letter-spacing:-2px;}
+}
